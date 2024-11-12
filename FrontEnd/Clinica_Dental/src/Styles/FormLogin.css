@@ -1,0 +1,142 @@
+body {
+    background-image: url('../Img/mar.jpg');
+    background-size: cover;  /* Asegura que la imagen cubra todo */
+    background-position: center;  /* Centra la imagen */
+    background-attachment: fixed;  /* Fija la imagen cuando haces scroll */
+    margin: 0;  /* Elimina márgenes por defecto */
+    height: 100vh;  /* Asegura que el body tenga el 100% de la altura de la ventana */
+}
+
+/* Contenedor principal del login */
+.login-container {
+    display: flex;
+    padding: 0 30px;
+    font-family: 'Averia Serif Libre';
+    font-size: 120%;
+    color: black;
+    font-weight: bold;
+  }
+  
+  /* Lado izquierdo con el formulario de login */
+  .login-left {
+    margin-top: 60px;
+    width: 40%;
+    height: 330px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #EED6BE;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Título del formulario */
+  .login-title {
+    font-size: 28px;
+    font-family: Averia Serif Libre;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    margin-right: 40px;
+  }
+
+  .Move{
+    margin-right:250px;
+  }
+  .move{
+    margin-right: 300px;
+  }
+  
+  /* Estilo de los inputs */
+  .input-field {
+    width: 80%;
+    padding: 12px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    transition: border 0.3s;
+  }
+  
+  .input-field:focus {
+    border-color: #007BFF;
+  }
+  
+  /* Botones */
+  .back-button{
+    height: 30px;
+    width: 80px;
+  }
+  .login-button{
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .login-button {
+    background-color: #C48EAB;
+    color: white;
+    border: none;
+  }
+  
+  .login-button:hover {
+    background-color: #FD91CB;
+  }
+  
+  .back-button {
+    background-color: #C48EAB;
+    color: white;
+    border: 1px solid #ddd;
+  }
+  
+  .back-button:hover {
+    background-color: #FD91CB;
+  }
+  
+  /* Lado derecho con la imagen atractiva */
+  .login-right {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+  }
+  
+  .login-right img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilos para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .login-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .login-left, .login-right {
+      width: 90%;
+      margin-bottom: 20px;
+    }
+  
+    .login-title {
+      font-size: 24px;
+    }
+  
+    .input-field {
+      font-size: 14px;
+    }
+  
+    .login-button {
+      font-size: 14px;
+    }
+  }
+  

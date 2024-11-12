@@ -1,15 +1,15 @@
 // Enviar datos al servidor
-async function postUsers(username, gmail, pass) {
+async function postUsers(username, email, password) {
     try {
      
         const userData = { 
             username,
-            gmail,
-            pass
+            email,
+            password
         
         };
 
-        const response = await fetch("http://localhost:3001/users", {
+        const response = await fetch("http://127.0.0.1:8000/api/token", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -1,0 +1,124 @@
+/* src/components/Footer.css */
+
+.footer {
+    background-color: #1e1e1e;
+    color: #fff;
+    padding: 40px 0;
+    text-align: center;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    flex-wrap: wrap;
+  }
+  
+  .footer-logo {
+    margin-bottom: 20px;
+  }
+  
+  .footer-logo-text {
+    font-size: 30px;
+    font-weight: bold;
+  }
+  
+  .footer-description {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  .footer-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .footer-social-icons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .footer-social-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #333;
+    transition: background-color 0.3s, transform 0.3s ease;
+  }
+  
+  .footer-social-icon:hover {
+    background-color: #00bcd4; /* Color llamativo */
+    transform: scale(1.1); /* Efecto de zoom */
+  }
+  
+  .footer-social-icon-svg {
+    width: 24px;
+    height: 24px;
+    fill: #fff;
+  }
+  
+  .footer-social-icon.instagram:hover .footer-social-icon-svg {
+    fill: #e4405f; /* Color de hover para Instagram */
+  }
+  
+  .footer-social-icon.facebook:hover .footer-social-icon-svg {
+    fill: #1877f2; /* Color de hover para Facebook */
+  }
+  
+  .footer-contact-list, .footer-hours-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    font-size: 14px;
+  }
+  
+  .footer-contact-link {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 10px;
+  }
+  
+  .footer-contact-link:hover {
+    color: #00bcd4;
+  }
+  
+  .footer-contact-link i {
+    margin-right: 10px;
+  }
+  
+  .footer-hours-list li {
+    margin-bottom: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .footer-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .footer-logo,
+    .footer-socials,
+    .footer-contact,
+    .footer-hours {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+  
+    .footer-social-icons {
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+  }
+  

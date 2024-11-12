@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react"; // Importa React y hooks necesarios
+import '../Styles/FormLogin.css';
 import Swal from 'sweetalert2/dist/sweetalert2.all.min.js'; // Importa SweetAlert2 para mostrar alertas
 import { useNavigate } from "react-router-dom"; // Importa hook para navegación
 import GetUsers from "../Service/GetUsers"; // Importa función para obtener usuarios
+import imagen from '../Img/fondo2.jpg'
 
 function FormLogin() {
   // Define estados para manejar los datos del formulario
@@ -65,21 +67,44 @@ function FormLogin() {
 
   // Renderiza el formulario de inicio de sesión
   return (
-    <div className="form-container">
-      <div className="form-card">
-        <h1>INICIO SESION</h1> {/* Título del formulario */}
-        <label htmlFor="gmail"><h2>CORREO ELECTRONICO</h2></label>
-        <input className="input2" type="text" placeholder="Ingrese su Correo" value={gmail} onChange={(e) => setGmail(e.target.value)} /> {/* Input para el correo electrónico */}
+    
+    <div className="login-container">
+      <div className="omitir">
+       <button className="back-button" onClick={BLogin}>OMITIR</button>
+      </div>
+      {/* Lado izquierdo con el formulario de login */}
+      <div className="login-left">
+        <h1 className="login-title">INICIO SESIÓN</h1> {/* Título del formulario */}
         
-        <label htmlFor="pass"><h2>CONTRASEÑA</h2></label>
-        <input className="input2" type="password" placeholder="Ingrese su Contraseña" value={pass} onChange={(e) => setPass(e.target.value)} /> {/* Input para la contraseña */}
-        <br />
-        <br />
-        <button className="submit-button" onClick={handleLogin}>INGRESAR</button> {/* Botón para iniciar sesión */}
-        <button className="submit-button" onClick={BLogin}>VOLVER</button> {/* Botón para volver a la página principal */}
+        <label className="Move" htmlFor="gmail">Correo Electrónico</label>
+        <input 
+          className="input-field" 
+          type="text" 
+          placeholder="Ingrese su correo" 
+          value={gmail} 
+          onChange={(e) => setGmail(e.target.value)} 
+        />
+
+        <label className="move" htmlFor="pass">Contraseña</label>
+        <input 
+          className="input-field" 
+          type="password" 
+          placeholder="Ingrese su contraseña" 
+          value={pass} 
+          onChange={(e) => setPass(e.target.value)} 
+        />
+        
+        <button className="login-button" onClick={handleLogin}>INGRESAR</button>
+        
+      </div>
+
+      {/* Lado derecho con la imagen atractiva */}
+      <div className="login-right">
+        <img src= {imagen} alt="Decoracion" />
       </div>
     </div>
   );
 }
+
 
 export default FormLogin; // Exporta el componente

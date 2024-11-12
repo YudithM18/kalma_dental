@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Im
 import Login from "../Pages/Login";
 import GeneralAdministration from "../Pages/GeneralAdministration";
 import UsersAdministration from "../Pages/UsersAdministration";
-import ProtectedRoute from './ProtectedRoute';
+//import ProtectedRoute from './ProtectedRoute';
 import Services from '../Pages/Services';
 import Home from '../Pages/Home';
 import AboutUs from "../Pages/AboutUs";
@@ -21,7 +21,7 @@ const Routing = () => {
             <Route path= '/GeneralAdministration' element={ <GeneralAdministration /> } />
             <Route path= '/UsersAdministration' element={<UsersAdministration />} />
             <Route path= '/Services' element={<Services />} />
-            <Route path= '/Home' element={<Home />} />
+            <Route path= '/' element={<Home />} />
             <Route path= '/AboutUs' element={<AboutUs />} />
             <Route path= '/WorkTeams' element={<WorkTeams />} />
             <Route path= '/Blog' element={<Blog />} />
