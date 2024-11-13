@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"; // Importa React y hooks nec
 import '../Styles/FormLogin.css';
 import Swal from 'sweetalert2/dist/sweetalert2.all.min.js'; // Importa SweetAlert2 para mostrar alertas
 import { useNavigate } from "react-router-dom"; // Importa hook para navegación
-import GetUsers from "../Service/GetUsers"; // Importa función para obtener usuarios
+import PostUsers from "../Service/PostUsers"; // Importa función para obtener usuarios
 import imagen from '../Img/fondo2.jpg'
 
 function FormLogin() {
@@ -12,6 +12,7 @@ function FormLogin() {
   const [users, setUsers] = useState([]); // Estado para almacenar la lista de usuarios
   const navigate = useNavigate(); // Inicializa el hook de navegación
 
+/*
   // useEffect para cargar usuarios al montar el componente
   useEffect(() => {
     const fetchUsers = async () => {
@@ -20,11 +21,13 @@ function FormLogin() {
     };
     fetchUsers(); // Ejecuta la función
   }, []);
+*/
 
   // Función para manejar el inicio de sesión
-  const handleLogin = () => {
+  const handleLogin = async() => {
     // Busca el usuario que coincida con el correo y contraseña ingresados
-    const listaU = users.find(user => user.gmail === gmail && user.pass === pass);
+    //const listaU = users.find(user => user.gmail === gmail && user.pass === pass);
+    const listaU = await PostUsers(gmail, pass);
     if (listaU) {
       // Si se encuentra el usuario, muestra una alerta de éxito
       Swal.fire({
@@ -103,6 +106,7 @@ function FormLogin() {
         <img src= {imagen} alt="Decoracion" />
       </div>
     </div>
+   
   );
 }
 

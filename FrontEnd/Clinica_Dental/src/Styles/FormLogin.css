@@ -1,12 +1,3 @@
-body {
-    background-image: url('../Img/mar.jpg');
-    background-size: cover;  /* Asegura que la imagen cubra todo */
-    background-position: center;  /* Centra la imagen */
-    background-attachment: fixed;  /* Fija la imagen cuando haces scroll */
-    margin: 0;  /* Elimina márgenes por defecto */
-    height: 100vh;  /* Asegura que el body tenga el 100% de la altura de la ventana */
-}
-
 /* Contenedor principal del login */
 .login-container {
     display: flex;

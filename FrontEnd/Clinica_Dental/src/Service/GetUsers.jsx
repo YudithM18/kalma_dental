@@ -1,13 +1,14 @@
 //Obtener datos del servidor
 async function getUsers() {
     try {
-        const response = await fetch('http://127.0.0.1:8000/api/token', {
-            method: 'GET',
+        const response = await fetch('http://127.0.0.1:8000/api/token/', {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             }
         });
-
+        console.log(response);
+        
         if (!response.ok) {
             throw new Error('Error fetching users');
         }
