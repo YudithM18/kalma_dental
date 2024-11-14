@@ -1,5 +1,6 @@
 import React from 'react'
 import '../Styles/FormTerminosCondiciones.css'
+import logo from '../Img/Logo_principal.jpg'
 
 function FormTerminosCondiciones() {
   return (
@@ -48,6 +49,14 @@ function FormTerminosCondiciones() {
         </div>
         <br />
       </div>
+
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <img className='logo' src= {logo} alt="Logo Kalma Dental" />
     </div>
   )
 }

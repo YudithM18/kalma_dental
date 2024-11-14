@@ -66,17 +66,20 @@
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 15px;
+    color: white;
   }
 
   .footer-title-cita {
     font-size: 18px;
     font-weight: bold;
     margin-top: 100px;
+    color:  white;
   }
 
   .footer-title-horario {
     font-size: 18px;
     font-weight: bold;
+    color: white;
   }
   
   .footer-social-icons {
@@ -108,19 +111,19 @@
   }
   
   .footer-social-icon.instagram:hover .footer-social-icon-svg {
-    fill: #96178b; /* Color de hover para Instagram */
+    fill: #ffffff; /* Color de hover para Instagram */
   }
   
   .footer-social-icon.facebook:hover .footer-social-icon-svg {
-    fill: #1f1fc7; /* Color de hover para Facebook */
+    fill: #ffffff; /* Color de hover para Facebook */
   }
 
   .footer-social-icon.whatsapp:hover .footer-social-icon-svg {
-    fill: #96178b; /* Color de hover para Whatsapp */
+    fill: #ffffff; /* Color de hover para Whatsapp */
   }
 
   .footer-social-icon.email:hover .footer-social-icon-svg {
-    fill: #96178b; /* Color de hover para Email */
+    fill: #ffffff; /* Color de hover para Email */
   }
 
   .footer-contact-list {

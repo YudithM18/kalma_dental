@@ -24,6 +24,13 @@
     text-align: justify;
 }
 
+.logo{
+    height: 350px;
+    border-radius: 50%;   /* Hace que la imagen sea redonda */
+    border: 10px solid white;  /* Borde blanco de 10px */
+    object-fit: cover;    /* Hace que la imagen se recorte y ajuste al círculo sin distorsión */
+}
+
 .text {
     text-align: justify;
 }

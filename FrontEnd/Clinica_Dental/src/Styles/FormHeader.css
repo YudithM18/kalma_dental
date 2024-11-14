@@ -1,0 +1,95 @@
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 100px;
+    background-color: #594949;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    height: 150px;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+.logoprincipal{
+    height: 6em;
+    padding: 1.5em;
+    border-radius: 100px; /* Mantiene la forma redonda */
+    border: 10px solid white; /* Reducir borde */
+    will-change: filter;
+    transition: filter 300ms;
+}
+
+.logoprincipal:hover {
+    filter: drop-shadow(0 0 2em white);
+}
+      
+.logoprincipal.react:hover {
+    filter: drop-shadow(0 0 2em white);
+}
+
+.logo-btn {
+    display: inline-block; /* Asegura que el enlace se comporte como un bloque pero se mantenga en línea */
+    background: transparent; /* Fondo transparente */
+    border: none;            /* Eliminar borde */
+    border-radius: 100px;
+    padding: 0;              /* Eliminar padding */
+    cursor: pointer;        /* Cambiar cursor para indicar que es clickeable */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones de animación */
+}
+
+/* Efecto hover para el logo */
+.logo-btn:hover {
+    transform: scale(1.1); /* Agrandar ligeramente el logo */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra al pasar el cursor */
+}
+
+/* Animación para el logo */
+.logo {
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid white;
+    object-fit: cover;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Animación de fadeIn */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+  
+  .search-bar {
+    width: 350px;
+    padding: 10px;
+    border-radius: 25px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    margin-right: 100px;
+  }
+  
+  .search-btn {
+    position: absolute;
+    right: 10px;
+    background-color: #b9759a;
+    border: 6px solid #b9759a;
+    border-radius: 20px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    margin-right: 120px;
+  }
+  
+  
+  /* Responsividad */
+  @media (max-width: 768px) {
+    .search-bar {
+      width: 100%;
+      margin-top: 10px;
+    }
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  
