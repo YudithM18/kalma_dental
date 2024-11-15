@@ -1,5 +1,5 @@
 .contorno {
-    background-color: #D7D4D4;
+    background-color: #7D566B;
     border-radius: 20px;
     box-shadow: 0px 8px 20px black;
     max-width: 900px;
@@ -7,22 +7,104 @@
     animation: fadeIn 1s ease-in-out;
 }
 
-.Condiciones {
-    background-color: #7D566B;
+.titleSecundary {
+    background-color: #7D848C;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     max-width: 800px;
     margin: 20px auto;
-    border-radius: 10px;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    animation: fadeIn 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start; /* Alineación de los elementos al inicio (no centrado) */
+    justify-content: flex-start;
+}
+  
+  .titleSecundary {
+    margin-bottom: 20px;
+    padding: 20px;  /* Agregar un poco de espacio interno para que se vea mejor */
+    background-color: #D7D4D4; /* Color de fondo blanco (puedes cambiarlo si lo prefieres) */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    border-radius: 8px; /* Bordes redondeados */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+  }
+  .titleSecundary:hover {
+    transform: translateY(-10px); /* Eleva la carta */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+.titleSecundary::before,
+.titleSecundary::after {
+  content: '';
+  position: absolute;
+  height: 5px;
+  background: linear-gradient(90deg, #B28292, hsl(351, 100%, 76%));
+  transition: width 0.5s ease;
 }
 
-.titleSecundary {
-    font-size: 1.5em;
-    margin: 15px 0;
-    text-align: justify;
+/* Línea inferior */
+.titleSecundary::before {
+  left: 0;
+  bottom: 0; /* Asegura que esté al fondo de la tarjeta */
+  width: 0; /* Comienza oculta */
 }
+
+/* Línea superior */
+.titleSecundary::after {
+  right: 0;
+  top: 0; /* Asegura que esté al principio de la tarjeta */
+  width: 100%; /* Siempre visible en la parte superior */
+  transition: width 0.5s ease;
+}
+
+/* Mostrar la línea inferior al pasar el mouse */
+.titleSecundary:hover::before {
+  width: 100%; /* Llenar la línea inferior al hacer hover */
+}
+
+/* Ocultar la línea superior al quitar el mouse */
+.titleSecundary:hover::after {
+  width: 0; /* La línea superior desaparece al quitar el mouse */
+}
+  
+  
+  h3 {
+    color: #7D566B;
+    font-family: 'Arial', sans-serif;
+    font-size: 30px;
+    margin-bottom: 15px;
+  }
+  
+  h4 {
+    color: #555;
+    line-height: 1.6;
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
 
 .logo{
     height: 350px;

@@ -19,7 +19,7 @@ async function postUsers(username, password) {
         const data = await response.json();
         console.log(data.access);
         
-        
+        return data
     } catch (error) {
         console.error('Error posting user:', error);
         throw error;

@@ -1,7 +1,7 @@
 import React from 'react'
 import FormBlogEditor from '../Components/FormBlogEditor'
 import Header from '../Components/Header'
-import Navbar from '../Components/Navbar'
+import NavbarProtegido from '../Components/NavbarProtected'
 
 
 
@@ -10,7 +10,7 @@ function BlogEditor() {
     <div> 
       
        <Header />
-       <Navbar />
+       <NavbarProtegido />
        <FormBlogEditor />
     </div>
   )

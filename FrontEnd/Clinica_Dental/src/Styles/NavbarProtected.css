@@ -1,0 +1,146 @@
+.navbar {
+    background-color: #CECFCA;
+    padding: 15px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .Cierre{
+    font-size: medium;
+    text-decoration: none;
+    color: black;
+  }
+  
+  .navbar-menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+  }
+  
+  .navbar-item {
+    margin-left: 30px;
+  }
+  
+  .navbar-link {
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s, transform 0.3s, box-shadow 0.3s, filter 0.3s ease-in-out; /* Transiciones suaves */
+    position: relative;
+    display: inline-block;
+    border-radius: 7px;  /* Bordes redondeados */
+  
+  }
+  
+  /* Efecto de elevación y brillo en los enlaces del navbar */
+  .navbar-link:hover {
+    color: #1a7030; /* Color llamativo */
+    transform: translateY(-8px); /* Eleva la carta */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Sombra más prominente */
+    filter: brightness(1.3); /* Agrega un brillo al enlace */
+  }
+  
+  /* Línea inferior (brillo) al pasar el mouse sobre el enlace */
+  .navbar-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px; /* Grosor de la línea */
+    background: linear-gradient(90deg, #388E3C, #66BB6A); /* Verde oscuro y claro */
+    transition: width 0.3s ease;
+  }
+  
+  
+  /* La línea inferior se extiende cuando se hace hover sobre el enlace */
+  .navbar-link:hover::after {
+    width: 100%; /* Llenar la línea inferior al hacer hover */
+  }
+  
+  @media (max-width: 768px) {
+    .navbar-menu {
+      display: none;
+      position: absolute;
+      top: 70px;
+      right: 20px;
+      background-color: #1e1e1e;
+      width: 200px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      flex-direction: column;
+      padding: 10px 0;
+    }
+  
+    .navbar-menu.active {
+      display: flex;
+    }
+  
+    .navbar-item {
+      margin-left: 0;
+      text-align: center;
+    }
+  
+    .navbar-toggle {
+      display: block;
+      font-size: 24px;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+  
+  /* Animaciones */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+
+  .btn_Cierre {
+    width: 150px;
+    height: 40px;
+    background-color: #C48EAB;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    animation: float 2s ease-in-out infinite;
+  }
+  
+  /* Animación de flotación */
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  /* Efecto al pasar el cursor */
+  .btn_Cierre:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+  }
+  

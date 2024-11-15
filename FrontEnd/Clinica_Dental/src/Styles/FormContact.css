@@ -1,0 +1,106 @@
+.container {
+    margin-left: 400px;
+    animation: slideIn 0.5s ease forwards;
+    margin-top: 30px;
+}
+
+form {
+    background: #986C79; /* Color más claro */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    animation: fadeIn 0.5s ease forwards;
+    box-shadow: 4px 13px 37px solid #000;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    color: white;
+    margin-right: 350px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border-color: #A99CA3; /* Cambiar el borde al enfocar */
+}
+
+input[type="submit"] {
+    background-color: #A99CA3;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* Transición suave */
+    margin-left: 300px;
+}
+
+input[type="submit"]:hover {
+    background-color: #79626e;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .container {
+        margin-left: 20px; /* Ajustar margen en pantallas medianas */
+        margin-right: 20px; /* Añadir margen derecho */
+    }
+    
+    form {
+        max-width: 100%; /* Asegurarse de que el formulario no exceda el ancho */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        margin-left: 10px; /* Menos margen en pantallas pequeñas */
+        margin-right: 10px; /* Añadir margen derecho */
+    }
+    
+    form {
+        padding: 15px; /* Reducir el padding del formulario en móviles */
+    }
+
+    input[type="submit"] {
+        font-size: 14px; /* Tamaño de fuente más pequeño en móviles */
+    }
+}
+

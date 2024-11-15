@@ -1,7 +1,7 @@
 import React from 'react'
 import FormUsersAdministration from '../Components/FormUsersAdministration'
 import Header from '../Components/Header'
-import Navbar from '../Components/Navbar'
+import NavbarProtegido from '../Components/NavbarProtected'
 
 
 
@@ -10,7 +10,7 @@ function UsersAdministration() {
     <div> 
       
        <Header />
-       <Navbar />
+       <NavbarProtegido />
        <FormUsersAdministration />
     </div>
   )

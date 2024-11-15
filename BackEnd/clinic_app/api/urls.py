@@ -33,4 +33,6 @@ urlpatterns = [
     
     path ('servicios/', views.servicesListCreate.as_view(), name = 'servicios_list'),
     path('servicios/<int:pk>/', views.servicesDetail.as_view(), name = 'servicios'),
+    
+    
 ]

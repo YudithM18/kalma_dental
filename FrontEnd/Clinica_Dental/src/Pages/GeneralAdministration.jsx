@@ -1,7 +1,8 @@
 import React from 'react'
 import FormGeneralAdministration from '../Components/FormGeneralAdministration'
 import Header from '../Components/Header'
-import Navbar from '../Components/Navbar'
+import NavbarProtegido from '../Components/NavbarProtected'
+
 
 
 
@@ -10,7 +11,7 @@ function GeneralAdministration() {
     <div> 
       
        <Header />
-       <Navbar />
+       <NavbarProtegido />
        <FormGeneralAdministration />
     </div>
   )

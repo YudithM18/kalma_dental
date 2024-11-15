@@ -7,7 +7,7 @@ import imagen from '../Img/fondo2.jpg'
 
 function FormLogin() {
   // Define estados para manejar los datos del formulario
-  const [gmail, setGmail] = useState(''); // Estado para almacenar el correo electrónico
+  const [username, setUsername] = useState(''); // Estado para almacenar el correo electrónico
   const [pass, setPass] = useState(''); // Estado para almacenar la contraseña
   const [users, setUsers] = useState([]); // Estado para almacenar la lista de usuarios
   const navigate = useNavigate(); // Inicializa el hook de navegación
@@ -27,7 +27,9 @@ function FormLogin() {
   const handleLogin = async() => {
     // Busca el usuario que coincida con el correo y contraseña ingresados
     //const listaU = users.find(user => user.gmail === gmail && user.pass === pass);
-    const listaU = await PostUsers(gmail, pass);
+    const listaU = await PostUsers(username, pass);
+    console.log(listaU);
+    
     if (listaU) {
       // Si se encuentra el usuario, muestra una alerta de éxito
       Swal.fire({
@@ -40,7 +42,7 @@ function FormLogin() {
       navigate("/GeneralAdministration"); // Navega a la página de administración
     } else {
       // Si no se encuentra el usuario
-      if (!gmail || !pass) {
+      if (!username || !pass) {
         // Si algún campo está vacío, muestra una alerta de error
         Swal.fire({
           title: 'Error',
@@ -48,17 +50,6 @@ function FormLogin() {
           icon: 'error',
           confirmButtonText: 'Ok'
         });
-      } else {
-        // Verifica si las credenciales ingresadas son incorrectas
-        if (users.every(user => user.gmail !== gmail && user.pass !== pass)) {
-          Swal.fire({
-            title: 'Error',
-            text: 'Los datos ingresados son incorrectos',
-            icon: 'error',
-            confirmButtonText: 'Ok'
-          });
-          return; // Sale de la función si las credenciales son incorrectas
-        }
       }
     }
   };
@@ -77,18 +68,18 @@ function FormLogin() {
       </div>
       {/* Lado izquierdo con el formulario de login */}
       <div className="login-left">
-        <h1 className="login-title">INICIO SESIÓN</h1> {/* Título del formulario */}
+        <h1 className="login-title">Welcome!!</h1> {/* Título del formulario */}
         
-        <label className="Move" htmlFor="gmail">Correo Electrónico</label>
+        <label className="Move" htmlFor="username">Username</label>
         <input 
           className="input-field" 
-          type="text" 
-          placeholder="Ingrese su correo" 
-          value={gmail} 
-          onChange={(e) => setGmail(e.target.value)} 
+          type="username" 
+          placeholder="Ingrese su usuario" 
+          value={username} 
+          onChange={(e) => setUsername(e.target.value)} 
         />
 
-        <label className="move" htmlFor="pass">Contraseña</label>
+        <label className="move" htmlFor="pass">Password</label>
         <input 
           className="input-field" 
           type="password" 

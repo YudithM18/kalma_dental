@@ -130,3 +130,14 @@ class servicesListCreate(generics.ListCreateAPIView):
 class servicesDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = services.objects.all()
     serializer_class = servicesSerializer
+    
+    
+##CONSULTAS DE REGISTRO DE USUARIO
+class UserList(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    
+class UserDetail(generics.RetrieveAPIView):
+        queryset = User.objects.all()
+        serializer_class = UserSerializer
+        lookup_field = 'username'

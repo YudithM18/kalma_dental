@@ -18,16 +18,17 @@ const Routing = () => {
        <Router>
          <Routes>
             <Route path= '/Login' element={<Login />} />
-            <Route path= '/GeneralAdministration' element={ <GeneralAdministration /> } />
-            <Route path= '/UsersAdministration' element={<UsersAdministration />} />
             <Route path= '/Services' element={<Services />} />
             <Route path= '/' element={<Home />} />
             <Route path= '/AboutUs' element={<AboutUs />} />
             <Route path= '/WorkTeams' element={<WorkTeams />} />
             <Route path= '/Blog' element={<Blog />} />
-            <Route path= '/BlogEditor' element={<BlogEditor />} />
             <Route path= '/Contact' element={<Contact />} />
             <Route path= '/TerminosCondiciones' element={<TerminosCondiciones />} />
+             /*Rutas protegidas*/
+            <Route path= '/BlogEditor' element={<BlogEditor />} />
+            <Route path= '/GeneralAdministration' element={ <GeneralAdministration /> } />
+            <Route path= '/UsersAdministration' element={<UsersAdministration />} />
          </Routes>
        </Router>
     )
