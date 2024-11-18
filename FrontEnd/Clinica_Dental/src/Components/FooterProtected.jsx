@@ -8,9 +8,9 @@ import nombre from '../Img/nombre.jpg'
 function FooterProtected() {
   return (
 
-    <div className='footer'>
+    <div className='footer-protegido'>
       <div className="footer-Social-Media">
-          <h3 className="footer-social-title">Redes sociales</h3>
+          <h3 className="footer-social-title">Redes Sociales</h3>
           <div className="footer-social-Media-icons">
             <a href="https://www.instagram.com/kalmadentalcr/#" target="_blank" rel="noopener noreferrer" className="footer-social-Media-icon instagram">
              <FaInstagram size="3em" />

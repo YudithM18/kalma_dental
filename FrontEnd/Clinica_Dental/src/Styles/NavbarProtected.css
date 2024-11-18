@@ -16,13 +16,7 @@
     margin: 0 auto;
     padding: 0 20px;
   }
-  
-  .Cierre{
-    font-size: medium;
-    text-decoration: none;
-    color: black;
-  }
-  
+
   .navbar-menu {
     list-style: none;
     display: flex;
@@ -123,6 +117,8 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     animation: float 2s ease-in-out infinite;
+    font-size: medium;
+    color: black;
   }
   
   /* Animación de flotación */

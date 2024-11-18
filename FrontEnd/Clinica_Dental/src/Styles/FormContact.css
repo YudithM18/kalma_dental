@@ -104,3 +104,46 @@ input[type="submit"]:hover {
     }
 }
 
+
+
+.mapa {
+    background-color: #d184cd; /* Color de fondo utilizando la paleta */
+    padding: 30px; /* Padding para pantallas grandes */
+    box-shadow: 7px 13px 38px rgba(0, 0, 0, 0.5); /* Sombra más sutil */
+    width: 100%; /* Ancho completo para que se ajuste al contenedor */
+    max-width: 1200px; /* Máximo ancho para pantallas grandes */
+    margin: 0 auto; /* Centra el mapa en el contenedor */
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+.tituloU {
+    font-size: xxx-large; /* Tamaño de fuente para pantallas grandes */
+    color: #6a3970; /* Color claro para el texto */
+    text-align: center; /* Centra el título */
+    margin-bottom: 20px; /* Espacio inferior */
+}
+
+/* Media Queries para celular */
+@media (max-width: 768px) {
+    .mapa {
+        padding: 20px; /* Reduce el padding para tabletas */
+        width: 90%; /* Ajusta el ancho a 90% para tabletas */
+    }
+
+    .tituloU {
+        font-size: xx-large; /* Ajusta el tamaño de fuente */
+        text-align: center; /* Centra el título */
+    }
+}
+
+@media (max-width: 480px) {
+    .mapa {
+        padding: 15px; /* Reduce aún más el padding para móviles */
+        width: 95%; /* Ajusta el ancho a 95% para móviles */
+    }
+
+    .tituloU {
+        font-size: x-large; /* Ajusta el tamaño de fuente */
+        text-align: center; /* Mantiene el título centrado */
+    }
+}

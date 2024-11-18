@@ -17,7 +17,8 @@ async function postUsers(username, password) {
         });
         
         const data = await response.json();
-        console.log(data.access);
+
+        localStorage.setItem("userData", JSON.stringify(data));
         
         return data
     } catch (error) {
