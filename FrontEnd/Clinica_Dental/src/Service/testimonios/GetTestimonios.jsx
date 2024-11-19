@@ -1,7 +1,7 @@
 //Obtener datos del servidor
 async function GetTestimonios() {
     try {
-        const response = await fetch('http://localhost:3001/productos', {
+        const response = await fetch('http://127.0.0.1:8000/api/testimonios/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -12,12 +12,12 @@ async function GetTestimonios() {
             throw new Error('Error fetching users');
         }
 
-        const users = await response.json();
-        return users;
+        const testimonies = await response.json();
+        return testimonies;
     } catch (error) {
-        console.error('Error fetching users:', error);
+        console.error('Error fetching testimonies:', error);
         throw error;
     }
 }
 
-export default getProductos;
+export default GetTestimonios;

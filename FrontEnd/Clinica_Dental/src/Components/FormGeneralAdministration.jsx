@@ -1,75 +1,82 @@
 import React, { useState, useEffect } from 'react'; // Importa React y hooks necesarios
 import '../Styles/FormGeneralAdministration.css'
-import GetTestimonios from '../Service/testimonios/GetTestimonios'; // Importa función para obtener productos
-import PostTestimonios from '../Service/testimonios/PostTestimonios'; // Importa función para agregar productos
-import UpdateTestimonios from '../Service/testimonios/UpdateTestimonios'; // Importa función para actualizar productos
-import DeleteTestimonios from '../Service/testimonios/DeleteTestimonios'; // Importa función para eliminar productos
+import GetWorkTeam from '../Service/WorkTeam/GetWorkTeam'
+/*import UpdateTestimonios from '../Service/testimonios/UpdateTestimonios'; // Importa función para actualizar testimonios
+import DeleteTestimonios from '../Service/testimonios/DeleteTestimonios'; // Importa función para eliminar testimonios*/
 
 
 function FormAdministracion() {
   // Define estados para manejar los datos del formulario
-  const [Name, setName] = useState(''); // Estado para el nombre del producto
-  const [Date, setDate] = useState(''); // Estado para el precio del producto
-  const [Testimonials, setTestimonials] = useState(''); // Estado para la imagen del producto
-  const [dataTestimonials, setData] = useState([]); // Estado para almacenar los productos obtenidos
-  const [editestimonials, setvalorTestimonials] = useState(''); // Estado para el nombre del producto en edición
-  const [editname, setvalorName] = useState(''); // Estado para el precio del producto en edición
 
-  // useEffect para cargar productos al montar el componente
+  const [ImageW, setImageW] = useState('');
+  const [FullName, setfullName] = useState(''); 
+  const [Speciality, setSpeciality] = useState(''); 
+  const [Qualification, setQualification] = useState(''); 
+
+
+  //useEffec para cargar Work Staff al montar el componente
+
   useEffect(() => {
-    const fetchProductos = async () => {
-      const data = await GetTestimonios(); // Llama a la función para obtener productos
-      setData(data); // Actualiza el estado con los productos obtenidos
+    const fetchWorkTeam = async () => {
+      const data = await GetWorkTeam(); 
+      setData(data);
     };
-    fetchTestimonios(); // Ejecuta la función
+    fetchWorkTeam(); // Ejecuta la función
   }, []);
 
-  // Funciones para manejar cambios en los inputs
-  function cargarName(event) {
-    setName(event.target.value); // Actualiza el estado del nombre del producto
+
+  //WORK TEAM
+
+  function ImageLoad(event) {
+    setImageW(event.target.value);
   }
 
-  function cargarTestimonials(event) {
-    set(event.target.value); // Actualiza el estado del precio del producto
+
+  function cargarDate(event) {
+    setDate(event.target.value);
+  } 
+
+  function cargarDate(event) {
+    setDate(event.target.value);
   }
 
-  // Funciones para manejar la edición
-  function cargarName(event) {
-    setvalorName(event.target.value); // Actualiza el nombre del producto en edición
-  }
+  const cargarWork = () => {
+    console.log(Speciality); 
+    PostServicios(ImageW, FullName, Speciality, Qualification,); // Llama a la función para agregar un Servicio
+  };
 
-  function cargarEditTestimonials(e) {
-    setvalorTestimonials(e.target.value); // Actualiza el precio del producto en edición
-  }
-
-  function cargarEliminar(id) {
-    DeleteTestimonios(id); // Llama a la función para eliminar un producto
-  }
-
-  function guardarEdicion(id) {
 
     
-    UpdateTestimonios(editname, editestimonials, id); // Llama a la función para actualizar el producto
-  }
-
-  // Renderiza el formulario y la lista de productos
+  // Renderiza el formulario
   return (
-    <div className='Testimonios'>
-      <div className='Añadir'>
-        <h2>Agregar Testimonios</h2>
-        <br />
-        <label htmlFor="nameT">Nombre</label>
-        <input type="text" placeholder='Ingrese el nombre' value={Name} onChange={cargarName} /> {/* Input para el nombre del producto */}
-        <br />
-        <label htmlFor='Testimonio'>Testimonio</label>
-        <input type="text" placeholder='Añada el Testimonio' value={Testimonials} onChange={cargarTestimonials} /> {/* Input para el precio del producto */}
-        <br />
-        <br />
-        <button className='btnagregar' onClick={cargar}>Agregar Testimonio</button> {/* Botón para agregar el producto */}
+    <div>
+      <div className='WorkTeam'>
+        <div className='Añadir'>
+          <h2 className='Title'>Add Work Staff</h2>
+          <br />
+          <label htmlFor="image">Imagen</label>
+          <input type="file" onChange={ImageLoad} />
+          <br />
+          <label htmlFor="Fname" className='subTitle'>Nombre Completo</label>
+          <input type="text" placeholder='Ingrese el Nombre Completo' value={Name} onChange={cargarName} />
+          <br />
+          <label htmlFor="Speciality" className='subTitle'>Especialidad</label>
+          <input type="text" placeholder='Ingrese la Especialidad' value={Name} onChange={cargarName} />
+          <br />
+          <label htmlFor='Qualification' className='subTitle'>Titulación</label>
+          <input type="text" placeholder='Añada la Titulación' value={Testimonials} onChange={cargarTestimonials} />
+          <br />
+          <br />
+          <button className='btnagregar' onClick={cargar}>Agregar</button>
 
-        <br />
+          <br />
+        </div>
       </div>
     </div>
+    
   );
 }
-export default FormGeneralAdministration
+
+
+
+export default FormAdministracion

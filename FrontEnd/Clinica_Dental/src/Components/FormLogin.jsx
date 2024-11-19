@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"; // Importa React y hooks nec
 import '../Styles/FormLogin.css';
 import Swal from 'sweetalert2/dist/sweetalert2.all.min.js'; // Importa SweetAlert2 para mostrar alertas
 import { useNavigate } from "react-router-dom"; // Importa hook para navegación
-import PostUsers from "../Service/PostUsers"; // Importa función para obtener usuarios
+import PostUsers from "../Service/Usuarios/PostUsers"; // Importa función para obtener usuarios
 import imagen from '../Img/fondo2.jpg'
 
 function FormLogin() {
@@ -26,11 +26,11 @@ function FormLogin() {
   // Función para manejar el inicio de sesión
   const handleLogin = async() => {
     // Busca el usuario que coincida con el correo y contraseña ingresados
-    //const listaU = users.find(user => user.gmail === gmail && user.pass === pass);
+    //const listaUs = users.find(users => users.username === username && users.pass === pass);
     const listaU = await PostUsers(username, pass);
     console.log(listaU);
     
-    if (listaU) {
+    if (listaU.access) {
       // Si se encuentra el usuario, muestra una alerta de éxito
       Swal.fire({
         title: 'Has ingresado exitosamente',

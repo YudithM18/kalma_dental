@@ -1,13 +1,13 @@
-async function UpdateTips(Image, Title, Tips, id) {
+async function UpdateTips(recommendationURL, title, tips, id) {
     try {
      
         const DataTips = { 
-            Image,
-            Title,
-            Tips
+            recommendationURL,
+            title,
+            tips
         
         };
-        const response = await fetch("http://localhost:3001/tips/"+id, {
+        const response = await fetch("http://127.0.0.1:8000/api/tips/"+id, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

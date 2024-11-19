@@ -9,7 +9,7 @@ async function PostTestimonios(Name, Date, Testimonials) {
         
         };
 
-        const response = await fetch("http://localhost:3001/testimonios", {
+        const response = await fetch("http://127.0.0.1:8000/api/testimonios/", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

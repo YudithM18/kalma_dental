@@ -5,11 +5,9 @@ import NavbarProtegido from '../Components/NavbarProtected'
 
 
 
-
 function GeneralAdministration() {
   return (
     <div> 
-      
        <Header />
        <NavbarProtegido />
        <FormGeneralAdministration />

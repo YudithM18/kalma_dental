@@ -2,6 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Importa componentes para el enrutamiento
 import Login from "../Pages/Login";
 import GeneralAdministration from "../Pages/GeneralAdministration";
+import AdminServicios from "../Pages/AdminServicios";
+import AdminTestimonios from "../Pages/AdminTestimonios";
 import UsersAdministration from "../Pages/UsersAdministration";
 import ProtectedRoute from './ProtectedRoute';
 import Services from '../Pages/Services';
@@ -28,6 +30,8 @@ const Routing = () => {
              /*Rutas protegidas*/
             <Route path= '/BlogEditor' element={<ProtectedRoute><BlogEditor /></ProtectedRoute>} />
             <Route path= '/GeneralAdministration' element={ <ProtectedRoute><GeneralAdministration /></ProtectedRoute> } />
+            <Route path= '/AdminServicios' element={ <ProtectedRoute><AdminServicios /> </ProtectedRoute> } />
+            <Route path= '/AdminTestimonios' element={ <ProtectedRoute> <AdminTestimonios /></ProtectedRoute> } />
             <Route path= '/UsersAdministration' element={<ProtectedRoute><UsersAdministration /></ProtectedRoute>} />
          </Routes>
        </Router>
