@@ -1,5 +1,5 @@
-.Testimonios{
-    background: #7D566B; /* Fondo blanco para el formulario */
+.contenedorUsers{
+    background: #AB5684; /* Fondo blanco para el formulario */
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     padding: 30px;
@@ -11,27 +11,8 @@
     margin-left: 300px;
 }
 
-.Title {
-    color: white; /* Color del título */
-    margin-bottom: 20px;
-    animation: slideIn 0.5s ease-in-out; /* Animación de deslizamiento */
-    font-size: 35px;
-}
-
-.subTitle{
-    color: white;
-    font-size: 20px;
-    text-align: start;
-}
-
-label {
-    display: block;
-    margin: 15px 0 5px;
-    font-weight: bold;
-    color: #555; /* Color del texto de la etiqueta */
-}
-
-input[type="text"], input[type="date"] {
+.inputUsers{
+    background-color: #FFC6E5;
     width: calc(100% - 20px); /* Ancho completo menos padding */
     padding: 10px;
     margin-bottom: 15px;
@@ -40,8 +21,16 @@ input[type="text"], input[type="date"] {
     font-size: 1rem;
     transition: border-color 0.3s, box-shadow 0.3s; /* Añadir transición para la sombra */
 }
-.btnagregar {
-    background-color: #ffc4e4c2; /* Botón verde */
+
+.inputpass{
+    background-color: #FFC6E5;
+    height: 30px;
+    border-radius: 10px;
+    border-color: #AB5684;
+}
+
+.btnAgregarUsuarios{
+    background-color: #FD91CB; /* Botón verde */
     color: white; /* Texto blanco */
     padding: 10px 15px;
     border: none;
@@ -52,10 +41,10 @@ input[type="text"], input[type="date"] {
     margin: 5px 0;
     animation: popIn 0.5s ease; /* Animación de aparición para botones */
     margin-left: 350px;
-
 }
 
-.btnagregar:hover {
-    background-color: #E4C5D6; /* Botón más oscuro al pasar el ratón */
-    transform: scale(1.05); /* Efecto de aumento */
+.label{
+    color: white;
+    font-size: 20px;
+    text-align: start;
 }

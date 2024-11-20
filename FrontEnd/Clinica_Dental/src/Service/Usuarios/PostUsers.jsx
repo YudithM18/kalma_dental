@@ -1,30 +1,32 @@
-// Enviar datos al servidor
-async function postUsers(username, password) {
-    try {
-     
-        const userData = { 
-            username,
-            password
-        
-        };
+async function PostUsers(username, password, email, firts_name, last_name, role){
+  try {
+   
+ 
+      const data = { 
+        username, 
+        password, 
+        email, 
+        firts_name, 
+        last_name, 
+        role
+      };
 
-        const response = await fetch("http://127.0.0.1:8000/api/token/", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userData)
-        });
-        
-        const data = await response.json();
+      const response = await fetch("http://127.0.0.1:8000/api/users/", {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+      });
 
-        localStorage.setItem("userData", JSON.stringify(data));
-        
-        return data
-    } catch (error) {
-        console.error('Error posting user:', error);
-        throw error;
-    }
+   
+      return await response.json();
+
+      
+  } catch (error) {
+      console.error('Error posting user:', error);
+      throw error;
+  }
 }
 
-export default postUsers
+export default PostUsers

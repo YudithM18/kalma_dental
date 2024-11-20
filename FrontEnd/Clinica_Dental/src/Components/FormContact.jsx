@@ -1,8 +1,15 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import "../Styles/FormContact.css"
 
  const FormContact = () => {
+
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [idNumber, setIdNumber] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [address, setAddress] = useState('');
+  const [symptoms, setSymptoms] = useState('');
   
     const form = useRef();
   
@@ -21,10 +28,25 @@ import "../Styles/FormContact.css"
           },
         );
     };
+
+
+  const handleSubmit = (e) => {
+      e.preventDefault();
+      const phone = '+50664480595'; // Reemplaza esto con el número de teléfono de WhatsApp al que se enviará el mensaje
+      const message = `Nombre Completo: ${fullName}\nNúmero de Cédula: ${idNumber}\nCorreo Electrónico: ${email}\nNúmero de Celular: ${phoneNumber}\nDirección: ${address}\nSíntomas/Descripción: ${symptoms}`;
+      const url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+  };
   
   return (
     <div>
+      <br />
+      <br />
+      <br />
+
+
       <div className='container'>
+        <h2>Contactenos por E-mail</h2>
         <form className= 'form' ref={form} onSubmit={sendEmail}>
           <label>Name</label>
           <input type="text" name="user_name" />
@@ -36,24 +58,71 @@ import "../Styles/FormContact.css"
         </form>
       </div>
 
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      <div className="form-container">
+      <h2 className='titulowa'>Enviar Mensaje por WhatsApp</h2>
+      <form onSubmit={handleSubmit}>
+        <input 
+          type="text" 
+          placeholder="Nombre Completo" 
+          value={fullName} 
+          onChange={(e) => setFullName(e.target.value)} 
+          required 
+        />
+        <input 
+          type="email" 
+          placeholder="Correo Electrónico" 
+          value={email} 
+          onChange={(e) => setEmail(e.target.value)} 
+          required 
+        />
+        <input 
+          type="text" 
+          placeholder="Número de Cédula" 
+          value={idNumber} 
+          onChange={(e) => setIdNumber(e.target.value)} 
+          required 
+        />
+        <input 
+          type="text" 
+          placeholder="Número de Celular" 
+          value={phoneNumber} 
+          onChange={(e) => setPhoneNumber(e.target.value)} 
+          required 
+        />
+        <input 
+          type="text" 
+          placeholder="Dirección" 
+          value={address} 
+          onChange={(e) => setAddress(e.target.value)} 
+          required 
+        />
+        <textarea 
+          placeholder="Síntomas/Descripción" 
+          value={symptoms} 
+          onChange={(e) => setSymptoms(e.target.value)} 
+          required 
+        />
+        <button className='btnWA'>Enviar</button>
+      </form>
+    </div>
 
       <div style={{ textAlign: 'center' }}>
+
+
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+
 
       <h1 className='tituloU'>ENCUENTRENOS EN:</h1>
       <br />

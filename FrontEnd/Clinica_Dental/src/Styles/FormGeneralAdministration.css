@@ -1,5 +1,5 @@
-.Testimonios{
-    background: #7D566B; /* Fondo blanco para el formulario */
+.WorkTeam{
+    background: #42464F; /* Fondo blanco para el formulario */
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     padding: 30px;
@@ -24,14 +24,16 @@
     text-align: start;
 }
 
-label {
+label{
     display: block;
     margin: 15px 0 5px;
     font-weight: bold;
-    color: #555; /* Color del texto de la etiqueta */
+    color: #ffffff; /* Color del texto de la etiqueta */
 }
 
-input[type="text"], input[type="date"] {
+.inptWorkTeam{
+    background-color: #888888;
+    color: white;
     width: calc(100% - 20px); /* Ancho completo menos padding */
     padding: 10px;
     margin-bottom: 15px;
@@ -40,8 +42,8 @@ input[type="text"], input[type="date"] {
     font-size: 1rem;
     transition: border-color 0.3s, box-shadow 0.3s; /* Añadir transición para la sombra */
 }
-.btnagregar {
-    background-color: #ffc4e4c2; /* Botón verde */
+.btnagregarW{
+    background-color: #7D848C; /* Botón verde */
     color: white; /* Texto blanco */
     padding: 10px 15px;
     border: none;
@@ -55,7 +57,7 @@ input[type="text"], input[type="date"] {
 
 }
 
-.btnagregar:hover {
-    background-color: #E4C5D6; /* Botón más oscuro al pasar el ratón */
+.btnagregarW:hover {
+    background-color: #aab3bd; /* Botón más oscuro al pasar el ratón */
     transform: scale(1.05); /* Efecto de aumento */
 }

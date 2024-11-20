@@ -1,31 +1,74 @@
-async function PostWorkTeam(Image, fullname, Speciality, Qualification) {
+import AWS from 'aws-sdk';
+
+const S3_BUCKET = process.env.REACT_APP_S3_BUCKET;
+const REGION = process.env.REACT_APP_AWS_REGION;
+
+const s3 = new AWS.S3({
+  accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
+  region: REGION
+});
+
+
+export const uploadImageToS3 = async (file) => {
+  const params = {
+    Bucket: S3_BUCKET,
+    Key: file.name, // Puedes usar un identificador único para evitar sobrescribir archivos
+    Body: file,
+    ContentType: file.type,
+  
+  };
+
+  return s3.upload(params).promise();
+};
+
+
+export const PostWorkTeam = async (newMember) => {
+
+
+  
+  
+  if (newMember.image) {
     try {
-     
-   
-        const DataWorkTeam = { 
-            Image,
-            fullname, 
-            Speciality, 
-            Qualification
-        
-        };
-
-        const response = await fetch("http://localhost:3001/workteam", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(DataWorkTeam)
-        });
-
-     
-        return await response.json();
-
-        
+      const result = await uploadImageToS3(newMember.image);
+      let imagenUrl = result.Location; 
+      console.log(imagenUrl); 
     } catch (error) {
-        console.error('Error posting user:', error);
-        throw error;
+      console.error('Error al subir la imagen a S3:', error);
+      throw new Error('No se pudo subir la imagen a S3');
     }
+  }
+
+  newMember.workTeamURL = imagenUrl;
+
+  const token = localStorage.getItem('token');
+
+if (!token) {
+  throw new Error('Token no encontrado en localStorage');
 }
 
-export default PostWorkTeam
+
+   try {
+     const response = await fetch('http://127.0.0.1:8000/api/Equipo_trabajo/', {
+       method: 'POST',
+       headers: {
+         'Content-Type': 'application/json',
+         'Authorization': `Bearer ${token}`
+       },
+       body: JSON.stringify(newMember), 
+     });
+ 
+     if (!response.ok) {
+       throw new Error('Error al guardar el Nuevo Miembro. Token inválido o expirado.');
+     }
+ 
+     const newMember = await response.json();
+     console.log('Nuevo Miembro guardado:', newMember);
+     return newMember; 
+   } catch (error) {
+     console.error('Error en la solicitud:', error);
+     throw error; 
+   }
+};
+
+export default { PostWorkTeam };

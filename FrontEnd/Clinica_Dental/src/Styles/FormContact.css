@@ -1,5 +1,5 @@
 .container {
-    margin-left: 400px;
+    margin-left: 365px;
     animation: slideIn 0.5s ease forwards;
     margin-top: 30px;
 }
@@ -10,7 +10,7 @@
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
     animation: fadeIn 0.5s ease forwards;
     box-shadow: 4px 13px 37px solid #000;
 }
@@ -146,4 +146,34 @@ input[type="submit"]:hover {
         font-size: x-large; /* Ajusta el tamaño de fuente */
         text-align: center; /* Mantiene el título centrado */
     }
+}
+
+
+
+.form-container {
+    background-color: #7D848C;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    margin: 20px auto;
+  }
+
+.btnWA{
+    background-color: #42464F;
+    color: white; /* Texto blanco */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
+    margin: 5px 0;
+    animation: popIn 0.5s ease; /* Animación de aparición para botones */
+    margin-left: 350px;
+}
+
+.btnWA:hover {
+    background-color: #aab3bd; /* Botón más oscuro al pasar el ratón */
+    transform: scale(1.05); /* Efecto de aumento */
 }

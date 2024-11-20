@@ -9,14 +9,15 @@ import PostVideoBlog from '../Service/VideoBlog/PostVideoBlog'
 
 function FormBlogEditor() {
 
-  const [title, setTitle] = useState('');
-  const [tips, setTips] = useState('');
-  const [recommendationURL, setImage] = useState();
+  const [tips_title, setTitle] = useState('');
+  const [tips_description, setTips] = useState('');
+  const [recommendations_url , setImage] = useState();
 
   const [consejos, setConsejos] = useState([])
 //////////////////////////////////////////////////
-  const [video, setVideo] = useState('');
-  const [titlevideo, setTitulo] = useState('');
+  const [video_url, setVideo] = useState('');
+  const [title, setTitulo] = useState('');
+  const [content, setDescription] = useState('');
 
   const [videoBlog, setVideoBlog] = useState([]);
 
@@ -37,16 +38,16 @@ function FormBlogEditor() {
   event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
 
   // Verificar que todos los campos estén llenos
-  if (recommendationURL === '' || title === '' || tips === '') {
+  if (recommendations_url  === '' || tips_title === '' || tips_description  === '') {
     console.log('Por favor, ingrese todos los datos');
     return;
   }
 
   // Crear el objeto JSON con los datos
   const newTip = {
-    image: recommendationURL,  // URL de la imagen (puedes subirla si es necesario)
-    title: title,
-    content: tips
+    image: recommendations_url ,  // URL de la imagen (puedes subirla si es necesario)
+    title: tips_title,
+    content: tips_description
   };
 
 
@@ -69,20 +70,25 @@ function cargatituloV(event) {
   setTitulo(event.target.value);
 }
 
+function cargaContenidoV(event) {
+  setDescription (event.target.value);
+}
+
  // Función para agregar un nuevo consejo
  const cargarNewContent = async (event) => {
   event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
 
   // Verificar que todos los campos estén llenos
-  if (video === '' || titlevideo === '') {
+  if (video_url === '' || title === '' || content === '') {
     console.log('Por favor, ingrese todos los datos');
     return;
   }
 
   // Crear el objeto JSON con los datos
   const newContent = {
-    video: video,  // URL de la imagen (puedes subirla si es necesario)
-    title: titlevideo
+    video: video_url,  // URL de la imagen (puedes subirla si es necesario)
+    title: title,
+    content: content
   };
 
   console.log('Nuevo contenido:', newContent);
@@ -91,7 +97,7 @@ function cargatituloV(event) {
   const savedContent = await PostVideoBlog(newContent); // Asumiendo que PostVideoBlog maneja el objeto JSON
 
   // Agregar el nuevo consejo al estado
-  setConsejos([...videoBlog, savedContent]);
+  setVideoBlog([...videoBlog, savedContent]);
 };
 
 
@@ -104,10 +110,10 @@ function cargatituloV(event) {
         <input className='input' type="file"  accept='image/*' onChange={cargaImagen}/>
         <br/>
         <label className='subtitulo'>Tips Title:</label>
-        <input className='input' placeholder = 'Añadir titulo ' type="text" value={title}  onChange={cargaTitulo}/>
+        <input className='input' placeholder = 'Añadir titulo ' type="text" value={tips_title}  onChange={cargaTitulo}/>
         <br/>
         <label className='subtitulo'>Tips Content:</label>
-        <textarea className='input' placeholder = 'Añadir consejo' value={tips} onChange={cargaContenido}/>
+        <textarea className='input' placeholder = 'Añadir consejo' value={tips_description} onChange={cargaContenido}/>
         <br/>
         <button className='btnAgregarT' onClick={cargaNewTip}>Add</button>
       </form>
@@ -117,11 +123,13 @@ function cargatituloV(event) {
       <h1 className='titulocontenedor'>Add New Content</h1>
       <form>
         <label className='subtitulo'> Image:</label>
-        <input className='input2' type="file" value={video} onChange={cargaVideo}/>
+        <input className='input2' type="file" value={video_url} onChange={cargaVideo}/>
         <br/>
         <label className='subtitulo'>Title:</label>
-        <input className='input2' placeholder = 'Añadir Titulo'  type="text" value={titlevideo} onChange={cargatituloV}/>
+        <input className='input2' placeholder = 'Añadir Titulo'  type="text" value={title} onChange={cargatituloV}/>
         <br/>
+        <label className='subtitulo'>Content:</label>
+        <textarea className='input2' placeholder = 'Añadir contenido' value={content} onChange={cargaContenidoV}/>
         <button className='btnAgregarV' onClick={cargarNewContent}>Add</button>
       </form>
       </div>

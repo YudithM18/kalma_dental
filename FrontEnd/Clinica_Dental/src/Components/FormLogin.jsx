@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"; // Importa React y hooks nec
 import '../Styles/FormLogin.css';
 import Swal from 'sweetalert2/dist/sweetalert2.all.min.js'; // Importa SweetAlert2 para mostrar alertas
 import { useNavigate } from "react-router-dom"; // Importa hook para navegación
-import PostUsers from "../Service/Usuarios/PostUsers"; // Importa función para obtener usuarios
+import PostToken from "../Service/Usuarios/PostToken"; // Importa función para obtener usuarios
 import imagen from '../Img/fondo2.jpg'
 
 function FormLogin() {
@@ -27,7 +27,7 @@ function FormLogin() {
   const handleLogin = async() => {
     // Busca el usuario que coincida con el correo y contraseña ingresados
     //const listaUs = users.find(users => users.username === username && users.pass === pass);
-    const listaU = await PostUsers(username, pass);
+    const listaU = await PostToken(username, pass);
     console.log(listaU);
     
     if (listaU.access) {

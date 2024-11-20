@@ -1,28 +1,73 @@
-async function PostVideoBlog(video, titlevideo) {
+import AWS from 'aws-sdk';
+
+const S3_BUCKET = process.env.REACT_APP_S3_BUCKET;
+const REGION = process.env.REACT_APP_AWS_REGION;
+
+const s3 = new AWS.S3({
+  accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
+  region: REGION
+});
+
+export const uploadImageToS3 = async (file) => {
+  const params = {
+    Bucket: S3_BUCKET,
+    Key: file.name, // Puedes usar un identificador único para evitar sobrescribir archivos
+    Body: file,
+    ContentType: file.type,
+  
+  };
+
+  return s3.upload(params).promise();
+};
+
+
+export const PostVideoBlog = async (newContent) => {
+
+
+  
+  
+  if (newContent.image) {
     try {
-     
-   
-        const DataContent = { 
-            video,
-            titlevideo
-        };
-
-        const response = await fetch("http://127.0.0.1:8000/api/video_blog/", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(DataContent)
-        });
-
-     
-        return await response.json();
-
-        
+      const result = await uploadImageToS3(newContent.image);
+      let imagenUrl = result.Location; 
+      console.log(imagenUrl); 
     } catch (error) {
-        console.error('Error posting user:', error);
-        throw error;
+      console.error('Error al subir la imagen a S3:', error);
+      throw new Error('No se pudo subir la imagen a S3');
     }
+  }
+
+  newContent.video_url = imagenUrl;
+
+  const token = localStorage.getItem('token');
+
+if (!token) {
+  throw new Error('Token no encontrado en localStorage');
 }
 
-export default PostVideoBlog;
+
+   try {
+     const response = await fetch('http://127.0.0.1:8000/api/video_blog/', {
+       method: 'POST',
+       headers: {
+         'Content-Type': 'application/json',
+         'Authorization': `Bearer ${token}`
+       },
+       body: JSON.stringify(newContent), 
+     });
+ 
+     if (!response.ok) {
+       throw new Error('Error al guardar el video. Token inválido o expirado.');
+     }
+ 
+     const newContent = await response.json();
+     console.log('Nuevo contenido guardado:', newContent);
+     return newContent; 
+   } catch (error) {
+     console.error('Error en la solicitud:', error);
+     throw error; 
+   }
+};
+
+export default { PostVideoBlog };

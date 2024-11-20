@@ -1,5 +1,16 @@
 import AWS from 'aws-sdk';
 
+const S3_BUCKET = process.env.REACT_APP_S3_BUCKET;
+const REGION = process.env.REACT_APP_AWS_REGION;
+
+const s3 = new AWS.S3({
+  accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
+  region: REGION
+});
+
+
+
 export const uploadImageToS3 = async (file) => {
   const params = {
     Bucket: S3_BUCKET,
@@ -29,7 +40,7 @@ export const PostTips = async (newtip) => {
     }
   }
 
-  newtip.recommendationURL = imagenUrl;
+  newtip.recommendations_url = imagenUrl;
 
   const token = localStorage.getItem('token');
 

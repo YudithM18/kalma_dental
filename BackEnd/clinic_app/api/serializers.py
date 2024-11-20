@@ -2,6 +2,7 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 import re
+from django.contrib.auth.models import Group
 
 #IMPORTS MODELS
 from .models import testimonios
@@ -14,47 +15,105 @@ from .models import qualification
 from .models import services
 
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta: 
+class UserRegisterSerializer(serializers.ModelSerializer):
+    role = serializers.CharField(write_only=True)
+
+    class Meta:
         model = User
-        fields = ('username', 'email', 'password')
-        
+        fields = ('username', 'password', 'email', 'first_name', 'last_name', 'role')
+
     def create(self, validated_data):
+        # Obtener el rol y quitarlo de los datos para no guardar en el modelo User
+        role = validated_data.pop('role')
+        
         # Verificar si el username o el email ya están en uso
         username = validated_data.get('username')
         email = validated_data.get('email')
-        
-        # Llamar a las validaciones para evitar duplicados
         self.validate_unique_username(username)
         self.validate_unique_email(email)
-        
+
         # Validar que la contraseña cumpla con los requisitos de seguridad
         password = validated_data.get('password')
         self.validate_password(password)
         
         # Crear el usuario con la contraseña encriptada
         user = User(**validated_data)
-        user.set_password(password)  # Utilizamos `set_password` para encriptar la contraseña
+        user.set_password(password)
         user.save()
+
+        # Asignar el rol si existe
+        if role:
+            try:
+                group = Group.objects.get(name=role)
+                user.groups.add(group)
+            except Group.DoesNotExist:
+                raise serializers.ValidationError(f"El rol '{role}' no existe.")
+
         return user
+
+    def update(self, instance, validated_data):
+        role = validated_data.pop('role', None)
+
+        # Actualiza los campos del usuario
+        instance.username = validated_data.get('username', instance.username)
+        instance.email = validated_data.get('email', instance.email)
+        instance.first_name = validated_data.get('first_name', instance.first_name)
+        instance.last_name = validated_data.get('last_name', instance.last_name)
+
+        # Si se proporciona una nueva contraseña, se encripta
+        if 'password' in validated_data:
+            instance.set_password(validated_data['password'])
+
+        instance.save()
+
+        # Cambia el rol del usuario si se proporciona
+        if role is not None:
+            instance.groups.clear()
+            try:
+                group = Group.objects.get(name=role)
+                instance.groups.add(group)
+            except Group.DoesNotExist:
+                raise serializers.ValidationError(f"El rol '{role}' no existe.")
+
+        return instance
+
+    def validate_username(self, value):
+        # Validación de largo mínimo
+        if len(value) <= 2:
+            raise serializers.ValidationError("El contenido debe tener más de 2 caracteres.")
+        
+        # Validación de que empiece con mayúscula
+        if not value[0].isupper():
+            raise serializers.ValidationError("El nombre debe empezar con mayúscula.")
+        
+        return value
     
-    def validate_password(self, password):
-        """
-        Verifica que la contraseña cumpla con los requisitos de seguridad.
-        """
-        if len(password) < 8:
+    def validate_email(self, value):
+        # Validación de largo mínimo
+        if len(value) <= 2:
+            raise serializers.ValidationError("El contenido debe tener más de 2 caracteres.")
+        
+        return value
+
+    def validate_password(self, value):
+        # Validación de largo mínimo
+        if len(value) <= 2:
+            raise serializers.ValidationError("El contenido debe tener más de 2 caracteres.")
+        
+        # Validación de seguridad de la contraseña
+        if len(value) < 8:
             raise ValidationError("La contraseña debe tener al menos 8 caracteres.")
         
-        if not re.search(r'[A-Z]', password):
+        if not re.search(r'[A-Z]', value):
             raise ValidationError("La contraseña debe contener al menos una letra mayúscula.")
         
-        if not re.search(r'[a-z]', password):
+        if not re.search(r'[a-z]', value):
             raise ValidationError("La contraseña debe contener al menos una letra minúscula.")
         
-        if not re.search(r'[0-9]', password):
+        if not re.search(r'[0-9]', value):
             raise ValidationError("La contraseña debe contener al menos un número.")
         
-        return password
+        return value
     
     def validate_unique_username(self, username):
         """
@@ -91,6 +150,7 @@ class UserSerializer(serializers.ModelSerializer):
         if len(value) <= 2:
             raise serializers.ValidationError("El contenido debe tener más de 2 caracteres.")
         return value 
+        
     
 class testimoniosSerializer(serializers.ModelSerializer):
     class Meta:

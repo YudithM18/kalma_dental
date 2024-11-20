@@ -8,7 +8,7 @@ import DeleteTestimonios from '../Service/testimonios/DeleteTestimonios'; // Imp
 function FormAdministracion() {
   // Define estados para manejar los datos del formulario
 
-  const [ImageW, setImageW] = useState('');
+  const [specialists_url, setImageW] = useState('');
   const [FullName, setfullName] = useState(''); 
   const [Speciality, setSpeciality] = useState(''); 
   const [Qualification, setQualification] = useState(''); 
@@ -31,18 +31,21 @@ function FormAdministracion() {
     setImageW(event.target.value);
   }
 
-
-  function cargarDate(event) {
-    setDate(event.target.value);
+  function cargarFullName(event) {
+    setfullName(event.target.value);
   } 
 
-  function cargarDate(event) {
-    setDate(event.target.value);
+  function cargarSpeciality(event) {
+    setSpeciality(event.target.value);
   }
 
-  const cargarWork = () => {
+  function cargarQualification(event) {
+    setQualification(event.target.value);
+  }
+
+  const cargarNewEspecilista = () => {
     console.log(Speciality); 
-    PostServicios(ImageW, FullName, Speciality, Qualification,); // Llama a la función para agregar un Servicio
+    PostServicios(specialists_url, FullName, Speciality, Qualification,); // Llama a la función para agregar un Servicio
   };
 
 
@@ -54,20 +57,20 @@ function FormAdministracion() {
         <div className='Añadir'>
           <h2 className='Title'>Add Work Staff</h2>
           <br />
-          <label htmlFor="image">Imagen</label>
-          <input type="file" onChange={ImageLoad} />
+          <label htmlFor="image" className='subTitle'>Imagen</label>
+          <input className='inptWorkTeam' type="file" onChange={ImageLoad} />
           <br />
           <label htmlFor="Fname" className='subTitle'>Nombre Completo</label>
-          <input type="text" placeholder='Ingrese el Nombre Completo' value={Name} onChange={cargarName} />
+          <input className='inptWorkTeam'  type="text" placeholder='Ingrese el Nombre Completo' value={FullName} onChange={cargarFullName} />
           <br />
-          <label htmlFor="Speciality" className='subTitle'>Especialidad</label>
-          <input type="text" placeholder='Ingrese la Especialidad' value={Name} onChange={cargarName} />
+          <label  htmlFor="Speciality" className='subTitle'>Especialidad</label>
+          <input className='inptWorkTeam' type="text" placeholder='Ingrese la Especialidad' value={Speciality} onChange={cargarSpeciality} />
           <br />
           <label htmlFor='Qualification' className='subTitle'>Titulación</label>
-          <input type="text" placeholder='Añada la Titulación' value={Testimonials} onChange={cargarTestimonials} />
+          <input className='inptWorkTeam' type="text" placeholder='Añada la Titulación' value={Qualification} onChange={cargarQualification} />
           <br />
           <br />
-          <button className='btnagregar' onClick={cargar}>Agregar</button>
+          <button className='btnagregarW' onClick={cargarNewEspecilista}>Agregar</button>
 
           <br />
         </div>

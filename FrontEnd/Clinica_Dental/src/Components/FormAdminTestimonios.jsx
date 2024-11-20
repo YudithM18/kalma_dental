@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import GetTestimonios from '../Service/testimonios/GetTestimonios'; // Importa función para obtener testimonios
 import PostTestimonios from '../Service/testimonios/PostTestimonios'; // Importa función para agregar testimonios
-
+import '../Styles/FormAdminTestimonios.css'
 
 function FormAdminTestimonios() {
 
-  const [Name, setName] = useState(''); 
-  const [Date, setDate] = useState(''); 
-  const [Testimonials, setTestimonials] = useState(''); 
+  const [fullname, setName] = useState(''); 
+  const [date, setDate] = useState(''); 
+  const [testimony, setTestimonials] = useState(''); 
   const [dataTestimonials, setData] = useState([]); 
   const [editestimonials, setvalorTestimonials] = useState('');
   const [editname, setvalorName] = useState('');
@@ -37,8 +37,7 @@ function FormAdminTestimonios() {
   }
 
   const cargar = () => {
-    console.log(Testimonials); 
-    PostTestimonios(Name, Date, Testimonials); // Llama a la función para agregar un testimonio
+    PostTestimonios(fullname, date, testimony); // Llama a la función para agregar un testimonio
   };
 
 
@@ -49,13 +48,13 @@ function FormAdminTestimonios() {
           <h2 className='Title'>Add Testimonials</h2>
           <br />
           <label htmlFor="nameT" className='subTitle'>Nombre</label>
-          <input type="text" placeholder='Ingrese el nombre' value={Name} onChange={cargarName} />
+          <input type="text" placeholder='Ingrese el nombre' value={fullname} onChange={cargarName} />
           <br />
           <label htmlFor="date" className='subTitle'>Fecha del Testimonio:</label>
-          <input type="date" id="date" name="date" value={Date} onChange={cargarDate} />
+          <input type="date" id="date" name="date" value={date} onChange={cargarDate} />
           <br />
           <label htmlFor='Testimonio' className='subTitle'>Testimonio</label>
-          <input type="text" placeholder='Añada el Testimonio' value={Testimonials} onChange={cargarTestimonials} />
+          <input type="text" placeholder='Añada el Testimonio' value={testimony} onChange={cargarTestimonials} />
           <br />
           <br />
           <button className='btnagregar' onClick={cargar}>Agregar Testimonio</button>
