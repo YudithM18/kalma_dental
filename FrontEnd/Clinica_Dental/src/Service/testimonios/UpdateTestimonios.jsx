@@ -1,6 +1,13 @@
 //Actualizar completamente datos existentes en el servidor
 async function UpdateTestimonios(Name, Date, Testimonials, id) {
+
     try {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      throw new Error('Token no encontrado en localStorage');
+    }
+    
      
         const DataTestimonials = { 
             Name,
@@ -11,7 +18,8 @@ async function UpdateTestimonios(Name, Date, Testimonials, id) {
         const response = await fetch("http://127.0.0.1:8000/api/testimonios/"+id, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify(DataTestimonials)
         });

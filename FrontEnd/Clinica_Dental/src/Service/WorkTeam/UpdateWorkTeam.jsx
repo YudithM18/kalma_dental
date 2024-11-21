@@ -1,6 +1,12 @@
 async function UpdateServicios(Image, fullname, Speciality, Qualification, id) {
     try {
      
+        const token = localStorage.getItem('token');
+        console.log(localStorage.getItem('token'));
+        if (!token) {
+          throw new Error('Token no encontrado en localStorage');
+        }
+
         const DataWorkTeam = { 
             Image, 
             fullname, 
@@ -8,10 +14,11 @@ async function UpdateServicios(Image, fullname, Speciality, Qualification, id) {
             Qualification
         
         };
-        const response = await fetch("http://localhost:3001/workteam/"+id, {
+        const response = await fetch("http://127.0.0.1:8000/api/workteam/"+id, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify(DataWorkTeam)
         });

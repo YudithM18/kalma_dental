@@ -1,12 +1,15 @@
 import AWS from 'aws-sdk';
 
-const S3_BUCKET = process.env.REACT_APP_S3_BUCKET;
-const REGION = process.env.REACT_APP_AWS_REGION;
+
+const S3_BUCKET = import.meta.env.VITE_S3_BUCKET;
+const REGION = import.meta.env.VITE_AWS_REGION;
+const ACCESS_KEY = import.meta.env.VITE_AWS_ACCESS_KEY_ID;
+const SECRET_KEY = import.meta.env.VITE_AWS_SECRET_ACCESS_KEY;
 
 const s3 = new AWS.S3({
-  accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
-  region: REGION
+  accessKeyId: ACCESS_KEY,
+  secretAccessKey: SECRET_KEY,
+  region: REGION,
 });
 
 export const uploadImageToS3 = async (file) => {

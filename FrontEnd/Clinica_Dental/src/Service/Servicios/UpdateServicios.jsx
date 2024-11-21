@@ -7,14 +7,24 @@ async function UpdateServicios(Servicios, Tratamientos, Image, id) {
             Image
         
         };
-        const response = await fetch("http://localhost:3001/servicios/"+id, {
+
+        const token = localStorage.getItem('token');
+
+        if (!token) {
+          throw new Error('Token no encontrado en localStorage');
+        }
+        
+        const response = await fetch("http://127.0.0.1:8000/api/servicios/"+id, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify(DataServicios)
         });
-
+        
+        
+    
      
         return await response.json();
     } catch (error) {

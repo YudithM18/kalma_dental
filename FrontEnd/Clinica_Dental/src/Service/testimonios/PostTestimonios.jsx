@@ -1,18 +1,24 @@
-async function PostTestimonios(Name, Date, Testimonials) {
+async function PostTestimonios(fullname, date, testimony) {
     try {
      
+        const token = localStorage.getItem('token');
+
+        if (!token) {
+          throw new Error('Token no encontrado en localStorage');
+        }
    
         const DataTestimonials = { 
-            Name,
-            Date,
-            Testimonials
+            fullname,
+            date,
+            testimony
         
         };
 
         const response = await fetch("http://127.0.0.1:8000/api/testimonios/", {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify(DataTestimonials)
         });

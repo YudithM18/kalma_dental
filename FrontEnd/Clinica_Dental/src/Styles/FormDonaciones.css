@@ -1,0 +1,116 @@
+body{
+  background-color: white;
+}
+
+.donaciones-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    flex-direction: column;
+  }
+  
+  .donacion {
+    font-size: 40px;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    transition: color 0.3s ease, transform 0.3s ease; /* Agrega transición de color y transformación */
+    animation: fadeIn 2s ease-out; /* Animación al cargar */
+  }
+  
+  .donacion:hover {
+    color: white; /* Cambia el color cuando el usuario pasa el ratón */
+    transform: scale(1.05); /* Escala el texto para dar un efecto de resalte */
+  }
+
+  .donacion::before,
+  .donacion::after {
+    content: '';
+    position: absolute;
+    height: 5px;
+    background: linear-gradient(90deg, #8e3879, #e05dbf);
+    transition: width 0.5s ease;
+  }
+  
+  .donacion::before {
+    left: 0;
+    bottom: 0;
+    width: 0;
+  }
+  
+  .donacion::after {
+    right: 0;
+    top: 0;
+    width: 100%;
+    transition: width 0.5s ease;
+  }
+  
+  .donacion:hover::before {
+    width: 100%; /* Llenar la línea inferior en hover */
+  }
+  
+  .donacion:hover::after {
+    width: 0; /* Ocultar la línea superior en hover */
+    animation: slideIn 0.5s forwards; /* Animación de entrada */
+  }
+  
+  /* Card Styles */
+  .card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    margin-top: 30px;
+    animation: slideUp 1s ease-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+  }
+  
+  .card-content h4 {
+    font-size: 20px;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 15px;
+    font-weight: 400;
+    transition: all 0.3s ease;
+  }
+  
+  .card-content h4:hover {
+    color: #4e73df;
+    transform: translateY(-5px);
+  }
+  
+  /* Hover effect for the card */
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

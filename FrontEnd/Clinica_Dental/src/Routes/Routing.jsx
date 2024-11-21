@@ -14,6 +14,7 @@ import Blog from "../Pages/Blog";
 import BlogEditor from "../Pages/BlogEditor";
 import Contact from "../Pages/Contact";
 import TerminosCondiciones from "../Pages/TerminosCondiciones";
+import Donaciones from "../Pages/Donaciones";
 
 const Routing = () => {
     return (
@@ -27,6 +28,7 @@ const Routing = () => {
             <Route path= '/Blog' element={<Blog />} />
             <Route path= '/Contact' element={<Contact />} />
             <Route path= '/TerminosCondiciones' element={<TerminosCondiciones />} />
+            <Route path= '/Donaciones' element={<Donaciones />} />
              /*Rutas protegidas*/
             <Route path= '/BlogEditor' element={<ProtectedRoute><BlogEditor /></ProtectedRoute>} />
             <Route path= '/GeneralAdministration' element={ <ProtectedRoute><GeneralAdministration /></ProtectedRoute> } />

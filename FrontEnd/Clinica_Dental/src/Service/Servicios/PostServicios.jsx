@@ -1,12 +1,14 @@
 import AWS from 'aws-sdk';
 
-const S3_BUCKET = process.env.REACT_APP_S3_BUCKET;
-const REGION = process.env.REACT_APP_AWS_REGION;
+const S3_BUCKET = import.meta.env.VITE_S3_BUCKET;
+const REGION = import.meta.env.VITE_AWS_REGION;
+const ACCESS_KEY = import.meta.env.VITE_AWS_ACCESS_KEY_ID;
+const SECRET_KEY = import.meta.env.VITE_AWS_SECRET_ACCESS_KEY;
 
 const s3 = new AWS.S3({
-  accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
-  region: REGION
+  accessKeyId: ACCESS_KEY,
+  secretAccessKey: SECRET_KEY,
+  region: REGION,
 });
 
 export const uploadImageToS3 = async (file) => {
@@ -25,12 +27,15 @@ export const uploadImageToS3 = async (file) => {
 export const PostServices = async (newServices) => {
 
 
+
+
   
+  let imagenUrl =''
   
   if (newServices.image) {
     try {
       const result = await uploadImageToS3(newServices.image);
-      let imagenUrl = result.Location; 
+     imagenUrl = result.Location; 
       console.log(imagenUrl); 
     } catch (error) {
       console.error('Error al subir la imagen a S3:', error);
@@ -40,11 +45,34 @@ export const PostServices = async (newServices) => {
 
   newServices.services_url = imagenUrl;
 
-  const token = localStorage.getItem('token');
+
+  const token = JSON.parse(localStorage.getItem('userData'));
+
+
+  
 
 if (!token) {
   throw new Error('Token no encontrado en localStorage');
 }
+
+ // de aqui solo guardo url no la imagen por que ya se guardo en amazon
+
+
+ console.log(newServices);
+ 
+
+ //ESTE ES EL OBJETO QUE HAY QUE MODIFICAR PARA QUE SE GUARDE BIEN EN LA BD
+const newServPost={
+  services_url:imagenUrl,
+  services_name:newServices.Name,
+  description:newServices.Treatment,
+  id_specialists:1,
+
+
+}
+
+console.log(newServPost);
+
 
 
    try {
@@ -52,18 +80,15 @@ if (!token) {
        method: 'POST',
        headers: {
          'Content-Type': 'application/json',
-         'Authorization': `Bearer ${token}`
+         'Authorization': `Bearer ${token.access}`
        },
-       body: JSON.stringify(newServices), 
+       body: JSON.stringify(newServPost), 
      });
  
-     if (!response.ok) {
-       throw new Error('Error al guardar el servicio. Token inválido o expirado.');
-     }
  
-     const newServices = await response.json();
-     console.log('Nuevo Servicio guardado:', newServices);
-     return newServices; 
+     const newServ = await response.json();
+     console.log('Nuevo Servicio guardado:', newServ);
+     return newServ; 
    } catch (error) {
      console.error('Error en la solicitud:', error);
      throw error; 

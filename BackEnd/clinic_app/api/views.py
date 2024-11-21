@@ -133,12 +133,12 @@ class qualificationDetail(generics.RetrieveUpdateDestroyAPIView):
 class servicesListCreate(generics.ListCreateAPIView):
     queryset = services.objects.all()
     serializer_class = servicesSerializer
-    permission_classes= [IsAuthenticated, IsPrincipal, IsSecundario]
+    permission_classes= [IsAuthenticated, IsPrincipal]
     
 class servicesDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = services.objects.all()
     serializer_class = servicesSerializer
-    permission_classes= [IsAuthenticated, IsPrincipal, IsSecundario]    
+    permission_classes= [IsAuthenticated, IsPrincipal]    
 
 
 
