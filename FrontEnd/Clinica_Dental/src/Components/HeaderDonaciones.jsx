@@ -17,6 +17,10 @@ function HeaderDonaciones() {
         <h1>¡ÚNETE A NOSOTROS Y AYUDA A LOS NIÑOS DE TELETÓN!</h1>
        
       </div>
+      <Link to="/">
+       <button className='cerrar-donar'>Go Home</button>
+      </Link>
+     
     </header>
 
   );

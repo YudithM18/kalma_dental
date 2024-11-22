@@ -24,21 +24,14 @@ class video_blog(models.Model):
     def __str__(self):
         return self.title
     
-class specialists(models.Model):
-    specialists_url = models.TextField()
-    full_name = models.CharField(max_length=100)
-    
-    def __str__(self):
-        return self.full_name
-
 
 class speciality(models.Model):
     speciality_name = models.CharField(max_length=150)
-    id_specialists = models.ForeignKey(specialists, on_delete=models.CASCADE, related_name='speciality')
     
     def __str__(self):
         return self.speciality_name
     
+
     
 class institutions(models.Model):
     institution = models.CharField(max_length=150)
@@ -49,8 +42,19 @@ class institutions(models.Model):
 class qualification(models.Model):
     qualification_name = models.CharField(max_length=150)
     id_institution = models.ForeignKey(institutions, on_delete=models.CASCADE, related_name='qualification')
-    id_specialist = models.ForeignKey(specialists, on_delete=models.CASCADE, related_name='qualification')
     
+   
+class specialists(models.Model):
+    specialists_url = models.TextField()
+    full_name = models.CharField(max_length=100)
+    id_speciality = models.ForeignKey(speciality, on_delete=models.CASCADE, related_name= 'specialists')
+    id_qualification = models.ForeignKey(qualification, on_delete=models.CASCADE, related_name='specialists')
+    
+    
+    def __str__(self):
+        return self.full_name
+    
+  
 
 class services(models.Model):
     services_url = models.TextField()
@@ -60,5 +64,4 @@ class services(models.Model):
     
     def __str__(self):
         return self.services_name
-    
-    
+  

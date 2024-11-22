@@ -86,7 +86,7 @@ function cargaContenidoV(event) {
 
   // Crear el objeto JSON con los datos
   const newContent = {
-    video: video_url,  // URL de la imagen (puedes subirla si es necesario)
+    video_url: video_url,  // URL de la imagen (puedes subirla si es necesario)
     title: title,
     content: content
   };

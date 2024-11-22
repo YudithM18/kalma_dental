@@ -42,18 +42,19 @@ const Header = () => {
           <img className="logoprincipal" src={logo} alt="Decoracion" />
         </Link>
       </div>
+      <Link to="/Donaciones">
+       <button className='btndonar'>Donar</button> 
+      </Link>
+      
       <div className="search-container">
+        
         <input
-          type="text"
+          type="search"
           className="search-bar"
           placeholder="¿Qué necesitas hoy?"
           value={search}
           onChange={handleSearchChange}
         />
-        <button className="search-btn" onClick={handleSearchSubmit}>
-          <i className="fa fa-search"></i>
-          Buscar
-        </button>
       </div>
       <div className="search-results">
         {results.length > 0 && (

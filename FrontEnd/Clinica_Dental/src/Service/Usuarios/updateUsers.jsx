@@ -4,7 +4,7 @@ async function updateUsers(username, password, email, firts_name, last_name, rol
     try {
 
         
-      const token = localStorage.getItem('token');
+        const token = JSON.parse(localStorage.getItem('userData'));
 
       if (!token) {
         throw new Error('Token no encontrado en localStorage');
@@ -22,7 +22,7 @@ async function updateUsers(username, password, email, firts_name, last_name, rol
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
+                'Authorization': `Bearer  ${token.access}`,
             },
             body: JSON.stringify(data)
         });

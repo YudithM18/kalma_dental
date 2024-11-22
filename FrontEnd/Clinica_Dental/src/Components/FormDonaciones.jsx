@@ -1,12 +1,21 @@
 import React from 'react'
 import '../Styles/FormDonaciones.css'
+import teleton from '../Img/Teletón.jpg';
+
 
 function Donaciones() {
   return (
     <div className='donaciones-container'>
       <div>
-        <h2 className='donacion'>Tu donación hace la diferencia</h2>
+        <img className="img-teleton" src={teleton} alt="Decoracion" />
+        <br />
+        <br />
+        <br />
+        <br />
+        <h2 className='donacion'>¡Tu donación hace la diferencia!</h2>
       </div>
+      <br />
+      <br />
       <div className='card'>
         <div className='card-content'>
           <h4>En Kalma Dental, nos enorgullece ser parte de la comunidad que apoya causas tan 

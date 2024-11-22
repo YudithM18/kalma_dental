@@ -1,7 +1,3 @@
-body{
-  background-color: white;
-}
-
 .donaciones-container {
     display: flex;
     justify-content: center;
@@ -9,53 +5,82 @@ body{
     min-height: 100vh;
     padding: 20px;
     flex-direction: column;
-  }
-  
-  .donacion {
-    font-size: 40px;
-    font-weight: 700;
-    color: white;
-    text-align: center;
-    margin-bottom: 20px;
-    transition: color 0.3s ease, transform 0.3s ease; /* Agrega transición de color y transformación */
-    animation: fadeIn 2s ease-out; /* Animación al cargar */
-  }
-  
-  .donacion:hover {
-    color: white; /* Cambia el color cuando el usuario pasa el ratón */
-    transform: scale(1.05); /* Escala el texto para dar un efecto de resalte */
+    animation: fadeIn 1.5s ease-out; /* Aplica la animación de aparición */
   }
 
-  .donacion::before,
-  .donacion::after {
-    content: '';
-    position: absolute;
-    height: 5px;
-    background: linear-gradient(90deg, #8e3879, #e05dbf);
-    transition: width 0.5s ease;
+  .img-teleton{
+    height: 700px;
+    width: 1270px;
+  }
+ 
+
+.donacion {
+    font-family: 'Poppins', sans-serif;  /* Fuente moderna */
+    font-size: 50px;
+    font-weight: 700;
+    color: white; /* Letra blanca por defecto */
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    position: relative;
+    display: inline-block;
+    background-color: #21234A; /* Fondo de color oscuro por defecto */
+    border-radius: 12px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: all 0.3s ease; /* Transiciones suaves para color, tamaño y sombra */
+    animation: fadeIn 2s ease-out; /* Animación de entrada */
+    animation: bounceEffect 1s ease-in-out infinite; /* Animación de rebote infinita */
   }
   
-  .donacion::before {
-    left: 0;
-    bottom: 0;
-    width: 0;
+  /* Animación de Rebote */
+  @keyframes bounceEffect {
+      0% {
+          transform: translateY(0); /* Inicio en posición normal */
+      }
+      25% {
+          transform: translateY(-10px); /* Rebote hacia arriba */
+      }
+      50% {
+          transform: translateY(0); /* Regresa a la posición inicial */
+      }
+      75% {
+          transform: translateY(-5px); /* Rebote más pequeño */
+      }
+      100% {
+          transform: translateY(0); /* Vuelve a la posición inicial */
+      }
   }
+
+
+
+/* Efecto Hover */
+.donacion:hover {
+    transform: translateY(-5px); /* Eleva ligeramente el texto */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Aumenta la sombra */
+    background-color: #ff9a8b; /* Fondo rosado cuando se pasa el ratón */
+    color: white; /* El texto se mantiene blanco en hover */
+}
+
+/* Animación FadeIn para la aparición */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Sombra sutil para el texto */
+.donacion span {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
   
-  .donacion::after {
-    right: 0;
-    top: 0;
-    width: 100%;
-    transition: width 0.5s ease;
-  }
-  
-  .donacion:hover::before {
-    width: 100%; /* Llenar la línea inferior en hover */
-  }
-  
-  .donacion:hover::after {
-    width: 0; /* Ocultar la línea superior en hover */
-    animation: slideIn 0.5s forwards; /* Animación de entrada */
-  }
+
   
   /* Card Styles */
   .card {

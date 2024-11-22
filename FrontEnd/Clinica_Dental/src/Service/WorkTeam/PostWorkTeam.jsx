@@ -42,7 +42,7 @@ export const PostWorkTeam = async (newMember) => {
 
   newMember.workTeamURL = imagenUrl;
 
-  const token = localStorage.getItem('token');
+  const token = JSON.parse(localStorage.getItem('userData'));
 
 if (!token) {
   throw new Error('Token no encontrado en localStorage');
@@ -54,7 +54,7 @@ if (!token) {
        method: 'POST',
        headers: {
          'Content-Type': 'application/json',
-         'Authorization': `Bearer ${token}`
+         'Authorization': `Bearer  ${token.access}`
        },
        body: JSON.stringify(newMember), 
      });

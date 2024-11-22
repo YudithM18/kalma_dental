@@ -25,14 +25,12 @@ export const uploadImageToS3 = async (file) => {
 };
 
 
-export const PostTips = async (newtip) => {
-
+export const PostTips = async (newTip) => {
 
   
-  
-  if (newtip.image) {
+  if (newTip.image) {
     try {
-      const result = await uploadImageToS3(newtip.image);
+      const result = await uploadImageToS3(newTip.image);
       let imagenUrl = result.Location; 
       console.log(imagenUrl); 
     } catch (error) {
@@ -41,32 +39,41 @@ export const PostTips = async (newtip) => {
     }
   }
 
-  newtip.recommendations_url = imagenUrl;
+  newTip.recommendations_url = imagenUrl;
 
-  const token = localStorage.getItem('token');
+  const token = JSON.parse(localStorage.getItem('userData'));
+
 
 if (!token) {
   throw new Error('Token no encontrado en localStorage');
 }
 
 
+const newTips = {
+  recommendations_url: imagenUrl,  // URL de la imagen (puedes subirla si es necesario)  // URL de la imagen (puedes subirla si es necesario)
+  tips_title: newTip.title,
+  tips_description: newTip.content
+};
+
+console.log(newTips);
+
    try {
      const response = await fetch('http://127.0.0.1:8000/api/tips/', {
        method: 'POST',
        headers: {
          'Content-Type': 'application/json',
-         'Authorization': `Bearer ${token}`
+         'Authorization': `Bearer  ${token.access}`
        },
-       body: JSON.stringify(newtip), 
+       body: JSON.stringify(newTips), 
      });
  
      if (!response.ok) {
        throw new Error('Error al guardar el tip. Token inválido o expirado.');
      }
  
-     const newtip = await response.json();
-     console.log('Nuevo tip guardado:', newtip);
-     return newtip; 
+     const newTips = await response.json();
+     console.log('Nuevo tip guardado:', newTips);
+     return newTips; 
    } catch (error) {
      console.error('Error en la solicitud:', error);
      throw error; 

@@ -1,0 +1,130 @@
+.payment-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  background-color: #ffffff; /* Fondo blanco para resaltar */
+  border-radius: 20px;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
+  margin-left: 300px;
+  margin-top: 70px;
+  transform: scale(0.95);
+  transition: transform 0.3s ease-in-out;
+}
+
+.payment-container:hover {
+  transform: scale(1); /* Aumenta ligeramente el tamaño al hacer hover */
+}
+
+/* Estilo para la imagen de PayPal */
+.paypal-image {
+  max-width: 180px;
+  margin-bottom: 30px;
+}
+
+/* Títulos */
+.completo{
+  font-family: 'Poppins', sans-serif;
+  font-size: 35px;
+  color: #00bcd4; /* Color de título vibrante */
+  margin-bottom: 30px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  animation: fadeIn 1s ease-out;
+}
+
+/* Animación para el título */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Contenedor de los botones de PayPal */
+.paypal-button-container {
+  margin-top: 40px;
+  width: 100%;
+}
+
+/* Mensajes de éxito o error */
+.alert {
+  padding: 15px 30px;
+  margin-top: 30px;
+  border-radius: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s ease;
+}
+
+.alert.success {
+  background-color: #4caf50;
+  color: white;
+  animation: bounceIn 1s ease-out;
+}
+
+.alert.error {
+  background-color: #f44336;
+  color: white;
+  animation: bounceIn 1s ease-out;
+}
+
+/* Animación para las alertas */
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Botones personalizados */
+.paypal-buttons {
+  border-radius: 50px; /* Botones redondeados */
+  margin-left: -30px;
+  padding: 15px 30px;
+  background-color: #00bcd4; /* Botón de color vibrante */
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.paypal-buttons:hover {
+  background-color: #008c9e; /* Cambio de color al hacer hover */
+  transform: scale(1.05); /* Aumento de tamaño al hacer hover */
+}
+
+.paypal-buttons:active {
+  transform: scale(0.98); /* Efecto de presionar el botón */
+}
+
+/* Enlaces */
+a {
+  text-decoration: none;
+  color: #0070f3;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #005bb5;
+}

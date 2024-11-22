@@ -3,7 +3,7 @@ async function GetTips() {
    
     
     try { 
-        const token = localStorage.getItem('token');
+        const token = JSON.parse(localStorage.getItem('userData'));
 
     if (!token) {
       throw new Error('Token no encontrado en localStorage');
@@ -12,7 +12,7 @@ async function GetTips() {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
+                'Authorization': `Bearer  ${token.access}`,
             }
         });
 
@@ -20,8 +20,8 @@ async function GetTips() {
             throw new Error('Error fetching users');
         }
 
-        const users = await response.json();
-        return users;
+        const tips = await response.json();
+        return tips;
     } catch (error) {
         console.error('Error fetching users:', error);
         throw error;

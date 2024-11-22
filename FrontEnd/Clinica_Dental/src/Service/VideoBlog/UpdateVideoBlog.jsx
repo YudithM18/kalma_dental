@@ -1,6 +1,6 @@
 async function UpdateVideoBlog(video, titlevideo, id) {
     try {
-        const token = localStorage.getItem('token');
+        const token = JSON.parse(localStorage.getItem('userData'));
 
         if (!token) {
           throw new Error('Token no encontrado en localStorage');
@@ -14,7 +14,7 @@ async function UpdateVideoBlog(video, titlevideo, id) {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
+                'Authorization': `Bearer  ${token.access}`,
             },
             body: JSON.stringify(DataContent)
         });

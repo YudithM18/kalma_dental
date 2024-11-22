@@ -3,7 +3,7 @@ async function DeleteTips(id) {
    
     
     try { 
-        const token = localStorage.getItem('token');
+        const token = JSON.parse(localStorage.getItem('userData'));
 
     if (!token) {
       throw new Error('Token no encontrado en localStorage');
@@ -12,7 +12,7 @@ async function DeleteTips(id) {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
+                'Authorization': `Bearer  ${token.access}`,
             }
         });
 

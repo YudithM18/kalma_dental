@@ -3,7 +3,7 @@ async function getUsers() {
     try {
 
         
-      const token = localStorage.getItem('token');
+        const token = JSON.parse(localStorage.getItem('userData'));
 
       if (!token) {
         throw new Error('Token no encontrado en localStorage');
@@ -13,7 +13,7 @@ async function getUsers() {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
+                'Authorization': `Bearer  ${token.access}`,
             }
         });
         console.log(response);

@@ -3,6 +3,7 @@ import FormDonaciones from '../Components/FormDonaciones'
 import HeaderDonaciones from '../Components/HeaderDonaciones'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
+import FormPagos from '../Components/FormPagos'
 
 
 function Donaciones() {
@@ -11,6 +12,7 @@ function Donaciones() {
       
        <HeaderDonaciones />
        <FormDonaciones />
+       <FormPagos />
        <Footer />
     </div>
   )

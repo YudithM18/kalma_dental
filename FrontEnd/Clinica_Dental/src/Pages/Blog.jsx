@@ -2,8 +2,6 @@ import React from 'react'
 import FormBlog from '../Components/FormBlog'
 import Header from '../Components/Header'
 import Navbar from '../Components/Navbar'
-import FormPagos from '../Components/FormPagos'
-
 
 
 function Blog() {
@@ -13,7 +11,6 @@ function Blog() {
        <Header />
        <Navbar />
        <FormBlog />
-       <FormPagos />
     </div>
   )
 }

@@ -9,6 +9,7 @@ function FormAdminServicios() {
 
   const [services_url, setImage] = useState('');
   const [service_name, setNameS] = useState(''); 
+  const [specialists, setSpecialists] = useState('');
   const [description, setTreatment] = useState('');
   
   const [dataService, setdataService] = useState([])
@@ -34,6 +35,10 @@ function FormAdminServicios() {
       setNameS(event.target.value);
   }
 
+  function cargarSpecialists(event) {
+    setSpecialists(event.target.value);
+}
+
   function cargarTreatment(event) {
       setTreatment(event.target.value);
   }
@@ -43,7 +48,7 @@ function FormAdminServicios() {
   event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
 
   // Verificar que todos los campos estén llenos
-  if (services_url === '' || service_name === '' || description === '') {
+  if (services_url === '' || service_name === '' || description === '' || specialists === '') {
     console.log('Por favor, ingrese todos los datos');
     return;
   }
@@ -52,7 +57,8 @@ function FormAdminServicios() {
   const newServices = {
     image: services_url ,  // URL de la imagen (puedes subirla si es necesario)
     Name: service_name,
-    Treatment: description
+    Treatment: description,
+    Specialist: specialists
   };
 
 
@@ -112,6 +118,9 @@ function FormAdminServicios() {
             <br />
             <label htmlFor="nameS" className='subTitleS'>Servicio</label>
             <input type="text" placeholder='Ingrese el Servicio' value={service_name} onChange={cargarNameService} className='IMGFILE' />
+            <br />
+            <label htmlFor='Treatment' className='subTitleS'>Especialista a cargo:</label>
+            <input type="text" placeholder='Añada el nombre del especialista' value={specialists} onChange={cargarSpecialists} className='IMGFILE' />
             <br />
             <label htmlFor='Treatment' className='subTitleS'>Tratamientos Vinculados</label>
             <input type="text" placeholder='Añada el Tratamiento Vinculado' value={description} onChange={cargarTreatment} className='IMGFILE' />

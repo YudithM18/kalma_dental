@@ -1,4 +1,5 @@
 from rest_framework import serializers
+
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 import re
@@ -8,11 +9,12 @@ from django.contrib.auth.models import Group
 from .models import testimonios
 from .models import recommendations
 from .models import video_blog
-from .models import specialists
 from .models import speciality
 from .models import institutions
 from .models import qualification
+from .models import specialists
 from .models import services
+
 
 
 class UserRegisterSerializer(serializers.ModelSerializer):
@@ -116,16 +118,16 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         return value
     
     def validate_unique_username(self, username):
-        """
-        Verifica que el username no esté ya registrado.
-        """
+    
+        #Verifica que el username no esté ya registrado.
+        
         if User.objects.filter(username=username).exists():
             raise ValidationError(f"El nombre de usuario '{username}' ya está registrado.")
     
     def validate_unique_email(self, email):
-        """
-        Verifica que el email no esté ya registrado.
-        """
+        
+        #Verifica que el email no esté ya registrado.
+        
         if User.objects.filter(email=email).exists():
             raise ValidationError(f"El correo electrónico '{email}' ya está registrado.")
         
@@ -151,7 +153,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("El contenido debe tener más de 2 caracteres.")
         return value 
         
-    
+
 class testimoniosSerializer(serializers.ModelSerializer):
     class Meta:
         model = testimonios
@@ -220,26 +222,7 @@ class video_blogSerializer(serializers.ModelSerializer):
         if not value[0].isupper():
             raise serializers.ValidationError("El titulo debe empezar con mayúscula.")
         return value  
-        
-        
-class specialistsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = specialists
-        fields = '__all__'
-        
-        #Validacion de espacios vacios
-    def validate_full_name (self, value):
-        if len(value) <= 2:
-            raise serializers.ValidationError("El contenido debe tener más de 2 caracteres.")
-        return value 
-    
-    #Validación para el nombre empieze con Mayúscula
-    def validate_full_name(self, value):
-        if not value[0].isupper():
-            raise serializers.ValidationError("El nombre debe empezar con mayúscula.")
-        return value  
-        
-        
+
 class specialitySerializer(serializers.ModelSerializer):
     class Meta:         
         model = speciality
@@ -256,7 +239,7 @@ class specialitySerializer(serializers.ModelSerializer):
         if not value[0].isupper():
             raise serializers.ValidationError("El nombre debe empezar con mayúscula.")
         return value  
-        
+
 class institutionsSerializer(serializers.ModelSerializer):
     class Meta:
         model = institutions
@@ -298,7 +281,7 @@ class institutionsSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("El nombre de la provincia debe empezar con mayúscula.")
         return value  
 
-        
+      
 class qualificationSerializer(serializers.ModelSerializer):
     class Meta:
         model = qualification
@@ -316,8 +299,25 @@ class qualificationSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("El nombre debe empezar con mayúscula.")
         return value  
         
+      
+class specialistsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = specialists
+        fields = '__all__'
         
-
+        #Validacion de espacios vacios
+    def validate_full_name (self, value):
+        if len(value) <= 2:
+            raise serializers.ValidationError("El contenido debe tener más de 2 caracteres.")
+        return value 
+    
+    #Validación para el nombre empieze con Mayúscula
+    def validate_full_name(self, value):
+        if not value[0].isupper():
+            raise serializers.ValidationError("El nombre debe empezar con mayúscula.")
+        return value 
+    
+     
 class servicesSerializer(serializers.ModelSerializer):
     class Meta:
         model = services
