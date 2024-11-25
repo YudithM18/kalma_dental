@@ -12,6 +12,15 @@ function FormLogin() {
   const [users, setUsers] = useState([]); // Estado para almacenar la lista de usuarios
   const navigate = useNavigate(); // Inicializa el hook de navegación
 
+
+  
+  useEffect(() => {
+        
+    document.body.classList.add('fondo-login');
+    return () => {
+        document.body.classList.remove('fondo-login');
+    };
+}, []);
 /*
   // useEffect para cargar usuarios al montar el componente
   useEffect(() => {

@@ -87,7 +87,7 @@ function FormAdminServicios() {
 
     const nuevosDatos = {
       imagen: imagen || serviceOriginal.services_url, 
-      precioP: servicEdit || serviceOriginal.service_name,  
+      name: servicEdit || serviceOriginal.service_name,  
       descripcion: descripEdit || serviceOriginal.descripcion, 
     };
 
@@ -99,7 +99,7 @@ function FormAdminServicios() {
       newServices.id === id ? { ...newServices, ...nuevosDatos } : newServices
     );
 
-    setProducto(ServiciosActualizado);
+    setdataService(ServiciosActualizado);
     
     // Resetea los campos de entrada
     setImage('');
@@ -140,7 +140,7 @@ function FormAdminServicios() {
         <br />
         <br />
 
-        <h1 className='historial'>WORK TEAM</h1>
+        <h1 className='historial'>Registros</h1>
         <div >
         <ul className='ul'>
           {dataService.map((Servicio) => (

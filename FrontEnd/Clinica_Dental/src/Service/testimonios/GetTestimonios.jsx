@@ -12,7 +12,7 @@ async function GetTestimonios() {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer  ${token.access}`,
+                'Authorization': `Bearer ${token.access}`,
             }
         });
 

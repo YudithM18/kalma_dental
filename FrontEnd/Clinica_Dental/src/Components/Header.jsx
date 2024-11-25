@@ -42,7 +42,7 @@ const Header = () => {
           <img className="logoprincipal" src={logo} alt="Decoracion" />
         </Link>
       </div>
-      <Link to="/Donaciones">
+      <Link to="/PaymentAmount">
        <button className='btndonar'>Donar</button> 
       </Link>
       

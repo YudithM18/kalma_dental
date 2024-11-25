@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import GetTestimonios from '../Service/testimonios/GetTestimonios'; // Importa función para obtener testimonios
 import PostTestimonios from '../Service/testimonios/PostTestimonios'; // Importa función para agregar testimonios
+import DeleteTestimonios from '../Service/testimonios/DeleteTestimonios';
+import UpdateTestimonios from '../Service/testimonios/UpdateTestimonios';
 import '../Styles/FormAdminTestimonios.css'
 
 function FormAdminTestimonios() {
@@ -9,8 +11,8 @@ function FormAdminTestimonios() {
   const [date, setDate] = useState(''); 
   const [testimony, setTestimonials] = useState(''); 
   const [dataTestimonials, setData] = useState([]); 
-  const [editestimonials, setvalorTestimonials] = useState('');
-  const [editname, setvalorName] = useState('');
+  
+  
 
 
   // useEffect para cargar Testimonios al montar el componente
@@ -38,7 +40,57 @@ function FormAdminTestimonios() {
 
   const cargar = () => {
     PostTestimonios(fullname, date, testimony); // Llama a la función para agregar un testimonio
+    console.log("se logro!!!");
+    
   };
+
+  function cargaNameEdit(event) {
+    setName(event.target.value); 
+  }
+
+  function cargaDaTeEdit(event) {
+    setDate(event.target.value); 
+  }
+
+  function cargaTestimonyEdit(event) {
+    setTestimonials(event.target.value); 
+  }
+
+  async function cargarDelete(id) {
+    await DeleteTestimonios(id)
+    const valorEncontrar = dataTestimonials.filter(dataTestimonials=> dataTestimonials.id !== id)
+    setData([...valorEncontrar])
+  }
+
+
+  const cargaEdicion = async (id) => {
+
+    const testimonialsOriginal = dataTestimonials.find(dataTestimonials => dataTestimonials.id === id);
+
+    if (!testimonialsOriginal) return;
+
+
+    const nuevosDatos = {
+      name: fullnamedit || testimonialsOriginal.fullname, 
+      date: datedit || testimonialsOriginal.date,  
+      testimony: testimonyedit || testimonialsOriginal.testimony, 
+    };
+
+
+    await UpdateServicios(id, nuevosDatos.name, nuevosDatos.date, nuevosDatos.testimony);
+    
+
+    const testimoniosactualizados = dataTestimonials.map(dataTestimonials => 
+      dataTestimonials.id === id ? { ...dataTestimonials, ...nuevosDatos } : dataTestimonials
+    );
+
+    setData(testimoniosactualizados);
+    
+    // Resetea los campos de entrada
+    setName('');
+    setDate('');
+    setTestimonials('');
+  }
 
 
   return (
@@ -62,6 +114,32 @@ function FormAdminTestimonios() {
           <br />
         </div>
       </div>
+
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <h1 className='historial'>Registros</h1>
+        <div >
+        <ul className='ul'>
+          {dataTestimonials.map((testimonio) => (
+            <li className='li' key={testimonio.id}>
+              <br />
+              {testimonio.fullname} <input onChange={cargaNameEdit} type="text"  /> <br />
+              {testimonio.date} <input  className='editInp1' type="text" onChange={cargaDaTeEdit} /> 
+               <br /> {testimonio.testimony} <input className='editInp' type="text" onChange={cargaTestimonyEdit} />
+              <br />
+              <button className='botonHis' onClick={e=>cargaEdicion(Servicio.id)}>Guardar</button>
+              <button className='botonHis' onClick={e => cargarDelete(Servicio.id)}>Eliminar</button>
+              </li>
+          ))}
+        </ul>
+        </div>
     </div>
   )
 }

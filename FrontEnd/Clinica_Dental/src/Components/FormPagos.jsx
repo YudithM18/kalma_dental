@@ -3,8 +3,13 @@ import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import paypal from '../Img/PayPal.png';
 import Swal from 'sweetalert2';
 import '../Styles/FormPagos.css';
+import {useLocation} from 'react-router-dom';
 
 const FormPagos = () => {
+
+  const location = useLocation();
+  const donationAmount = location.state.amount;
+
   const [paymentStatus, setPaymentStatus] = useState(null); // Estado para manejar el estado de pago
 
   const initialOptions = {
@@ -20,7 +25,7 @@ const FormPagos = () => {
         {
           amount: {
             currency: "USD",
-            value: "700",
+            value: donationAmount,
           },
         },
       ],

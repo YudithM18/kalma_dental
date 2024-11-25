@@ -31,12 +31,7 @@ class IsPrincipal(BasePermission):
         return request.user and request.user.groups.filter(name = 'principal').exists()
     
             ################################    
-  
-class IsSecundario(BasePermission):
-    def has_permission(self, request, view):
-        return request.user and request.user.groups.filter(name = 'secundario').exists()
 
-            ################################
 class IsEditor (BasePermission):
     def has_permission(self, request, view):
         return request.user and request.user.groups.filter(name = 'editor').exists()
@@ -144,35 +139,3 @@ class servicesDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = servicesSerializer
     permission_classes= [IsAuthenticated, IsPrincipal]    
 
-
-
-def buscar(request):
-    query = request.GET.get('q')
-    if query:
-        usuarios = User.objects.filter(Q(username__icontains=query) | Q(email__icontains=query))
-        testimonios = testimonios.objects.filter(comentario__icontains=query)
-        recomendaciones = recommendations.objects.filter(consejo__icontains=query)
-        videos = video_blog.objects.filter(titulo__icontains=query)
-        especialistas = specialists.objects.filter(Q(nombre__icontains=query) | Q(especialidad__icontains=query))
-        especialidades = speciality.objects.filter(nombre__icontains=query)
-        instituciones = institutions.objects.filter(nombre__icontains=query)
-        calificaciones = qualification.objects.filter(Q(nivel__icontains=query) | Q(institucion__icontains=query))
-        servicios = services.objects.filter(Q(nombre__icontains=query) | Q(descripcion__icontains=query))
-
-        resultados = {
-            'usuarios': [{'username': u.username, 'email': u.email} for u in usuarios],
-            'testimonios': [{'comentario': t.comentario, 'paciente': t.paciente} for t in testimonios],
-            'recomendaciones': [{'consejo': r.consejo} for r in recomendaciones],
-            'video_blog': [{'titulo': v.titulo} for v in videos],
-            'especialistas': [{'nombre': e.nombre, 'especialidad': e.especialidad} for e in especialistas],
-            'especialidades': [{'nombre': esp.nombre} for esp in especialidades],
-            'instituciones': [{'nombre': i.nombre} for i in instituciones],
-            'calificaciones': [{'nivel': q.nivel, 'institucion': q.institucion} for q in calificaciones],
-            'servicios': [{'nombre': s.nombre, 'descripcion': s.descripcion} for s in servicios],
-        }
-        return JsonResponse(resultados, safe=False)
-    return JsonResponse({
-        'usuarios': [], 'testimonios': [], 'recomendaciones': [], 'video_blog': [],
-        'especialistas': [], 'especialidades': [], 'instituciones': [], 'calificaciones': [],
-        'servicios': []
-    }, safe=False)

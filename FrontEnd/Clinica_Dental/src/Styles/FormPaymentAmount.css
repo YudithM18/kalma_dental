@@ -1,0 +1,141 @@
+/* Estilos generales de la página */
+body.fondo-formulario {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #66aae6; /* O el color que prefieras */
+}
+
+.form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    margin: 20px auto;
+    height: 500px;
+    padding: 20px;
+    background-color: #ffeb3b; /* Amarillo pastel */
+    background-image: url('../Img/formulario.jpg'); /* Un fondo tierno, opcional */
+    background-size: cover;
+    background-position: center;
+    animation: fadeIn 1.5s ease-in-out; /* Animación al cargar la página */
+}
+
+/* Contenedor del formulario */
+.form-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    animation: slideIn 1s ease-out;
+}
+
+.titulo-ingresar {
+    font-size: 2rem;
+    color: #ff4081; /* Rosa brillante */
+    font-weight: bold;
+    margin-bottom: 20px;
+    animation: bounce 1s infinite;
+}
+
+/* Animaciones para el título */
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+/* Estilos de los campos de entrada */
+.input-container {
+    margin-bottom: 20px;
+}
+
+.input-field-monto {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    border: 2px solid #ff4081;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-field-monto:focus {
+    border-color: #00e676;
+    box-shadow: 0 0 10px rgba(0, 230, 118, 0.5);
+}
+
+/* Botón de envío */
+.submit-btn {
+    background-color: #00e676; /* Verde claro */
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #ff4081;
+}
+
+.back-button-donar{
+    height: 30px;
+    width: 80px;
+    margin-right: 1170px;
+    animation: fadeIn 1.5s ease-in-out;
+  }
+
+  .back-button-donar {
+    background-color: #00e676; /* Verde claro */
+    color: #fff;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .back-button-donar:hover {
+    background-color: #ff4081;
+  }
+
+
+/* Animación de la forma */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos para iconos de ayuda (opcional) */
+.icon {
+    font-size: 2rem;
+    color: #ff4081;
+    margin: 10px;
+}
+
+/* Ajustes de responsive */
+@media (max-width: 768px) {
+    .form-content {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .submit-btn {
+        width: 100%;
+    }
+}

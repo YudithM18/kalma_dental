@@ -1,10 +1,10 @@
-.container {
+.container{
     margin-left: 365px;
     animation: slideIn 0.5s ease forwards;
     margin-top: 30px;
 }
 
-.form {
+.form{
     background: #986C79; /* Color más claro */
     padding: 20px;
     border-radius: 8px;
@@ -15,7 +15,7 @@
     box-shadow: 4px 13px 37px solid #000;
 }
 
-label {
+label{
     display: block;
     font-weight: bold;
     color: white;
@@ -24,7 +24,7 @@ label {
 
 input[type="text"],
 input[type="email"],
-textarea {
+textarea{
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
@@ -36,11 +36,11 @@ textarea {
 
 input[type="text"]:focus,
 input[type="email"]:focus,
-textarea:focus {
+textarea:focus{
     border-color: #A99CA3; /* Cambiar el borde al enfocar */
 }
 
-input[type="submit"] {
+input[type="submit"]{
     background-color: #A99CA3;
     color: white;
     padding: 10px 15px;
@@ -52,7 +52,7 @@ input[type="submit"] {
     margin-left: 300px;
 }
 
-input[type="submit"]:hover {
+input[type="submit"]:hover{
     background-color: #79626e;
 }
 
@@ -66,7 +66,7 @@ input[type="submit"]:hover {
     }
 }
 
-@keyframes slideIn {
+@keyframes slideIn{
     from {
         transform: translateX(-30px);
         opacity: 0;
@@ -78,7 +78,7 @@ input[type="submit"]:hover {
 }
 
 /* Media Queries */
-@media (max-width: 768px) {
+@media (max-width: 768px){
     .container {
         margin-left: 20px; /* Ajustar margen en pantallas medianas */
         margin-right: 20px; /* Añadir margen derecho */
@@ -89,7 +89,7 @@ input[type="submit"]:hover {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480px){
     .container {
         margin-left: 10px; /* Menos margen en pantallas pequeñas */
         margin-right: 10px; /* Añadir margen derecho */
@@ -106,7 +106,7 @@ input[type="submit"]:hover {
 
 
 
-.mapa {
+.mapa{
     background-color: #d184cd; /* Color de fondo utilizando la paleta */
     padding: 30px; /* Padding para pantallas grandes */
     box-shadow: 7px 13px 38px rgba(0, 0, 0, 0.5); /* Sombra más sutil */
@@ -116,7 +116,7 @@ input[type="submit"]:hover {
     border-radius: 8px; /* Bordes redondeados */
 }
 
-.tituloU {
+.tituloU{
     font-size: xxx-large; /* Tamaño de fuente para pantallas grandes */
     color: #6a3970; /* Color claro para el texto */
     text-align: center; /* Centra el título */
@@ -124,7 +124,7 @@ input[type="submit"]:hover {
 }
 
 /* Media Queries para celular */
-@media (max-width: 768px) {
+@media (max-width: 768px){
     .mapa {
         padding: 20px; /* Reduce el padding para tabletas */
         width: 90%; /* Ajusta el ancho a 90% para tabletas */
@@ -150,7 +150,7 @@ input[type="submit"]:hover {
 
 
 
-.form-container {
+.contenedorWhatsapp{
     background-color: #7D848C;
     padding: 20px;
     border-radius: 8px;

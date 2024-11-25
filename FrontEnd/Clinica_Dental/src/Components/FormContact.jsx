@@ -32,7 +32,7 @@ import "../Styles/FormContact.css"
 
   const handleSubmit = (e) => {
       e.preventDefault();
-      const phone = '+50664480595'; // Reemplaza esto con el número de teléfono de WhatsApp al que se enviará el mensaje
+      const phone = '+50683633298'; // Reemplaza esto con el número de teléfono de WhatsApp al que se enviará el mensaje
       const message = `Nombre Completo: ${fullName}\nNúmero de Cédula: ${idNumber}\nCorreo Electrónico: ${email}\nNúmero de Celular: ${phoneNumber}\nDirección: ${address}\nSíntomas/Descripción: ${symptoms}`;
       const url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
       window.open(url, '_blank');
@@ -65,9 +65,9 @@ import "../Styles/FormContact.css"
       <br />
       <br />
 
-      <div className="form-container">
+      <div className="contenedorWhatsapp">
       <h2 className='titulowa'>Enviar Mensaje por WhatsApp</h2>
-      <form onSubmit={handleSubmit}>
+      <form className='form-whasapp' onSubmit={handleSubmit}>
         <input 
           type="text" 
           placeholder="Nombre Completo" 
