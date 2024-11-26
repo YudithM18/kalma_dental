@@ -1,4 +1,6 @@
 async function PostTestimonios(fullname, date, testimony) {
+
+    
     try {
      
         const token = JSON.parse(localStorage.getItem('userData'));
@@ -8,17 +10,17 @@ async function PostTestimonios(fullname, date, testimony) {
         }
    
         const DataTestimonials = { 
-            fullname,
-            date,
-            testimony
-        
+            fullname:fullname,
+            date:date,
+            testimony:testimony
         };
+        
 
         const response = await fetch("http://127.0.0.1:8000/api/testimonios/", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer  ${token.access}`,
+                'Authorization': `Bearer ${token.access}`,
             },
             body: JSON.stringify(DataTestimonials)
         });

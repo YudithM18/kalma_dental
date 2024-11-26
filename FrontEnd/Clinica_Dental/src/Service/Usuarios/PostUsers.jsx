@@ -15,7 +15,7 @@ async function PostUsers(username, password, email, firts_name, last_name, role)
         email, 
         firts_name, 
         last_name, 
-        role
+        role:"editor"
       };
 
       const response = await fetch("http://127.0.0.1:8000/api/users/", {

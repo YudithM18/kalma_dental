@@ -59,3 +59,41 @@ input[type="text"], input[type="date"] {
     background-color: #E4C5D6; /* Botón más oscuro al pasar el ratón */
     transform: scale(1.05); /* Efecto de aumento */
 }
+
+
+
+
+.ul {
+    list-style-type: none; /* Eliminar puntos de la lista */
+    padding: 0; /* Sin padding */
+}
+
+.li {
+    background-color: rgba(224, 224, 224, 0.9); /* Fondo blanco */
+    border: 2px solid #1F3D47; /* Borde azul oscuro */
+    border-radius: 10px;
+    color: black; /* Texto negro */
+    margin: 10px 0; /* Espacio entre elementos */
+    padding: 15px; /* Espacio interno */
+    transition: transform 0.2s; /* Animación suave */
+    width: 600px;
+}
+
+.li:hover {
+    transform: scale(1.02); /* Efecto de aumento al pasar el ratón */
+}
+
+.botonHis {
+    background-color: #1F3D47; /* Botón azul oscuro */
+    color: white; /* Texto blanco */
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-right: 10px; /* Espacio entre botones */
+    transition: background-color 0.3s; /* Transición suave para el hover */
+}
+
+.botonHis:hover {
+    background-color: #294954; /* Tono más claro en hover */
+}

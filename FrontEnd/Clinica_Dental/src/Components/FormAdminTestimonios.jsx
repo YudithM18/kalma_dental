@@ -9,7 +9,12 @@ function FormAdminTestimonios() {
 
   const [fullname, setName] = useState(''); 
   const [date, setDate] = useState(''); 
-  const [testimony, setTestimonials] = useState(''); 
+  const [testimony, setTestimonials] = useState('');
+  
+  const [namedit, setNamedit] = useState('');
+  const [datedit, setDatedit] = useState('');
+  const [testimoniodit, setTestimoniodit] = useState('');
+
   const [dataTestimonials, setData] = useState([]); 
   
   
@@ -45,20 +50,20 @@ function FormAdminTestimonios() {
   };
 
   function cargaNameEdit(event) {
-    setName(event.target.value); 
+    setNamedit(event.target.value); 
   }
 
   function cargaDaTeEdit(event) {
-    setDate(event.target.value); 
+    setDatedit(event.target.value); 
   }
 
   function cargaTestimonyEdit(event) {
-    setTestimonials(event.target.value); 
+    setTestimoniodit(event.target.value); 
   }
 
   async function cargarDelete(id) {
     await DeleteTestimonios(id)
-    const valorEncontrar = dataTestimonials.filter(dataTestimonials=> dataTestimonials.id !== id)
+    const valorEncontrar = dataTestimonials.filter(dataTestimonials => dataTestimonials.id !== id);
     setData([...valorEncontrar])
   }
 
@@ -71,13 +76,16 @@ function FormAdminTestimonios() {
 
 
     const nuevosDatos = {
-      name: fullnamedit || testimonialsOriginal.fullname, 
+      fullname: namedit || testimonialsOriginal.fullname, 
       date: datedit || testimonialsOriginal.date,  
-      testimony: testimonyedit || testimonialsOriginal.testimony, 
+      testimony: testimoniodit || testimonialsOriginal.testimony, 
     };
 
 
-    await UpdateServicios(id, nuevosDatos.name, nuevosDatos.date, nuevosDatos.testimony);
+    console.log(id, nuevosDatos.fullname, nuevosDatos.date, nuevosDatos.testimony);
+    
+
+    await UpdateTestimonios(id, nuevosDatos.fullname, nuevosDatos.date, nuevosDatos.testimony);
     
 
     const testimoniosactualizados = dataTestimonials.map(dataTestimonials => 
@@ -131,11 +139,11 @@ function FormAdminTestimonios() {
             <li className='li' key={testimonio.id}>
               <br />
               {testimonio.fullname} <input onChange={cargaNameEdit} type="text"  /> <br />
-              {testimonio.date} <input  className='editInp1' type="text" onChange={cargaDaTeEdit} /> 
+              {testimonio.date} <input  className='editInp1' type="date" onChange={cargaDaTeEdit} /> 
                <br /> {testimonio.testimony} <input className='editInp' type="text" onChange={cargaTestimonyEdit} />
               <br />
-              <button className='botonHis' onClick={e=>cargaEdicion(Servicio.id)}>Guardar</button>
-              <button className='botonHis' onClick={e => cargarDelete(Servicio.id)}>Eliminar</button>
+              <button className='botonHis' onClick={e=>cargaEdicion(testimonio.id)}>Actualizar</button>
+              <button className='botonHis' onClick={e => cargarDelete(testimonio.id)}>Eliminar</button>
               </li>
           ))}
         </ul>

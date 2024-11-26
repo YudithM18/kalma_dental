@@ -1,4 +1,4 @@
-async function UpdateTips(recommendationURL, title, tips, id) {
+async function UpdateTips(id, recommendations_url, tips_title, tips_description) {
 
    
     try { 
@@ -10,16 +10,16 @@ async function UpdateTips(recommendationURL, title, tips, id) {
     
      
         const DataTips = { 
-            recommendationURL,
+            recommendations_url,
             tips_title,
             tips_description
         
         };
-        const response = await fetch("http://127.0.0.1:8000/api/tips/"+id, {
+        const response = await fetch(`http://127.0.0.1:8000/api/consejos/${id}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer  ${token.access}`,
+                'Authorization': `Bearer ${token.access}`,
             },
             body: JSON.stringify(DataTips)
         });

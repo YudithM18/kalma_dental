@@ -8,7 +8,7 @@ async function DeleteUsers(id) {
       throw new Error('Token no encontrado en localStorage');
     }
     
-        const response = await fetch(`http://127.0.0.1:8000/api/users/${id}`, {
+        const response = await fetch(`http://127.0.0.1:8000/api/users/${id}/`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

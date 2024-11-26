@@ -1,4 +1,4 @@
-async function UpdateVideoBlog(video, titlevideo, id) {
+async function UpdateVideoBlog(id, video_url, title, content) {
     try {
         const token = JSON.parse(localStorage.getItem('userData'));
 
@@ -7,10 +7,11 @@ async function UpdateVideoBlog(video, titlevideo, id) {
         }
         
         const DataContent = { 
-            video,
-            titlevideo
+            video_url, 
+            title, 
+            content
         };
-        const response = await fetch("http://127.0.0.1:8000/api/video_blog/"+id, {
+        const response = await fetch(`http://127.0.0.1:8000/api/video_blog/${id}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

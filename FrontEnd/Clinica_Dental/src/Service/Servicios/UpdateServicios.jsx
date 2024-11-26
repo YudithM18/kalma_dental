@@ -14,7 +14,7 @@ async function UpdateServicios(Servicios, Tratamientos, Image, id) {
           throw new Error('Token no encontrado en localStorage');
         }
         
-        const response = await fetch("http://127.0.0.1:8000/api/servicios/"+id, {
+        const response = await fetch(`http://127.0.0.1:8000/api/servicios/${id}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

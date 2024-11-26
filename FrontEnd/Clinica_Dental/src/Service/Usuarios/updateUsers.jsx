@@ -1,5 +1,5 @@
 //Actualizar completamente datos existentes en el servidor
-async function updateUsers(username, password, email, firts_name, last_name, role, id) {
+async function updateUsers(id, firts_name, last_name, username, password, email, role) {
     
     try {
 
@@ -10,19 +10,19 @@ async function updateUsers(username, password, email, firts_name, last_name, rol
         throw new Error('Token no encontrado en localStorage');
       }
      
-        const data = { 
-            username, 
-            password, 
-            email, 
+        const data = {
             firts_name, 
             last_name, 
+            username, 
+            password, 
+            email,  
             role
         };
-        const response = await fetch("http://127.0.0.1:8000/api/users/"+id, {
+        const response = await fetch(`http://127.0.0.1:8000/api/users/${id}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer  ${token.access}`,
+                'Authorization': `Bearer ${token.access}`,
             },
             body: JSON.stringify(data)
         });

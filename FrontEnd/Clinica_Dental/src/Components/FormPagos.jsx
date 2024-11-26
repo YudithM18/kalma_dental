@@ -3,12 +3,13 @@ import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import paypal from '../Img/PayPal.png';
 import Swal from 'sweetalert2';
 import '../Styles/FormPagos.css';
-import {useLocation} from 'react-router-dom';
+import {useLocation, useNavigate } from 'react-router-dom';
 
 const FormPagos = () => {
 
   const location = useLocation();
   const donationAmount = location.state.amount;
+  const navigate = useNavigate();
 
   const [paymentStatus, setPaymentStatus] = useState(null); // Estado para manejar el estado de pago
 
@@ -45,6 +46,9 @@ const FormPagos = () => {
         confirmButtonText: 'Aceptar',
         confirmButtonColor: '#3085d6',
       });
+      setTimeout(() => {
+        navigate('/');
+      }, 6000);
     });
   };
 

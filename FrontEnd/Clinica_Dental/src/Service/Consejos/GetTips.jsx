@@ -8,11 +8,11 @@ async function GetTips() {
     if (!token) {
       throw new Error('Token no encontrado en localStorage');
     }
-        const response = await fetch('http://127.0.0.1:8000/api/tips/', {
+        const response = await fetch('http://127.0.0.1:8000/api/consejos/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer  ${token.access}`,
+                'Authorization': `Bearer ${token.access}`,
             }
         });
 
