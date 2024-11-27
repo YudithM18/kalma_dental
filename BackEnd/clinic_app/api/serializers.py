@@ -82,76 +82,57 @@ class UserRegisterSerializer(serializers.ModelSerializer):
     def validate_username(self, value):
         # Validación de largo mínimo
         if len(value) <= 2:
-            raise serializers.ValidationError("El contenido debe tener más de 2 caracteres.")
+            raise serializers.ValidationError("El nombre de usuario debe tener más de 2 caracteres.")
         
         # Validación de que empiece con mayúscula
         if not value[0].isupper():
-            raise serializers.ValidationError("El nombre debe empezar con mayúscula.")
+            raise serializers.ValidationError("El nombre de usuario debe empezar con mayúscula.")
+        
+        # Verificar que el username no esté ya registrado
+        self.validate_unique_username(value)
         
         return value
     
     def validate_email(self, value):
         # Validación de largo mínimo
         if len(value) <= 2:
-            raise serializers.ValidationError("El contenido debe tener más de 2 caracteres.")
+            raise serializers.ValidationError("El correo electrónico debe tener más de 2 caracteres.")
+        
+        # Verificar que el email no esté ya registrado
+        self.validate_unique_email(value)
         
         return value
 
     def validate_password(self, value):
         # Validación de largo mínimo
         if len(value) <= 2:
-            raise serializers.ValidationError("El contenido debe tener más de 2 caracteres.")
+            raise serializers.ValidationError("La contraseña debe tener más de 2 caracteres.")
         
         # Validación de seguridad de la contraseña
         if len(value) < 8:
-            raise ValidationError("La contraseña debe tener al menos 8 caracteres.")
+            raise serializers.ValidationError("La contraseña debe tener al menos 8 caracteres.")
         
         if not re.search(r'[A-Z]', value):
-            raise ValidationError("La contraseña debe contener al menos una letra mayúscula.")
+            raise serializers.ValidationError("La contraseña debe contener al menos una letra mayúscula.")
         
         if not re.search(r'[a-z]', value):
-            raise ValidationError("La contraseña debe contener al menos una letra minúscula.")
+            raise serializers.ValidationError("La contraseña debe contener al menos una letra minúscula.")
         
         if not re.search(r'[0-9]', value):
-            raise ValidationError("La contraseña debe contener al menos un número.")
+            raise serializers.ValidationError("La contraseña debe contener al menos un número.")
         
         return value
-    
+
     def validate_unique_username(self, username):
-    
-        #Verifica que el username no esté ya registrado.
-        
+        # Verifica que el username no esté ya registrado.
         if User.objects.filter(username=username).exists():
-            raise ValidationError(f"El nombre de usuario '{username}' ya está registrado.")
-    
+            raise serializers.ValidationError(f"El nombre de usuario '{username}' ya está registrado.")
+
     def validate_unique_email(self, email):
-        
-        #Verifica que el email no esté ya registrado.
-        
+        # Verifica que el email no esté ya registrado.
         if User.objects.filter(email=email).exists():
-            raise ValidationError(f"El correo electrónico '{email}' ya está registrado.")
-        
-        #Validacion de espacios vacios
-    def validate_username (self, value):
-        if len(value) <= 2:
-            raise serializers.ValidationError("El contenido debe tener más de 2 caracteres.")
-        return value 
-    
-    #Validación para el nombre empieze con Mayúscula
-    def validate_username(self, value):
-        if not value[0].isupper():
-            raise serializers.ValidationError("El nombre debe empezar con mayúscula.")
-        return value  
-    
-    def validate_email (self, value):
-        if len(value) <= 2:
-            raise serializers.ValidationError("El contenido debe tener más de 2 caracteres.")
-        return value 
-    
-    def validate_password (self, value):
-        if len(value) <= 2:
-            raise serializers.ValidationError("El contenido debe tener más de 2 caracteres.")
-        return value 
+            raise serializers.ValidationError(f"El correo electrónico '{email}' ya está registrado.")
+
         
 
 class testimoniosSerializer(serializers.ModelSerializer):

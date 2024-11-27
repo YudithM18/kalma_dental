@@ -1,6 +1,6 @@
 import React from 'react'
-import '../Styles/FormHeaderDonaciones.css';
-import logo from '../Img/Logo_secundario.jpg';
+import '../../Styles/FormHeaderDonaciones.css';
+import logo from '../../Img/Logo_secundario.jpg';
 import { Link } from 'react-router-dom';
 
 function HeaderDonaciones() {

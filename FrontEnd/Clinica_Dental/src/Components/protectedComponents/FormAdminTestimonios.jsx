@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import GetTestimonios from '../Service/testimonios/GetTestimonios'; // Importa función para obtener testimonios
-import PostTestimonios from '../Service/testimonios/PostTestimonios'; // Importa función para agregar testimonios
-import DeleteTestimonios from '../Service/testimonios/DeleteTestimonios';
-import UpdateTestimonios from '../Service/testimonios/UpdateTestimonios';
-import '../Styles/FormAdminTestimonios.css'
+import GetTestimonios from '../../Service/testimonios/GetTestimonios'; // Importa función para obtener testimonios
+import PostTestimonios from '../../Service/testimonios/PostTestimonios'; // Importa función para agregar testimonios
+import DeleteTestimonios from '../../Service/testimonios/DeleteTestimonios';
+import UpdateTestimonios from '../../Service/testimonios/UpdateTestimonios';
+import '../../Styles/FormAdminTestimonios.css'
 
 function FormAdminTestimonios() {
 
@@ -100,7 +100,7 @@ function FormAdminTestimonios() {
     setTestimonials('');
   }
 
-
+  const colors = ['#B28292', '#C98989', '#EE828C']; // Lista de colores
   return (
     <div>
       <div className='Testimonios'>
@@ -132,18 +132,19 @@ function FormAdminTestimonios() {
         <br />
         <br />
 
-        <h1 className='historial'>Registros</h1>
+        <h1 className='historialT'>Registros</h1>
         <div >
-        <ul className='ul'>
-          {dataTestimonials.map((testimonio) => (
-            <li className='li' key={testimonio.id}>
+        <ul className='mapTestimonios'>
+          {dataTestimonials.map((testimonio, index) => (
+            <li className='testimonios' style={{ backgroundColor: colors[index % colors.length] }}
+            key={testimonio.id}>
               <br />
-              {testimonio.fullname} <input onChange={cargaNameEdit} type="text"  /> <br />
-              {testimonio.date} <input  className='editInp1' type="date" onChange={cargaDaTeEdit} /> 
+              {testimonio.fullname} <input onChange={cargaNameEdit} type="text" className='editInp' /> <br />
+              {testimonio.date} <input className='editInp' type="date" onChange={cargaDaTeEdit} /> 
                <br /> {testimonio.testimony} <input className='editInp' type="text" onChange={cargaTestimonyEdit} />
               <br />
-              <button className='botonHis' onClick={e=>cargaEdicion(testimonio.id)}>Actualizar</button>
-              <button className='botonHis' onClick={e => cargarDelete(testimonio.id)}>Eliminar</button>
+              <button className='botonHisT' onClick={e=>cargaEdicion(testimonio.id)}>Actualizar</button>
+              <button className='botonHisT' onClick={e => cargarDelete(testimonio.id)}>Eliminar</button>
               </li>
           ))}
         </ul>

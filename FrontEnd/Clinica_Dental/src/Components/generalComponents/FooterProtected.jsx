@@ -1,8 +1,8 @@
 import React from 'react'
-import '../Styles/FooterProtected.css'
+import '../../Styles/FooterProtected.css'
 import { CiFacebook } from "react-icons/ci";
 import { FaInstagram } from "react-icons/fa";
-import nombre from '../Img/nombre.jpg'
+import nombre from '../../Img/nombre.jpg'
 
 
 function FooterProtected() {

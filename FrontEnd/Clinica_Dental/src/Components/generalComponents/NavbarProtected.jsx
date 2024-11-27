@@ -1,7 +1,7 @@
 // src/components/Navbar.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../Styles/NavbarProtected.css' ; // Asegúrate de crear este archivo con los estilos
+import '../../Styles/NavbarProtected.css' ; // Asegúrate de crear este archivo con los estilos
 import { useNavigate } from "react-router-dom";
 
 

@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import '../Styles/FormBlogEditor.css'
+import '../../Styles/FormBlogEditor.css'
 
-import PostTips from '../Service/Consejos/PostTips'
-import GetTips from '../Service/Consejos/GetTips'
-import DeleteTips from '../Service/Consejos/DeleteTips'
-import UpdateTips from '../Service/Consejos/UpdateTips'
+import PostTips from '../../Service/Consejos/PostTips'
+import GetTips from '../../Service/Consejos/GetTips'
+import DeleteTips from '../../Service/Consejos/DeleteTips'
+import UpdateTips from '../../Service/Consejos/UpdateTips'
 
-import PostVideoBlog from '../Service/VideoBlog/PostVideoBlog'
-import GetVideoBlog from '../Service/VideoBlog/GetVideoBlog'
-import UpdateVideoBlog from '../Service/VideoBlog/UpdateVideoBlog'  
-import DeleteVideoBlog from '../Service/VideoBlog/DeleteVideoBlog'
+import PostVideoBlog from '../../Service/VideoBlog/PostVideoBlog'
+import GetVideoBlog from '../../Service/VideoBlog/GetVideoBlog'
+import UpdateVideoBlog from '../../Service/VideoBlog/UpdateVideoBlog'  
+import DeleteVideoBlog from '../../Service/VideoBlog/DeleteVideoBlog'
 
 
 function FormBlogEditor() {

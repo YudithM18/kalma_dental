@@ -1,11 +1,11 @@
 // src/components/Footer.js
 import React from 'react';
-import '../Styles/FormFooter.css'
+import '../../Styles/FormFooter.css'
 import { CiFacebook } from "react-icons/ci";
 import { FaInstagram } from "react-icons/fa";
-import logo from '../Img/Logo_principal.jpg'
-import espejo from '../Img/espejo3.jpg'
-import escritorio from '../Img/escritorio.jpg'
+import logo from '../../Img/Logo_principal.jpg'
+import espejo from '../../Img/espejo3.jpg'
+import escritorio from '../../Img/escritorio.jpg'
 import { FaWhatsapp } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 

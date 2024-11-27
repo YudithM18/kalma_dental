@@ -1,6 +1,6 @@
 import React from 'react'
-import '../Styles/FormDonaciones.css'
-import teleton from '../Img/Teletón.jpg';
+import '../../Styles/FormDonaciones.css'
+import teleton from '../../Img/Teletón.jpg';
 
 
 function Donaciones() {

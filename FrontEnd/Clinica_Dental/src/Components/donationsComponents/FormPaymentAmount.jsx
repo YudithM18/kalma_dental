@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../Styles/FormPaymentAmount.css';
+import '../../Styles/FormPaymentAmount.css';
 import Swal from 'sweetalert2';
 
 function FormPaymentAmount() {

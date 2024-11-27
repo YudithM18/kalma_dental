@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'; // Importa React y hooks necesarios
-import '../Styles/FormGeneralAdministration.css'
-import GetWorkTeam from '../Service/WorkTeam/GetWorkTeam'
+import '../../Styles/FormGeneralAdministration.css'
+import GetWorkTeam from '../../Service/WorkTeam/GetWorkTeam'
 /*import UpdateTestimonios from '../Service/testimonios/UpdateTestimonios'; // Importa función para actualizar testimonios
 import DeleteTestimonios from '../Service/testimonios/DeleteTestimonios'; // Importa función para eliminar testimonios*/
 

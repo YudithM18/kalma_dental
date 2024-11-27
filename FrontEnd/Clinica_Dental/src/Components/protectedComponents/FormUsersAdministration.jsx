@@ -1,10 +1,9 @@
 import React, { useState, useEffect }  from 'react'
-import '../Styles/FormUsersAdmi.css'
-import PostUsers from '../Service/Usuarios/PostUsers'
-import getUsers from '../Service/Usuarios/getUsers'
-import DeleteUsers from '../Service/Usuarios/DeleteUsers'
-import UpdateUsers from '../Service/Usuarios/updateUsers'
-import updateUsers from '../Service/Usuarios/updateUsers'
+import '../../Styles/FormUsersAdmi.css'
+import PostUsers from '../../Service/Usuarios/PostUsers'
+import getUsers from '../../Service/Usuarios/getUsers'
+import DeleteUsers from '../../Service/Usuarios/DeleteUsers'
+import updateUsers from '../../Service/Usuarios/updateUsers'
 
 
 function FormUsersAdministration() {
@@ -47,7 +46,10 @@ function cargaEmail(event) {
 
 function cargaPass(event) {
     setPassword(event.target.value);
-    setConfirmPass(event.target.value);
+}
+
+function cargaConfirmPass(event) {
+  setConfirmPass(event.target.value);
 }
 
 function cargafirst_name(event) {
@@ -152,7 +154,7 @@ const cargaEdicion = async (id) => {
             <input className='inputpass' type="password" name="password" value={password} onChange={cargaPass}/>
             <br/>
             <label className='label'>Confirm Password:</label>
-            <input className='inputpass' type="password" name="confirm_password" value={confirmPass} onChange={cargaPass} />
+            <input className='inputpass' type="password" name="confirm_password" value={confirmPass} onChange={cargaConfirmPass} />
             <br/>
             <button className='btnAgregarUsuarios' onClick={cargaNewUsers}>Add</button>
           </form>
@@ -177,7 +179,7 @@ const cargaEdicion = async (id) => {
               {usuario.last_name} <input  className='editInp1' type="text" onChange={cargalast_name_edit} /> <br /> 
               {usuario.username} <input className='editInp' type="text" onChange={cargaUsername_edit} /> <br />
               {usuario.email} <input className='editInp' type="email" onChange={cargaEmail_Edit} /> <br />
-              {usuario.password} <input className='editInp' type="text" onChange={cargaPass_edit } />
+              {usuario.password} <input className='editInp' type="password" onChange={cargaPass_edit } />
               <br />
               <button className='botonHis' onClick={e=>cargaEdicion(usuario.id)}>Actualizar</button>
               <button className='botonHis' onClick={e => cargarDelete(usuario.id)}>Eliminar</button>

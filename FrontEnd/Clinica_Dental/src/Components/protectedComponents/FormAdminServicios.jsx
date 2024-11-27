@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import '../Styles/FormAdminServicios.css'
-import GetServicios from '../Service/Servicios/GetServicios'
-import PostServicios from '../Service/Servicios/PostServicios';
-import DeleteServicios from '../Service/Servicios/DeleteServicios';
-import UpdateServicios from '../Service/Servicios/UpdateServicios';
+import '../../Styles/FormAdminServicios.css'
+import GetServicios from '../../Service/Servicios/GetServicios'
+import PostServicios from '../../Service/Servicios/PostServicios';
+import DeleteServicios from '../../Service/Servicios/DeleteServicios';
+import UpdateServicios from '../../Service/Servicios/UpdateServicios';
 
 function FormAdminServicios() {
 

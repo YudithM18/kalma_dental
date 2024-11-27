@@ -1,7 +1,7 @@
 import React from 'react'
-import Header from '../Components/Header'
-import NavbarProtegido from '../Components/NavbarProtected'
-import FormAdminServicios from '../Components/FormAdminServicios'
+import Header from '../Components/generalComponents/Header'
+import NavbarProtegido from '../Components/generalComponents/NavbarProtected'
+import FormAdminServicios from '../Components/protectedComponents/FormAdminServicios'
 
 function AdminServicios() {
   return (

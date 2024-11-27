@@ -1,7 +1,7 @@
 import React from 'react'
-import FormGeneralAdministration from '../Components/FormGeneralAdministration'
-import Header from '../Components/Header'
-import NavbarProtegido from '../Components/NavbarProtected'
+import FormGeneralAdministration from '../Components/protectedComponents/FormGeneralAdministration'
+import Header from '../Components/generalComponents/Header'
+import NavbarProtegido from '../Components/generalComponents/NavbarProtected'
 
 
 

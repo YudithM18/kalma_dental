@@ -1,8 +1,8 @@
 import React from 'react'
 import FormHome from '../Components/FormHome'
-import Header from '../Components/Header'
-import Navbar from '../Components/Navbar'
-import Footer from '../Components/Footer'
+import Header from '../Components/generalComponents/Header'
+import Navbar from '../Components/generalComponents/Navbar'
+import Footer from '../Components/generalComponents/Footer'
 
 
 

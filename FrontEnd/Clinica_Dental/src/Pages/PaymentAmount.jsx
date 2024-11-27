@@ -1,5 +1,5 @@
 import React from 'react'
-import FormPaymentAmount from '../Components/FormPaymentAmount'
+import FormPaymentAmount from '../Components/donationsComponents/FormPaymentAmount'
 
 
 function PaymentAmount() {

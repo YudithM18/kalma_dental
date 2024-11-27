@@ -1,7 +1,7 @@
 import React from 'react'
 import FormWorkTeams from '../Components/FormWorkTeams'
-import Header from '../Components/Header'
-import Navbar from '../Components/Navbar'
+import Header from '../Components/generalComponents/Header'
+import Navbar from '../Components/generalComponents/Navbar'
 
 
 

@@ -1,4 +1,4 @@
-async function PostUsers(username, password, email, firts_name, last_name, role){
+async function PostUsers(username, password, email, firts_name, last_name){
 
   
   try {

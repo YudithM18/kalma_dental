@@ -1,7 +1,7 @@
 import React from 'react'
-import FormBlogEditor from '../Components/FormBlogEditor'
-import Header from '../Components/Header'
-import NavbarProtegido from '../Components/NavbarProtected'
+import FormBlogEditor from '../Components/protectedComponents/FormBlogEditor'
+import Header from '../Components/generalComponents/Header'
+import NavbarProtegido from '../Components/generalComponents/NavbarProtected'
 
 
 

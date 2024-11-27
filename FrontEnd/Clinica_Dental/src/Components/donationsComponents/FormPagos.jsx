@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
-import paypal from '../Img/PayPal.png';
+import paypal from '../../Img/PayPal.png';
 import Swal from 'sweetalert2';
-import '../Styles/FormPagos.css';
+import '../../Styles/FormPagos.css';
 import {useLocation, useNavigate } from 'react-router-dom';
 
 const FormPagos = () => {

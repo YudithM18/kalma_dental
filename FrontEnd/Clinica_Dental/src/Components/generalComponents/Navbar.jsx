@@ -1,7 +1,7 @@
 // src/components/Navbar.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../Styles/FormNavbar.css' ; // Asegúrate de crear este archivo con los estilos
+import '../../Styles/FormNavbar.css' ; // Asegúrate de crear este archivo con los estilos
 
 
 const Navbar = () => {

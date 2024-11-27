@@ -1,9 +1,8 @@
 import React from 'react'
-import FormDonaciones from '../Components/FormDonaciones'
-import HeaderDonaciones from '../Components/HeaderDonaciones'
-import Navbar from '../Components/Navbar'
-import Footer from '../Components/Footer'
-import FormPagos from '../Components/FormPagos'
+import FormDonaciones from '../Components/donationsComponents/FormDonaciones'
+import HeaderDonaciones from '../Components/donationsComponents/HeaderDonaciones'
+import Footer from '../Components/generalComponents/Footer'
+import FormPagos from '../Components/donationsComponents/FormPagos'
 
 
 function Donaciones() {

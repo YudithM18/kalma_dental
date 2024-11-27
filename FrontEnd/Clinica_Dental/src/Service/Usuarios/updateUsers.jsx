@@ -1,5 +1,5 @@
 //Actualizar completamente datos existentes en el servidor
-async function updateUsers(id, firts_name, last_name, username, password, email, role) {
+async function updateUsers( id, firts_name, last_name, username, password, email) {
     
     try {
 
@@ -15,8 +15,7 @@ async function updateUsers(id, firts_name, last_name, username, password, email,
             last_name, 
             username, 
             password, 
-            email,  
-            role
+            email
         };
         const response = await fetch(`http://127.0.0.1:8000/api/users/${id}/`, {
             method: 'PUT',
