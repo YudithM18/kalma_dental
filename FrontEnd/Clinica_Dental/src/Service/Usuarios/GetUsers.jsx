@@ -16,7 +16,6 @@ async function getUsers() {
                 'Authorization': `Bearer  ${token.access}`,
             }
         });
-        console.log(response);
         
         if (!response.ok) {
             throw new Error('Error fetching users');

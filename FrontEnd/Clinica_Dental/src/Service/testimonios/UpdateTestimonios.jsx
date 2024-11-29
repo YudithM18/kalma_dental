@@ -15,9 +15,7 @@ async function UpdateTestimonios(id, fullname, date, testimony) {
             testimony
         };
 
-        
-        console.log("servicio",DataTestimonials);
-        const response = await fetch(`http://127.0.0.1:8000/api/testimonios/${id}/`, {
+            const response = await fetch(`http://127.0.0.1:8000/api/testimonios/${id}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

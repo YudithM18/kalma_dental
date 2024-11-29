@@ -7,7 +7,7 @@ import imagen from '../Img/fondo2.jpg'
 
 function FormLogin() {
   // Define estados para manejar los datos del formulario
-  const [username, setUsername] = useState(''); // Estado para almacenar el correo electrónico
+  const [user, setUser] = useState(''); // Estado para almacenar el correo electrónico
   const [pass, setPass] = useState(''); // Estado para almacenar la contraseña
   const [users, setUsers] = useState([]); // Estado para almacenar la lista de usuarios
   const navigate = useNavigate(); // Inicializa el hook de navegación
@@ -36,7 +36,7 @@ function FormLogin() {
   const handleLogin = async() => {
     // Busca el usuario que coincida con el correo y contraseña ingresados
     //const listaUs = users.find(users => users.username === username && users.pass === pass);
-    const listaU = await PostToken(username, pass);
+    const listaU = await PostToken(user, pass);
     console.log(listaU);
     
     if (listaU.access) {
@@ -51,7 +51,7 @@ function FormLogin() {
       navigate("/GeneralAdministration"); // Navega a la página de administración
     } else {
       // Si no se encuentra el usuario
-      if (!username || !pass) {
+      if (!user || !pass) {
         // Si algún campo está vacío, muestra una alerta de error
         Swal.fire({
           title: 'Error',
@@ -79,13 +79,13 @@ function FormLogin() {
       <div className="login-left">
         <h1 className="login-title">Welcome!!</h1> {/* Título del formulario */}
         
-        <label className="Move" htmlFor="username">Username</label>
+        <label className="Move" htmlFor="user">Username</label>
         <input 
           className="input-field" 
-          type="username" 
+          type="text" 
           placeholder="Ingrese su usuario" 
-          value={username} 
-          onChange={(e) => setUsername(e.target.value)} 
+          value={user} 
+          onChange={(e) => setUser(e.target.value)} 
         />
 
         <label className="move" htmlFor="pass">Password</label>

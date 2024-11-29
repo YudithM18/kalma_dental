@@ -25,8 +25,6 @@ function FormUsersAdministration() {
 
 const [users, setUsers] = useState([])
 
-
-
 useEffect(() => {
   const fetchUsers = async () => {
     const data = await getUsers(); 
@@ -59,7 +57,11 @@ function cargafirst_name(event) {
 function cargalast_name(event) {
   setLname(event.target.value)
 }
-function cargaNewUsers() {
+
+
+
+async function cargaNewUsers(e) {
+  e.preventDefault();
   // Validación de contraseñas
   if (password !== confirmPass) {
     // Si las contraseñas no coinciden, puedes mostrar un mensaje de error
@@ -68,7 +70,8 @@ function cargaNewUsers() {
   }
   
   // Aquí iría el código para hacer el POST si las contraseñas coinciden
-  PostUsers(first_name, last_name, username, password, email);
+  await PostUsers(first_name, last_name, username, password, email);
+   
 }
 
 
@@ -101,20 +104,22 @@ async function cargarDelete(id) {
 
 
 const cargaEdicion = async (id) => {
-
+  
   const UsersOriginal = users.find(users => users.id === id);
 
   if (!UsersOriginal) return;
 
 
   const nuevosDatos = {
+    first_name: first_name_edit || UsersOriginal.first_name,  
+    last_name: last_name_edit || UsersOriginal.last_name, 
     username: username_edit || UsersOriginal.username, 
     password: password_edit || UsersOriginal.password,  
     email: email_edit || UsersOriginal.email, 
-    first_name: first_name_edit || UsersOriginal.first_name,  
-    last_name: last_name_edit || UsersOriginal.last_name, 
   };
   
+
+console.log(id, nuevosDatos.first_name, nuevosDatos.last_name, nuevosDatos.username, nuevosDatos.password, nuevosDatos.email);
 
   await updateUsers(id, nuevosDatos.first_name, nuevosDatos.last_name, nuevosDatos.username, nuevosDatos.password, nuevosDatos.email);
   
@@ -132,6 +137,8 @@ const cargaEdicion = async (id) => {
   setEmail('');
   setPassword('');
 }
+
+
 
   return (
     <div>
@@ -171,9 +178,9 @@ const cargaEdicion = async (id) => {
 
         <h1 className='historial'>Registered Users</h1>
         <div >
-        <ul className='ul'>
+        <ul className='ull'>
           {users.map((usuario) => (
-            <li className='li' key={usuario.id}>
+            <li className='lii' key={usuario.id}>
               <br />
               {usuario.first_name} <input onChange={cargafirst_name_edit} type="text"  /> <br />
               {usuario.last_name} <input  className='editInp1' type="text" onChange={cargalast_name_edit} /> <br /> 

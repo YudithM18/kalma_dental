@@ -22,8 +22,25 @@ class UserRegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('username', 'password', 'email', 'first_name', 'last_name', 'role')
+        fields = ['id', 'role', 'password', 'username', 'email', 'first_name', 'last_name']
 
+    def create(self, validated_data):
+        # Extrae la contraseña del validated_data
+       
+        # Extrae el campo adicional 'group' que se usará para el grupo
+        role = validated_data.pop('role')  # Asegúrate de que el nombre sea correcto
+        # Crea el usuario sin guardar la contraseña aún
+        user = User(**validated_data)
+        # Establece la contraseña usando el método set_password
+        user.set_password(validated_data['password'])
+        # Guarda el usuario en la base de datos
+        user.save()
+
+
+
+       
+                    
+        return user
     def create(self, validated_data):
         # Obtener el rol y quitarlo de los datos para no guardar en el modelo User
         role = validated_data.pop('role')
@@ -31,12 +48,11 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         # Verificar si el username o el email ya están en uso
         username = validated_data.get('username')
         email = validated_data.get('email')
-        self.validate_unique_username(username)
-        self.validate_unique_email(email)
-
+        
+        
         # Validar que la contraseña cumpla con los requisitos de seguridad
         password = validated_data.get('password')
-        self.validate_password(password)
+        
         
         # Crear el usuario con la contraseña encriptada
         user = User(**validated_data)
@@ -79,61 +95,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
 
         return instance
 
-    def validate_username(self, value):
-        # Validación de largo mínimo
-        if len(value) <= 2:
-            raise serializers.ValidationError("El nombre de usuario debe tener más de 2 caracteres.")
-        
-        # Validación de que empiece con mayúscula
-        if not value[0].isupper():
-            raise serializers.ValidationError("El nombre de usuario debe empezar con mayúscula.")
-        
-        # Verificar que el username no esté ya registrado
-        self.validate_unique_username(value)
-        
-        return value
-    
-    def validate_email(self, value):
-        # Validación de largo mínimo
-        if len(value) <= 2:
-            raise serializers.ValidationError("El correo electrónico debe tener más de 2 caracteres.")
-        
-        # Verificar que el email no esté ya registrado
-        self.validate_unique_email(value)
-        
-        return value
-
-    def validate_password(self, value):
-        # Validación de largo mínimo
-        if len(value) <= 2:
-            raise serializers.ValidationError("La contraseña debe tener más de 2 caracteres.")
-        
-        # Validación de seguridad de la contraseña
-        if len(value) < 8:
-            raise serializers.ValidationError("La contraseña debe tener al menos 8 caracteres.")
-        
-        if not re.search(r'[A-Z]', value):
-            raise serializers.ValidationError("La contraseña debe contener al menos una letra mayúscula.")
-        
-        if not re.search(r'[a-z]', value):
-            raise serializers.ValidationError("La contraseña debe contener al menos una letra minúscula.")
-        
-        if not re.search(r'[0-9]', value):
-            raise serializers.ValidationError("La contraseña debe contener al menos un número.")
-        
-        return value
-
-    def validate_unique_username(self, username):
-        # Verifica que el username no esté ya registrado.
-        if User.objects.filter(username=username).exists():
-            raise serializers.ValidationError(f"El nombre de usuario '{username}' ya está registrado.")
-
-    def validate_unique_email(self, email):
-        # Verifica que el email no esté ya registrado.
-        if User.objects.filter(email=email).exists():
-            raise serializers.ValidationError(f"El correo electrónico '{email}' ya está registrado.")
-
-        
+  
 
 class testimoniosSerializer(serializers.ModelSerializer):
     class Meta:
