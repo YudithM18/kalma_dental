@@ -141,7 +141,7 @@ function FormAdminServicios() {
         <br />
 
         <h1 className='historial'>Registros</h1>
-        <div >
+        <div className='servicios-conteiner'>
         <ul className='ul'>
           {dataService.map((Servicio) => (
             <li className='li' key={Servicio.id}>

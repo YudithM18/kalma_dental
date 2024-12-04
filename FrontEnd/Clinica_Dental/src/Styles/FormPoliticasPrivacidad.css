@@ -1,0 +1,178 @@
+/* Estilo para el contenedor principal */
+.conteiner {
+    padding: 30px;
+    background: #f0f2f5;
+    min-height: 100vh;
+}
+
+/* Contenedor de la tarjeta */
+.card-1 {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    background: linear-gradient(135deg, #0c3d38, #fffefe);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-1:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Encabezado de la tarjeta */
+.card-header-1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.card-header-1 h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.card-header-1 h2 {
+    font-size: 1.2rem;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    max-width: 90%;
+    margin: 0 auto;
+    transition: color 0.3s ease;
+}
+
+/* Animación de entrada para el texto */
+.card-header-1 h1,
+.card-header-1 h2 {
+    opacity: 0;
+    animation: fadeInUp 1s forwards;
+}
+
+.card-header-1 h1 {
+    animation-delay: 0.3s;
+}
+
+.card-header-1 h2 {
+    animation-delay: 0.5s;
+}
+
+/* Definición de la animación de aparición */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.columna1{
+    display: flex;
+    gap: 25px; /* Espacio entre las cards */
+}
+
+.columna2{
+    display: flex;
+    gap: 25px; /* Espacio entre las cards */
+}
+
+.columna3{
+    display: flex;
+    gap: 25px; /* Espacio entre las cards */
+}
+
+.columna4{
+    display: flex;
+    gap: 25px; /* Espacio entre las cards */
+}
+
+/* Estilo para cada card */
+.card {
+    width: 600px;
+    height: 600px;
+    max-width: 380px; /* Tamaño máximo para cada card */
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Efecto de hover */
+    animation: fadeIn 0.8s ease-in-out; /* Animación de entrada */
+}
+
+/* Animación de entrada para las cards */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilo para los encabezados de las cards */
+.card-header {
+    background-color: #009688;
+    color: white;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilo para el cuerpo de las cards */
+.card-body {
+    padding: 20px;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Efecto de hover para las cards */
+.card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-10px); /* Levanta la card al hacer hover */
+}
+
+/* Efecto hover sobre los encabezados */
+.card-header:hover {
+    background-color: #00796b;
+    cursor: pointer;
+}
+
+/* Estilo para los títulos dentro del cuerpo */
+.card-body h4 {
+    font-size: 1rem;
+    color: #333;
+    margin: 10px 0;
+}
+
+/* Aseguramos que la tipografía sea clara y moderna */
+h1, h2, h3, h4 {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+    .card {
+        width: 100%; /* Las cards ocupan todo el ancho en dispositivos pequeños */
+        margin-bottom: 20px;
+    }
+    .conteiner {
+        padding: 10px;
+    }
+}

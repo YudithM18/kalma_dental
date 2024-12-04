@@ -1,4 +1,4 @@
-async function GetWorkTeam() {
+async function GetSpecialists() {
     try {
         
         const token = JSON.parse(localStorage.getItem('userData'));
@@ -7,7 +7,7 @@ async function GetWorkTeam() {
         throw new Error('Token no encontrado en localStorage');
       }
 
-        const response = await fetch('http://127.0.0.1:8000/api/workteam/', {
+        const response = await fetch('http://127.0.0.1:8000/api/especialistas/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -27,4 +27,4 @@ async function GetWorkTeam() {
     }
 }
 
-export default GetWorkTeam;
+export default GetSpecialists;

@@ -1,4 +1,4 @@
-async function DeleteWorkTeam(id) {
+async function DeleteSpecialists(id) {
     try {
 
         
@@ -8,7 +8,7 @@ async function DeleteWorkTeam(id) {
         throw new Error('Token no encontrado en localStorage');
       }
 
-        const response = await fetch(`http://127.0.0.1:8000/api/workteam/${id}/`, {
+        const response = await fetch(`http://127.0.0.1:8000/api/especialistas/${id}/`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -27,4 +27,4 @@ async function DeleteWorkTeam(id) {
     }
 }
 
-export default DeleteWorkTeam ;
+export default DeleteSpecialists ;

@@ -2,21 +2,20 @@ from rest_framework import generics
 
 #IMPORTS MODELS
 from .models import testimonios
-from .models import recommendations  
+from .models import recommendations 
 from .models import video_blog
 from .models import speciality
-from .models import institutions
 from .models import qualification
 from .models import specialists
 from .models import services
 
+
 #IMPORTS SELIALIAZERS
 from .serializers import UserRegisterSerializer
 from .serializers import testimoniosSerializer
-from .serializers import recommendationsSerializer 
+from .serializers import recommendationsSerializer
 from .serializers import video_blogSerializer
 from .serializers import specialitySerializer
-from .serializers import institutionsSerializer
 from .serializers import qualificationSerializer
 from .serializers import specialistsSerializer
 from .serializers import servicesSerializer
@@ -47,7 +46,6 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = UserRegisterSerializer
     
                 ################################
-
 class testimoniosListCreate(generics.ListCreateAPIView):
     queryset = testimonios.objects.all()
     serializer_class = testimoniosSerializer 
@@ -85,14 +83,6 @@ class specialityDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = specialitySerializer
                 ################################
 
-class institutionsListCreate(generics.ListCreateAPIView):
-    queryset = institutions.objects.all()
-    serializer_class = institutionsSerializer
-    
-class institutionsDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = institutions.objects.all()
-    serializer_class = institutionsSerializer
-                ################################
                
 class qualificationListCreate(generics.ListCreateAPIView):
     queryset = qualification.objects.all()

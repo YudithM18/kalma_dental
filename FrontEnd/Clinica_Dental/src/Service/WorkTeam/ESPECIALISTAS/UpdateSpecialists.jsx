@@ -1,4 +1,4 @@
-async function UpdateServicios(Image, fullname, Speciality, Qualification, id) {
+async function UpdateSpecialists(Image, fullname, Speciality, Qualification, id) {
     try {
      
         const token = JSON.parse(localStorage.getItem('userData'));
@@ -14,7 +14,7 @@ async function UpdateServicios(Image, fullname, Speciality, Qualification, id) {
             Qualification
         
         };
-        const response = await fetch(`http://127.0.0.1:8000/api/workteam/${id}/`, {
+        const response = await fetch(`http://127.0.0.1:8000/api/especialistas/${id}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -31,4 +31,4 @@ async function UpdateServicios(Image, fullname, Speciality, Qualification, id) {
     }
 }
 
-export default UpdateWorkTeam
+export default UpdateSpecialists

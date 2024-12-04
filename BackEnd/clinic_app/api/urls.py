@@ -3,7 +3,6 @@ from . import views
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
-    
     path ('token/', TokenObtainPairView.as_view(), name = 'token_obtain_pair'),
     path ('token/refresh/', TokenRefreshView.as_view(), name= 'token_resfresh'),
     
@@ -12,7 +11,7 @@ urlpatterns = [
     
     path('testimonios/', views.testimoniosListCreate.as_view(), name = 'testimonios_list'),
     path('testimonios/<int:pk>/', views.testimoniosDetail.as_view(), name = 'testimonios_detail'),
- 
+    
     path('consejos/', views.recommendationsListCreate.as_view(), name = 'consejos_list'),
     path('consejos/<int:pk>/', views.recommendationsDetail.as_view(), name = 'consejos_detail'),
     
@@ -21,10 +20,7 @@ urlpatterns = [
     
     path('especialidad/', views.specialityListCreate.as_view(), name = 'especialidad_list'),
     path('especialidad/<int:pk>/', views.specialityDetail.as_view(), name = 'especialidad_detail'),
-    
-    path('institucion/', views.institutionsListCreate.as_view(), name = 'institucion_list'),
-    path('institucion/<int:pk>/', views.institutionsDetail.as_view(), name = 'institucion_detail'),
-    
+
     path ('titulacion/', views.qualificationListCreate.as_view(), name = 'titulacion_list'),
     path('titulacion/<int:pk>/', views.qualificationDetail.as_view(), name = 'titulacion_detail'),
     
@@ -33,5 +29,6 @@ urlpatterns = [
     
     path ('servicios/', views.servicesListCreate.as_view(), name = 'servicios_list'),
     path('servicios/<int:pk>/', views.servicesDetail.as_view(), name = 'servicios'),
-
 ]
+
+

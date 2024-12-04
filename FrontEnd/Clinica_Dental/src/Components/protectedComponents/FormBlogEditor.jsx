@@ -130,8 +130,6 @@ const cargaEdicionTips = async (id) => {
     tips_description: tipsdescription_edit || ConsejosOriginal.tips_description, 
   };
 
-
-  console.log(id, nuevosDatos.recommendations_url, nuevosDatos.tips_title, nuevosDatos.tips_description);
   
 // Actualizar el consejo en la base de datos
   await UpdateTips   (id, nuevosDatos.recommendations_url, nuevosDatos.tips_title, nuevosDatos.tips_description);

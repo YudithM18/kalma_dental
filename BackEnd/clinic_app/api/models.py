@@ -31,19 +31,12 @@ class speciality(models.Model):
     def __str__(self):
         return self.speciality_name
     
-
-    
-class institutions(models.Model):
-    institution = models.CharField(max_length=150)
-    country = models.CharField(max_length=150) 
-    province = models.CharField(max_length=150)
     
 
 class qualification(models.Model):
     qualification_name = models.CharField(max_length=150)
-    id_institution = models.ForeignKey(institutions, on_delete=models.CASCADE, related_name='qualification')
     
-   
+
 class specialists(models.Model):
     specialists_url = models.TextField()
     full_name = models.CharField(max_length=100)
@@ -55,7 +48,6 @@ class specialists(models.Model):
         return self.full_name
     
   
-
 class services(models.Model):
     services_url = models.TextField()
     services_name = models.CharField(max_length=150)
@@ -64,4 +56,4 @@ class services(models.Model):
     
     def __str__(self):
         return self.services_name
-  
+

@@ -4,6 +4,8 @@ import PostTestimonios from '../../Service/testimonios/PostTestimonios'; // Impo
 import DeleteTestimonios from '../../Service/testimonios/DeleteTestimonios';
 import UpdateTestimonios from '../../Service/testimonios/UpdateTestimonios';
 import '../../Styles/FormAdminTestimonios.css'
+import Swal from 'sweetalert2';
+
 
 function FormAdminTestimonios() {
 
@@ -43,11 +45,46 @@ function FormAdminTestimonios() {
     setDate(event.target.value); // Actualiza la fecha
   }
 
-  const cargar = () => {
-    PostTestimonios(fullname, date, testimony); // Llama a la función para agregar un testimonio
-    console.log("se logro!!!");
-    
+  const cargar = async () => {
+    // Validar que los campos no estén vacíos
+    if (!fullname || !date || !testimony) {
+      // Si algún campo está vacío, muestra un mensaje de error
+      Swal.fire({
+        title: 'Error',
+        text: 'Por favor, complete todos los campos antes de enviar.',
+        icon: 'error',
+        confirmButtonText: 'Aceptar',
+      });
+      return;  // Detiene la ejecución de la función
+    }
+  
+    try {
+      // Llama a PostTestimonios y espera la respuesta
+      await PostTestimonios(fullname, date, testimony);
+      
+      // Muestra la alerta de éxito si todo está bien
+      Swal.fire({
+        title: '¡Testimonio agregado!',
+        text: 'El testimonio se ha agregado correctamente.',
+        icon: 'success',
+        confirmButtonText: 'Aceptar',
+      });
+  
+      // Limpiar los campos
+      setName('');
+      setDate('');
+      setTestimonials('');
+    } catch (error) {
+      // Si hay un error, muestra la alerta de error
+      Swal.fire({
+        title: 'Error',
+        text: 'Hubo un problema al agregar el testimonio. Intenta nuevamente.',
+        icon: 'error',
+        confirmButtonText: 'Aceptar',
+      });
+    }
   };
+  
 
   function cargaNameEdit(event) {
     setNamedit(event.target.value); 
@@ -62,45 +99,67 @@ function FormAdminTestimonios() {
   }
 
   async function cargarDelete(id) {
-    await DeleteTestimonios(id)
-    const valorEncontrar = dataTestimonials.filter(dataTestimonials => dataTestimonials.id !== id);
-    setData([...valorEncontrar])
+    try {
+      await DeleteTestimonios(id);
+      const valorEncontrar = dataTestimonials.filter(data => data.id !== id);
+      setData(valorEncontrar);
+      
+      Swal.fire({
+        title: '¡Eliminado!',
+        text: 'El testimonio ha sido eliminado correctamente.',
+        icon: 'success',
+        confirmButtonText: 'Aceptar',
+      });
+    } catch (error) {
+      Swal.fire({
+        title: 'Error',
+        text: 'Hubo un problema al eliminar el testimonio. Intenta nuevamente.',
+        icon: 'error',
+        confirmButtonText: 'Aceptar',
+      });
+    }
   }
 
 
   const cargaEdicion = async (id) => {
-
-    const testimonialsOriginal = dataTestimonials.find(dataTestimonials => dataTestimonials.id === id);
-
+    const testimonialsOriginal = dataTestimonials.find(testimonio => testimonio.id === id);
     if (!testimonialsOriginal) return;
 
-
     const nuevosDatos = {
-      fullname: namedit || testimonialsOriginal.fullname, 
-      date: datedit || testimonialsOriginal.date,  
-      testimony: testimoniodit || testimonialsOriginal.testimony, 
+      fullname: namedit || testimonialsOriginal.fullname,
+      date: datedit || testimonialsOriginal.date,
+      testimony: testimoniodit || testimonialsOriginal.testimony,
     };
 
+    try {
+      await UpdateTestimonios(id, nuevosDatos.fullname, nuevosDatos.date, nuevosDatos.testimony);
+      const testimoniosactualizados = dataTestimonials.map(testimonio => 
+        testimonio.id === id ? { ...testimonio, ...nuevosDatos } : testimonio
+      );
+      setData(testimoniosactualizados);
 
-    console.log(id, nuevosDatos.fullname, nuevosDatos.date, nuevosDatos.testimony);
-    
+      Swal.fire({
+        title: '¡Actualizado!',
+        text: 'El testimonio se ha actualizado correctamente.',
+        icon: 'success',
+        confirmButtonText: 'Aceptar',
+      });
 
-    await UpdateTestimonios(id, nuevosDatos.fullname, nuevosDatos.date, nuevosDatos.testimony);
-    
+      setNamedit('');
+      setDatedit('');
+      setTestimoniodit('');
+    } catch (error) {
+      Swal.fire({
+        title: 'Error',
+        text: 'Hubo un problema al actualizar el testimonio. Intenta nuevamente.',
+        icon: 'error',
+        confirmButtonText: 'Aceptar',
+      });
+    }
+  };
 
-    const testimoniosactualizados = dataTestimonials.map(dataTestimonials => 
-      dataTestimonials.id === id ? { ...dataTestimonials, ...nuevosDatos } : dataTestimonials
-    );
-
-    setData(testimoniosactualizados);
-    
-    // Resetea los campos de entrada
-    setName('');
-    setDate('');
-    setTestimonials('');
-  }
-
-  const colors = ['#B28292', '#C98989', '#EE828C']; // Lista de colores
+  const colors = ['#B28292', '#C98989', '#EE828C']; // Lista de colores     
+  
   return (
     <div>
       <div className='Testimonios'>
