@@ -17,6 +17,7 @@ import TerminosCondiciones from "../Pages/TerminosCondiciones";
 import Donaciones from "../Pages/Donaciones";
 import PaymentAmount from "../Pages/PaymentAmount";
 import PoliticasPrivacidad from "../Pages/PoliticasPrivacidad";
+import AdminworkTeam from "../Pages/AdminworkTeam";
 
 
 const Routing = () => {
@@ -36,6 +37,7 @@ const Routing = () => {
             <Route path= '/PoliticasPrivacidad' element={<PoliticasPrivacidad />} />
              /*Rutas protegidas*/
             <Route path= '/BlogEditor' element={<ProtectedRoute><BlogEditor /></ProtectedRoute>} />
+            <Route path= '/AdminWorkTeam' element={<ProtectedRoute><AdminworkTeam /></ProtectedRoute>} />
             <Route path= '/GeneralAdministration' element={ <ProtectedRoute><GeneralAdministration /></ProtectedRoute> } />
             <Route path= '/AdminServicios' element={ <ProtectedRoute><AdminServicios /> </ProtectedRoute> } />
             <Route path= '/AdminTestimonios' element={ <ProtectedRoute> <AdminTestimonios /></ProtectedRoute> } />

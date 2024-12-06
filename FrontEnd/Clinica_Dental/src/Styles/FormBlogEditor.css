@@ -80,3 +80,62 @@
     font-size: 1rem;
     transition: border-color 0.3s, box-shadow 0.3s; /* Añadir transición para la sombra */
 }
+
+.conteiner-datos{
+    background-color: #4a8e58e7;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 60px;  /* Reducir el padding para hacer el contenedor más pequeño */
+    width: 100%;
+    max-width: 700px;  /* Reducir el ancho máximo del contenedor */
+    text-align: center;
+    animation: fadeIn 0.6s ease-in-out;
+    margin-top: 150px;
+    margin-left: auto;
+    margin-right: auto; /* Centrar el contenedor */
+}
+
+/* Color de los títulos de los consejos */
+.li {
+  font-family: 'Verdana', sans-serif;
+  color: #333; /* Cambiar el color de la letra del título y contenido */
+}
+
+/* Color de la imagen de los consejos (puedes agregar bordes si quieres resaltar las imágenes) */
+.imagenC {
+  width: 300px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border: 2px solid #ddd; /* Borde sutil para la imagen */
+}
+
+/* Cambiar el color de los campos de texto */
+.editInp1, .editInp {
+  color: #333; /* Color de texto dentro de los campos de entrada */
+  background-color: #fff; /* Color de fondo blanco para los inputs */
+}
+
+/* Botón de acción (actualizar y eliminar) */
+.botonHis {
+  background-color: #4CAF50;
+  color: white; /* Color de texto blanco */
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.botonHis:hover {
+  background-color: #45a049;
+}
+
+/* Color de los botones de acción de eliminar y actualizar */
+.botonHis {
+  color: #fff; /* Texto blanco en los botones */
+  background-color: #45a049;
+}
+

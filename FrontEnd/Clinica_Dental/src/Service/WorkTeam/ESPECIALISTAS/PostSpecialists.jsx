@@ -22,7 +22,7 @@ export const uploadImageToS3 = async (file) => {
   return s3.upload(params).promise();
 };
 
-const PostSpecialists = async (newSpecialists) => {
+const PostSpecialists = async (newSpecialists,IdQualification,IdSpeciality) => {
   let imagenUrl = null;
 
   console.log(newSpecialists.foto);
@@ -55,8 +55,9 @@ const PostSpecialists = async (newSpecialists) => {
   const newSpecPost = {
     specialists_url: imagenUrl,
     full_name: newSpecialists.Fullname,
-    id_speciality_id: 1,
-    id_qualification_id: 1,
+    id_qualification: IdQualification,
+    id_speciality: IdSpeciality,
+   
   };
 
 

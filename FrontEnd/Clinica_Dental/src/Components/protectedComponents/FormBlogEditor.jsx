@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import '../../Styles/FormBlogEditor.css'
+import Swal from 'sweetalert2';
 
 import PostTips from '../../Service/Consejos/PostTips'
 import GetTips from '../../Service/Consejos/GetTips'
@@ -68,31 +69,26 @@ function FormBlogEditor() {
 
  // Función para agregar un nuevo consejo
  const cargaNewTip = async (event) => {
-  event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+  event.preventDefault();
 
   // Verificar que todos los campos estén llenos
-  if (recommendations_url  === '' || tips_title === '' || tips_description  === '') {
-    console.log('Por favor, ingrese todos los datos');
+  if (recommendations_url === '' || tips_title === '' || tips_description === '') {
+    Swal.fire('¡Error!', 'Por favor, ingrese todos los datos', 'error');
     return;
   }
 
-  // Crear el objeto JSON con los datos
   const newTip = {
-    image: recommendations_url ,  // URL de la imagen (puedes subirla si es necesario)
+    image: recommendations_url,
     title: tips_title,
     content: tips_description
   };
 
+  const savedTip = await PostTips.PostTips(newTip);
 
-  
-
-console.log('Nuevo consejo:', newTip);
-
-
-const savedTip = await PostTips.PostTips(newTip);
-
-  // Agregar el nuevo consejo al estado
   setConsejos([...consejos, savedTip]);
+
+  // Mostrar alerta de éxito
+  Swal.fire('¡Éxito!', 'El consejo ha sido agregado correctamente.', 'success');
 };
 
 
@@ -111,41 +107,83 @@ function cargaImageEdit(event) {
 }
 
 async function cargarDeleteTips(id) {
-  await DeleteTips(id)
-  const valorEncontrarC = consejos.filter(consejos => consejos.id !== id);
-  setConsejos([...valorEncontrarC])
+  const result = await Swal.fire({
+    title: '¿Estás seguro?',
+    text: 'Este cambio no se puede deshacer.',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Sí, eliminar',
+    cancelButtonText: 'Cancelar'
+  });
+
+  if (result.isConfirmed) {
+    await DeleteTips(id);
+    const valorEncontrarC = consejos.filter(consejos => consejos.id !== id);
+    setConsejos([...valorEncontrarC]);
+
+    // Mostrar alerta de éxito
+    Swal.fire('¡Eliminado!', 'El consejo ha sido eliminado correctamente.', 'success');
+  }
 }
 
 
+
 const cargaEdicionTips = async (id) => {
-
+  // Encontrar el consejo original
   const ConsejosOriginal = consejos.find(consejos => consejos.id === id);
+  if (!ConsejosOriginal) {
+    console.log('Consejo no encontrado');
+    return; // Si no se encuentra el consejo, salimos de la función
+  }
 
-  if (!ConsejosOriginal) return;
+  // Comprobamos si los valores para editar están definidos
+  console.log('Datos a editar:', {
+    recommendations_url_edit,
+    tips_title_edit,
+    tipsdescription_edit,
+  });
 
-
+  // Nuevos datos para actualizar
   const nuevosDatos = {
     recommendations_url: recommendations_url_edit || ConsejosOriginal.recommendations_url, 
     tips_title: tips_title_edit || ConsejosOriginal.tips_title,  
     tips_description: tipsdescription_edit || ConsejosOriginal.tips_description, 
   };
 
-  
-// Actualizar el consejo en la base de datos
-  await UpdateTips   (id, nuevosDatos.recommendations_url, nuevosDatos.tips_title, nuevosDatos.tips_description);
-  
+  // Mostrar los nuevos datos que se enviarán
+  console.log('Nuevos datos:', nuevosDatos);
 
-  const ConsejosActualizados = consejos.map(consejos => 
-    consejos.id === id ? { ...consejos, ...nuevosDatos } : consejos
-  );
+  // Llamada a la API o función para actualizar
+  try {
+    const result = await UpdateTips(id, nuevosDatos.recommendations_url, nuevosDatos.tips_title, nuevosDatos.tips_description);
+    console.log('Resultado de la actualización:', result);
+    
+    // Comprobamos si la actualización fue exitosa
+    if (result && result.success) {
+      // Actualizar el estado con los nuevos datos
+      const ConsejosActualizados = consejos.map(consejos =>
+        consejos.id === id ? { ...consejos, ...nuevosDatos } : consejos
+      );
+      setConsejos(ConsejosActualizados);
 
-  setConsejos(ConsejosActualizados);
-  
-  // Resetea los campos de entrada
+      // Mostrar alerta de éxito
+      Swal.fire('¡Éxito!', 'El consejo ha sido actualizado correctamente.', 'success');
+    } else {
+      // Si no es exitoso, mostrar un mensaje de error
+      Swal.fire('Error', 'Hubo un problema al actualizar el consejo.', 'error');
+    }
+  } catch (error) {
+    // En caso de error, mostrar el error
+    console.error('Error al actualizar los datos:', error);
+    Swal.fire('Error', 'Hubo un problema al actualizar el consejo.', 'error');
+  }
+
+  // Limpiar los campos después de actualizar
   setTitle('');
   setTips('');
   setImage('');
-}
+};
+
 
 
 
@@ -165,29 +203,27 @@ function cargaContenidoV(event) {
 
  // Función para agregar un nuevo consejo
  const cargarNewContent = async (event) => {
-  event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+  event.preventDefault();
 
   // Verificar que todos los campos estén llenos
   if (video_url === '' || title === '' || content === '') {
-    console.log('Por favor, ingrese todos los datos');
+    Swal.fire('¡Error!', 'Por favor, ingrese todos los datos', 'error');
     return;
   }
 
-  // Crear el objeto JSON con los datos
   const newContent = {
-    video_url: video_url,  // URL de la imagen (puedes subirla si es necesario)
+    video_url: video_url,
     title: title,
     content: content
   };
 
-  console.log('Nuevo contenido:', newContent);
-
-  // Enviar los datos a tu API o procesarlos
-  const savedContent = await PostVideoBlog(newContent); // Asumiendo que PostVideoBlog maneja el objeto JSON
-
-  // Agregar el nuevo consejo al estado
+  const savedContent = await PostVideoBlog(newContent);
   setVideoBlog([...videoBlog, savedContent]);
+
+  // Mostrar alerta de éxito
+  Swal.fire('¡Éxito!', 'El contenido de video ha sido agregado correctamente.', 'success');
 };
+
 
 
 function cargaVideoEdit(event) {
@@ -203,43 +239,52 @@ function cargaContentEdit(event) {
 }
 
 async function cargarDeleteV(id) {
-  await DeleteVideoBlog(id)
-  const valorEncontrar = videoBlog.filter(videoBlog => videoBlog.id !== id);
-  setVideoBlog([...valorEncontrar])
+  const result = await Swal.fire({
+    title: '¿Estás seguro?',
+    text: 'Este cambio no se puede deshacer.',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Sí, eliminar',
+    cancelButtonText: 'Cancelar'
+  });
+
+  if (result.isConfirmed) {
+    await DeleteVideoBlog(id);
+    const valorEncontrar = videoBlog.filter(videoBlog => videoBlog.id !== id);
+    setVideoBlog([...valorEncontrar]);
+
+    // Mostrar alerta de éxito
+    Swal.fire('¡Eliminado!', 'El contenido de video ha sido eliminado correctamente.', 'success');
+  }
 }
+
 
 
 const cargaEdicionV = async (id) => {
-
   const VideoBlogOriginal = videoBlog.find(videoBlog => videoBlog.id === id);
-
   if (!VideoBlogOriginal) return;
 
-
   const nuevosDatosVB = {
-    video_url: video_url_edit || videoBlog.video_url, 
-    title: title_edit || videoBlog.title,  
-    content: content_edit || videoBlog.content, 
+    video_url: video_url_edit || VideoBlogOriginal.video_url,
+    title: title_edit || VideoBlogOriginal.title,
+    content: content_edit || VideoBlogOriginal.content,
   };
 
-
-  console.log(id, nuevosDatosVB.video_url, nuevosDatosVB.title, nuevosDatosVB.content);
-  
-
   await UpdateVideoBlog(id, nuevosDatosVB.video_url, nuevosDatosVB.title, nuevosDatosVB.content);
-  
 
-  const VideoBlogActualizado = videoBlog.map(videoBlog => 
+  const VideoBlogActualizado = videoBlog.map(videoBlog =>
     videoBlog.id === id ? { ...videoBlog, ...nuevosDatosVB } : videoBlog
   );
-
   setVideoBlog(VideoBlogActualizado);
-  
-  // Resetea los campos de entrada
+
+  // Mostrar alerta de éxito
+  Swal.fire('¡Éxito!', 'El contenido de video ha sido actualizado correctamente.', 'success');
+
   setVideo('');
   setTitulo('');
   setDescription('');
-}
+};
+
 
 
   return (
@@ -285,10 +330,11 @@ const cargaEdicionV = async (id) => {
         <br />
 
         <h1 className='historial'>Registros de Tips</h1>
-        <div >
+        <div className='conteiner-datos'>
         <ul className='ul'>
           {consejos.map((consejitos) => (
             <li className='li' key={consejitos.id}>
+              <h2>{consejitos.tips_title}</h2>
               <br />
               <img src={consejitos.recommendations_url} alt="Consejo"className='imagenC'/>
               <input onChange={cargaImageEdit} type="file"  /> <br />

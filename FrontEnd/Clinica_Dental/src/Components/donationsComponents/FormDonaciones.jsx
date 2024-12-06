@@ -16,8 +16,8 @@ function Donaciones() {
       </div>
       <br />
       <br />
-      <div className='card'>
-        <div className='card-content'>
+      <div className='card-content'>
+        <div className='card-content-donacion'>
           <h4>En Kalma Dental, nos enorgullece ser parte de la comunidad que apoya causas tan 
             valiosas como Teletón.
             Sabemos que el bienestar de los niños es lo más importante, y por eso hemos decidido sumarnos a esta noble causa. Con tu generosidad, estamos 

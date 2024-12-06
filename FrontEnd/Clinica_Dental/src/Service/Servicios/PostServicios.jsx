@@ -26,7 +26,7 @@ export const uploadImageToS3 = async (file) => {
 
 export const PostServices = async (newServices) => {
 
-
+  let imagenUrl = '';
   
   if (newServices.image) {
     try {
