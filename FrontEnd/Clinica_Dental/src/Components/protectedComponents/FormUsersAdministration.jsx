@@ -177,23 +177,72 @@ console.log(id, nuevosDatos.first_name, nuevosDatos.last_name, nuevosDatos.usern
         <br />
 
         <h1 className='historial'>Registered Users</h1>
-        <div >
-        <ul className='ull'>
-          {users.map((usuario) => (
-            <li className='lii' key={usuario.id}>
-              <br />
-              {usuario.first_name} <input onChange={cargafirst_name_edit} type="text"  /> <br />
-              {usuario.last_name} <input  className='editInp1' type="text" onChange={cargalast_name_edit} /> <br /> 
-              {usuario.username} <input className='editInp' type="text" onChange={cargaUsername_edit} /> <br />
-              {usuario.email} <input className='editInp' type="email" onChange={cargaEmail_Edit} /> <br />
-              {usuario.password} <input className='editInp' type="password" onChange={cargaPass_edit } />
-              <br />
-              <button className='botonHis' onClick={e=>cargaEdicion(usuario.id)}>Actualizar</button>
-              <button className='botonHis' onClick={e => cargarDelete(usuario.id)}>Eliminar</button>
-              </li>
-          ))}
-        </ul>
+        <div className="container">
+  <ul className="ull">
+    {users.map((usuario) => (
+      <li className="lii" key={usuario.id}>
+        {/* Columna izquierda: Datos del Usuario */}
+        <div className="user-info">
+          <p>{usuario.first_name}</p>
+          <p>{usuario.last_name}</p>
+          <p>{usuario.username}</p>
+          <p>{usuario.email}</p>
+          <p>{usuario.password}</p>
         </div>
+
+        {/* Columna derecha: Inputs de Edición y Botones */}
+        <div className="edit-section">
+          <input
+            className="editInput"
+            type="text"
+            onChange={cargafirst_name_edit}
+            placeholder="Editar Nombre"
+          />
+          <input
+            className="editInput"
+            type="text"
+            onChange={cargalast_name_edit}
+            placeholder="Editar Apellido"
+          />
+          <input
+            className="editInput"
+            type="text"
+            onChange={cargaUsername_edit}
+            placeholder="Editar Username"
+          />
+          <input
+            className="editInput"
+            type="email"
+            onChange={cargaEmail_Edit}
+            placeholder="Editar Email"
+          />
+          <input
+            className="editInput"
+            type="password"
+            onChange={cargaPass_edit}
+            placeholder="Editar Contraseña"
+          />
+
+          <div className="buttons">
+            <button
+              className="botonHisto"
+              onClick={(e) => cargaEdicion(usuario.id)}
+            >
+              Actualizar
+            </button>
+            <button
+              className="botonHisto"
+              onClick={(e) => cargarDelete(usuario.id)}
+            >
+              Eliminar
+            </button>
+          </div>
+        </div>
+      </li>
+    ))}
+  </ul>
+</div>
+
 
     </div>
   )

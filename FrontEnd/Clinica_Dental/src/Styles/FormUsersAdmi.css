@@ -61,90 +61,120 @@
     text-transform: uppercase;
   }
   
- /* Estilo para la lista de usuarios */
+/* Contenedor principal de los usuarios */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  font-family: 'Averia Serif Libre';
+  font-size: 120%;
+  color: black;
+  font-weight: bold;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Estilo de la lista de usuarios */
 .ull {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+  list-style-type: none;
+  padding: 0;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Cada elemento de la lista de usuarios */
+.lii {
+  display: flex; /* Usamos flexbox para dividir en columnas */
+  justify-content: space-between; /* Separamos las columnas */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #e0dedd;
+  color: black;
+}
+
+/* Columna izquierda: Datos del Usuario */
+.user-info {
+  width: 40%; /* Ocupa el 40% del ancho */
+  padding: 10px;
+  background-color: #A99CA3; /* Fondo gris oscuro */
+  color: black;
+  border-radius: 8px;
+  margin-right: 20px;
+}
+
+.user-info p {
+  font-size: 1.2rem; /* Tamaño de fuente más grande (aproximadamente tamaño de h4) */
+  font-family: 'Arial', sans-serif; /* Tipo de fuente (puedes cambiarla a la que prefieras) */
+  font-weight: bold; /* Enfatiza el texto en negrita si lo deseas */
+  color: #333; /* Color del texto (puedes cambiarlo a cualquier color que desees) */
+  margin-bottom: 10px; /* Espacio entre los elementos de los datos */
+  margin-top: 30px
+}
+
+
+/* Columna derecha: Inputs de Edición y Botones */
+.edit-section {
+  width: 50%; /* Ocupa el 50% del ancho */
+  padding: 10px;
+  background-color: #F9F9F9; /* Fondo gris claro */
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column; /* Alinea los inputs y botones verticalmente */
+  gap: 10px;
+}
+
+/* Estilo de los inputs */
+.editInput {
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Botones */
+.botonHisto {
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 10px;  /* Espacio entre los botones */
+}
+
+.botonHisto {
+  background-color: #A99CA3;
+  color: white;
+  border: none;
+}
+
+.botonHisto:hover {
+  background-color: #FD91CB;
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+  .container {
+    align-items: center;
   }
-  
-  /* Estilo para cada usuario */
-  .lii {
-    background: linear-gradient(135deg, #6c5ce7, #00b894); /* Gradiente vibrante */
-    color: #fff; /* Texto blanco */
-    width: 550px;
-    padding: 20px;
-    margin: 15px 0;
-    margin-left: 330px;
-    border-radius: 15px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease-in-out;
+
+  .user-info, .edit-section {
+    width: 100%;
+    margin-bottom: 10px;
   }
-  
-  .lii:hover {
-    background: linear-gradient(135deg, #00b894, #6c5ce7); /* Efecto hover con gradiente inverso */
-    transform: translateY(-5px); /* Le da un pequeño levantamiento */
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+
+  .user-info {
+    margin-right: 0;
   }
-  
-  /* Estilo para los campos de entrada dentro de cada usuario */
-  .lii input {
-    width: 65%; /* Ancho ajustado */
-    padding: 12px 18px;
-    margin: 10px 0;
-    border: 2px solid #ffffff; /* Borde blanco */
-    border-radius: 8px;
-    font-size: 1em;
-    background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente */
-    color: #fff; /* Texto blanco */
-    transition: border 0.3s, background-color 0.3s;
+
+  .editInput {
+    font-size: 14px;
   }
-  
-  .lii input:focus {
-    border-color: #f39c12; /* Color amarillo dorado al hacer foco */
-    background-color: rgba(255, 255, 255, 0.4); /* Fondo más opaco */
-    outline: none; /* Elimina el borde predeterminado */
-  }
-  
-  /* Estilo para los botones */
+
   .botonHis {
-    padding: 12px 20px;
-    border-radius: 10px;
-    border: none;
-    color: #fff;
-    font-size: 1.1em;
-    cursor: pointer;
-    margin: 10px 5px;
-    transition: all 0.3s ease;
-    display: inline-block;
-    text-align: center;
+    font-size: 14px;
   }
-  
-  .botonHis:first-child {
-    background-color: #f39c12; /* Amarillo vibrante */
-  }
-  
-  .botonHis:first-child:hover {
-    background-color: #f1c40f; /* Amarillo más brillante */
-    transform: translateY(-3px); /* Efecto de levantamiento */
-  }
-  
-  .botonHis:last-child {
-    background-color: #e74c3c; /* Rojo brillante */
-  }
-  
-  .botonHis:last-child:hover {
-    background-color: #c0392b; /* Rojo más oscuro */
-    transform: translateY(-3px); /* Efecto de levantamiento */
-  }
-  
-  /* Diseño adicional para el salto de línea entre elementos */
-  .lii br {
-    margin-bottom: 15px; /* Más espacio entre elementos */
-  }
-  
-  /* Estilo para los campos de entrada que están vacíos */
-  .lii input:placeholder-shown {
-    color: #ccc; /* Coloca un color gris claro en el placeholder */
-  }
-  
+}

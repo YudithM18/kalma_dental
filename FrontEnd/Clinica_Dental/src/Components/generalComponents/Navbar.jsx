@@ -34,7 +34,7 @@ const Navbar = () => {
             <Link to="/TerminosCondiciones" className="navbar-link">Terms & Conditions</Link>
           </li>
           <li className="navbar-item">
-            <Link to="'/PoliticasPrivacidad'" className="navbar-link">Políticas de Privacidad</Link>
+            <Link to="/PoliticasPrivacidad" className="navbar-link">Políticas de Privacidad</Link>
           </li>
         </ul>
       </div>

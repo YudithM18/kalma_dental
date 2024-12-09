@@ -1,100 +1,129 @@
-/* Estilo general del carrusel */
+/* Estilos para el carrusel de imágenes */
 .carousel {
   position: relative;
   width: 100%;
-  max-width: 1200px; /* Reducir el tamaño máximo del carrusel */
-  height: 530px;  /* Ajustar la altura para que no ocupe toda la pantalla */
-  margin: 20px auto; /* Centrar el carrusel en la página */
   overflow: hidden;
-  border-radius: 20px;  /* Bordes redondeados */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);  /* Sombra más pronunciada para darle profundidad */
-  background: #fff;  /* Fondo blanco para que destaque */
+  margin-top: 50px;
+  border-radius: 10px;  /* Bordes redondeados */
 }
 
-/* Contenedor de las imágenes */
 .carousel-slides {
   display: flex;
-  transition: transform 0.5s ease-in-out;  /* Animación de desplazamiento suave */
-  position: relative;
-  width: 100%;
+  transition: transform 0.5s ease-in-out;
 }
 
-/* Imagen de cada slide */
+.carousel-image-container {
+  min-width: 100%;
+  max-width: 100%;
+}
+
 .carousel-image {
   width: 100%;
-  height: 100%;
-  object-fit: cover;  /* Las imágenes se ajustan sin distorsionarse */
-  border-radius: 20px;
+  height: auto;
+  object-fit: cover; /* Asegura que las imágenes no se deformen */
 }
 
-/* Botones de navegación (anterior y siguiente) */
 .carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: #FD91CB;  /* Color calido, puedes cambiarlo por el que prefieras */
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
-  font-size: 40px;
-  padding: 15px;
+  font-size: 2rem;
   cursor: pointer;
+  padding: 10px;
   z-index: 10;
-  border-radius: 50%;
-  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Sombra llamativa para dar profundidad */
 }
 
-/* Cambiar el color y aumentar el tamaño de las flechas al pasar el mouse */
-.carousel-btn:hover {
-  background-color: #FD91CB;  /* Color de hover (rosado) */
-  transform: scale(1.2);  /* Aumentar el tamaño al pasar el mouse */
-  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.5); /* Sombra más fuerte al pasar el ratón */
-}
-
-/* Botón anterior (izquierda) */
 .carousel-btn.prev {
-  left: 20px;
+  left: 10px;
 }
 
-/* Botón siguiente (derecha) */
 .carousel-btn.next {
-  right: 20px;
+  right: 10px;
 }
 
-/* Agregar un efecto de fondo difuso cuando se mueve entre slides */
-.carousel-slides .carousel-image {
-  opacity: 0;
-  animation: fadeIn 0.8s ease forwards;
+/* Estilos para el carrusel de testimonios */
+.testimonial-carousel {
+  position: relative;
+  width: 80%;  /* Hacemos el carrusel más pequeño, 80% del contenedor padre */
+  max-width: 700px;  /* Ancho máximo para que no se estire demasiado */
+  height: 200px;  /* Reducimos la altura */
+  overflow: hidden;
+  border-radius: 10px;  /* Bordes redondeados */
+  background-color: #efbbff;  /* Fondo oscuro atractivo */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);  /* Sombra sutil */
+  margin: 0 auto;  /* Centrado en el contenedor */
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.9);  /* Agregar un pequeño efecto de escalado */
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+.testimonial-slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  height: 160px;
+  margin-top: 20px;
 }
 
-/* Estilos responsivos para pantallas pequeñas */
-@media (max-width: 768px) {
-  .carousel {
-    max-width: 100%;  /* Hacer que el carrusel ocupe todo el ancho disponible en pantallas pequeñas */
-    margin: 10px;
-    height: 300px; /* Reducir la altura en pantallas pequeñas */
-  }
-
-  .carousel-btn {
-    font-size: 30px;
-    padding: 10px;
-  }
+.testimonial-item {
+  min-width: 100%;
+  padding: 15px;  /* Ajustamos el padding para que los textos no sean tan grandes */
+  box-sizing: border-box;
+  background-color: #ffffff;  /* Color llamativo y cálido (amarillo suave) */
+  color: #333;  /* Texto oscuro para contraste */
+  border-radius: 8px;
+  margin: 10px 0;
+  font-size: 1rem;  /* Reducimos el tamaño del texto */
 }
 
-@media (max-width: 480px) {
-  .carousel-btn {
-    font-size: 25px;
-    padding: 8px;
-  }
+.testimonial-item p {
+  margin: 10px 0;
+}
+
+.testimonial-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #ffdede;  /* Color llamativo para los botones */
+  color: white;
+  border: none;
+  font-size: 1.5rem;  /* Reducimos el tamaño del botón */
+  cursor: pointer;
+  padding: 10px;
+  z-index: 10;
+  border-radius: 50%;  /* Bordes redondeados para los botones */
+  transition: background-color 0.3s ease;
+}
+
+.testimonial-btn:hover {
+  background-color: #c79cb5;  /* Cambia a un tono más oscuro cuando se pasa el mouse */
+}
+
+.testimonial-btn.prev {
+  left: 10px;
+}
+
+.testimonial-btn.next {
+  right: 10px;
+}
+
+/* Estilos para los indicadores */
+.testimonial-indicators {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.testimonial-indicator {
+  width: 8px;  /* Indicadores más pequeños */
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 87, 34, 0.6);  /* Indicadores de color naranja */
+  transition: background-color 0.3s ease;
+}
+
+.testimonial-indicator.active {
+  background-color: rgba(255, 87, 34, 1);  /* Indicador activo de color naranja */
 }

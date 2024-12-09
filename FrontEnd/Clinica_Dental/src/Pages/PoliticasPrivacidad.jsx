@@ -1,11 +1,17 @@
 import React from 'react'
+import Header from '../Components/generalComponents/Header'
+import Navbar from '../Components/generalComponents/Navbar'
+import Footer from '../Components/generalComponents/Footer'
 import FormPoliticasPrivacidad from '../Components/FormPoliticasPrivacidad'
 
 function PoliticasPrivacidad() {
 
   return (
     <div>
-        <FormPoliticasPrivacidad />
+        <Header />
+       <Navbar />
+       <FormPoliticasPrivacidad />
+       <Footer />
     </div>
   )
   
