@@ -13,11 +13,12 @@ const s3 = new AWS.S3({
   region: REGION,
 });
 
+
 // Función para subir la imagen a S3
 export const uploadImageToS3 = async (file) => {
   const params = {
     Bucket: S3_BUCKET,
-    Key: file.name, // Puedes usar un identificador único para evitar sobrescribir archivos
+    Key: file.name, // Usar el nombre modificado con el número aleatorio
     Body: file,
     ContentType: file.type,
   };

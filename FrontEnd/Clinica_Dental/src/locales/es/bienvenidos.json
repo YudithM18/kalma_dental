@@ -1,0 +1,429 @@
+{
+    "bienvenida": "¡¡BIENVENIDOS!!",
+    "inicio": "Inicio",
+    "servicios": "Servicios",
+    "contacto": "Contactos",
+    "equipo_de_trabajo": "Especialistas",
+    "nosotros": "¿Quienes Somos?",
+    "terminosYcondiciones": "Terminos y Condiciones",
+    "politicas": "Políticas de Privacidad",
+    
+    "titulo_donacion": "¡Tu donación hace la diferencia!",
+    "carta_1" : "En Kalma Dental, nos enorgullece ser parte de la comunidad que apoya causas tan valiosas como Teletón. Sabemos que el bienestar de los niños es lo más importante, y por eso hemos decidido sumarnos a esta noble causa. Con tu generosidad, estamos contribuyendo a mejorar la vida de muchos pequeños que necesitan atención médica especializada y terapias que les permitan tener un futuro lleno de esperanza.",
+    "carta_2" : "Cada donación, por más pequeña que sea, será utilizada para proporcionar a estos niños los tratamientos, equipos y recursos necesarios para su rehabilitación. Gracias a tu apoyo, se están creando oportunidades de vida para aquellos que más lo necesitan.",
+    "carta_3" : "En Kalma Dental, creemos que la solidaridad es la base para transformar realidades. Con cada aporte, estás ayudando a que estos niños y sus familias sigan adelante con valentía, esperanza y mucho amor. Agradecemos profundamente tu contribución, que será un acto de bondad que dejará una huella positiva en sus vidas.",
+    "carta_4": "Gracias por acompañarnos en este hermoso viaje hacia un futuro mejor para los niños de Teletón. Tu ayuda realmente hace la diferencia.",
+
+
+    "titulo_pagos" : "Completa tu donación",
+    "Alerta_1_pago" : "¡Donación Completada!",
+    "Alerta_2_pago" : "Gracias por tu donación",
+    "Alerta_3_pago" : "Aceptar",
+    "Alerta_exito": "Pago Completado",
+
+    "Alerta_4_pago" : "Pago Cancelado",
+    "Alerta_5_pago" : "Lamentamos que no hayas completado la donación. Si tienes algún problema, contáctanos.",
+    "Alerta_6_pago" : "Aceptar",
+    "Alerta_fracaso": "Pago Cancelado",
+
+
+
+    "Alerta_pay1" : "¡Atención!",
+    "Alerta_pay2" : "Por favor, ingresa un monto válido.",
+
+    "payPag" : "OMITIR",
+    "payPag2" : "Ingresa el monto que deseas donar.",
+    "payPag3" : "Continuar",
+    
+
+
+    "titulo_headerDonar": "¡ÚNETE A NOSOTROS Y AYUDA A LOS NIÑOS DE TELETÓN!",
+    "btn_regresoDonar": "Ir al inicio",
+
+
+
+    "footer_TT1": "Cuidando tu sonrisa, siempre.",
+    "texto_1": "Ultima actualización: 13/11/2024",
+
+    "footerTT2": "Síguenos en nuestras redes sociales para informarte de cuarquier acontecimiento...",
+
+    "footerTT3": "Reserva tu cita: ",
+
+    "Horario": "Horarios de Atención",
+    "fecha1": "Lunes a Viernes: 9:00 AM - 6:00 PM",
+    "fecha2": "Sábado: 10:00 AM - 2:00 PM",
+    "fecha3": "Domingo: Cerrado",
+
+
+
+    "footerS_TT1": "Redes Sociales",
+
+
+
+    "btnDonar": "Donar",
+
+
+
+
+
+
+    "cierreSesion": "Cerrar Sesión",
+    "admin1": "Gestión de Especialistas",
+    "admin2": "Portal de Titulaciones y Especialidades",
+    "admin3": "Gestión de Servicios Dentales",
+    "admin4": "Gestión de Testimonios",
+    "admin5": "Gestión de Usuarios",
+    "admin6": "Panel de Blog",
+
+
+
+    "tituloAdminS": "Agregar Servicios",
+    "inputS1": "Imagen",
+    "inputS2": "Servicio",
+    "inputS3": "Especialista a cargo:",
+    "inputS4": "Seleccionar especialista",
+    "inputS5": "Tratamientos Vinculados",
+    "btnAgregar": "Anadir",
+    "registrosS": "Registros Existentes de Servicios",
+
+    "alertS0": "Por favor, ingrese todos los datos.",
+
+    "alertS1": "Servicio Agregado",
+    "alertS2": "El servicio se ha agregado correctamente.",
+
+    "alertS3": "Hubo un problema al agregar el servicio.",
+
+    "alertS4": "¿Estás seguro?",
+    "alertS5": "No podrás recuperar este servicio después de eliminarlo.",
+
+    "alertS6": "Sí, eliminar",
+    "alertS7": "Cancelar",
+    
+    "alertS8": "Eliminado!",
+    "alertS9": "El servicio ha sido eliminado.",
+
+    "alertS10": "Servicio Actualizado",
+    "alertS11": "Los cambios han sido guardados correctamente.",
+
+    "alertS12": "Hubo un problema al actualizar el servicio.",
+
+
+
+   
+    "titulo_AdminT": "Agregar Testimonios",
+    "inputT1": "Nombre Completo",
+    "inputT2": "Fecha del Testimonio:",
+    "inputT3": "Testimonio",
+    "btnTesti": "Añadir",
+    "registrosT": "Historial de Testimonios",
+
+    "alertaT1": "Por favor, complete todos los campos antes de enviar.",
+
+    "alertaT2": "Aceptar",
+
+    "alertaT3": "¡Testimonio agregado!",
+    "alertaT4": "El testimonio se ha agregado correctamente.",
+
+    "alertaT5": "Hubo un problema al agregar el testimonio. Intenta nuevamente.",
+
+    "alertaT6": "¡Eliminado!",
+    "alertaT7": "El testimonio ha sido eliminado correctamente.",
+
+    "alertaT8": "Hubo un problema al eliminar el testimonio. Intenta nuevamente.",
+
+    "alertaT9": "¡Actualizado!",
+    "alertaT0": "El testimonio se ha actualizado correctamente.",
+
+    "alertaT11": "Hubo un problema al actualizar el testimonio. Intenta nuevamente.",
+
+    "tituloAdminB_R": "Agregar nuevas Recomendaciones",
+    "inputImagenR": "Imagen de Referencia:",
+    "inputR1": "Titulo",
+    "inputR2": "Contenido",
+    "btnRecomedar": "Añadir",
+
+    "tituloAdminB_V": "Agregar nuevos Videos",
+    "inputMV": " Video:",
+    "inputTV": "Titulo",
+    "inputV": "Contenido",
+    "btnSubirV": "Añadir",
+
+    "registroR": "Recomendaciones Existentes",
+
+    "registrosV": "Gestión de videos publicados",
+
+    "alertaB_R": "Por favor, ingrese todos los datos",
+
+    "alertaB_R1": "¡Éxito!",
+    "alertaB_R2": "La Recomendación ha sido agregada correctamente.",
+
+    "alertaB_R3": "¿Estás seguro?",
+    "alertaB_R4": "Este cambio no se puede deshacer.",
+    "alertaB_R5": "Sí, eliminar",
+    "alertaB_R6": "Cancelar",
+
+    "alertaB_R7": "¡Eliminado!",
+    "alertaB_R8": "La Recomendación ha sido eliminada correctamente.",
+
+    "alertaB_R9": "¡Éxito!",
+    "alertaB_R0": "La Recomendación ha sido actualizada correctamente.",
+
+    "alertaB_R11": "Hubo un problema al actualizar la Recomendación.",
+    "alertaB_R12": "Hubo un problema del servidor.",
+
+    "alertaB_V": "Por favor, ingrese todos los datos",
+
+    "alertaB_V1": "¡Éxito!",
+    "alertaB_V2": "El contenido de video ha sido agregado correctamente.",
+
+    "alertaB_V3": "¿Estás seguro?",
+    "alertaB_V4": "Este cambio no se puede deshacer.",
+    "alertaB_V5": "Sí, eliminar",
+    "alertaB_V6": "Cancelar",
+
+    "alertaB_V7": "¡Eliminado!",
+    "alertaB_V8": "El contenido de video ha sido eliminado correctamente.",
+
+    "alertaB_V9": "¡Éxito!",
+    "alertaB_V0": "El contenido de video ha sido actualizado correctamente.",
+
+    
+
+    "tituloAdminWT": "Agregar Especialistas",
+    "inputfoto": "Foto",
+    "inputNombre": "Nombre Completo",
+    "inputE": "Especialidad",
+    "selectE": "Seleccionar Especialidad",
+    "inputTI": "Titulación",
+    "selectT": "Seleccionar Titulación",
+    "btnWT": "Añadir",
+
+    "registrosWT": "Registro de Especialistas",
+
+    "alertaWT": "Registro Agregado",
+    "alertaWT1":  "El nuevo Registro se ha añadido correctamente.",
+
+    "alertaWT2":  "Hubo un problema al agregar el Registro. Intente nuevamente.",
+
+    "alertaWT3":  "Ocurrió un error al agregar nuevo Registro. Por favor, intente nuevamente.",
+
+    "alertaWT4":  "¿Estás seguro?",
+    "alertaWT5":  "No podrás recuperar este especialista después de eliminarlo.",
+    "alertaWT6":  "Sí, eliminar",
+    "alertaWT7":  "Cancelar",
+    "alertaWT8":  "Eliminado!",
+    "alertaWT9":  "El especialista ha sido eliminado.",
+
+    "alertaWT0":  "Especialista Actualizado",
+    "alertaWT11":  "Los cambios han sido guardados correctamente.",
+
+    "alertaWT12":  "Hubo un problema al actualizar el especialista.",
+
+
+
+    "tituloAdminU": "Añadir Usuarios Secundarios",
+    "inputU": "Nombre",
+    "inputU1": "Apellido",
+    "inputU2": "Usuario",
+    "inputU3": "Correo Electrónico",
+    "inputU4": "Contraseña",
+    "inputU5": "Confirmar Contraseña",
+    "btnAdU": "Añadir",
+
+    "registroUsuario": "Usuarios Registrados",
+
+
+
+
+    "tituloAdminSp": "Agregar Nueva Especialidad",
+    "especialidad": "Especialidad",
+    "btnS": "Añadir",
+
+
+    "tituloAdminQ": "Agregar Nueva Titulación",
+    "titulacion": "Titulacion",
+    "btnQ": "Añadir",
+
+    "registroSpeciality": "Especialidades Existentes",
+    "registroQualf": "Titulaciones Disponibles",
+
+    "alertaS": "Registro Agregado",
+    "alertaS1": "La nueva especialidad se ha añadido correctamente.",
+
+    "alertaS2": "Hubo un problema al agregar la especialidad. Intente nuevamente.",
+
+    "alertaS3": "Ocurrió un error al agregar la nueva especialidad. Por favor, intente nuevamente.",
+    
+    "alertaS4": "¿Estás seguro?",
+    "alertaS5": "No podrás recuperar esta especialidad después de eliminarlo.",
+    "alertaS6": "Sí, eliminar",
+    "alertaS7": "Cancelar",
+    "alertaS8": "Eliminado!",
+    "alertaS9": "La especialidad ha sido eliminado.",
+    "alertaS0": "Especialidad Actualizada",
+    "alertaS11": "Los cambios han sido guardados correctamente.",
+    "alertaS12": "Hubo un problema al actualizar la especialidad.",
+
+    "alertaQ": "Registro Agregado",
+    "alertaQ1": "La nueva titulacion se ha añadido correctamente.",
+
+    "alertaQ2": "Hubo un problema al agregar la titulacion. Intente nuevamente.",
+
+    "alertaQ3": "Ocurrió un error al agregar la nueva titulacion. Por favor, intente nuevamente.",
+
+    "alertaQ4": "¿Estás seguro?",
+    "alertaQ5": "No podrás recuperar esta Titulación después de eliminarlo.",
+    "alertaQ6": "Sí, eliminar",
+    "alertaQ7": "Cancelar",
+    "alertaQ8": "Eliminado!",
+    "alertaQ9": "La Titulación ha sido eliminado.",
+    "alertaQ0": "Titulacion Actualizada",
+    "alertaQ11": "Los cambios han sido guardados correctamente.",
+    "alertaQ12": "Hubo un problema al actualizar la titulacion.",
+
+
+    
+
+    "misión": "Misión",
+    "textoM": "En Kalma Dental, nos dedicamos a proporcionar tratamientos dentales de la más alta calidad, realizados por especialistas comprometidos con la salud y bienestar de nuestros pacientes. Nuestra misión es crear una experiencia placentera y tranquila para cada persona que nos visita, garantizando un ambiente relajado y libre de estrés. Nos esforzamos por ofrecer atención personalizada tanto a niños como a adultos, asegurándonos de que cada visita sea lo más agradable y poco traumática posible.",
+    "visión": "Visión",
+    "textoV": "Ser la clínica dental de referencia en el cuidado integral de la salud bucal, destacándonos por nuestra excelencia en tratamientos especializados y por la creación de un ambiente relajante y cómodo para nuestros pacientes. Queremos ser reconocidos por nuestro enfoque humano, innovador y cercano, proporcionando una experiencia única que promueva la confianza y el bienestar dental en cada etapa de la vida.",
+    "colaboradores": "Nuestros Colaboradores",
+    "textoC": "Contamos con un equipo de colaboradores altamente capacitados y apasionados por su trabajo. Los doctores que forman parte de nuestro equipo nos visitan una vez al mes, asegurando que nuestros pacientes reciban atención de expertos en diversas especialidades. Cada uno de nuestros colaboradores está comprometido con la excelencia en el cuidado dental y se mantiene en constante formación para estar al tanto de las últimas innovaciones y técnicas en odontología.",
+
+
+
+    "tituloBlog1": "Recomendaciones para tu cuidado bocal:",
+    "tituloBlog2": "Sigue nuestros más recientes videos para estar al tanto de las últimas novedades en Kalma Dental.",
+
+    "tituloContt": "Contactenos por E-mail",
+    "inputC1": "Nombre",
+    "inputC2": "Correo Electrónico",
+    "inputC3": "Mensaje",
+    "tituloCW": "Enviar Mensaje por WhatsApp",
+    "btnC": "Enviar",
+
+    "TituloU": "ENCUENTRENOS EN:",
+
+
+
+    "tituloInicio": "Equipo de especialistas:",
+    "tituloInicio2": "Testimonios de pacientes",
+
+
+
+    "alertaLogin": "Has ingresado exitosamente",
+    "alertaLogin1": "Gracias!!",
+    "alertaLogin2": "Todos los campos son requeridos",
+
+    "btnO": "OMITIR",
+    "bienvenidoAdmin": "Bienvenido!!",
+    "usuario": "Nombre de Usuario",
+    "contra": "Contraseña",
+    "btnIngreso": "INGRESAR",
+
+
+
+    "tituloPP": "Política de Privacidad",
+    "textoPP": "En Kalma Dental, nos comprometemos a garantizar la seguridad y privacidad de la información personal y financiera de nuestros pacientes y donantes. Esta Política de Seguridad detalla las medidas que tomamos para proteger los datos en nuestro sitio web y durante el proceso de donaciones.",
+
+    "tituloPP1": "Compromiso con la Protección de Datos:",
+    "textoPP1": "Nos tomamos muy en serio la seguridad de tus datos. Implementamos estrictas medidas de protección para garantizar que toda la información que compartas con nosotros sea segura y manejada conforme a las leyes de protección de datos. Cumplimos con las normativas locales e internacionales sobre privacidad, incluyendo la legislación vigente en materia de protección de datos personales.",
+
+    "tituloPP2": "Información Recopilada y Uso:",
+    "textoPP2": "Recopilamos solo la información necesaria para brindarte nuestros servicios y procesar las donaciones. Esto puede incluir tu nombre, correo electrónico, número de teléfono y, en el caso de las donaciones, los detalles para procesar la contribución (como el monto y tu información de pago). Esta información se utiliza exclusivamente para fines relacionados con la atención dental y la gestión de las donaciones.",
+
+    "tituloPP3": "Seguridad en el Procesamiento de Donaciones:",
+    "textoPP3": "La seguridad en las transacciones de donaciones es una prioridad para nosotros. Cuando realizas una donación a Kalma Dental, la información financiera, como los números de tarjeta de crédito o débito, es procesada a través de plataformas externas de pago que cumplen con los más altos estándares de seguridad. Kalma Dental no almacena ni gestiona directamente tu información financiera. La plataforma de pago utilizada se encarga de cifrar los datos para proteger tu información durante la transmisión.",
+
+    "tituloPP4": "Plataforma de Pago Segura",
+    "textoPP4": "Las donaciones se procesan mediante plataformas de pago externas certificadas (como PCI-DSS), que utilizan tecnología de cifrado SSL/TLS para garantizar que tus datos financieros estén protegidos. Esto asegura que tu información no pueda ser interceptada ni manipulada durante el proceso de pago.",
+
+    "tituloPP5": "Protección de Datos Personales:",
+    "textoPP5": "Tu información personal, como nombre, dirección de correo electrónico y número de contacto, se almacena en sistemas seguros. Utilizamos tecnologías avanzadas para proteger tus datos contra accesos no autorizados. Además, el acceso a tu información está restringido exclusivamente a personal autorizado de Kalma Dental.",
+
+    "tituloPP6": "Confidencialidad y Uso Responsable de la Información:",
+    "textoPP6": "En Kalma Dental, nos comprometemos a mantener la confidencialidad de la información que nos proporcionas. Los datos personales y financieros no serán vendidos, alquilados ni compartidos con terceros, salvo cuando sea estrictamente necesario para procesar las donaciones o cumplir con obligaciones legales.",
+
+    "tituloPP7": "Seguridad en la Página Web:",
+    "textoPP7": "Nuestra página web está protegida mediante tecnologías de seguridad, como SSL (Secure Sockets Layer), que aseguran la transmisión segura de datos entre tu navegador y nuestro servidor. Además, contamos con medidas de protección contra accesos no autorizados, como cortafuegos (firewalls) protocolos de seguridad para prevenir ataques cibernéticos.",
+
+    "tituloPP8": "Acceso Restringido a Información",
+    "textoPP8": "El acceso a la información personal de nuestros pacientes y donantes está restringido a personal autorizado. Todos nuestros empleados y colaboradores están capacitados en el manejo adecuado de los datos personales y cumplen con estrictas políticas de seguridad.",
+
+    "tituloPP9": "Notificación de Incidentes de Seguridad",
+    "textoPP9": "Si ocurriera un incidente de seguridad que afecte tus datos personales o financieros, Kalma Dental tomará las medidas necesarias para mitigar cualquier daño y te notificará de manera oportuna, de acuerdo con las leyes de protección de datos.",
+
+    "tituloPP0": "No Utilización de Cookies y Tecnologías Similares:",
+    "textoPP0": "En Kalma Dental, no utilizamos cookies ni tecnologías similares en nuestro sitio web para recopilar información de los usuarios. Nos comprometemos a ofrecer una experiencia de navegación sin la necesidad de almacenar archivos en tu dispositivo. Si en el futuro decidimos implementar cookies o tecnologías similares, actualizaremos esta política de privacidad y te notificaremos oportunamente.",
+
+    "tituloPP11": "Enlaces a Plataformas Externas",
+    "textoPP11": "Al hacer una donación, serás redirigido a plataformas externas para completar el proceso de pago. Estas plataformas de pago son responsables de procesar y almacenar tu información financiera, y están obligadas a cumplir con los más altos estándares de seguridad. Kalma Dental no se hace responsable de las políticas de seguridad de estas plataformas externas.",
+
+    "tituloPP12": "Actualizaciones de la Política de Seguridad",
+    "textoPP12": "Nos reservamos el derecho de modificar y actualizar esta Política de Seguridad en cualquier momento. Cualquier cambio será publicado en esta página. Te recomendamos que revises periódicamente esta política para estar al tanto de cualquier modificación importante.",
+
+
+
+
+    "tituloPagS": "Servicios Disponibles:",
+
+
+
+    "tituloPrincipalTC": "TÉRMINOS Y CONDICIONES DE LA CLÍNICA DENTAL",
+    "textoTC": "Los términos y condiciones de la Clínica Dental son los siguientes:",
+
+    "tituloSecundary0": "Política de cancelación:",
+    "textoPc0": "Las citas deben ser canceladas o reprogramadas con al menos 24 horas de anticipación. Las cancelaciones tardías pueden estar sujetas a una tarifa.",
+    
+    "tituloSecundary1": "Política de pago:",
+    "textoPc1": "Aceptamos efectivo, tarjetas de crédito y seguros dentales. Todos los pagos deben realizarse al momento del servicio. Las facturas no pagadas después de 30 días estarán sujetas a un cargo adicional.",
+
+    "tituloSecundary2": "Política de privacidad:",
+    "textoPc2": "La información personal y médica del paciente será tratada con confidencialidad y solo se utilizará para fines de tratamiento y gestión clínica.",
+
+    "tituloSecundary3": "Responsabilidad del paciente:",
+    "textoPc3": "Los pacientes son responsables de seguir las recomendaciones de cuidado dental proporcionadas por nuestros profesionales para mantener una buena salud bucal.",
+
+    "tituloSecundary4": "Garantías y devoluciones:",
+    "textoPc4": "Ofrecemos una garantía limitada en ciertos tratamientos. Las devoluciones de servicios no utilizados deben ser discutidas con la administración.",
+
+    "tituloSecundary5": "Procedimientos de emergencia:",
+    "textoPc5": "En caso de una emergencia dental fuera del horario de atención, por favor contacte al número de emergencia proporcionado en su consulta.",
+
+    "tituloSecundary6": "Política de seguro:",
+    "textoPc6": "Aceptamos varios planes de seguro dental y procesaremos las reclamaciones en su nombre. Por favor, proporcione la información de su seguro antes del tratamiento.",
+
+    "tituloSecundary7": "Uso de tecnología y equipos",
+    "textoPc7": "Utilizamos equipos y tecnologías avanzadas para garantizar un tratamiento de alta calidad y precisión.",
+
+    "tituloSecundary8": "Política de quejas y reclamaciones:",
+    "textoPc8": "Las quejas y reclamaciones deben ser presentadas por escrito a la administración y serán atendidas dentro de un plazo razonable.",
+
+    "tituloSecundary9": "Política de vacaciones y días festivos:",
+    "textoPc9": "La clínica estará cerrada en días festivos nacionales y durante vacaciones anuales preestablecidas. Se informará a los pacientes con anticipación sobre estos cierres.",
+
+
+
+    "TituloPagWT": "Nuestro Equipo de Especialistas.",
+
+    "btnActualizar" : "Actualizar",
+    "btnEliminar" : "Eliminar",
+
+    "Alert_E" : "Especialistas Cargados",
+    "Alert_EText" : "Los datos de los especialistas se han cargado correctamente.",
+    
+    "Alert_ErrorE" : "Especialistas Cargados",
+
+    "Alert_EC" : "Especialidades Cargadas",
+    "Alert_EspecialidadesC" : "Especialistas Cargados",
+    "Alert_ErrorC" : "No se pudieron cargar las especialidades.",
+
+    "Alert_T" : "Titulaciones Cargadas",
+    "Alert_Ttext" : "Las titulaciones se han cargado correctamente.",
+
+    "Alert_ErrotT" : "No se pudieron cargar las titulaciones."
+
+
+
+}

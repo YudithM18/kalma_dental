@@ -14,7 +14,17 @@ import UpdateQualification from '../../Service/WorkTeam/TITULACION/UpdateQualifi
 import DeleteSpeciality from '../../Service/WorkTeam/ESPECIALIDAD/DeleteSpeciality';
 import DeleteQualification from '../../Service/WorkTeam/TITULACION/DeleteQualification';
 
+
+import { useTranslation } from 'react-i18next'; // Importa el hook useTranslation
+import '../../i18n'
+
 function FormWorkStaff() {
+
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang); // Cambia el idioma dinámicamente
+  };
 
   const [speciality_name, setSpeciality] = useState('');
   const [qualification_name, setQualification] = useState('');
@@ -73,21 +83,21 @@ const uploadNewRecordS = async (event) => {
         if (response) {
           Swal.fire({
             icon: 'success',
-            title: 'Registro Agregado',
-            text: 'La nueva especialidad se ha añadido correctamente.',
+            title:t('alertaS'),
+            text:t('alertaS1'),
           });
         } else {
           Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: 'Hubo un problema al agregar la especialidad. Intente nuevamente.',
+            text:t('alertaS2'),
           });
         }
       } catch (error) {
         Swal.fire({
           icon: 'error',
           title: 'Error',
-          text: 'Ocurrió un error al agregar la nueva especialidad. Por favor, intente nuevamente.',
+          text:t('alertaS3'),
         });
       }
     };
@@ -103,21 +113,21 @@ const uploadNewRecordS = async (event) => {
             if (response) {
               Swal.fire({
                 icon: 'success',
-                title: 'Registro Agregado',
-                text: 'La nueva titulacion se ha añadido correctamente.',
+                title:t('alertaQ'),
+                text:t('alertaQ1'),
               });
             } else {
               Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'Hubo un problema al agregar la titulacion. Intente nuevamente.',
+                text:t('alertaQ2'),
               });
             }
           } catch (error) {
             Swal.fire({
               icon: 'error',
               title: 'Error',
-              text: 'Ocurrió un error al agregar la nueva titulacion. Por favor, intente nuevamente.',
+              text: t('alertaQ3'),
             });
           }
         };
@@ -128,12 +138,12 @@ const uploadNewRecordS = async (event) => {
         // Función para eliminar un especialista
   async function cargarDeleteS(id) {
     const confirmDelete = await Swal.fire({
-      title: '¿Estás seguro?',
-      text: 'No podrás recuperar esta especialidad después de eliminarlo.',
+      title:t('alertaS4'),
+      text:t('alertaS5'),
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Sí, eliminar',
-      cancelButtonText: 'Cancelar',
+      confirmButtonText:t('alertaS6'),
+      cancelButtonText:t('alertaS7'),
     });
 
     if (confirmDelete.isConfirmed) {
@@ -141,7 +151,7 @@ const uploadNewRecordS = async (event) => {
       const valorEncontrar = dataSpeciality.filter(especialidad => especialidad.id !== id);
       setDataEspecialidad([...valorEncontrar]);
 
-      Swal.fire('Eliminado!', 'La especialidad ha sido eliminado.', 'success');
+      Swal.fire(t('alertaS8'), t('alertaS9'), 'success');
     }
   }
 
@@ -169,14 +179,14 @@ const uploadNewRecordS = async (event) => {
 
       Swal.fire({
         icon: 'success',
-        title: 'Especialidad Actualizada',
-        text: 'Los cambios han sido guardados correctamente.',
+        title:t('alertaS0'),
+        text:t('alertaS11'),
       });
     } catch (error) {
       Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: 'Hubo un problema al actualizar la especialidad.',
+        text:t('alertaS12'),
       });
     }
   }
@@ -185,12 +195,12 @@ const uploadNewRecordS = async (event) => {
   ///// CONFIGURACION DEL MAP QUALIFICATION 
   async function cargarDeleteQ(id) {
     const confirmDelete = await Swal.fire({
-      title: '¿Estás seguro?',
-      text: 'No podrás recuperar esta Titulación después de eliminarlo.',
+      title:t('alertaQ4'),
+      text: t('alertaQ5'),
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Sí, eliminar',
-      cancelButtonText: 'Cancelar',
+      confirmButtonText:t('alertaQ6'),
+      cancelButtonText:t('alertaQ7'),
     });
 
     if (confirmDelete.isConfirmed) {
@@ -198,7 +208,7 @@ const uploadNewRecordS = async (event) => {
       const valorEncontrar = dataQualification.filter(titulacion => titulacion.id !== id);
       setDataEspecialidad([...valorEncontrar]);
 
-      Swal.fire('Eliminado!', 'La Titulación ha sido eliminado.', 'success');
+      Swal.fire(t('alertaQ8'), t('alertaQ9'), 'success');
     }
   }
 
@@ -226,14 +236,14 @@ const uploadNewRecordS = async (event) => {
 
       Swal.fire({
         icon: 'success',
-        title: 'Titulacion Actualizada',
-        text: 'Los cambios han sido guardados correctamente.',
+        title:t('alertaQ0'),
+        text:t('alertaQ11'),
       });
     } catch (error) {
       Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: 'Hubo un problema al actualizar la titulacion.',
+        text:t('alertaQ12'),
       });
     }
   }
@@ -245,27 +255,27 @@ const uploadNewRecordS = async (event) => {
         <br />
         
         <div className='workTeamAdmin'>
-            <h1 className='Title-Admin'>Add New Speciality</h1>
-            <label htmlFor="Fname" className='subTitle-especialidad'>Especialidades</label>
+            <h1 className='Title-Admin'>{t('tituloAdminSp')}</h1>
+            <label htmlFor="Fname" className='subTitle-especialidad'>{t('especialidad')}</label>
             <input className='inptWorkStaff' type="text" 
             placeholder='Ingrese la especialidad deseada:' 
             value={speciality_name} onChange={cargarEspecialidad} />
             <br />
             <br />
-            <button className='buttonWork' onClick={uploadNewRecordS}>Add</button>
+            <button className='buttonWork' onClick={uploadNewRecordS}>{t('btnS')}</button>
         </div>
         <br />
         <br />
         <br />
         <div className='workTeamAdmin'>
-            <h1 className='Title-Admin'>Add New Qualification</h1>
-            <label htmlFor="Fname" className='subTitle-titulaciones'>Titulaciones</label>
+            <h1 className='Title-Admin'>{t('tituloAdminQ')}</h1>
+            <label htmlFor="Fname" className='subTitle-titulaciones'>{t('titulacion')}</label>
             <input className='inptWorkStaff' type="text" 
             placeholder='Ingrese la titulacion deseada:' 
             value={qualification_name} onChange={cargarTitulacion} />
             <br />
             <br />
-            <button className='buttonWork' onClick={uploadNewRecordQ}>Add</button>
+            <button className='buttonWork' onClick={uploadNewRecordQ}>{t('btnQ')}</button>
         </div>
 
         <br />
@@ -274,7 +284,7 @@ const uploadNewRecordS = async (event) => {
         <br />
         <br />
 
-        <h1 className='historialWTS'>Existing Specialties:</h1>
+        <h1 className='historialWTS'>{t('registroSpeciality')}</h1>
         <div >
         <ul className='mapEspecialidades'>
           {dataSpeciality.map((especialidad) => (
@@ -283,8 +293,8 @@ const uploadNewRecordS = async (event) => {
               <br />
               {especialidad.speciality_name} <input onChange={cargarSpeciality_edit} type="text" className='editInp' />
               <br />
-              <button className='botonHisTorial' onClick={e=>cargaEdicionS(especialidad.id)}>Actualizar</button>
-              <button className='botonHisTorial' onClick={e => cargarDeleteS(especialidad.id)}>Eliminar</button>
+              <button className='botonHisTorial' onClick={e=>cargaEdicionS(especialidad.id)}>{t('btnActualizar')}</button>
+              <button className='botonHisTorial' onClick={e => cargarDeleteS(especialidad.id)}>{t('btnEliminar')}</button>
               </li>
           ))}
         </ul>
@@ -295,7 +305,7 @@ const uploadNewRecordS = async (event) => {
         <br />
         <br />
 
-        <h1 className='historialWTS'>Existing Degrees:</h1>
+        <h1 className='historialWTS'>{t('registroQualf')}</h1>
         <div >
         <ul className='mapTitulaciones'>
           {dataQualification.map((titulaciones) => (
@@ -304,8 +314,8 @@ const uploadNewRecordS = async (event) => {
               <br />
               {titulaciones.qualification_name} <input onChange={cargarQualification_edit} type="text" className='editInp' /> 
               <br />
-              <button className='botonHisTorial' onClick={e=>cargaEdicionQ(titulaciones.id)}>Actualizar</button>
-              <button className='botonHisTorial' onClick={e => cargarDeleteQ(titulaciones.id)}>Eliminar</button>
+              <button className='botonHisTorial' onClick={e=>cargaEdicionQ(titulaciones.id)}>{t('btnActualizar')}</button>
+              <button className='botonHisTorial' onClick={e => cargarDeleteQ(titulaciones.id)}>{t('btnEliminar')}</button>
               </li>
           ))}
         </ul>

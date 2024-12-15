@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import '../../Styles/FormBlogEditor.css'
 import Swal from 'sweetalert2';
+import { uploadImageToS3 } from '../../Service/Consejos/PostTips'; 
 
 import PostTips from '../../Service/Consejos/PostTips'
 import GetTips from '../../Service/Consejos/GetTips'
@@ -12,8 +13,18 @@ import GetVideoBlog from '../../Service/VideoBlog/GetVideoBlog'
 import UpdateVideoBlog from '../../Service/VideoBlog/UpdateVideoBlog'  
 import DeleteVideoBlog from '../../Service/VideoBlog/DeleteVideoBlog'
 
+import { useTranslation } from 'react-i18next'; // Importa el hook useTranslation
+import '../../i18n'
+
 
 function FormBlogEditor() {
+
+
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang); // Cambia el idioma dinámicamente
+  };
 
   const [tips_title, setTitle] = useState('');
   const [tips_description, setTips] = useState('');
@@ -54,10 +65,27 @@ function FormBlogEditor() {
     fetchConsejos(); // Ejecuta la función
   }, []);
 
+
+  const ImageNameRandom = (longitud = 20) => {
+    const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    let nombre = '';
+    for (let i = 0; i < longitud; i++) {
+      nombre += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+    }
+    return nombre;
+  };
+
   
   function cargaImagen(event) {
-      setImage(event.target.files[0]);
-  }
+    const NameRandom = ImageNameRandom();
+    const archivo = event.target.files[0];
+
+    
+    if (archivo) {
+      const nuevoArchivo = new File([archivo], `${NameRandom}.${archivo.name.split('.').pop()}`, { type: archivo.type });
+      setImage(nuevoArchivo);
+    }
+}
 
   function cargaTitulo(event) {
       setTitle(event.target.value);
@@ -73,7 +101,7 @@ function FormBlogEditor() {
 
   // Verificar que todos los campos estén llenos
   if (recommendations_url === '' || tips_title === '' || tips_description === '') {
-    Swal.fire('¡Error!', 'Por favor, ingrese todos los datos', 'error');
+    Swal.fire('¡Error!', t('alertaB_R'), 'error');
     return;
   }
 
@@ -83,12 +111,15 @@ function FormBlogEditor() {
     content: tips_description
   };
 
+
+  console.log(newTip);
+  
   const savedTip = await PostTips.PostTips(newTip);
 
   setConsejos([...consejos, savedTip]);
 
   // Mostrar alerta de éxito
-  Swal.fire('¡Éxito!', 'El consejo ha sido agregado correctamente.', 'success');
+  Swal.fire( t('alertaB_R1'),  t('alertaB_R2'), 'success');
 };
 
 
@@ -103,17 +134,17 @@ function cargaTipsDescripEdit(event) {
 }
 
 function cargaImageEdit(event) {
-  setImageEdit(event.target.value); 
+  setImageEdit(event.target.files[0]); 
 }
 
 async function cargarDeleteTips(id) {
   const result = await Swal.fire({
-    title: '¿Estás seguro?',
-    text: 'Este cambio no se puede deshacer.',
+    title:t('alertaB_R3'),
+    text: t('alertaB_R4'),
     icon: 'warning',
     showCancelButton: true,
-    confirmButtonText: 'Sí, eliminar',
-    cancelButtonText: 'Cancelar'
+    confirmButtonText:t('alertaB_R5'),
+    cancelButtonText: t('alertaB_R6')
   });
 
   if (result.isConfirmed) {
@@ -122,67 +153,91 @@ async function cargarDeleteTips(id) {
     setConsejos([...valorEncontrarC]);
 
     // Mostrar alerta de éxito
-    Swal.fire('¡Eliminado!', 'El consejo ha sido eliminado correctamente.', 'success');
+    Swal.fire(t('alertaB_R7'), t('alertaB_R8'), 'success');
   }
 }
 
 
 
 const cargaEdicionTips = async (id) => {
-  // Encontrar el consejo original
-  const ConsejosOriginal = consejos.find(consejos => consejos.id === id);
-  if (!ConsejosOriginal) {
-    console.log('Consejo no encontrado');
-    return; // Si no se encuentra el consejo, salimos de la función
+  const ConsejosOriginal = consejos.find((consejos) => consejos.id === id);
+  if (!ConsejosOriginal) return;
+
+
+  //Obtener nombre original
+
+  const OriginalImageName  = ConsejosOriginal.recommendations_url
+
+
+
+
+
+
+const parts = OriginalImageName.split('/');
+
+// El último elemento del array será el nombre del archivo
+const fileName = parts[parts.length - 1];
+
+
+console.log(fileName);
+console.log(recommendations_url_edit);
+
+  
+  if (recommendations_url_edit) {
+    try {
+      const Archive = recommendations_url_edit;  // Este es el archivo que el usuario ha cargado
+      const NewArchive = new File([Archive], fileName);
+     // console.log(NewArchive);
+      
+      let NewImagenURL= " "
+
+      const result = await uploadImageToS3(NewArchive);  // Subir la imagen con el nombre original
+      NewImagenURL = result.Location;
+      console.log('Nueva imagen subida a S3:', NewImagenURL);
+
+    } catch (error) {
+      console.error('Error al subir la nueva imagen:', error);
+      
+      Swal.fire('Error', 'No se pudo subir la nueva imagen.', 'error');
+      return;
+    }
   }
 
-  // Comprobamos si los valores para editar están definidos
-  console.log('Datos a editar:', {
-    recommendations_url_edit,
-    tips_title_edit,
-    tipsdescription_edit,
-  });
+   
 
   // Nuevos datos para actualizar
   const nuevosDatos = {
-    recommendations_url: recommendations_url_edit || ConsejosOriginal.recommendations_url, 
+    recommendations_url: recommendations_url_edit || ConsejosOriginal.recommendations_url,  // Usar la URL de la nueva imagen
     tips_title: tips_title_edit || ConsejosOriginal.tips_title,  
-    tips_description: tipsdescription_edit || ConsejosOriginal.tips_description, 
+    tips_description: tipsdescription_edit || ConsejosOriginal.tips_description,
   };
 
-  // Mostrar los nuevos datos que se enviarán
-  console.log('Nuevos datos:', nuevosDatos);
-
-  // Llamada a la API o función para actualizar
   try {
     const result = await UpdateTips(id, nuevosDatos.recommendations_url, nuevosDatos.tips_title, nuevosDatos.tips_description);
     console.log('Resultado de la actualización:', result);
-    
-    // Comprobamos si la actualización fue exitosa
+
     if (result && result.success) {
-      // Actualizar el estado con los nuevos datos
-      const ConsejosActualizados = consejos.map(consejos =>
+      const ConsejosActualizados = consejos.map((consejos) =>
         consejos.id === id ? { ...consejos, ...nuevosDatos } : consejos
       );
       setConsejos(ConsejosActualizados);
 
       // Mostrar alerta de éxito
-      Swal.fire('¡Éxito!', 'El consejo ha sido actualizado correctamente.', 'success');
+      Swal.fire(t('alertaB_R9'), t('alertaB_R0'), 'success');
     } else {
-      // Si no es exitoso, mostrar un mensaje de error
-      Swal.fire('Error', 'Hubo un problema al actualizar el consejo.', 'error');
+      Swal.fire('Error', t('alertaB_R11'), 'error');
     }
   } catch (error) {
-    // En caso de error, mostrar el error
     console.error('Error al actualizar los datos:', error);
-    Swal.fire('Error', 'Hubo un problema al actualizar el consejo.', 'error');
+    Swal.fire('Error', t('alertaB_R12'), 'error');
   }
 
   // Limpiar los campos después de actualizar
-  setTitle('');
-  setTips('');
-  setImage('');
+  setTitleEdit('');
+  setDescripEdit('');
+  setImageEdit('');
 };
+
 
 
 
@@ -207,7 +262,7 @@ function cargaContenidoV(event) {
 
   // Verificar que todos los campos estén llenos
   if (video_url === '' || title === '' || content === '') {
-    Swal.fire('¡Error!', 'Por favor, ingrese todos los datos', 'error');
+    Swal.fire('¡Error!', `${alertaB_V}`, 'error');
     return;
   }
 
@@ -221,7 +276,7 @@ function cargaContenidoV(event) {
   setVideoBlog([...videoBlog, savedContent]);
 
   // Mostrar alerta de éxito
-  Swal.fire('¡Éxito!', 'El contenido de video ha sido agregado correctamente.', 'success');
+  Swal.fire(`${alertaB_V1}`, `${alertaB_V2}`, 'success');
 };
 
 
@@ -240,12 +295,12 @@ function cargaContentEdit(event) {
 
 async function cargarDeleteV(id) {
   const result = await Swal.fire({
-    title: '¿Estás seguro?',
-    text: 'Este cambio no se puede deshacer.',
+    title: `${alertaB_V3}`,
+    text: `${alertaB_V4}`,
     icon: 'warning',
     showCancelButton: true,
-    confirmButtonText: 'Sí, eliminar',
-    cancelButtonText: 'Cancelar'
+    confirmButtonText: `${alertaB_V5}`,
+    cancelButtonText: `${alertaB_V6}`
   });
 
   if (result.isConfirmed) {
@@ -254,7 +309,7 @@ async function cargarDeleteV(id) {
     setVideoBlog([...valorEncontrar]);
 
     // Mostrar alerta de éxito
-    Swal.fire('¡Eliminado!', 'El contenido de video ha sido eliminado correctamente.', 'success');
+    Swal.fire(`${alertaB_V7}`, `${alertaB_V8}`, 'success');
   }
 }
 
@@ -278,7 +333,7 @@ const cargaEdicionV = async (id) => {
   setVideoBlog(VideoBlogActualizado);
 
   // Mostrar alerta de éxito
-  Swal.fire('¡Éxito!', 'El contenido de video ha sido actualizado correctamente.', 'success');
+  Swal.fire(`${alertaB_V9}`, `${alertaB_V0}`, 'success');
 
   setVideo('');
   setTitulo('');
@@ -290,33 +345,38 @@ const cargaEdicionV = async (id) => {
   return (
     <div>
       <div className='contenedor_Tips'>
-      <h1 className='titulocontenedor'>Add a new tips</h1>
+      <h1 className='titulocontenedor'>{t('tituloAdminB_R')}</h1>
       <form>
-        <label className='subtitulo'>Tips Image:</label>
-        <input className='input' type="file"  accept='image/*' onChange={cargaImagen}/>
+        <label className='subtitulo'>{t('inputImagenR')}</label>
+        <input className='inputFile' type="file"  accept='image/*' onChange={cargaImagen}/>
         <br/>
-        <label className='subtitulo'>Tips Title:</label>
+        <label className='subtitulo'>{t('inputR1')}</label>
         <input className='input' placeholder = 'Añadir titulo ' type="text" value={tips_title}  onChange={cargaTitulo}/>
         <br/>
-        <label className='subtitulo'>Tips Content:</label>
+        <label className='subtitulo'>{t('inputR2')}</label>
         <textarea className='input' placeholder = 'Añadir consejo' value={tips_description} onChange={cargaContenido}/>
         <br/>
-        <button className='btnAgregarT' onClick={cargaNewTip}>Add</button>
+        <button className='btnAgregarT' onClick={cargaNewTip}>{t('btnRecomedar')}</button>
       </form>
       </div>
 
       <div className='contenedorVideoBlog'>
-      <h1 className='titulocontenedor'>Add New Content</h1>
+      <h1 className='titulocontenedor'>{t('tituloAdminB_V')}</h1>
       <form>
-        <label className='subtitulo'> Video:</label>
-        <input className='input2' type="file" value={video_url} onChange={cargaVideo}/>
+        <label className='subtitulo'>{t('inputMV')}</label>
+        <input 
+          className='inputFile' 
+          type="file" 
+          accept="video/*"  // Solo permite archivos de video
+          onChange={cargaVideo}
+        />
         <br/>
-        <label className='subtitulo'>Title:</label>
+        <label className='subtitulo'>{t('inputTV')}</label>
         <input className='input2' placeholder = 'Añadir Titulo'  type="text" value={title} onChange={cargatituloV}/>
         <br/>
-        <label className='subtitulo'>Content:</label>
+        <label className='subtitulo'>{t('inputV')}</label>
         <textarea className='input2' placeholder = 'Añadir contenido' value={content} onChange={cargaContenidoV}/>
-        <button className='btnAgregarV' onClick={cargarNewContent}>Add</button>
+        <button className='btnAgregarV' onClick={cargarNewContent}>{t('btnSubirV')}</button>
       </form>
       </div>
 
@@ -329,7 +389,7 @@ const cargaEdicionV = async (id) => {
         <br />
         <br />
 
-        <h1 className='historial'>Registros de Tips</h1>
+        <h1 className='historial'>{t('registroR')}</h1>
         <div className='conteiner-datos'>
         <ul className='ul'>
           {consejos.map((consejitos) => (
@@ -348,7 +408,7 @@ const cargaEdicionV = async (id) => {
         </ul>
         </div>
 
-        <h1 className='historial'>Registros de Videos</h1>
+        <h1 className='historial'>{t('registrosV')}</h1>
         <div >
         <ul className='ul'>
           {videoBlog.map((blogV) => (

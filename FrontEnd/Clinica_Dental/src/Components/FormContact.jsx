@@ -2,7 +2,17 @@ import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import "../Styles/FormContact.css"
 
+
+import { useTranslation } from 'react-i18next'; // Importa el hook useTranslation
+import '../i18n'
+
  const FormContact = () => {
+
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang); // Cambia el idioma dinámicamente
+  };
 
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
@@ -46,13 +56,13 @@ import "../Styles/FormContact.css"
 
 
       <div className='container'>
-        <h2>Contactenos por E-mail</h2>
+        <h2>{t('tituloContt')}</h2>
         <form className= 'form' ref={form} onSubmit={sendEmail}>
-          <label>Name</label>
+          <label>{t('inputC1')}</label>
           <input type="text" name="user_name" />
-          <label>Email</label>
+          <label>{t('inputC2')}</label>
           <input type="email" name="user_email" />
-          <label>Message</label>
+          <label>{t('inputC3')}</label>
           <textarea name="message" />
           <input type="submit" value="Send" />
         </form>
@@ -66,7 +76,7 @@ import "../Styles/FormContact.css"
       <br />
 
       <div className="contenedorWhatsapp">
-      <h2 className='titulowa'>Enviar Mensaje por WhatsApp</h2>
+      <h2 className='titulowa'>{t('tituloCW')}</h2>
       <form className='form-whasapp' onSubmit={handleSubmit}>
         <input 
           type="text" 
@@ -109,7 +119,7 @@ import "../Styles/FormContact.css"
           onChange={(e) => setSymptoms(e.target.value)} 
           required 
         />
-        <button className='btnWA'>Enviar</button>
+        <button className='btnWA'>{t('btnC')}</button>
       </form>
     </div>
 
@@ -124,7 +134,7 @@ import "../Styles/FormContact.css"
       <br />
 
 
-      <h1 className='tituloU'>ENCUENTRENOS EN:</h1>
+      <h1 className='tituloU'>{t('TituloU')}</h1>
       <br />
       <br />
 

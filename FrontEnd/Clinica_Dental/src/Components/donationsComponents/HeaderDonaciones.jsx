@@ -3,7 +3,16 @@ import '../../Styles/FormHeaderDonaciones.css';
 import logo from '../../Img/Logo_secundario.jpg';
 import { Link } from 'react-router-dom';
 
+import { useTranslation } from 'react-i18next'; // Importa el hook useTranslation
+import '../../i18n'
+
 function HeaderDonaciones() {
+
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang); // Cambia el idioma dinámicamente
+  };
 
   return (
 
@@ -14,11 +23,11 @@ function HeaderDonaciones() {
             </Link>
         </div> 
       <div className="header-content">
-        <h1>¡ÚNETE A NOSOTROS Y AYUDA A LOS NIÑOS DE TELETÓN!</h1>
+        <h1>{t('titulo_headerDonar')}</h1>
        
       </div>
       <Link to="/">
-       <button className='cerrar-donar'>Go Home</button>
+       <button className='cerrar-donar'>{t('btn_regresoDonar')}</button>
       </Link>
      
     </header>

@@ -5,9 +5,17 @@ import DeleteTestimonios from '../../Service/testimonios/DeleteTestimonios';
 import UpdateTestimonios from '../../Service/testimonios/UpdateTestimonios';
 import '../../Styles/FormAdminTestimonios.css'
 import Swal from 'sweetalert2';
+import { useTranslation } from 'react-i18next'; // Importa el hook useTranslation
+import '../../i18n'
 
 
 function FormAdminTestimonios() {
+
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang); // Cambia el idioma dinámicamente
+  };
 
   const [fullname, setName] = useState(''); 
   const [date, setDate] = useState(''); 
@@ -45,42 +53,43 @@ function FormAdminTestimonios() {
     setDate(event.target.value); // Actualiza la fecha
   }
 
+  // Función para cargar el testimonio
   const cargar = async () => {
     // Validar que los campos no estén vacíos
     if (!fullname || !date || !testimony) {
       // Si algún campo está vacío, muestra un mensaje de error
       Swal.fire({
         title: 'Error',
-        text: 'Por favor, complete todos los campos antes de enviar.',
+        text: t('alertaT1'), // Usar la traducción para el texto
         icon: 'error',
-        confirmButtonText: 'Aceptar',
+        confirmButtonText: t('alertaT2') // Usar la traducción para el botón
       });
       return;  // Detiene la ejecución de la función
     }
-  
+
     try {
       // Llama a PostTestimonios y espera la respuesta
       await PostTestimonios(fullname, date, testimony);
       
       // Muestra la alerta de éxito si todo está bien
       Swal.fire({
-        title: '¡Testimonio agregado!',
-        text: 'El testimonio se ha agregado correctamente.',
+        title: t('alertaT3'), // Usar la traducción para el título
+        text: t('alertaT4'), // Usar la traducción para el texto
         icon: 'success',
-        confirmButtonText: 'Aceptar',
+        confirmButtonText: t('alertaT2') // Usar la traducción para el botón
       });
-  
+
       // Limpiar los campos
-      setName('');
+      setFullname('');
       setDate('');
-      setTestimonials('');
+      setTestimony('');
     } catch (error) {
       // Si hay un error, muestra la alerta de error
       Swal.fire({
         title: 'Error',
-        text: 'Hubo un problema al agregar el testimonio. Intenta nuevamente.',
+        text: t('alertaT5'), // Usar la traducción para el texto de error
         icon: 'error',
-        confirmButtonText: 'Aceptar',
+        confirmButtonText: t('alertaT2') // Usar la traducción para el botón
       });
     }
   };
@@ -105,21 +114,22 @@ function FormAdminTestimonios() {
       setData(valorEncontrar);
       
       Swal.fire({
-        title: '¡Eliminado!',
-        text: 'El testimonio ha sido eliminado correctamente.',
-        icon: 'success',
-        confirmButtonText: 'Aceptar',
-      });
-    } catch (error) {
-      Swal.fire({
-        title: 'Error',
-        text: 'Hubo un problema al eliminar el testimonio. Intenta nuevamente.',
-        icon: 'error',
-        confirmButtonText: 'Aceptar',
-      });
-    }
-  }
+      title: t('alertaT6'), // Traducción para el título
+      text: t('alertaT7'), // Traducción para el texto
+      icon: 'success',
+      confirmButtonText: t('alertaT2') // Traducción para el texto del botón
+    });
 
+  } catch (error) {
+    // Si hay un error, muestra este Swal.fire
+    Swal.fire({
+      title: 'Error', // Título de error (puedes traducirlo también)
+      text: t('alertaT8'), // Traducción para el texto del error
+      icon: 'error',
+      confirmButtonText: t('alertaT2') // Traducción para el texto del botón
+    });
+  }
+};
 
   const cargaEdicion = async (id) => {
     const testimonialsOriginal = dataTestimonials.find(testimonio => testimonio.id === id);
@@ -138,22 +148,26 @@ function FormAdminTestimonios() {
       );
       setData(testimoniosactualizados);
 
-      Swal.fire({
-        title: '¡Actualizado!',
-        text: 'El testimonio se ha actualizado correctamente.',
+       // Mostrar alerta de éxito
+       Swal.fire({
+        title: t('alertaT9'), // Título traducido
+        text: t('alertaT0'),  // Texto traducido
         icon: 'success',
-        confirmButtonText: 'Aceptar',
+        confirmButtonText: t('alertaT2') // Texto del botón traducido
       });
 
+      // Limpiar los campos después de la actualización exitosa
       setNamedit('');
       setDatedit('');
       setTestimoniodit('');
+
     } catch (error) {
+      // Si ocurre un error, muestra la alerta de error
       Swal.fire({
         title: 'Error',
-        text: 'Hubo un problema al actualizar el testimonio. Intenta nuevamente.',
+        text: t('alertaT11'), // Texto de error traducido
         icon: 'error',
-        confirmButtonText: 'Aceptar',
+        confirmButtonText: t('alertaT2') // Texto del botón traducido
       });
     }
   };
@@ -164,19 +178,19 @@ function FormAdminTestimonios() {
     <div>
       <div className='Testimonios'>
         <div className='Añadir'>
-          <h2 className='Title'>Add Testimonials</h2>
+          <h2 className='Title'>{t('titulo_AdminT')}</h2>
           <br />
-          <label htmlFor="nameT" className='subTitle'>Nombre</label>
+          <label htmlFor="nameT" className='subTitle'>{t('inputT1')}</label>
           <input type="text" placeholder='Ingrese el nombre' value={fullname} onChange={cargarName} />
           <br />
-          <label htmlFor="date" className='subTitle'>Fecha del Testimonio:</label>
+          <label htmlFor="date" className='subTitle'>{t('inputT2')}</label>
           <input type="date" id="date" name="date" value={date} onChange={cargarDate} />
           <br />
-          <label htmlFor='Testimonio' className='subTitle'>Testimonio</label>
+          <label htmlFor='Testimonio' className='subTitle'>{t('inputT3')}</label>
           <input type="text" placeholder='Añada el Testimonio' value={testimony} onChange={cargarTestimonials} />
           <br />
           <br />
-          <button className='btnagregar' onClick={cargar}>Agregar Testimonio</button>
+          <button className='btnagregar' onClick={cargar}>{t('btnTesti')}</button>
 
           <br />
         </div>
@@ -191,7 +205,7 @@ function FormAdminTestimonios() {
         <br />
         <br />
 
-        <h1 className='historialT'>Registros</h1>
+        <h1 className='historialT'>{t('registrosT')}</h1>
         <div >
         <ul className='mapTestimonios'>
           {dataTestimonials.map((testimonio, index) => (
@@ -202,8 +216,8 @@ function FormAdminTestimonios() {
               {testimonio.date} <input className='editInp' type="date" onChange={cargaDaTeEdit} /> 
                <br /> {testimonio.testimony} <input className='editInp' type="text" onChange={cargaTestimonyEdit} />
               <br />
-              <button className='botonHisT' onClick={e=>cargaEdicion(testimonio.id)}>Actualizar</button>
-              <button className='botonHisT' onClick={e => cargarDelete(testimonio.id)}>Eliminar</button>
+              <button className='botonHisT' onClick={e=>cargaEdicion(testimonio.id)}>{t('btnActualizar')}</button>
+              <button className='botonHisT' onClick={e => cargarDelete(testimonio.id)}>{t('btnEliminar')}</button>
               </li>
           ))}
         </ul>

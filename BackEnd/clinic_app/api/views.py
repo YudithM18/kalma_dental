@@ -88,7 +88,7 @@ class recommendationsListCreate(generics.ListCreateAPIView):
             return [AllowAny()]
         else:
             # Requiere autenticación para POST (crear)
-            return [IsAuthenticated(), IsEditor() | IsPrincipal()] 
+            return [IsAuthenticated(), IsPrincipal()]
    
 
 class recommendationsDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -104,7 +104,8 @@ class recommendationsDetail(generics.RetrieveUpdateDestroyAPIView):
         if self.request.method == 'GET':
             return [AllowAny()]
         elif self.request.method in ['PUT', 'DELETE']:
-            return [IsAuthenticated(), IsEditor() | IsPrincipal()]
+            return [IsAuthenticated(), IsPrincipal()]
+
         else:
             return [IsAuthenticated()]    
             ################################
@@ -124,7 +125,8 @@ class video_blogListCreate(generics.ListCreateAPIView):
             return [AllowAny()]
         else:
             # Requiere autenticación para POST (crear)
-            return [IsAuthenticated(), IsEditor() | IsPrincipal()] 
+            return [IsAuthenticated(), IsEditor()]
+
     
 class video_blogDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = video_blog.objects.all()
@@ -139,7 +141,8 @@ class video_blogDetail(generics.RetrieveUpdateDestroyAPIView):
         if self.request.method == 'GET':
             return [AllowAny()]
         elif self.request.method in ['PUT', 'DELETE']:
-            return [IsAuthenticated(), IsEditor() | IsPrincipal()]
+            return [IsAuthenticated(), IsEditor()]
+
         else:
             return [IsAuthenticated()]
     

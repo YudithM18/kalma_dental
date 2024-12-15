@@ -8,12 +8,12 @@ async function UpdateTips(id, recommendations_url, tips_title, tips_description)
       throw new Error('Token no encontrado en localStorage');
     }
     
+     console.log(id);
      
         const DataTips = { 
             recommendations_url,
             tips_title,
             tips_description
-        
         };
         const response = await fetch(`http://127.0.0.1:8000/api/consejos/${id}/`, {
             method: 'PUT',

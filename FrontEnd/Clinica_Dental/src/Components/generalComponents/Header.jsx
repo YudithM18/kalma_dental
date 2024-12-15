@@ -2,8 +2,17 @@ import React, { useState, useEffect } from 'react';
 import '../../Styles/FormHeader.css';
 import logo from '../../Img/Logo_secundario.jpg';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next'; // Importa el hook useTranslation
+import '../../i18n'
 
 const Header = () => {
+
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang); // Cambia el idioma dinámicamente
+  };
+
   const [search, setSearch] = useState('');
   const [results, setResults] = useState([]);
 
@@ -43,7 +52,7 @@ const Header = () => {
         </Link>
       </div>
       <Link to="/PaymentAmount">
-       <button className='btndonar'>Donar</button> 
+       <button className='btndonar'>{t('btnDonar')}</button> 
       </Link>
       
       <div className="search-container">

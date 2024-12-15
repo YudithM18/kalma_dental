@@ -2,9 +2,20 @@ import React, {useEffect, useState} from 'react'
 import GetTips from '../Service/Consejos/GetTips';
 import GetVideoBlog from '../Service/VideoBlog/GetVideoBlog';
 
+import { useTranslation } from 'react-i18next'; // Importa el hook useTranslation
+import '../i18n'
+
 function FormBlog() {
   const [consejos, setConsejos] = useState([])
   const [videoBlog, setVideoBlog] = useState([]);
+
+
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang); // Cambia el idioma dinámicamente
+  };
+
 
 
   // useEffect para cargar Testimonios al montar el componente
@@ -33,7 +44,7 @@ function FormBlog() {
         <br />
         <br />
 
-        <h1 className='historial'>Recomendaciones para tu cuidado bocal:</h1>
+        <h1 className='historial'>{t('tituloBlog1')}</h1>
         <div className='conteiner-datos'>
         <ul className='ul'>
           {consejos.map((consejitos) => (
@@ -41,7 +52,6 @@ function FormBlog() {
               <h2>{consejitos.tips_title}</h2>
               <br />
               <img src={consejitos.recommendations_url} alt="Consejo"className='imagenC'/>
-              {consejitos.tips_title}
                <br /> {consejitos.tips_description}
               </li>
           ))}
@@ -59,6 +69,13 @@ function FormBlog() {
           ))}
         </ul>
         </div>
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <h1 className='historial'>{t('tituloBlog2')}</h1>
+
     </div>
   )
 }

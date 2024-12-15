@@ -2,8 +2,18 @@ import React, { useState, useEffect } from 'react';
 import GetSpecialists from '../Service/WorkTeam/ESPECIALISTAS/GetSpecialists';
 import GetServicios from '../Service/Servicios/GetServicios'
 
+import { useTranslation } from 'react-i18next'; // Importa el hook useTranslation
+import '../i18n'
+
 
 function FormServices() {
+
+
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang); // Cambia el idioma dinámicamente
+  };
 
   const [dataService, setdataService] = useState([]);
   const [dataSpecialists, setdataEspecialistas] = useState([]);
@@ -33,7 +43,7 @@ function FormServices() {
       <br />
       <br />
   
-      <h1 className='historial'>Servicios Disponibles:</h1>
+      <h1 className='historial'>{t('tituloPagS')}</h1>
       <div className='servicios-conteiner'>
         <ul className='ul'>
           {dataService.map((Servicio) => {

@@ -5,11 +5,15 @@ import { useNavigate } from "react-router-dom"; // Importa hook para navegación
 import PostToken from "../Service/Usuarios/PostToken"; // Importa función para obtener usuarios
 import imagen from '../Img/fondo2.jpg'
 
+import { useTranslation } from 'react-i18next'; // Importa el hook useTranslation
+import '../i18n'
+
+
 function FormLogin() {
+
   // Define estados para manejar los datos del formulario
   const [user, setUser] = useState(''); // Estado para almacenar el correo electrónico
   const [pass, setPass] = useState(''); // Estado para almacenar la contraseña
-  const [users, setUsers] = useState([]); // Estado para almacenar la lista de usuarios
   const navigate = useNavigate(); // Inicializa el hook de navegación
 
 
@@ -21,16 +25,7 @@ function FormLogin() {
         document.body.classList.remove('fondo-login');
     };
 }, []);
-/*
-  // useEffect para cargar usuarios al montar el componente
-  useEffect(() => {
-    const fetchUsers = async () => {
-      const data = await GetUsers(); // Llama a la función para obtener usuarios
-      setUsers(data); // Actualiza el estado con la lista de usuarios obtenida
-    };
-    fetchUsers(); // Ejecuta la función
-  }, []);
-*/
+
 
   // Función para manejar el inicio de sesión
   const handleLogin = async() => {
@@ -42,8 +37,8 @@ function FormLogin() {
     if (listaU.access) {
       // Si se encuentra el usuario, muestra una alerta de éxito
       Swal.fire({
-        title: 'Has ingresado exitosamente',
-        text: 'Gracias!!',
+        title:  t('alertaLogin'),
+        text:  t('alertaLogin1'),
         icon: 'success',
         confirmButtonText: 'Ok'
       });
@@ -55,12 +50,18 @@ function FormLogin() {
         // Si algún campo está vacío, muestra una alerta de error
         Swal.fire({
           title: 'Error',
-          text: 'Todos los campos son requeridos',
+          text:  t('alertaLogin2'),
           icon: 'error',
           confirmButtonText: 'Ok'
         });
       }
     }
+  };
+
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang); // Cambia el idioma dinámicamente
   };
 
   // Función para manejar el botón "VOLVER"
@@ -73,13 +74,13 @@ function FormLogin() {
     
     <div className="login-container">
       <div className="omitir">
-       <button className="back-button" onClick={BLogin}>OMITIR</button>
+       <button className="back-button" onClick={BLogin}>{t('btnO')}</button>
       </div>
       {/* Lado izquierdo con el formulario de login */}
       <div className="login-left">
-        <h1 className="login-title">Welcome!!</h1> {/* Título del formulario */}
+        <h1 className="login-title">{t('bienvenidoAdmin')}</h1> {/* Título del formulario */}
         
-        <label className="Move" htmlFor="user">Username</label>
+        <label className="Move" htmlFor="user">{t('usuario')}</label>
         <input 
           className="input-field" 
           type="text" 
@@ -88,7 +89,7 @@ function FormLogin() {
           onChange={(e) => setUser(e.target.value)} 
         />
 
-        <label className="move" htmlFor="pass">Password</label>
+        <label className="move" htmlFor="pass">{t('contra')}</label>
         <input 
           className="input-field" 
           type="password" 
@@ -97,7 +98,7 @@ function FormLogin() {
           onChange={(e) => setPass(e.target.value)} 
         />
         
-        <button className="login-button" onClick={handleLogin}>INGRESAR</button>
+        <button className="login-button" onClick={handleLogin}>{t('btnIngreso')}</button>
         
       </div>
 

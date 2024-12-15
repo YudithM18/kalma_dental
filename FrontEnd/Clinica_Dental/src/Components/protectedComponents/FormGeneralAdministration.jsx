@@ -15,7 +15,19 @@ import DeleteSpecialists from '../../Service/WorkTeam/ESPECIALISTAS/DeleteSpecia
 // SweetAlert2
 import Swal from 'sweetalert2';
 
+import { useTranslation } from 'react-i18next'; // Importa el hook useTranslation
+import '../../i18n'
+
+
 function FormAdministracion() {
+
+
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang); // Cambia el idioma dinámicamente
+  };
+  
   // Define estados para manejar los datos del formulario
   const [specialists_url, setImageW] = useState('');
   const [full_name, setfullName] = useState('');
@@ -107,21 +119,21 @@ function FormAdministracion() {
       if (response) {
         Swal.fire({
           icon: 'success',
-          title: 'Registro Agregado',
-          text: 'El nuevo Registro se ha añadido correctamente.',
+          title:t('alertaWT'),
+          text: t('alertaWT1'),
         });
       } else {
         Swal.fire({
           icon: 'error',
           title: 'Error',
-          text: 'Hubo un problema al agregar el Registro. Intente nuevamente.',
+          text:t('alertaWT2'),
         });
       }
     } catch (error) {
       Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: 'Ocurrió un error al agregar nuevo Registro. Por favor, intente nuevamente.',
+        text: t('alertaWT3'),
       });
     }
   };
@@ -129,12 +141,12 @@ function FormAdministracion() {
   // Función para eliminar un especialista
   async function cargarDelete(id) {
     const confirmDelete = await Swal.fire({
-      title: '¿Estás seguro?',
-      text: 'No podrás recuperar este especialista después de eliminarlo.',
+      title: t('alertaWT4'),
+      text: t('alertaWT5'),
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Sí, eliminar',
-      cancelButtonText: 'Cancelar',
+      confirmButtonText: t('alertaWT6'),
+      cancelButtonText: t('alertaWT7'),
     });
 
     if (confirmDelete.isConfirmed) {
@@ -142,7 +154,7 @@ function FormAdministracion() {
       const valorEncontrar = dataSpecialists.filter(especialista => especialista.id !== id);
       setSpecialists([...valorEncontrar]);
 
-      Swal.fire('Eliminado!', 'El especialista ha sido eliminado.', 'success');
+      Swal.fire( t('alertaWT8'),  t('alertaWT9'), 'success');
     }
   }
 
@@ -176,14 +188,14 @@ function FormAdministracion() {
 
       Swal.fire({
         icon: 'success',
-        title: 'Especialista Actualizado',
-        text: 'Los cambios han sido guardados correctamente.',
+        title: t('alertaWT0'),
+        text: t('alertaWT11'),
       });
     } catch (error) {
       Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: 'Hubo un problema al actualizar el especialista.',
+        text: t('alertaWT12'),
       });
     }
   }
@@ -192,17 +204,17 @@ function FormAdministracion() {
     <div>
       <div className='WorkTeam'>
         <div className='Añadir'>
-          <h2 className='Title'>Add Work Staff</h2>
+          <h2 className='Title'>{t('tituloAdminWT')}</h2>
           <br />
-          <label htmlFor="image" className='subTitle'>Imagen</label>
+          <label htmlFor="image" className='subTitle'>{t('inputfoto')}</label>
           <input className='inptWorkTeam' type="file" onChange={ImageLoad} />
           <br />
-          <label htmlFor="Fname" className='subTitle'>Nombre Completo</label>
+          <label htmlFor="Fname" className='subTitle'>{t('inputNombre')}</label>
           <input className='inptWorkTeam' type="text" placeholder='Ingrese el Nombre Completo' value={full_name} onChange={cargarFullName} />
           <br />
-          <label htmlFor="Speciality" className='subTitle'>Especialidad</label>
+          <label htmlFor="Speciality" className='subTitle'>{t('inputE')}</label>
           <select className='inptWorkTeam' value={Speciality} onChange={cargarSpeciality} id="Speciality">
-            <option value="">Seleccionar especialidad</option>
+            <option value="">{t('selectE')}</option>
             {dataSpeciality.map((speciality) => (
               <option key={speciality.id} value={speciality.id}>
                 {speciality.speciality_name} {/* Mostrar el nombre de la especialidad */}
@@ -210,9 +222,9 @@ function FormAdministracion() {
             ))}
           </select>
           <br />
-          <label htmlFor='Qualification' className='subTitle'>Titulación</label>
+          <label htmlFor='Qualification' className='subTitle'>{t('inputTI')}</label>
           <select className='inptWorkTeam' value={Qualification} onChange={cargarQualification} id="Qualification">
-            <option value="">Seleccione una titulación</option>
+            <option value="">{t('selectT')}</option>
             {dataQualification.map((qualification) => (
               <option key={qualification.id} value={qualification.id}>
                 {qualification.qualification_name} {/* Mostrar el nombre de la titulacion */}
@@ -221,7 +233,7 @@ function FormAdministracion() {
           </select>
           <br />
           <br />
-          <button className='btnagregarW' onClick={cargarNewEspecilista}>Agregar</button>
+          <button className='btnagregarW' onClick={cargarNewEspecilista}>{t('btnWT')}</button>
           <br />
         </div>
       </div>
@@ -230,7 +242,7 @@ function FormAdministracion() {
       <br />
       <br />
       <br />
-      <h1 className='historial'>Registros</h1>
+      <h1 className='historial'>{t('registrosWT')}</h1>
       <div className='workTeam-conteiner'>
         <ul className='ul'>
           {dataSpecialists.map((especialista) => {
@@ -260,8 +272,8 @@ function FormAdministracion() {
                 )}
                 <input type="text" onChange={cargarQualification_edit} />
                 <br />
-                <button className='botonHis' onClick={e => cargaEdicion(especialista.id)}>Guardar</button>
-                <button className='botonHis' onClick={e => cargarDelete(especialista.id)}>Eliminar</button>
+                <button className='botonHis' onClick={e => cargaEdicion(especialista.id)}>{t('btnActualizar')}</button>
+                <button className='botonHis' onClick={e => cargarDelete(especialista.id)}>{t('btnEliminar')}</button>
               </li>
             );
           })}

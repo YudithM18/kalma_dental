@@ -6,8 +6,16 @@ import DeleteServicios from '../../Service/Servicios/DeleteServicios';
 import UpdateServicios from '../../Service/Servicios/UpdateServicios';
 import GetSpecialists from '../../Service/WorkTeam/ESPECIALISTAS/GetSpecialists';
 import Swal from 'sweetalert2';  // Importar SweetAlert2
+import { useTranslation } from 'react-i18next'; // Importa el hook useTranslation
+import '../../i18n'
 
 function FormAdminServicios() {
+
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang); // Cambia el idioma dinámicamente
+  };
 
   const [services_url, setImage] = useState('');
   const [service_name, setNameS] = useState(''); 
@@ -77,7 +85,7 @@ function FormAdminServicios() {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Por favor, ingrese todos los datos.',
+        text: t('alertS0'),
       });
       return;
     }
@@ -100,15 +108,15 @@ function FormAdminServicios() {
 
       Swal.fire({
         icon: 'success',
-        title: 'Servicio Agregado',
-        text: 'El servicio se ha agregado correctamente.',
+        title: t('alertS1'),
+        text: t('alertS2'),
       });
 
     } catch (error) {
       Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: 'Hubo un problema al agregar el servicio.',
+        text: t('alertS3'),
       });
     }
   };
@@ -116,12 +124,12 @@ function FormAdminServicios() {
   // Eliminar un servicio
   async function cargarDelete(id) {
     const confirmDelete = await Swal.fire({
-      title: '¿Estás seguro?',
-      text: 'No podrás recuperar este servicio después de eliminarlo.',
+      title: t('alertS4'),
+      text: t('alertS5'),
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Sí, eliminar',
-      cancelButtonText: 'Cancelar',
+      confirmButtonText: t('alertS6'),
+      cancelButtonText: t('alertS7'),
     });
 
     if (confirmDelete.isConfirmed) {
@@ -131,8 +139,8 @@ function FormAdminServicios() {
       setdataService([...valorEncontrar]);
 
       Swal.fire(
-        'Eliminado!',
-        'El servicio ha sido eliminado.',
+        t('alertS8'),
+        t('alertS9'),
         'success'
       );
     }
@@ -167,14 +175,14 @@ function FormAdminServicios() {
 
       Swal.fire({
         icon: 'success',
-        title: 'Servicio Actualizado',
-        text: 'Los cambios han sido guardados correctamente.',
+        title: t('alertS10'),
+        text: t('alertS11'),
       });
     } catch (error) {
       Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: 'Hubo un problema al actualizar el servicio.',
+        text: t('alertS12'),
       });
     }
   }
@@ -188,22 +196,22 @@ function FormAdminServicios() {
     <div>
       <div className='Servicios'>
         <div className='add'>
-          <h2 className='TitleS'>Add Services</h2>
+          <h2 className='TitleS'>{t('tituloAdminS')}</h2>
           <br />
-          <label htmlFor="image" className='subTitleS'>Imagen</label>
+          <label htmlFor="image" className='subTitleS'>{t('inputS1')}</label>
           <input type="file" onChange={ImageLoad} className='IMGFILE' />
           <br />
-          <label htmlFor="nameS" className='subTitleS'>Servicio</label>
+          <label htmlFor="nameS" className='subTitleS'>{t('inputS2')}</label>
           <input type="text" placeholder='Ingrese el Servicio' value={service_name} onChange={cargarNameService} className='IMGFILE' />
           <br />
-          <label htmlFor='Treatment' className='subTitleS'>Especialista a cargo:</label>
+          <label htmlFor='Treatment' className='subTitleS'>{t('inputS3')}</label>
           <select 
             value={specialists} 
             onChange={cargarSpecialists} 
             className='IMGFILE' 
             id='Treatment'
           >
-            <option value="">Seleccionar especialista</option>
+            <option value="">{t('inputS4')}</option>
             {dataSpecialists.map((specialist) => (
               <option key={specialist.id} value={specialist.id}>
                 {specialist.full_name} {/* Mostrar el nombre del especialista */}
@@ -211,11 +219,11 @@ function FormAdminServicios() {
             ))}
           </select>
           <br />
-          <label htmlFor='Treatment' className='subTitleS'>Tratamientos Vinculados</label>
+          <label htmlFor='Treatment' className='subTitleS'>{t('inputS5')}</label>
           <input type="text" placeholder='Añada el Tratamiento Vinculado' value={description} onChange={cargarTreatment} className='IMGFILE' />
           <br />
           <br />
-          <button className='btnadd' onClick={cargarServicio}>Add Service</button>
+          <button className='btnadd' onClick={cargarServicio}>{t('btnAgregar')}</button>
           <br />
         </div>
       </div>
@@ -228,7 +236,7 @@ function FormAdminServicios() {
       <br />
       <br />
   
-      <h1 className='historial'>Registros</h1>
+      <h1 className='historial'>{t('registrosS')}</h1>
       <div className='servicios-conteiner'>
         <ul className='ul'>
           {dataService.map((Servicio) => {
@@ -244,6 +252,7 @@ function FormAdminServicios() {
                 <br />
                 <img className='imgRecid' src={Servicio.services_url} />
                 <input onChange={carga_ImageEdit} type="file" />
+                
                 <br />
                 {Servicio.services_name} 
                 {Specialist ? (
@@ -256,8 +265,8 @@ function FormAdminServicios() {
                 {Servicio.description}
                 <input className='editInp' type="text" onChange={carga_servicedescription_edit} />
                 <br />
-                <button className='botonHis' onClick={e => cargaEdicion(Servicio.id)}>Guardar</button>
-                <button className='botonHis' onClick={e => cargarDelete(Servicio.id)}>Eliminar</button>
+                <button className='botonHis' onClick={e => cargaEdicion(Servicio.id)}>{t('btnActualizar')}</button>
+                <button className='botonHis' onClick={e => cargarDelete(Servicio.id)}>{t('btnEliminar')}</button>
               </li>
             );
           })}

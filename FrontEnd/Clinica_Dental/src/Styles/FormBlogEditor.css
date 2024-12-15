@@ -1,125 +1,178 @@
-.contenedor_Tips{
-    background-color: #4a8e58e7;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    width: 100%;
-    max-width: 600px; /* Ancho máximo */
-    text-align: center;
-    animation: fadeIn 0.6s ease-in-out; /* Animación de aparición */
-    margin-top: 150px;
-    margin-left: 300px;
+/* Estilo para el contenedor de consejos */
+.contenedor_Tips {
+  background: linear-gradient(135deg, #4a8e58e7, #354d38); /* Degradado verde más oscuro */
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4); /* Sombras más oscuras */
+  padding: 30px;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out;
+  margin-top: 150px;
+  margin-left: 300px;
 }
 
-.contenedorVideoBlog{
-    background-color: #8e6e4aef;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    width: 100%;
-    max-width: 600px; /* Ancho máximo */
-    text-align: center;
-    animation: fadeIn 0.6s ease-in-out; /* Animación de aparición */
-    margin-top: 150px;
-    margin-left: 300px;
+/* Estilo para el contenedor de video blog */
+.contenedorVideoBlog {
+  background: linear-gradient(135deg, #dbb288, #a77a48); /* Degradado con tonos más claros de café */
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); /* Sombra más suave */
+  padding: 30px;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out;
+  margin-top: 150px;
+  margin-left: 300px;
 }
 
-.btnAgregarT{
-    background-color: #82DE95;
-    color: white; /* Texto blanco */
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
-    margin: 5px 0;
-    animation: popIn 0.5s ease; /* Animación de aparición para botones */
-    margin-left: 350px;
 
+
+/* Estilo para los botones agregar (Tips) */
+.btnAgregarT {
+  background-color: #82DE95;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.3s;
+  margin: 5px 0;
+  animation: popIn 0.5s ease;
+  margin-left: 350px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra negra para el botón */
 }
 
-.btnAgregarV{
-    background-color: #DEB782;
-    color: white; /* Texto blanco */
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
-    margin: 5px 0;
-    animation: popIn 0.5s ease; /* Animación de aparición para botones */
-    margin-left: 350px;
-
+.btnAgregarV {
+  background-color: #DEB782;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.3s;
+  margin: 5px 0;
+  animation: popIn 0.5s ease;
+  margin-left: 350px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra negra para el botón */
 }
 
-.subtitulo{
-    color: white;
-    font-size: 20px;
-    text-align: start;
+/* Estilo para los subtítulos */
+.subtitulo {
+  color: white;
+  font-size: 20px;
+  text-align: start;
 }
 
-.input{
-    background-color: #C3E2C1;
-    width: calc(100% - 20px); /* Ancho completo menos padding */
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid black; /* Borde gris */
-    border-radius: 5px;
-    font-size: 1rem;
-    transition: border-color 0.3s, box-shadow 0.3s; /* Añadir transición para la sombra */
-}
-.input2{
-    background-color: #ECE5BE;
-    width: calc(100% - 20px); /* Ancho completo menos padding */
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid black; /* Borde gris */
-    border-radius: 5px;
-    font-size: 1rem;
-    transition: border-color 0.3s, box-shadow 0.3s; /* Añadir transición para la sombra */
+.inputFile{
+  background-color: #f4f4f4; /* Fondo gris claro */
+  border: 1px solid #ccc; /* Borde gris suave */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 10px 12px; /* Espaciado dentro del input */
+  width: 90%; /* Ancho completo */
+  font-size: 1rem; /* Tamaño de fuente */
+  transition: all 0.3s ease; /* Transición suave */
+  margin-bottom: 15px; /* Espacio debajo de cada input */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera para profundidad */
 }
 
-.conteiner-datos{
-    background-color: #4a8e58e7;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 60px;  /* Reducir el padding para hacer el contenedor más pequeño */
-    width: 100%;
-    max-width: 700px;  /* Reducir el ancho máximo del contenedor */
-    text-align: center;
-    animation: fadeIn 0.6s ease-in-out;
-    margin-top: 150px;
-    margin-left: auto;
-    margin-right: auto; /* Centrar el contenedor */
+/* Estilo para los campos de entrada (inputs) */
+.input, .input2 {
+    background-color: #f4f4f4; /* Fondo gris claro */
+    border: 1px solid #ccc; /* Borde gris suave */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 12px 15px; /* Espaciado dentro del input */
+    width: 100%; /* Ancho completo */
+    font-size: 1rem; /* Tamaño de fuente */
+    transition: all 0.3s ease; /* Transición suave */
+    margin-bottom: 15px; /* Espacio debajo de cada input */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera para profundidad */
 }
 
-/* Color de los títulos de los consejos */
+/* Efecto cuando el input está en foco */
+.input:focus, .input2:focus {
+    border-color: #888; /* Gris oscuro cuando está enfocado */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* Resaltado suave con sombra */
+    outline: none; /* Quitar el borde de foco predeterminado */
+}
+
+/* Efecto cuando el input tiene texto (se llena) */
+.input:not(:placeholder-shown), .input2:not(:placeholder-shown) {
+    background-color: #fff; /* Fondo blanco cuando hay texto */
+    border-color: #888; /* Gris más oscuro */
+}
+
+/* Estilo para los inputs deshabilitados */
+.input:disabled, .input2:disabled {
+    background-color: #e0e0e0; /* Gris claro para los inputs deshabilitados */
+    border-color: #ccc; /* Gris suave */
+    color: #999; /* Color gris para el texto */
+    cursor: not-allowed; /* Cursor de no permitido */
+}
+
+/* Placeholder (texto de ejemplo) */
+.input::placeholder, .input2::placeholder {
+    color: #aaa; /* Color gris suave para el texto del placeholder */
+    font-style: italic; /* Estilo cursivo para los placeholders */
+}
+
+/* Estilo para el contenedor de los inputs */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Contenedor a ancho completo */
+    margin-bottom: 20px; /* Espacio entre inputs */
+}
+
+/* Estilo adicional para los inputs al pasar el ratón (hover) */
+.input:hover, .input2:hover {
+    border-color: #666; /* Gris oscuro al pasar el ratón */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Sombra ligera en hover */
+}
+
+
+/* Estilo para el contenedor de datos */
+.conteiner-datos {
+  background: linear-gradient(135deg, #4a8e58e7, #354d38); /* Degradado verde más oscuro */
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4); /* Sombras más oscuras */
+  padding: 60px;
+  width: 100%;
+  max-width: 700px;
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out;
+  margin-top: 150px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Estilo para los elementos de lista */
 .li {
   font-family: 'Verdana', sans-serif;
-  color: #333; /* Cambiar el color de la letra del título y contenido */
+  color: #333;
 }
 
-/* Color de la imagen de los consejos (puedes agregar bordes si quieres resaltar las imágenes) */
+/* Estilo para las imágenes de los consejos */
 .imagenC {
   width: 300px;
   height: auto;
   border-radius: 8px;
   margin-bottom: 10px;
-  border: 2px solid #ddd; /* Borde sutil para la imagen */
+  border: 2px solid #ddd;
 }
 
-/* Cambiar el color de los campos de texto */
+/* Estilo para los campos de texto editables */
 .editInp1, .editInp {
-  color: #333; /* Color de texto dentro de los campos de entrada */
-  background-color: #fff; /* Color de fondo blanco para los inputs */
+  color: #333;
+  background-color: #fff;
 }
 
-/* Botón de acción (actualizar y eliminar) */
+/* Estilo para el botón de acción (actualizar y eliminar) */
 .botonHis {
   background-color: #4CAF50;
-  color: white; /* Color de texto blanco */
+  color: white;
   border: none;
   padding: 10px 20px;
   text-align: center;
@@ -127,15 +180,9 @@
   cursor: pointer;
   margin-top: 10px;
   transition: background-color 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra para el botón */
 }
 
 .botonHis:hover {
   background-color: #45a049;
 }
-
-/* Color de los botones de acción de eliminar y actualizar */
-.botonHis {
-  color: #fff; /* Texto blanco en los botones */
-  background-color: #45a049;
-}
-

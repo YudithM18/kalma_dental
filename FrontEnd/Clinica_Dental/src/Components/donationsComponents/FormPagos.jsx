@@ -4,8 +4,16 @@ import paypal from '../../Img/PayPal.png';
 import Swal from 'sweetalert2';
 import '../../Styles/FormPagos.css';
 import {useLocation, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next'; // Importa el hook useTranslation
+import '../../i18n'
 
 const FormPagos = () => {
+
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang); // Cambia el idioma dinámicamente
+  };
 
   const location = useLocation();
   const donationAmount = location.state.amount;
@@ -33,42 +41,48 @@ const FormPagos = () => {
     });
   };
 
-  // Función para manejar la aprobación del pago
-  const onApprove = (data, actions) => {
-    return actions.order.capture().then(function (details) {
-      setPaymentStatus({ success: true, message: `Pago Completado: ${details.payer.name.given_name}` });
-      
-      // Mostrar un SweetAlert2 de éxito
-      Swal.fire({
-        icon: 'success',
-        title: '¡Donación Completada!',
-        text: `Gracias por tu donación, ${details.payer.name.given_name}!`,
-        confirmButtonText: 'Aceptar',
-        confirmButtonColor: '#3085d6',
-      });
-      setTimeout(() => {
-        navigate('/');
-      }, 6000);
+ // Función para manejar la aprobación del pago
+ const onApprove = (data, actions) => {
+  return actions.order.capture().then(function (details) {
+    // Usar las traducciones para los textos
+    setPaymentStatus({ 
+      success: true, 
+      message: `${t('Alerta_exito')}: ${details.payer.name.given_name}` 
     });
-  };
 
-  // Función para manejar el cancelamiento del pago
-  const onCancel = () => {
-    setPaymentStatus({ success: false, message: "Pago Cancelado" });
-    
-    // Mostrar un SweetAlert2 de cancelación
+    // Mostrar un SweetAlert2 de éxito
     Swal.fire({
-      icon: 'error',
-      title: 'Pago Cancelado',
-      text: 'Lamentamos que no hayas completado la donación. Si tienes algún problema, contáctanos.',
-      confirmButtonText: 'Aceptar',
-      confirmButtonColor: '#d33',
+      icon: 'success',
+      title: t('Alerta_1_pago'),
+      text: `${t('Alerta_2_pago')}, ${details.payer.name.given_name}!`,
+      confirmButtonText: t('Alerta_3_pago'),
+      confirmButtonColor: '#3085d6',
     });
-  };
+
+    // Redirigir después de un tiempo
+    setTimeout(() => {
+      navigate('/'); // Navega a la página principal
+    }, 6000);
+  });
+};
+
+// Función para manejar el cancelamiento del pago
+const onCancel = () => {
+  setPaymentStatus({ success: false, message: t('Alerta_4_pago') });
+  
+  // Mostrar un SweetAlert2 de cancelación
+  Swal.fire({
+    icon: 'error',
+    title: t('Alerta_fracaso'),
+    text: t('Alerta_5_pago'),
+    confirmButtonText: t('Alerta_6_pago'),
+    confirmButtonColor: '#d33',
+  });
+};
 
   return (
     <div className="payment-container">
-      <h1 className='completo'>Completa tu donación</h1>
+      <h1 className='completo'>{t('titulo_pagos')}</h1>
       {/* Imagen decorativa de PayPal */}
       <img className="paypal-image" src={paypal} alt="Logo PayPal" />
       

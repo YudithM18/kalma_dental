@@ -11,7 +11,19 @@ import GetSpeciality from '../Service/WorkTeam/ESPECIALIDAD/GetSpeciality';
 import GetTestimonios from '../Service/testimonios/GetTestimonios'; // Importa función para obtener testimonios
 
 
+import { useTranslation } from 'react-i18next'; // Importa el hook useTranslation
+import '../i18n'
+
 const FormHome = () => {
+
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang); // Cambia el idioma dinámicamente
+  };
+
+
+
   const slides = [
     clinica4,
     clinica_2,
@@ -109,7 +121,7 @@ const FormHome = () => {
       </div>
 
       <br />
-      <h1 className="historial">Equipo de especialistas:</h1>
+      <h1 className="historial">{t('')}</h1>
       <div className="workTeam-conteiner">
         <ul className="ul">
           {dataSpecialists.map((especialista) => {
@@ -143,7 +155,7 @@ const FormHome = () => {
 
       <br />
       <br />
-      <h1 className="historialT">Testimonios de pacientes</h1>
+      <h1 className="historialT">{t('tituloInicio2')}</h1>
       {/* Carrusel para los testimonios */}
       <div className="testimonial-carousel">
         <button className="testimonial-btn prev" onClick={prevTestimonial}>

@@ -1,53 +1,98 @@
 import React, { useState, useEffect } from 'react';
-
+import Swal from 'sweetalert2';  // Importa SweetAlert2
 import GetSpecialists from '../Service/WorkTeam/ESPECIALISTAS/GetSpecialists';
 import GetQualification from '../Service/WorkTeam/TITULACION/GetQualification';
 import GetSpeciality from '../Service/WorkTeam/ESPECIALIDAD/GetSpeciality';
-
 import especialista from '../Img/Nuestros-doctores.png'
+import { useTranslation } from 'react-i18next'; // Importa el hook useTranslation
+import '../i18n'
 
 function FormWorkTeams() {
 
-  ///SETE0 DE REGISTROS EN LA BASE DE DATOS
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang); // Cambia el idioma dinámicamente
+  };
+
+  ///SETEO DE REGISTROS EN LA BASE DE DATOS
   const [dataSpecialists, setSpecialists] = useState([]);
   const [dataQualification, setDatatitulacion] = useState([]);
   const [dataSpeciality, setDataEspecialidad] = useState([]);
 
-     // Hook para obtener los datos de especialistas
-     useEffect(() => {
-      const fetchEspecialista = async () => {
+  // Hook para obtener los datos de especialistas
+  useEffect(() => {
+    const fetchEspecialista = async () => {
+      try {
         const Especialistas = await GetSpecialists();
         setSpecialists(Especialistas);
-      };
-      fetchEspecialista();
-    }, []);
-  
-    // Hook para obtener los datos de especialidades
-    useEffect(() => {
-      const fetchEspecialidad = async () => {
+        Swal.fire({
+          icon: 'success',
+          title: t('Alert_E'),
+          text: t('Alert_EText'),
+        });
+      } catch (error) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: t('Alert_ErrorE'),
+        });
+      }
+    };
+    fetchEspecialista();
+  }, []);
+
+  // Hook para obtener los datos de especialidades
+  useEffect(() => {
+    const fetchEspecialidad = async () => {
+      try {
         const Especialidades = await GetSpeciality();
         setDataEspecialidad(Especialidades);
-      };
-      fetchEspecialidad();
-    }, []);
-  
-    // Hook para obtener los datos de titulaciones
-    useEffect(() => {
-      const fetchTitulaciones = async () => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Especialidades Cargadas',
+          text: 'Las especialidades se han cargado correctamente.',
+        });
+      } catch (error) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'No se pudieron cargar las especialidades.',
+        });
+      }
+    };
+    fetchEspecialidad();
+  }, []);
+
+  // Hook para obtener los datos de titulaciones
+  useEffect(() => {
+    const fetchTitulaciones = async () => {
+      try {
         const Titulaciones = await GetQualification();
         setDatatitulacion(Titulaciones);
-      };
-      fetchTitulaciones();
-    }, []);
-
+        Swal.fire({
+          icon: 'success',
+          title: 'Titulaciones Cargadas',
+          text: 'Las titulaciones se han cargado correctamente.',
+        });
+      } catch (error) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'No se pudieron cargar las titulaciones.',
+        });
+      }
+    };
+    fetchTitulaciones();
+  }, []);
 
   return (
     <div>
-       <br />
       <br />
       <br />
       <br />
-      <h1 className='historial'>Nuestro Equipo de Especialistas.</h1>
+      <br />
+      <h1 className='historial'>{t('TituloPagWT')}</h1>
       <img src={especialista} alt="Medico dental" />
       <br />
       <div className='workTeam-conteiner'>
@@ -74,7 +119,6 @@ function FormWorkTeams() {
                 ) : (
                   <span>Sin Titulación</span>
                 )}
-                
                 <br />
               </li>
             );
@@ -82,7 +126,7 @@ function FormWorkTeams() {
         </ul>
       </div>
     </div>
-  )
+  );
 }
 
-export default FormWorkTeams
+export default FormWorkTeams;

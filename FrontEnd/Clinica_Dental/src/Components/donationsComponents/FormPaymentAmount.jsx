@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../Styles/FormPaymentAmount.css';
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';import { useTranslation } from 'react-i18next'; // Importa el hook useTranslation
+import '../../i18n'
 
 function FormPaymentAmount() {
+
+    const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang); // Cambia el idioma dinámicamente
+  };
 
     useEffect(() => {
         
@@ -30,8 +37,8 @@ function FormPaymentAmount() {
         if (isNaN(amount) || amount <= 0) {
             Swal.fire({
                 icon: 'warning',
-                title: '¡Atención!',
-                text: 'Por favor, ingresa un monto válido.',
+                title: t('Alerta_pay1'), // Usar traducción para el título
+                text: t('Alerta_pay2'), // Usar traducción para el texto
                 confirmButtonText: 'OK'
             });
         } else {
@@ -46,11 +53,11 @@ function FormPaymentAmount() {
     return (
         <div>
             <div className="omitir-donacion">
-            <button className="back-button-donar" onClick={BtnDonation}>OMITIR</button>
+            <button className="back-button-donar" onClick={BtnDonation}>{t('payPag')}</button>
             </div>
                 <div className="form-container">
                     <div className="form-content">
-                        <h2 className='titulo-ingresar'>Ingresa el monto que deseas donar</h2>
+                        <h2 className='titulo-ingresar'>{t('payPag2')}</h2>
                         <form onSubmit={validateSubmit}>
                             <div className="input-container">
                                 <input
@@ -63,7 +70,7 @@ function FormPaymentAmount() {
                                     required
                                 />
                             </div>
-                            <button type="submit" className="submit-btn">Continuar</button>
+                            <button type="submit" className="submit-btn">{t('payPag3')}</button>
                         </form>
                     </div>
                 </div>

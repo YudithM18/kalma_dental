@@ -5,8 +5,19 @@ import getUsers from '../../Service/Usuarios/getUsers'
 import DeleteUsers from '../../Service/Usuarios/DeleteUsers'
 import updateUsers from '../../Service/Usuarios/updateUsers'
 
+import { useTranslation } from 'react-i18next'; // Importa el hook useTranslation
+import '../../i18n'
+
 
 function FormUsersAdministration() {
+
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang); // Cambia el idioma dinámicamente
+  };
+
+
   const [username, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -143,27 +154,27 @@ console.log(id, nuevosDatos.first_name, nuevosDatos.last_name, nuevosDatos.usern
   return (
     <div>
       <div className='contenedorUsers'>
-        <h1>Users Administration</h1>
+        <h1>{t('tituloAdminU')}</h1>
           <form>
-            <label className='label'>First name:</label>
+            <label className='label'>{t('inputU')}</label>
             <input className='inputUsers' type="text" value={first_name} onChange={cargafirst_name} />
             <br/>
-            <label className='label'>Last name:</label>
+            <label className='label'>{t('inputU1')}</label>
             <input className='inputUsers' type="text" value={last_name} onChange={cargalast_name} />
             <br/>
-            <label className='label'>Username:</label>
+            <label className='label'>{t('inputU2')}</label>
             <input className='inputUsers' type="text" name="username" value={username} onChange={cargausername}/>
             <br/>
-            <label className='label'>E-mail:</label>
+            <label className='label'>{t('inputU3')}</label>
             <input className='inputUsers' type="email" name="email" value={email} onChange={cargaEmail}/>
             <br/>
-            <label className='label'>Password:</label>
+            <label className='label'>{t('inputU4')}</label>
             <input className='inputpass' type="password" name="password" value={password} onChange={cargaPass}/>
             <br/>
-            <label className='label'>Confirm Password:</label>
+            <label className='label'>{t('inputU5')}</label>
             <input className='inputpass' type="password" name="confirm_password" value={confirmPass} onChange={cargaConfirmPass} />
             <br/>
-            <button className='btnAgregarUsuarios' onClick={cargaNewUsers}>Add</button>
+            <button className='btnAgregarUsuarios' onClick={cargaNewUsers}>{t('btnAdU')}</button>
           </form>
       </div>
 
@@ -176,7 +187,7 @@ console.log(id, nuevosDatos.first_name, nuevosDatos.last_name, nuevosDatos.usern
         <br />
         <br />
 
-        <h1 className='historial'>Registered Users</h1>
+        <h1 className='historial'>{t('registroUsuario')}</h1>
         <div className="container">
   <ul className="ull">
     {users.map((usuario) => (
@@ -187,7 +198,6 @@ console.log(id, nuevosDatos.first_name, nuevosDatos.last_name, nuevosDatos.usern
           <p>{usuario.last_name}</p>
           <p>{usuario.username}</p>
           <p>{usuario.email}</p>
-          <p>{usuario.password}</p>
         </div>
 
         {/* Columna derecha: Inputs de Edición y Botones */}
@@ -228,13 +238,13 @@ console.log(id, nuevosDatos.first_name, nuevosDatos.last_name, nuevosDatos.usern
               className="botonHisto"
               onClick={(e) => cargaEdicion(usuario.id)}
             >
-              Actualizar
+              {t('btnActualizar')}
             </button>
             <button
               className="botonHisto"
               onClick={(e) => cargarDelete(usuario.id)}
             >
-              Eliminar
+              {t('btnEliminar')}
             </button>
           </div>
         </div>
