@@ -206,22 +206,63 @@ function FormAdminTestimonios() {
         <br />
 
         <h1 className='historialT'>{t('registrosT')}</h1>
-        <div >
-        <ul className='mapTestimonios'>
-          {dataTestimonials.map((testimonio, index) => (
-            <li className='testimonios' style={{ backgroundColor: colors[index % colors.length] }}
-            key={testimonio.id}>
-              <br />
-              {testimonio.fullname} <input onChange={cargaNameEdit} type="text" className='editInp' /> <br />
-              {testimonio.date} <input className='editInp' type="date" onChange={cargaDaTeEdit} /> 
-               <br /> {testimonio.testimony} <input className='editInp' type="text" onChange={cargaTestimonyEdit} />
-              <br />
-              <button className='botonHisT' onClick={e=>cargaEdicion(testimonio.id)}>{t('btnActualizar')}</button>
-              <button className='botonHisT' onClick={e => cargarDelete(testimonio.id)}>{t('btnEliminar')}</button>
-              </li>
-          ))}
-        </ul>
-        </div>
+          <div>
+            <ul className='mapTestimonios'>
+              {dataTestimonials.map((testimonio, index) => (
+                <li 
+                  key={testimonio.id} 
+                  className='testimonios' 
+                  style={{ backgroundColor: colors[index % colors.length] }}
+                >
+                  {/* Columna de datos (nombre, fecha y testimonio) */}
+                  <div className='data-column'>
+                    <br />
+                    <div>{testimonio.fullname}</div>
+                    <br />
+                    <div>{testimonio.date}</div>
+                    <br />
+                    <div>{testimonio.testimony}</div>
+                    <br />
+                  </div>
+
+                  {/* Columna de inputs para edición */}
+                  <div className='edit-column'>
+                    <input 
+                      onChange={cargaNameEdit} 
+                      type="text" 
+                      className='editInp' 
+                      placeholder="Editar nombre" 
+                    />
+                    <input 
+                      className='editInp' 
+                      type="date" 
+                      onChange={cargaDaTeEdit} 
+                      placeholder="Editar fecha" 
+                    />
+                    <input 
+                      className='editInp' 
+                      type="text" 
+                      onChange={cargaTestimonyEdit} 
+                      placeholder="Editar testimonio" 
+                    />
+                    <button 
+                      className='botonHisT' 
+                      onClick={() => cargaEdicion(testimonio.id)}
+                    >
+                      {t('btnActualizar')}
+                    </button>
+                    <button 
+                      className='botonHisT' 
+                      onClick={() => cargarDelete(testimonio.id)}
+                    >
+                      {t('btnEliminar')}
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
     </div>
   )
 }

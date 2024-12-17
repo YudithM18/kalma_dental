@@ -1,17 +1,15 @@
-/* src/components/Footer.css */
-
 .footer {
   background-image: url('../Img/footer_2.jpg');
   background-size: cover;  /* Asegura que la imagen cubra todo */
   background-position: center;  /* Centra la imagen */
   background-attachment: fixed;  /* Fija la imagen cuando haces scroll */
   margin: 0;  /* Elimina márgenes por defecto */
-  height: 50vh;  /* Asegura que el body tenga el 100% de la altura de la ventana */
+  height: 70vh;  /* Asegura que el body tenga el 100% de la altura de la ventana */
   color: #fff;  /* Color blanco para el texto */
   padding: 40px 0;
   text-align: center;
-  margin-top: 100px;
-  
+  margin-top: 300px;
+
   /* Capa de superposición semitransparente */
   position: relative;
 }
@@ -47,21 +45,21 @@
     padding: 0 20px;
     flex-wrap: wrap;
   }
-  
+
   .footer-logo {
-    margin-bottom: 20px;
+    margin-top: 155px;
   }
-  
+
   .footer-logo-text {
     font-size: 20px;
     font-weight: bold;
   }
-  
+
   .footer-description {
     font-size: 14px;
     margin-top: 10px;
   }
-  
+
   .footer-title {
     font-size: 18px;
     font-weight: bold;
@@ -81,13 +79,13 @@
     font-weight: bold;
     color: white;
   }
-  
+
   .footer-social-icons {
     display: flex;
     gap: 20px;
     justify-content: center;
   }
-  
+
   .footer-social-icon {
     width: 40px;
     height: 40px;
@@ -98,31 +96,35 @@
     background-color: #b4b0b0;
     transition: background-color 0.3s, transform 0.3s ease;
   }
-  
+
   .footer-social-icon:hover {
     background-color: #dbd6d5; /* Color llamativo */
     transform: scale(1.1); /* Efecto de zoom */
   }
-  
+
   .footer-social-icon-svg {
     width: 24px;
     height: 24px;
     fill: #fff;
   }
-  
+
   .footer-social-icon.instagram:hover .footer-social-icon-svg {
+    fill: #96178b; /* Color de hover para Instagram */
     fill: #ffffff; /* Color de hover para Instagram */
   }
-  
+
   .footer-social-icon.facebook:hover .footer-social-icon-svg {
+    fill: #1f1fc7; /* Color de hover para Facebook */
     fill: #ffffff; /* Color de hover para Facebook */
   }
 
   .footer-social-icon.whatsapp:hover .footer-social-icon-svg {
+    fill: #96178b; /* Color de hover para Whatsapp */
     fill: #ffffff; /* Color de hover para Whatsapp */
   }
 
   .footer-social-icon.email:hover .footer-social-icon-svg {
+    fill: #96178b; /* Color de hover para Email */
     fill: #ffffff; /* Color de hover para Email */
   }
 
@@ -144,15 +146,29 @@
     margin-top: 30px;
     margin-left: 50px;
   }
-  
+
   .footer-contact-link {
     display: flex;
-    gap: 20px;
+    gap: 10px;
     justify-content: center;
     align-items: center;
     font-size: 16px;
     color: white;
     text-decoration: none;
+  }
+
+  .footer-socials{
+    margin-left: -160px;
+  }
+
+  .footer-contacts{
+   margin-right: 355px;
+   margin-top: 100px;
+  }
+
+  .footer-hours{
+    margin-left: 880px;
+    margin-top: -380px;
   }
 
   .footer-contact-link-email{
@@ -164,25 +180,25 @@
     color: white;
     text-decoration: none;
   }
-  
+
   .footer-contact-link:hover {
     color: #00bcd4;
   }
-  
+
   .footer-contact-link i {
     margin-right: 10px;
   }
-  
+
   .footer-hours-list li {
     margin-bottom: 10px;
   }
-  
+
   @media (max-width: 768px) {
     .footer-container {
       flex-direction: column;
       align-items: center;
     }
-  
+
     .footer-logo,
     .footer-socials,
     .footer-contact,
@@ -190,7 +206,7 @@
       text-align: center;
       margin-bottom: 30px;
     }
-  
+
     .footer-social-icons {
       justify-content: center;
       margin-bottom: 20px;
@@ -199,12 +215,10 @@
 
 
 .Logo_principal{
-
-  height: 150px;
-  border-radius: 50%;   /* Hace que la imagen sea redonda */
-  border: 10px solid white;  /* Borde blanco de 10px */
+  height: 120px;
+  border-radius: 60%;   /* Hace que la imagen sea redonda */
+  border: 9px solid white;  /* Borde blanco de 10px */
   object-fit: cover;    /* Hace que la imagen se recorte y ajuste al círculo sin distorsión */
-  
 }
 
 .espejo{
@@ -222,4 +236,3 @@
   border: 10px solid white;  /* Borde blanco de 10px */
   object-fit: cover;    /* Hace que la imagen se recorte y ajuste al círculo sin distorsión */
 }
-  

@@ -133,56 +133,128 @@
 }
 
 
-/* Estilo para el contenedor de datos */
-.conteiner-datos {
-  background: linear-gradient(135deg, #4a8e58e7, #354d38); /* Degradado verde más oscuro */
-  border-radius: 10px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4); /* Sombras más oscuras */
-  padding: 60px;
+/* Estilo para el título de la sección */
+.sectionTitle {
+  font-size: 2em;
+  text-align: center;
+  color: #2c3e50; /* Color gris oscuro */
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Contenedor principal de los consejos */
+.containerTips {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  font-family: 'Averia Serif Libre';
+  font-size: 120%;
+  color: black;
+  font-weight: bold;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Estilo de cada consejo */
+.tipList {
+  list-style-type: none;
+  padding: 0;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tipItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  background-color: #e0dedd;
+  color: black;
+  gap: 20px;
+  text-align: left;
+  animation: fadeIn 0.6s ease-in-out; /* Animación de aparición */
+}
+
+/* Columna de datos (título, imagen, descripción) */
+.tipDataColumn {
+  width: 45%; /* 45% del ancho */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Columna de edición (inputs y botones) */
+.tipEditColumn {
+  width: 45%; /* 45% del ancho */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Estilo de los inputs */
+.tipInput, .tipTitleInput {
+  background-color: #FFC6E5;
   width: 100%;
-  max-width: 700px;
-  text-align: center;
-  animation: fadeIn 0.6s ease-in-out;
-  margin-top: 150px;
-  margin-left: auto;
-  margin-right: auto;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-/* Estilo para los elementos de lista */
-.li {
-  font-family: 'Verdana', sans-serif;
-  color: #333;
-}
-
-/* Estilo para las imágenes de los consejos */
-.imagenC {
-  width: 300px;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  border: 2px solid #ddd;
-}
-
-/* Estilo para los campos de texto editables */
-.editInp1, .editInp {
-  color: #333;
-  background-color: #fff;
-}
-
-/* Estilo para el botón de acción (actualizar y eliminar) */
-.botonHis {
-  background-color: #4CAF50;
+/* Botones */
+.tipButton {
+  background-color: #FD91CB; /* Botón rosa */
   color: white;
+  padding: 10px 15px;
   border: none;
-  padding: 10px 20px;
-  text-align: center;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
-  margin-top: 10px;
-  transition: background-color 0.3s;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra para el botón */
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.3s;
+  margin: 5px 0;
 }
 
-.botonHis:hover {
-  background-color: #45a049;
+.tipButton:hover {
+  background-color: #AB5684; /* Cambio de color al hacer hover */
 }
+
+/* Animaciones de entrada */
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+  .tipItem {
+      flex-direction: column;
+      width: 100%;
+  }
+
+  .tipDataColumn, .tipEditColumn {
+      width: 100%;
+  }
+
+  .tipInput, .tipTitleInput {
+      font-size: 14px;
+  }
+
+  .tipButton {
+      font-size: 14px;
+  }
+}
+

@@ -125,9 +125,10 @@ function FormBlogEditor() {
 
 ////////////////////CONSEJOS
 
-function cargaTitleEdit(event) {
+function cargaTitleEditTips(event) {
   setTitleEdit(event.target.value); 
 }
+
 
 function cargaTipsDescripEdit(event) {
   setDescripEdit(event.target.value); 
@@ -168,11 +169,7 @@ const cargaEdicionTips = async (id) => {
 
   const OriginalImageName  = ConsejosOriginal.recommendations_url
 
-
-
-
-
-
+  
 const parts = OriginalImageName.split('/');
 
 // El último elemento del array será el nombre del archivo
@@ -213,6 +210,9 @@ console.log(recommendations_url_edit);
   };
 
   try {
+
+    
+    
     const result = await UpdateTips(id, nuevosDatos.recommendations_url, nuevosDatos.tips_title, nuevosDatos.tips_description);
     console.log('Resultado de la actualización:', result);
 
@@ -243,9 +243,8 @@ console.log(recommendations_url_edit);
 
 
 //////////////VIDEO
-
 function cargaVideo(event) {
-  setVideo(event.target.file[0]);
+  setVideo(event.target.files[0]);
 }
 
 function cargatituloV(event) {
@@ -262,7 +261,7 @@ function cargaContenidoV(event) {
 
   // Verificar que todos los campos estén llenos
   if (video_url === '' || title === '' || content === '') {
-    Swal.fire('¡Error!', `${alertaB_V}`, 'error');
+    Swal.fire('¡Error!', t(alertaB_V), 'error');
     return;
   }
 
@@ -276,7 +275,7 @@ function cargaContenidoV(event) {
   setVideoBlog([...videoBlog, savedContent]);
 
   // Mostrar alerta de éxito
-  Swal.fire(`${alertaB_V1}`, `${alertaB_V2}`, 'success');
+  Swal.fire(t(alertaB_V1), t(alertaB_V2), 'success');
 };
 
 
@@ -286,6 +285,9 @@ function cargaVideoEdit(event) {
 }
 
 function cargaTitleEdit(event) {
+
+  console.log(event.target.value);
+  
   setTituloEdit(event.target.value); 
 }
 
@@ -295,12 +297,12 @@ function cargaContentEdit(event) {
 
 async function cargarDeleteV(id) {
   const result = await Swal.fire({
-    title: `${alertaB_V3}`,
-    text: `${alertaB_V4}`,
+    title: t('alertaB_V3'),
+    text: t('alertaB_V4'),
     icon: 'warning',
     showCancelButton: true,
-    confirmButtonText: `${alertaB_V5}`,
-    cancelButtonText: `${alertaB_V6}`
+    confirmButtonText: t('alertaB_V5'),
+    cancelButtonText: t('alertaB_V6')
   });
 
   if (result.isConfirmed) {
@@ -309,7 +311,7 @@ async function cargarDeleteV(id) {
     setVideoBlog([...valorEncontrar]);
 
     // Mostrar alerta de éxito
-    Swal.fire(`${alertaB_V7}`, `${alertaB_V8}`, 'success');
+    Swal.fire(t('alertaB_V7'), t('alertaB_V8'), 'success');
   }
 }
 
@@ -325,6 +327,8 @@ const cargaEdicionV = async (id) => {
     content: content_edit || VideoBlogOriginal.content,
   };
 
+ 
+  
   await UpdateVideoBlog(id, nuevosDatosVB.video_url, nuevosDatosVB.title, nuevosDatosVB.content);
 
   const VideoBlogActualizado = videoBlog.map(videoBlog =>
@@ -333,7 +337,7 @@ const cargaEdicionV = async (id) => {
   setVideoBlog(VideoBlogActualizado);
 
   // Mostrar alerta de éxito
-  Swal.fire(`${alertaB_V9}`, `${alertaB_V0}`, 'success');
+  Swal.fire(t('alertaB_V9'), t('alertaB_V0'), 'success');
 
   setVideo('');
   setTitulo('');
@@ -389,24 +393,62 @@ const cargaEdicionV = async (id) => {
         <br />
         <br />
 
-        <h1 className='historial'>{t('registroR')}</h1>
-        <div className='conteiner-datos'>
-        <ul className='ul'>
-          {consejos.map((consejitos) => (
-            <li className='li' key={consejitos.id}>
-              <h2>{consejitos.tips_title}</h2>
-              <br />
-              <img src={consejitos.recommendations_url} alt="Consejo"className='imagenC'/>
-              <input onChange={cargaImageEdit} type="file"  /> <br />
-              {consejitos.tips_title} <input  className='editInp1' type="text" onChange={cargaTitleEdit} /> 
-               <br /> {consejitos.tips_description} <input className='editInp' type="text" onChange={cargaTipsDescripEdit} />
-              <br />
-              <button className='botonHis' onClick={e=>cargaEdicionTips(consejitos.id)}>Actualizar</button>
-              <button className='botonHis' onClick={e => cargarDeleteTips(consejitos.id)}>Eliminar</button>
-              </li>
-          ))}
-        </ul>
+        <h1 className='sectionTitle'>{t('registroR')}</h1>
+<div className='containerTips'>
+  <ul className='tipList'>
+    {consejos.map((consejitos) => (
+      <li key={consejitos.id} className='tipItem'>
+        
+        {/* Columna de datos: Título, Imagen y Descripción */}
+        <div className='tipDataColumn'>
+          <h2>{consejitos.tips_title}</h2>
+          <br />
+          <img 
+            src={consejitos.recommendations_url} 
+            alt="Consejo" 
+            className='imagenC'
+          />
+          <p>{consejitos.tips_description}</p>
         </div>
+
+        {/* Columna de edición: Inputs para editar y botones */}
+        <div className='tipEditColumn'>
+          <input 
+            onChange={cargaImageEdit} 
+            type="file" 
+            className='tipTitleInput' 
+          />
+          <input 
+            className='tipTitleInput' 
+            type="text" 
+            onChange={cargaTitleEditTips} 
+            placeholder="Editar título" 
+          />
+          <input 
+            className='tipInput' 
+            type="text" 
+            onChange={cargaTipsDescripEdit} 
+            placeholder="Editar descripción" 
+          />
+          <button 
+            className='tipButton' 
+            onClick={() => cargaEdicionTips(consejitos.id)}
+          >
+            Actualizar
+          </button>
+          <button 
+            className='tipButton' 
+            onClick={() => cargarDeleteTips(consejitos.id)}
+          >
+            Eliminar
+          </button>
+        </div>
+
+      </li>
+    ))}
+  </ul>
+</div>
+
 
         <h1 className='historial'>{t('registrosV')}</h1>
         <div >

@@ -1,7 +1,6 @@
 .container{
-    
     animation: slideIn 0.5s ease forwards;
-    margin-top: 30px;
+    margin-top: 100px;
 }
 
 .form{
@@ -120,7 +119,7 @@ input[type="submit"]:hover{
     font-size: xxx-large; /* Tamaño de fuente para pantallas grandes */
     color: #6a3970; /* Color claro para el texto */
     text-align: center; /* Centra el título */
-    margin-bottom: 20px; /* Espacio inferior */
+    margin-top: 120px; /* Espacio inferior */
 }
 
 /* Media Queries para celular */
@@ -157,6 +156,7 @@ input[type="submit"]:hover{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 500px;
     margin: 20px auto;
+    margin-top: 100px;
   }
 
 .btnWA{

@@ -120,3 +120,47 @@
     opacity: 1;
   }
 }
+
+
+/* Estilo base de los botones */
+.nav-btnEnglish, .nav-btnEspañol {
+  background-color: #be8484; /* Color de fondo verde */
+  color: white; /* Color del texto */
+  border: none; /* Sin borde */
+  font-size: 16px; /* Tamaño de fuente */
+  font-weight: 600; /* Peso de la fuente */
+  padding: 10px 20px; /* Espaciado interno */
+  border-radius: 30px; /* Bordes redondeados */
+  cursor: pointer; /* Indicador de que el botón es interactivo */
+  transition: all 0.3s ease; /* Transición suave para todos los cambios */
+  margin: 0 10px; /* Espaciado entre los botones */
+}
+
+/* Hover para los botones */
+.nav-btnEnglish:hover, .nav-btnEspañol:hover {
+  background-color: #f0adad; /* Cambio de color a verde más claro */
+  transform: scale(1.05); /* Agrandar ligeramente el botón */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Añadir sombra sutil */
+}
+
+/* Efecto activo cuando el botón es presionado */
+.nav-btnEnglish:active, .nav-btnEspañol:active {
+  transform: scale(1); /* Mantener el tamaño original cuando se presiona */
+  box-shadow: none; /* Eliminar la sombra activa */
+  background-color: #ffd1d1; /* Cambio de color a un verde más oscuro */
+}
+
+/* Estilos para la versión en español */
+.nav-btnEspañol {
+  background-color: #f8c009ad; /* Fondo azul */
+}
+
+/* Hover para la versión en español */
+.nav-btnEspañol:hover {
+  background-color: #ffd446ad; /* Azul más claro al hacer hover */
+}
+
+/* Efecto activo para la versión en español */
+.nav-btnEspañol:active {
+  background-color: #f8c009ad; /* Azul más oscuro al presionar */
+}

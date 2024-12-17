@@ -303,5 +303,9 @@
     "TituloPagWT": "Our Specialist Team.",
 
     "btnActualizar": "Update",
-    "btnEliminar": "Delete"
+    "btnEliminar": "Delete",
+
+    "Busqueda": "Search available services",
+
+    "editarServicio": "Edit service"
 }

@@ -33,7 +33,7 @@ label {
 
 .IMGFILE{
     background-color: #D0B4A9;
-    width: calc(100% - 20px); /* Ancho completo menos padding */
+    width: 100%; /* Ancho completo menos padding */
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid black; /* Borde gris */
@@ -61,77 +61,81 @@ label {
     transform: scale(1.05); /* Efecto de aumento */
 }
 
-.servicios-conteiner {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .li {
-    margin-bottom: 20px;
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.05);
-  }
-  
-  .imgRecid {
-    width: 100px; /* Tamaño de imagen pequeña */
-    height: 100px; /* Mantiene la proporción */
-    object-fit: cover; /* Asegura que la imagen se recorte correctamente */
-    border-radius: 8px;
-    margin-bottom: 10px;
-  }
-  
-  .editInp1, .editInp {
-    padding: 10px;
-    width: 80%;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 14px;
-  }
-  
-  .editInp1:focus, .editInp:focus {
-    outline: none;
-    border-color: #5b9bd5;
-    box-shadow: 0 0 5px rgba(91, 155, 213, 0.5);
-  }
-  
-  .botonHis {
-    padding: 10px 20px;
-    margin: 5px;
-    border: none;
-    border-radius: 5px;
-    background-color: #4CAF50;
-    color: white;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .botonHis:hover {
-    background-color: #45a049;
-  }
-  
-  input[type="file"] {
-    margin-bottom: 10px;
-  }
-  
-  button:focus {
-    outline: none;
-  }
-  
+.serviciosProtegidos-conteiner {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  width: 100%;
+}
+
+.columns-container {
+  display: flex;
+  width: 100%;
+  gap: 30px; /* Espacio entre las columnas */
+}
+
+.data-column {
+  flex: 1; /* Ocupa 50% del espacio */
+  padding-right: 20px;
+  border-right: 2px solid #000000; /* Separación visual */
+}
+
+.edit-column {
+  flex: 1; /* Ocupa 50% del espacio */
+  padding-left: 20px;
+}
+
+.lsta-servicios-protegidos {
+  list-style-type: none;
+  padding: 10px;
+  background-color: #946b88;
+  margin-top: 100px;
+  border-radius: 10px 10px;
+}
+
+.imagenServiciosProtegidos {
+  width: 100%; /* Ajustamos el tamaño para que la imagen no ocupe demasiado espacio */
+  max-width: 150px; /* Limitamos el tamaño máximo de la imagen */
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.edit-service-container {
+  margin-bottom: 20px;
+  margin-top: 150px;
+}
+
+.editInp1,
+.editInp,
+.edit-specialist-select,
+.edit-file-input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.edit-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inputEditServices{
+  width: 600px;
+  height: 150px;
+}
+
+.botonHis {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.botonHis:hover {
+  background-color: #0056b3;
+}

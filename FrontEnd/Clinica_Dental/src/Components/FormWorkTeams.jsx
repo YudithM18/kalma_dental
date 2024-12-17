@@ -7,6 +7,8 @@ import especialista from '../Img/Nuestros-doctores.png'
 import { useTranslation } from 'react-i18next'; // Importa el hook useTranslation
 import '../i18n'
 
+import '../Styles/FormWorkTeam.css'
+
 function FormWorkTeams() {
 
   const { t, i18n } = useTranslation();
@@ -23,21 +25,8 @@ function FormWorkTeams() {
   // Hook para obtener los datos de especialistas
   useEffect(() => {
     const fetchEspecialista = async () => {
-      try {
         const Especialistas = await GetSpecialists();
         setSpecialists(Especialistas);
-        Swal.fire({
-          icon: 'success',
-          title: t('Alert_E'),
-          text: t('Alert_EText'),
-        });
-      } catch (error) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: t('Alert_ErrorE'),
-        });
-      }
     };
     fetchEspecialista();
   }, []);
@@ -45,43 +34,18 @@ function FormWorkTeams() {
   // Hook para obtener los datos de especialidades
   useEffect(() => {
     const fetchEspecialidad = async () => {
-      try {
         const Especialidades = await GetSpeciality();
-        setDataEspecialidad(Especialidades);
-        Swal.fire({
-          icon: 'success',
-          title: 'Especialidades Cargadas',
-          text: 'Las especialidades se han cargado correctamente.',
-        });
-      } catch (error) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: 'No se pudieron cargar las especialidades.',
-        });
-      }
+        setDataEspecialidad(Especialidades); 
     };
     fetchEspecialidad();
   }, []);
+  
 
   // Hook para obtener los datos de titulaciones
   useEffect(() => {
     const fetchTitulaciones = async () => {
-      try {
-        const Titulaciones = await GetQualification();
-        setDatatitulacion(Titulaciones);
-        Swal.fire({
-          icon: 'success',
-          title: 'Titulaciones Cargadas',
-          text: 'Las titulaciones se han cargado correctamente.',
-        });
-      } catch (error) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: 'No se pudieron cargar las titulaciones.',
-        });
-      }
+      const Titulaciones = await GetQualification();
+      setDatatitulacion(Titulaciones);
     };
     fetchTitulaciones();
   }, []);
@@ -95,36 +59,35 @@ function FormWorkTeams() {
       <h1 className='historial'>{t('TituloPagWT')}</h1>
       <img src={especialista} alt="Medico dental" />
       <br />
-      <div className='workTeam-conteiner'>
-        <ul className='ul'>
-          {dataSpecialists.map((especialista) => {
-            const Qualification = dataQualification.find(qualification => qualification.id === especialista.id);
-            const Speciality = dataSpeciality.find(specialty => specialty.id === especialista.id);
+      <div className='especialistas-conteiner'>
+  <ul className='lista-especialistas'>
+    {dataSpecialists.map((especialista) => {
+      const Qualification = dataQualification.find(qualification => qualification.id === especialista.id_qualification);
+      const Speciality = dataSpeciality.find(specialty => specialty.id === especialista.id_speciality);
 
-            return (
-              <li className='li' key={especialista.id}>
-                <br />
-                <img className='imgRecid' src={especialista.specialists_url} />
-                <br />
-                {especialista.full_name}
-                <br />
-                {Speciality ? (
-                  <span>{Speciality.speciality_name}</span> // Muestra el nombre de la especialidad
-                ) : (
-                  <span>Sin especialidad</span>
-                )}
-                <br />
-                {Qualification ? (
-                  <span>{Qualification.qualification_name}</span> // Muestra la titulación
-                ) : (
-                  <span>Sin Titulación</span>
-                )}
-                <br />
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+      return (
+        <li className='card-especialista' key={especialista.id}>
+          <img className='imagen-especialista' src={especialista.specialists_url} alt={especialista.full_name} />
+          <h3 className='nombre-especialista'>{especialista.full_name}</h3>
+          <div className='info-especialista'>
+            {Speciality ? (
+              <span className='especialidad-especialista'>{Speciality.speciality_name}</span>
+            ) : (
+              <span className='sin-especialidad'>Sin especialidad</span>
+            )}
+            <br />
+            {Qualification ? (
+              <span className='titulacion-especialista'>{Qualification.qualification_name}</span>
+            ) : (
+              <span className='sin-titulacion'>Sin Titulación</span>
+            )}
+          </div>
+        </li>
+      );
+    })}
+  </ul>
+</div>
+
     </div>
   );
 }

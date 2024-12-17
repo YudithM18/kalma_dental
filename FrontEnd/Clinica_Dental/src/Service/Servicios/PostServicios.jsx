@@ -11,20 +11,13 @@ const s3 = new AWS.S3({
   region: REGION,
 });
 
-// Función para generar un número aleatorio de al menos 8 dígitos
-const generateRandomNumber = () => {
-  const randomNumber = Math.floor(Math.random() * 100000000); // Genera un número aleatorio entre 0 y 99999999 (hasta 8 dígitos)
-  return randomNumber.toString().padStart(8, '0'); // Asegura que el número tenga al menos 8 dígitos, añadiendo ceros a la izquierda si es necesario
-};
 
 // Función para subir la imagen a S3
 export const uploadImageToS3 = async (file) => {
-  const randomNumber = generateRandomNumber();
-  const fileName = `${randomNumber}_${file.name}`; // Agregar el número aleatorio al nombre del archivo
 
   const params = {
     Bucket: S3_BUCKET,
-    Key: fileName, // Usar el nombre modificado con el número aleatorio
+    Key: file.name, // Usar el nombre modificado con el número aleatorio
     Body: file,
     ContentType: file.type,
   };
@@ -34,7 +27,7 @@ export const uploadImageToS3 = async (file) => {
 
 // Función para guardar los servicios
 export const PostServices = async (newServices) => {
-  let imagenUrl = '';
+  let imagenUrl = null;
 
   // Subir la imagen si existe
   if (newServices.image) {
@@ -47,13 +40,14 @@ export const PostServices = async (newServices) => {
       throw new Error('No se pudo subir la imagen a S3');
     }
   }
-
-  newServices.services_url = imagenUrl;
-
-  const token = JSON.parse(localStorage.getItem('userData'));
-  if (!token) {
+  
+ const token = JSON.parse(localStorage.getItem('userData'));
+  if (!token || !token.access) {
     throw new Error('Token no encontrado en localStorage');
   }
+  newServices.services_url = imagenUrl;
+
+ 
 
   // Crear el objeto para el servicio
   const newServPost = {

@@ -50,9 +50,7 @@ import '../i18n'
   
   return (
     <div>
-      <br />
-      <br />
-      <br />
+  
 
 
       <div className='container'>
@@ -68,12 +66,7 @@ import '../i18n'
         </form>
       </div>
 
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+      
 
       <div className="contenedorWhatsapp">
       <h2 className='titulowa'>{t('tituloCW')}</h2>
@@ -126,12 +119,8 @@ import '../i18n'
       <div style={{ textAlign: 'center' }}>
 
 
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+
+
 
 
       <h1 className='tituloU'>{t('TituloU')}</h1>

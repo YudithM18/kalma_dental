@@ -107,6 +107,7 @@
   
 
 .logo{
+    margin-top: 100px;
     height: 350px;
     border-radius: 50%;   /* Hace que la imagen sea redonda */
     border: 10px solid white;  /* Borde blanco de 10px */

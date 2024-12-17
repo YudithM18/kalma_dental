@@ -43,11 +43,11 @@ export const PostTips = async (newTip) => {
       }
     }
 
-    // Obtener el token desde localStorage
+   // Obtener el token desde localStorage
     const token = JSON.parse(localStorage.getItem('userData'));
     if (!token || !token.access) {
       throw new Error('Token no encontrado en localStorage o token inválido');
-    }
+    } 
 
     // Crear el objeto para el "tip"
     const tipData = {

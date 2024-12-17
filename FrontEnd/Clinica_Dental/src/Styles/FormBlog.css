@@ -1,0 +1,121 @@
+.conteiner-reenderizado-Tip {
+    display: flex; /* Alineamos los elementos en una fila */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: flex-start; /* Alinea los elementos al inicio verticalmente */
+    margin: 20px;
+  }
+
+  .TituloReenderizado{
+    color: #333;
+  }
+  
+  .listaTipsExists {
+    display: flex; /* Colocamos la imagen y el texto en una fila */
+    flex-direction: row; /* Alineación horizontal */
+    background-color: #D0D1CE;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 1000px; /* Aumentamos el tamaño máximo para mayor espacio */
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra sutil alrededor del contenedor */
+  }
+  
+  .imagenC {
+    width: 40%; /* Reducimos el tamaño de la imagen para dar más espacio al texto */
+    height: auto; /* Mantiene la proporción original de la imagen */
+    display: block;
+    max-height: 400px; /* Controla la altura máxima de la imagen */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+    border-radius: 8px; /* Bordes redondeados para la imagen */
+    transition: transform 0.3s ease; /* Efecto suave al hacer hover */
+  }
+  
+  /* Efecto hover para agrandar la imagen */
+  .listaTipsExists:hover .imagenC {
+    transform: scale(1.05); /* Aumenta el tamaño de la imagen al pasar el mouse */
+  }
+  
+  .textoContenido {
+    display: flex;
+    flex-direction: column; /* Coloca el título y la descripción uno encima del otro */
+    justify-content: center; /* Centra el contenido verticalmente */
+    padding: 20px; /* Añadimos más espacio interno */
+    width: 60%; /* Aumentamos el ancho del texto a un 60% */
+  }
+  
+  /* Título */
+  .textoContenido h2 {
+    margin-top: 0;
+    margin-bottom: 15px; /* Aumentamos el espacio entre el título y la descripción */
+    font-size: 1.8rem; /* Tamaño del título más grande */
+    font-weight: bold;
+  }
+  
+  .textoContenido .tip-description {
+    background-color: #ECDEDB; /* Fondo oscuro semitransparente */
+    color: rgb(12, 11, 11); /* Color de texto */
+    padding: 20px; /* Más relleno para que la descripción se vea más grande */
+    font-size: 1.2rem; /* Aumentamos el tamaño de la fuente de la descripción */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    height: auto; /* Ajustamos la altura automáticamente para que se expanda según el contenido */
+    min-height: 150px; /* Establecemos una altura mínima para la descripción */
+    overflow-y: auto; /* Permite que el texto se desplace si es largo */
+    white-space: normal; /* Permite que el texto se ajuste dentro del cuadro */
+  }
+  
+  /* Media Query para pantallas pequeñas (móviles) */
+  @media (max-width: 768px) {
+    .conteiner-reenderizado-Tip {
+      margin: 10px;
+    }
+  
+    .listaTipsExists {
+      flex-direction: column; /* Alineamos la imagen y el texto en una columna */
+      width: 100%; /* Hacemos que el contenedor ocupe el 100% del ancho */
+    }
+  
+    .imagenC {
+      width: 100%; /* Hacemos que la imagen ocupe el 100% del contenedor */
+      max-height: 300px; /* Limitamos la altura máxima de la imagen */
+    }
+  
+    .textoContenido {
+      width: 100%; /* El texto ocupará todo el ancho disponible */
+      padding: 15px; /* Reducimos el padding */
+    }
+  
+    .textoContenido h2 {
+      font-size: 1.5rem; /* Reducimos el tamaño del título */
+      margin-bottom: 10px; /* Reducimos el margen inferior */
+    }
+  
+    .textoContenido .tip-description {
+      font-size: 1.1rem; /* Reducimos el tamaño de la fuente */
+      padding: 15px; /* Reducimos el padding */
+    }
+  }
+  
+  /* Media Query para pantallas muy pequeñas (móviles más pequeños) */
+  @media (max-width: 480px) {
+    .listaTipsExists {
+      margin-bottom: 15px;
+    }
+  
+    .imagenC {
+      max-height: 250px; /* Limitamos aún más la altura de la imagen */
+    }
+  
+    .textoContenido h2 {
+      font-size: 1.2rem; /* Reducimos el tamaño del título para pantallas más pequeñas */
+      margin-bottom: 5px; /* Aumentamos el espacio entre el título y la descripción */
+    }
+  
+    .textoContenido .tip-description {
+      font-size: 1rem; /* Hacemos el texto aún más pequeño para dispositivos pequeños */
+      padding: 12px; /* Menos padding para ahorrar espacio */
+      min-height: 120px; /* Reducimos la altura mínima */
+    }
+  }
+  

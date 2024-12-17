@@ -22,6 +22,11 @@ function FormAdminServicios() {
   const [specialists, setSpecialists] = useState('');
   const [description, setTreatment] = useState('');
 
+  const [service_url_edit , setImage_Edit] = useState ('');
+  const [servicedescription_edit , setDescrip_Edit] = useState ('');
+  const [service_name_edit , setName_Edit] = useState ('');
+  const [specialists_edit , setspecialistsEdit] = useState ('');
+
 
   const [dataService, setdataService] = useState([]);
 
@@ -46,10 +51,30 @@ function FormAdminServicios() {
     }, []);
 
 
-  //SERVICIOS
+  const ImageNameRandom = (longitud = 20) => {
+      const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+      let nombre = '';
+      for (let i = 0; i < longitud; i++) {
+        nombre += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+      }
+      return nombre;
+    };
+  
+    
   function ImageLoad(event) {
-      setImage(event.target.files[0]);
+      const NameRandom = ImageNameRandom();
+      const archivo = event.target.files[0];
+  
+      
+      if (archivo) {
+        const nuevoArchivo = new File([archivo], `${NameRandom}.${archivo.name.split('.').pop()}`, { type: archivo.type });
+        setImage(nuevoArchivo);
+      }
   }
+
+
+  //SERVICIOS
+
 
   function cargarNameService(event) {
       setNameS(event.target.value);
@@ -64,16 +89,22 @@ function FormAdminServicios() {
   }
 
 
+
+
   function carga_service_title_edit(event) {
-    setNameS(event.target.value); 
+    setName_Edit(event.target.value); 
   }
   
   function carga_servicedescription_edit(event) {
-    setTreatment(event.target.value); 
+    setDescrip_Edit(event.target.value); 
   }
   
   function carga_ImageEdit(event) {
-    setImage(event.target.value); 
+    setImage_Edit(event.target.value); 
+  }
+
+  function cargarSpecialistsEdit(event) {
+    setspecialistsEdit(event.target.value); 
   }
 
   // Función para agregar un nuevo servicio
@@ -150,17 +181,48 @@ function FormAdminServicios() {
   const cargaEdicion = async (id) => {
 
     const serviceOriginal = dataService.find(newServices => newServices.id === id);
-
     if (!serviceOriginal) return;
 
+    const OriginalImage = serviceOriginal.services_url
+
+    const parts = OriginalImage.split('/');
+
+    const fileName = parts[parts.length - 1];
+
+    console.log(fileName);
+    console.log(serv);
+
+  
+  if (recommendations_url_edit) {
+    try {
+      const Archive = recommendations_url_edit;  // Este es el archivo que el usuario ha cargado
+      const NewArchive = new File([Archive], fileName);
+     // console.log(NewArchive);
+      
+      let NewImagenURL= " "
+
+      const result = await uploadImageToS3(NewArchive);  // Subir la imagen con el nombre original
+      NewImagenURL = result.Location;
+      console.log('Nueva imagen subida a S3:', NewImagenURL);
+
+    } catch (error) {
+      console.error('Error al subir la nueva imagen:', error);
+      
+      Swal.fire('Error', 'No se pudo subir la nueva imagen.', 'error');
+      return;
+    }
+  }
+
+
     const nuevosDatos = {
-      imagen: imagen || serviceOriginal.services_url, 
-      name: servicEdit || serviceOriginal.service_name,  
-      descripcion: descripEdit || serviceOriginal.descripcion, 
+      imagen: service_url_edit || serviceOriginal.services_url, 
+      name: service_name_edit || serviceOriginal.service_name,  
+      descripcion: servicedescription_edit || serviceOriginal.descripcion, 
+      IdSpecialists: specialists_edit || serviceOriginal.specialists
     };
 
     try {
-      await UpdateServicios(id, nuevosDatos.imagen, nuevosDatos.servicEdit, nuevosDatos.descripcion);
+      await UpdateServicios(id, nuevosDatos.imagen, nuevosDatos.name, nuevosDatos.descripcion, nuevosDatos.IdSpecialists);
 
       const ServiciosActualizado = dataService.map(newServices => 
         newServices.id === id ? { ...newServices, ...nuevosDatos } : newServices
@@ -236,42 +298,78 @@ function FormAdminServicios() {
       <br />
       <br />
   
-      <h1 className='historial'>{t('registrosS')}</h1>
-      <div className='servicios-conteiner'>
-        <ul className='ul'>
-          {dataService.map((Servicio) => {
-            // Buscar el especialista correspondiente para el servicio
-            const Specialist = dataSpecialists.find(specialist => specialist.id === Servicio.id);
-  
-            // Depuración para ver los valores
-            console.log(Servicio);
-            console.log(Specialist);
-  
-            return (
-              <li className='li' key={Servicio.id}>
+      <h1 className='RegistroExistenteServicios'>{t('registrosS')}</h1>
+<div className='serviciosProtegidos-conteiner'>
+  <div className='columns-container'>
+    {/* Columna de datos */}
+    <div className='data-column'>
+      <ul className='mapServiciosProtegidos'>
+        {dataService.map((Servicio) => {
+          const Specialist = dataSpecialists.find(specialist => specialist.id === Servicio.id_specialists);
+
+          return (
+            <li className='lsta-servicios-protegidos' key={Servicio.id}>
+              <div className='service-data'>
+                {/* Imagen reducida */}
+                <img className='imagenServiciosProtegidos' src={Servicio.services_url} alt={Servicio.services_name} />
                 <br />
-                <img className='imgRecid' src={Servicio.services_url} />
-                <input onChange={carga_ImageEdit} type="file" />
-                
-                <br />
-                {Servicio.services_name} 
-                {Specialist ? (
-                  <span>{Specialist.full_name}</span> // Muestra el nombre del especialista
-                ) : (
-                  <span>Sin especialista</span> // Si no hay especialista
-                )}
-                <input className='editInp1' type="text" onChange={carga_service_title_edit} />
-                <br />
-                {Servicio.description}
-                <input className='editInp' type="text" onChange={carga_servicedescription_edit} />
-                <br />
-                <button className='botonHis' onClick={e => cargaEdicion(Servicio.id)}>{t('btnActualizar')}</button>
-                <button className='botonHis' onClick={e => cargarDelete(Servicio.id)}>{t('btnEliminar')}</button>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+                <h3>{Servicio.services_name}</h3>
+                {/* Muestra el nombre del especialista solo si existe */}
+                {Specialist && <span>{Specialist.full_name}</span>}
+                <p>{Servicio.description}</p>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+ 
+    {/* Columna de edición */}
+    <div className='edit-column'>
+      {dataService.map((Servicio) => (
+        <div className='edit-service-container' key={Servicio.id}>
+          <h4>{t('editarServicio')}</h4>
+          {/* Campos de edición */}
+          <input 
+            type="file" 
+            className="edit-file-input"
+            onChange={(e) => carga_ImageEdit(e, Servicio.id)} 
+          />
+          <input 
+            className='editInp1' 
+            type="text" 
+            defaultValue={Servicio.services_name} 
+            onChange={e => carga_service_title_edit(e, Servicio.id)} 
+          />
+          <select 
+            value={Servicio.id_specialists} 
+            onChange={e => cargarSpecialistsEdit(e, Servicio.id)} 
+            className='edit-specialist-select'
+          >
+            <option value="">{t('inputS4')}</option>
+            {dataSpecialists.map((specialist) => (
+              <option key={specialist.id} value={specialist.id}>
+                {specialist.full_name}
+              </option>
+            ))}
+          </select>
+          <textarea 
+          className='inputEditServices' 
+          defaultValue={Servicio.description} 
+          onChange={e => carga_servicedescription_edit(e, Servicio.id)} 
+          required 
+        />
+          <div className='edit-buttons'>
+            <button className='botonHis' onClick={() => cargaEdicion(Servicio.id)}>{t('btnActualizar')}</button>
+            <button className='botonHis' onClick={() => cargarDelete(Servicio.id)}>{t('btnEliminar')}</button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+
     </div>
   );
   

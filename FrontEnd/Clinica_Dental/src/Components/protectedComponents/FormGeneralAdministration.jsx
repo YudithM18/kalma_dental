@@ -34,6 +34,12 @@ function FormAdministracion() {
   const [Speciality, setSpeciality] = useState('');
   const [Qualification, setQualification] = useState('');
 
+  const [specialists_url_edit, setImageW_edit] = useState('');
+  const [full_name_edit, setfullName_edit] = useState('');
+  const [Speciality_edit, setSpeciality_edit] = useState('');
+  const [Qualification_edit, setQualification_edit] = useState('');
+  
+
   const [dataSpecialists, setSpecialists] = useState([]);
   const [dataQualification, setDatatitulacion] = useState([]);
   const [dataSpeciality, setDataEspecialidad] = useState([]);
@@ -42,6 +48,8 @@ function FormAdministracion() {
   useEffect(() => {
     const fetchEspecialista = async () => {
       const Especialistas = await GetSpecialists();
+      console.log(Especialistas);
+      
       setSpecialists(Especialistas);
     };
     fetchEspecialista();
@@ -65,10 +73,29 @@ function FormAdministracion() {
     fetchTitulaciones();
   }, []);
 
-  // Función para manejar la carga de la imagen
+
+  const ImageNameRandom = (longitud = 20) => {
+    const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    let nombre = '';
+    for (let i = 0; i < longitud; i++) {
+      nombre += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+    }
+    return nombre;
+  };
+
+  
   function ImageLoad(event) {
-    setImageW(event.target.files[0]);
-  }
+    const NameRandom = ImageNameRandom();
+    const archivo = event.target.files[0];
+
+    
+    if (archivo) {
+      const nuevoArchivo = new File([archivo], `${NameRandom}.${archivo.name.split('.').pop()}`, { type: archivo.type });
+      setImageW(nuevoArchivo);
+    }
+}
+
+
 
   // Función para manejar el nombre completo
   function cargarFullName(event) {
@@ -86,25 +113,25 @@ function FormAdministracion() {
   }
 
   function ImageLoad_edit(event) {
-    setImageW(event.target.files[0]);
+    setImageW_edit(event.target.files[0]);
   }
 
   function cargarFullName_edit(event) {
-    setfullName(event.target.value); 
+    setfullName_edit(event.target.value); 
   }
   
   function cargarSpeciality_edit(event) {
-    setSpeciality(event.target.value); 
+    setSpeciality_edit(event.target.value); 
   }
   
   function cargarQualification_edit(event) {
-    setQualification(event.target.value); 
+    setQualification_edit(event.target.value); 
   }
 
   // Función para agregar un nuevo especialista
   const cargarNewEspecilista = async (event) => {
     event.preventDefault();
-
+   
     try {
       const newSpecialists = {
         foto: specialists_url,  // URL de la imagen
@@ -113,8 +140,12 @@ function FormAdministracion() {
         IdSpeciality: Speciality,
       };
       
+    console.log(newSpecialists.IdQualification);
+    console.log(newSpecialists.IdSpeciality);
+    
+    console.log(newSpecialists);
       const response = await PostSpecialists(newSpecialists);
-      console.log(response);
+   
 
       if (response) {
         Swal.fire({
@@ -164,15 +195,15 @@ function FormAdministracion() {
 
     if (!specialistOriginal) return;
 
-    const nuevosDatos = {
-      imagen: specialists_url || specialistOriginal.specialists_url,
-      name: full_name || specialistOriginal.full_name,
-      speciality: Speciality || specialistOriginal.speciality,
-      qualification: Qualification || specialistOriginal.qualification,
+    const nuevosDatosWT = {
+      imagen: specialists_url_edit || specialistOriginal.specialists_url,
+      name: full_name_edit || specialistOriginal.full_name,
+      speciality: Speciality_edit || specialistOriginal.speciality,
+      qualification: Qualification_edit || specialistOriginal.qualification,
     };
 
     try {
-      await UpdateSpecialists(id, nuevosDatos.imagen, nuevosDatos.name, nuevosDatos.speciality, nuevosDatos.qualification);
+      await UpdateSpecialists(id, nuevosDatosWT.imagen, nuevosDatosWT.name, nuevosDatosWT.speciality, nuevosDatosWT.qualification);
 
       const SpecialistsUpdated = dataSpecialists.map(especialista =>
         especialista.id === id ? { ...especialista, ...nuevosDatos } : especialista
@@ -199,6 +230,15 @@ function FormAdministracion() {
       });
     }
   }
+
+  console.log(dataSpecialists);
+  
+  console.log(dataQualification);
+  console.log(dataSpeciality);
+
+
+  
+  
 
   return (
     <div>
@@ -242,43 +282,77 @@ function FormAdministracion() {
       <br />
       <br />
       <br />
-      <h1 className='historial'>{t('registrosWT')}</h1>
-      <div className='workTeam-conteiner'>
-        <ul className='ul'>
-          {dataSpecialists.map((especialista) => {
-            const Qualification = dataQualification.find(qualification => qualification.id === especialista.id);
-            const Speciality = dataSpeciality.find(specialty => specialty.id === especialista.id);
+      <h1 className='historialEspecialistas'>{t('registrosWT')}</h1>
+<div className='workTeam-conteiner'>
+  <ul className='ul'>
+    {dataSpecialists.map((especialista) => {
+      const titulacion = dataQualification.find(qualification => qualification.id === especialista.id_qualification);
+      const especialidad = dataSpeciality.find(especialidad => especialidad.id === especialista.id_speciality);
+   
+      return (
+        <li className='lista-de-especialistas' key={especialista.id}>
+          <div className="detailsContainer">
+            {/* Columna de Datos Renderizados */}
+            <div>
+              <img className='imgRecidEspecialistas' src={especialista.specialists_url} alt="Especialista" />
+              <span><strong>{especialista.full_name}</strong></span>
+              <p>{especialidad ? especialidad.speciality_name : 'Sin especialidad'}</p>
+              <p>{titulacion ? titulacion.qualification_name : 'Sin Titulación'}</p>
+            </div>
 
-            return (
-              <li className='li' key={especialista.id}>
-                <br />
-                <img className='imgRecid' src={especialista.specialists_url} />
-                <input onChange={ImageLoad_edit} type="file" />
-                <br />
-                {especialista.full_name}
-                <input type="text" value={full_name} onChange={cargarFullName_edit} />
-                <br />
-                {Speciality ? (
-                  <span>{Speciality.speciality_name}</span> // Muestra el nombre de la especialidad
-                ) : (
-                  <span>Sin especialidad</span>
-                )}
-                <input type="text" onChange={cargarSpeciality_edit} />
-                <br />
-                {Qualification ? (
-                  <span>{Qualification.qualification_name}</span> // Muestra la titulación
-                ) : (
-                  <span>Sin Titulación</span>
-                )}
-                <input type="text" onChange={cargarQualification_edit} />
-                <br />
-                <button className='botonHis' onClick={e => cargaEdicion(especialista.id)}>{t('btnActualizar')}</button>
-                <button className='botonHis' onClick={e => cargarDelete(especialista.id)}>{t('btnEliminar')}</button>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+            {/* Columna de Inputs de Edición */}
+            <div>
+              <input 
+                className='inputField' 
+                type="text" 
+                defaultValue={especialista.full_name} 
+                onChange={cargarFullName_edit} 
+              />
+              <select 
+                className='inputField' 
+                onChange={cargarSpeciality_edit} 
+                id="Speciality"
+                defaultValue={especialista.id_speciality || ''}
+              >
+                <option value="">{t('selectE')}</option>
+                {dataSpeciality.map((speciality) => (
+                  <option key={speciality.id} value={speciality.id}>
+                    {speciality.speciality_name}
+                  </option>
+                ))}
+              </select>
+              <select 
+                className='inputField' 
+                onChange={cargarQualification_edit} 
+                id="Qualification"
+                defaultValue={especialista.id_qualification || ''}
+              >
+                <option value="">{t('selectT')}</option>
+                {dataQualification.map((qualification) => (
+                  <option key={qualification.id} value={qualification.id}>
+                    {qualification.qualification_name}
+                  </option>
+                ))}
+              </select>
+              <input 
+                className='inputField' 
+                type="file" 
+                onChange={ImageLoad_edit} 
+              />
+            </div>
+          </div>
+
+          <div className='buttonsContainer'>
+            <button className='botonHisEspci' onClick={() => cargaEdicion(especialista.id)}>{t('btnActualizar')}</button>
+            <button className='botonHisEspecialistrs' onClick={() => cargarDelete(especialista.id)}>{t('btnEliminar')}</button>
+          </div>
+        </li>
+      );
+    })}
+  </ul>
+</div>
+
+
     </div>
   );
 }

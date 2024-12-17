@@ -422,8 +422,10 @@
     "Alert_T" : "Titulaciones Cargadas",
     "Alert_Ttext" : "Las titulaciones se han cargado correctamente.",
 
-    "Alert_ErrotT" : "No se pudieron cargar las titulaciones."
+    "Alert_ErrotT" : "No se pudieron cargar las titulaciones.",
 
+   "Busqueda": "Buscar servicios disponibles",
 
+   "editarServicio": "Editar Servicio"
 
 }

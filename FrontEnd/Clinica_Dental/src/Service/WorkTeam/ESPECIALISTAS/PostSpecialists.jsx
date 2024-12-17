@@ -11,20 +11,12 @@ const s3 = new AWS.S3({
   region: REGION,
 });
 
-// Función para generar un número aleatorio de al menos 8 dígitos
-const generateRandomNumber = () => {
-  const randomNumber = Math.floor(Math.random() * 100000000); // Genera un número aleatorio entre 0 y 99999999 (hasta 8 dígitos)
-  return randomNumber.toString().padStart(8, '0'); // Asegura que el número tenga al menos 8 dígitos, añadiendo ceros a la izquierda si es necesario
-};
-
 // Función para subir la imagen a S3 con nombre único
 export const uploadImageToS3 = async (file) => {
-  const randomNumber = generateRandomNumber();
-  const fileName = `${randomNumber}_${file.name}`; // Agregar el número aleatorio al nombre del archivo
 
   const params = {
     Bucket: S3_BUCKET,
-    Key: fileName, // Usar el nombre modificado con el número aleatorio
+    Key: file.name, // Usar el nombre modificado con el número aleatorio
     Body: file,
     ContentType: file.type,
   };
@@ -33,7 +25,7 @@ export const uploadImageToS3 = async (file) => {
 };
 
 // Función para guardar el especialista
-const PostSpecialists = async (newSpecialists, IdQualification, IdSpeciality) => {
+const PostSpecialists = async (newSpecialists) => {
   let imagenUrl = null;
 
   console.log(newSpecialists.foto);
@@ -54,21 +46,22 @@ const PostSpecialists = async (newSpecialists, IdQualification, IdSpeciality) =>
   if (!imagenUrl) {
     throw new Error('La imagen no se subió correctamente.');
   }
+  
+  // Obtener el token desde localStorage
+const token = JSON.parse(localStorage.getItem('userData'));
+if (!token || !token.access) {
+  throw new Error('Token no encontrado en localStorage o token inválido');
+}
 
   newSpecialists.foto = imagenUrl;  // Asigna la URL de la imagen al objeto
 
-  const token = JSON.parse(localStorage.getItem('userData'));
-
-  if (!token) {
-    throw new Error('Token no encontrado en localStorage');
-  }
 
   // Crear el objeto para el nuevo especialista
   const newSpecPost = {
     specialists_url: imagenUrl,
     full_name: newSpecialists.Fullname,
-    id_qualification: IdQualification,
-    id_speciality: IdSpeciality,
+    id_qualification: newSpecialists.IdQualification,
+    id_speciality: newSpecialists.IdSpeciality,
   };
 
   console.log(newSpecPost);

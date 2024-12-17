@@ -69,97 +69,215 @@
     margin-bottom: 20px;
   }
 
-/* Contenedor de la lista de especialidades */
+/* Estilo base para el título */
+.historialWTS {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #fac9c9;
+}
+
+/* Estilos para la lista de especialidades (disposición en 2 columnas) */
 .mapEspecialidades {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  display: grid; /* Cambiar a grid para crear una grilla */
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+  gap: 15px; /* Espaciado entre cada especialidad */
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-/* Elemento de especialidad */
+/* Estilo para cada especialidad */
 .especialidad {
-  background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Degradado cálido y vibrante */
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-/* Efecto hover sobre cada especialidad */
-.especialidad:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+  background-color: #da986cd0; /* Color de fondo */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column; /* Cada especialidad se organiza en columna */
+  gap: 15px;
 }
 
 /* Nombre de la especialidad */
-.especialidad span {
+.especialidad-name {
   font-size: 1.2rem;
-  color: white;
   font-weight: 600;
-  display: block;
-  margin-bottom: 10px;
+  color: #333;
 }
 
-/* Input para edición */
+/* Estilo para el campo de edición */
 .editInp {
-  width: 100%;
   padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 30px;
   font-size: 1rem;
-  margin-top: 10px;
-  border: 2px solid #ff7e5f;
-  border-radius: 8px;
-  background-color: #fff3e0;
-  transition: all 0.3s ease;
+  transition: border-color 0.3s ease;
+  width: 200px;
+  min-width: 150px;
 }
 
-/* Input en focus */
+/* Estilo para el campo de edición al enfocar */
 .editInp:focus {
+  border-color: #388E3C;
   outline: none;
-  border-color: #feb47b;
-  background-color: #ffccbc;
 }
 
-/* Botones */
+/* Contenedor de los botones (alineados en dos columnas) */
+.action-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+  gap: 10px; /* Espaciado entre los botones */
+  width: 100%;
+}
+
+/* Estilo de los botones */
 .botonHisTorial {
-  background-color: #c95e43; /* Naranja suave */
+  background-color: #388E3C; /* Verde */
   color: white;
   border: none;
-  padding: 12px 20px;
-  margin-top: 10px;
-  border-radius: 8px;
+  padding: 10px 20px;
   font-size: 1rem;
+  font-weight: 600;
+  border-radius: 30px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  width: 48%;
-  display: inline-block;
+  transition: all 0.3s ease-in-out;
+  width: 100%; /* Asegura que los botones llenen el espacio */
   text-align: center;
 }
 
-/* Efecto hover para los botones */
+/* Hover para los botones */
 .botonHisTorial:hover {
-  background-color: #ff5722; /* Naranja más oscuro */
-  transform: scale(1.05);
+  background-color: #66BB6A; /* Verde más claro */
+  transform: scale(1.05); /* Aumenta el tamaño del botón */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Añadir sombra sutil */
 }
 
-/* Diseño responsivo: cuando la pantalla es pequeña */
-@media (max-width: 600px) {
-  .mapEspecialidades {
+/* Estilo base para el título */
+.historialWTS {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #553c3c;
+}
+
+/* Estilos para la lista de titulaciones (disposición en 2 columnas) */
+.mapTitulaciones {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid; /* Cambiar a grid para crear una grilla */
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+  gap: 15px; /* Espaciado entre cada titulacion */
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Estilo para cada titulacion */
+.titulaciones {
+  background-color: #f4f4f9;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column; /* Cada titulacion se organiza en columna */
+  gap: 15px;
+  background-color: #ECD8B3;
+}
+
+/* Nombre de la titulacion */
+.titulacion-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Estilo para el campo de edición */
+.editInp {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  width: 200px;
+  min-width: 150px;
+}
+
+/* Estilo para el campo de edición al enfocar */
+.editInp:focus {
+  border-color: #388E3C;
+  outline: none;
+}
+
+/* Contenedor de los botones (alineados en dos columnas) */
+.action-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+  gap: 10px; /* Espaciado entre los botones */
+  width: 100%;
+}
+
+/* Estilo de los botones */
+.botonHisTorial {
+  background-color: #388E3C; /* Verde */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  width: 100%; /* Asegura que los botones llenen el espacio */
+  text-align: center;
+}
+
+/* Hover para los botones */
+.botonHisTorial:hover {
+  background-color: #66BB6A; /* Verde más claro */
+  transform: scale(1.05); /* Aumenta el tamaño del botón */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Añadir sombra sutil */
+}
+
+/* Botones de eliminar con color rojo */
+.botonEliminar {
+  background-color: #D32F2F; /* Rojo */
+}
+
+/* Hover para el botón de eliminar */
+.botonEliminar:hover {
+  background-color: #F44336; /* Rojo más claro */
+}
+
+/* Estilo de los botones activos */
+.botonHisTorial:active {
+  transform: scale(1); /* Mantener el tamaño original cuando se presiona */
+  box-shadow: none;
+}
+
+/* Estilos para la lista en dispositivos móviles */
+@media (max-width: 768px) {
+  .mapTitulaciones {
+    grid-template-columns: 1fr; /* En pantallas pequeñas, una columna */
+    padding: 0 10px;
+  }
+
+  .titulaciones {
+    flex-direction: column;
     gap: 15px;
   }
 
-  .especialidad {
-    padding: 15px;
-  }
-
   .editInp {
-    font-size: 0.9rem;
+    width: 100%;
+    max-width: 300px;
   }
 
   .botonHisTorial {
     width: 100%;
-    margin-top: 8px;
+    font-size: 0.9rem;
+    padding: 8px 16px;
   }
 }

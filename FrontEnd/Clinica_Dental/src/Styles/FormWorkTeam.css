@@ -1,0 +1,89 @@
+/* Contenedor principal */
+.especialistas-conteiner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Lista de especialistas */
+.lista-especialistas {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid; /* Usamos grid para organizar los elementos */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* 3 columnas en pantallas grandes y 1 en móviles */
+  gap: 27px; /* Espaciado entre cada elemento */
+}
+
+/* Estilo para cada card de especialista */
+.card-especialista {
+  background-color: #594949e8; /* Color de fondo */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: center; /* Centra el contenido del card */
+  transition: transform 0.3s ease;
+}
+
+/* Imagen del especialista */
+.imagen-especialista {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%; /* Hace la imagen redonda */
+  object-fit: cover; /* Asegura que la imagen se recorte bien para llenar el círculo */
+  border: 5px solid white; /* Borde blanco alrededor de la imagen */
+  margin: 0 auto; /* Centra la imagen dentro del contenedor */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave alrededor de la imagen */
+}
+
+/* Nombre del especialista */
+.nombre-especialista {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-top: 10px;
+}
+
+/* Información del especialista */
+.info-especialista {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Estilo para especialidad */
+.especialidad-especialista,
+.sin-especialidad {
+  background-color: #8d76768a;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+/* Estilo para titulación */
+.titulacion-especialista,
+.sin-titulacion {
+  background-color: #5949498e;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+/* Efecto de hover en los cards */
+.card-especialista:hover {
+  transform: scale(1.05);
+}
+
+/* Media Query para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+  .lista-especialistas {
+    grid-template-columns: 1fr; /* 1 columna en móviles */
+  }
+}

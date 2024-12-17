@@ -1,11 +1,11 @@
-async function UpdateServicios(Servicios, Tratamientos, Image, id) {
+async function UpdateServicios(id, nuevosDatos) {
     try {
      
         const DataServicios = { 
-            Servicios,
-            Tratamientos,
-            Image
-        
+            services_url: nuevosDatos.imagen, 
+            service_name: nuevosDatos.name,
+            specialists: nuevosDatos.IdSpecialists,
+            description: nuevosDatos.descripcion,
         };
 
         const token = JSON.parse(localStorage.getItem('userData'));

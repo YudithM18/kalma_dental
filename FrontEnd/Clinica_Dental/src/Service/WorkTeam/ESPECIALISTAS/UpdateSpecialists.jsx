@@ -1,4 +1,4 @@
-async function UpdateSpecialists(Image, fullname, Speciality, Qualification, id) {
+async function UpdateSpecialists(id, nuevosDatosWT) {
     try {
      
         const token = JSON.parse(localStorage.getItem('userData'));
@@ -8,11 +8,10 @@ async function UpdateSpecialists(Image, fullname, Speciality, Qualification, id)
         }
 
         const DataWorkTeam = { 
-            Image, 
-            fullname, 
-            Speciality, 
-            Qualification
-        
+            specialists_url: nuevosDatosWT.imagen,
+            full_name : nuevosDatosWT.name,
+            id_speciality: nuevosDatosWT.speciality, 
+            id_qualification: nuevosDatosWT.qualification,
         };
         const response = await fetch(`http://127.0.0.1:8000/api/especialistas/${id}/`, {
             method: 'PUT',

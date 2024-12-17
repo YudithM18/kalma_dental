@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../Styles/FooterProtected.css'
+import '../../Styles/FooterSecundary.css'
 import { CiFacebook } from "react-icons/ci";
 import { FaInstagram } from "react-icons/fa";
 import nombre from '../../Img/nombre.jpg'

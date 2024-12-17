@@ -284,43 +284,69 @@ const uploadNewRecordS = async (event) => {
         <br />
         <br />
 
-        <h1 className='historialWTS'>{t('registroSpeciality')}</h1>
-        <div >
-        <ul className='mapEspecialidades'>
-          {dataSpeciality.map((especialidad) => (
-            <li className='especialidad'
-            key={especialidad.id}>
-              <br />
-              {especialidad.speciality_name} <input onChange={cargarSpeciality_edit} type="text" className='editInp' />
-              <br />
-              <button className='botonHisTorial' onClick={e=>cargaEdicionS(especialidad.id)}>{t('btnActualizar')}</button>
-              <button className='botonHisTorial' onClick={e => cargarDeleteS(especialidad.id)}>{t('btnEliminar')}</button>
-              </li>
-          ))}
-        </ul>
-        </div>
+        <h1 className="historialWTS">{t('registroSpeciality')}</h1>
+          <div>
+            <ul className="mapEspecialidades">
+              {dataSpeciality.map((especialidad) => (
+                <li className="especialidad" key={especialidad.id}>
+                  <div className="especialidad-item">
+                    <span className="especialidad-name">{especialidad.speciality_name}</span>
+                    <input 
+                      onChange={cargarSpeciality_edit} 
+                      type="text" 
+                      className="editInp" 
+                    />
+                    <div className="action-buttons">
+                      <button 
+                        className="botonHisTorial botonActualizar" 
+                        onClick={(e) => cargaEdicionS(especialidad.id)}>
+                        {t('btnActualizar')}
+                      </button>
+                      <button 
+                        className="botonHisTorial botonEliminar" 
+                        onClick={(e) => cargarDeleteS(especialidad.id)}>
+                        {t('btnEliminar')}
+                      </button>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
 
         <br />
         <br />
         <br />
         <br />
 
-        <h1 className='historialWTS'>{t('registroQualf')}</h1>
-        <div >
-        <ul className='mapTitulaciones'>
-          {dataQualification.map((titulaciones) => (
-            <li className='titulaciones' 
-            key={titulaciones.id}>
-              <br />
-              {titulaciones.qualification_name} <input onChange={cargarQualification_edit} type="text" className='editInp' /> 
-              <br />
-              <button className='botonHisTorial' onClick={e=>cargaEdicionQ(titulaciones.id)}>{t('btnActualizar')}</button>
-              <button className='botonHisTorial' onClick={e => cargarDeleteQ(titulaciones.id)}>{t('btnEliminar')}</button>
+        <h1 className="historialWTS">{t('registroQualf')}</h1>
+        <div>
+          <ul className="mapTitulaciones">
+            {dataQualification.map((titulaciones) => (
+              <li className="titulaciones" key={titulaciones.id}>
+                <span className="titulacion-name">{titulaciones.qualification_name}</span>
+                <input 
+                  onChange={cargarQualification_edit} 
+                  type="text" 
+                  className="editInp" 
+                />
+                <div className="action-buttons">
+                  <button 
+                    className="botonHisTorial botonActualizar" 
+                    onClick={(e) => cargaEdicionQ(titulaciones.id)}>
+                    {t('btnActualizar')}
+                  </button>
+                  <button 
+                    className="botonHisTorial botonEliminar" 
+                    onClick={(e) => cargarDeleteQ(titulaciones.id)}>
+                    {t('btnEliminar')}
+                  </button>
+                </div>
               </li>
-          ))}
-        </ul>
+            ))}
+          </ul>
         </div>
-    </div>
+        </div>
   )
 }
 

@@ -61,3 +61,75 @@ label{
     background-color: #aab3bd; /* Botón más oscuro al pasar el ratón */
     transform: scale(1.05); /* Efecto de aumento */
 }
+
+
+.workTeam-conteiner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px; /* Espacio entre elementos */
+    margin: 20px;
+  }
+  
+  .lista-de-especialistas {
+    display: flex;
+    margin-top: 40px;
+    flex-direction: column;
+    width: 100%;
+    background-color: #83aa9e;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .detailsContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 20px; /* Espacio entre las columnas de datos */
+    margin-bottom: 20px;
+  }
+  
+  .detailsContainer div {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Ocupa el 50% del espacio en la fila */
+  }
+  
+  .inputField {
+    margin-top: 10px;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .buttonsContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .botonHisEspci, .botonHisEspecialistrs {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .botonHisEspci:hover, .botonHisEspecialistrs:hover {
+    background-color: #0056b3;
+  }
+  
+  .imgRecidEspecialistas {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  
+  input[type="file"] {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  

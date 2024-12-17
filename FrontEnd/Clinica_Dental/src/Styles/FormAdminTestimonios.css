@@ -62,72 +62,122 @@ input[type="text"], input[type="date"] {
 
 
 
-/* Estilos para el contenedor de testimonios */
+
+/* Estilo para el título de la sección */
+.historialT {
+  font-size: 2em;
+  text-align: center;
+  color: #2c3e50; /* Color gris oscuro */
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+/* Estilo de cada testimonio */
+.testimonios {
+  list-style-type: none;
+  padding: 15px; /* Reducir padding para hacerlo más angosto */
+  margin: 10px 0;
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  background-color: #e0dedd;
+  color: black;
+  display: flex;
+  justify-content: space-between; /* Separa el contenido en dos partes */
+  gap: 15px; /* Reducir gap entre columnas */
+  width: 60%; /* Ancho de la card reducido al 60% del contenedor principal */
+  text-align: left; /* Alinea el texto a la izquierda */
+  animation: fadeIn 0.6s ease-in-out; /* Animación de aparición */
+  margin: 10px auto; /* Centrar las cards */
+}
+
+/* Contenedor principal de los testimonios */
 .mapTestimonios {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    width: 100%;
-    height: 200px;
-    max-width: 800px; /* Limitar el ancho máximo para un diseño más limpio */
-    margin: 0 auto;
-  }
-  
-  /* Estilo para cada testimonio */
-  .testimonios {
-    border: 2px solid #b1b1b1; /* Borde azul oscuro */
-    border-radius: 10px;
-    text-align: start;
-    color: #000000; /* Color de texto gris oscuro para mejorar la legibilidad */
-    margin: 15px 0; /* Espacio entre los testimonios */
-    padding: 20px; /* Espacio interno para comodidad */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para darle profundidad */
-    transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out; /* Efecto de animación */
-    width: 80%; /* Ancho del testimonio */
-    max-width: 600px; /* Limitar el tamaño del testimonio */
-  }
-  
-  .testimonios:hover {
-    transform: scale(1.02); /* Efecto de aumento al pasar el ratón */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Aumenta la sombra cuando se pasa el ratón */
-  }
-  
-  /* Estilo para los inputs de edición */
-  .editInp {
-    border: 1px solid #ccc; /* Borde gris claro */
-    border-radius: 5px;
-    padding: 8px;
-    margin-top: 8px;
-    width: 100%; /* Hacer los inputs del tamaño del contenedor */
-    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño */
-    margin-bottom: 12px; /* Espacio entre los inputs */
-    font-size: 14px; /* Tamaño de texto pequeño para los inputs */
-  }
-  
-  .editInp:focus {
-    border-color: #1F3D47; /* Borde azul oscuro cuando el input es enfocado */
-    outline: none; /* Eliminar el contorno predeterminado */
-  }
-  
-  /* Estilo de los botones */
-  .botonHisT {
-    background-color: #9b9b9b; /* Fondo azul oscuro */
-    color: white; /* Texto blanco */
-    border: none;
-    border-radius: 5px; /* Bordes redondeados */
-    padding: 12px 20px; /* Tamaño cómodo para los botones */
-    cursor: pointer;
-    margin-right: 10px; /* Espacio entre los botones */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Transición suave */
-    font-size: 14px;
-  }
-  
-  .botonHisT:hover {
-    background-color: #e0e0e0; /* Color más claro cuando se pasa el ratón por encima */
-    transform: translateY(-2px); /* Efecto de desplazamiento suave hacia arriba */
-  }
-  
-  /* Estilo de los botones cuando tienen el foco */
-  .botonHisT:focus {
-    outline: none; /* Eliminar el borde de foco predeterminado */
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  font-family: 'Averia Serif Libre';
+  font-size: 120%;
+  color: black;
+  font-weight: bold;
+  animation: fadeIn 1s ease-in-out;
+  width: 70%; /* Ajusta el ancho del contenedor */
+}
+
+/* Columna de datos (nombre, fecha, testimonio) */
+.data-column {
+width: 45%; /* 45% del ancho */
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+
+/* Estilo para los inputs de edición dentro de los testimonios */
+.edit-column {
+width: 45%; /* 45% del ancho */
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+
+.editInp {
+background-color: #cec1c8;
+width: 100%;
+padding: 10px;
+margin-bottom: 15px;
+border: 1px solid black;
+border-radius: 5px;
+font-size: 1rem;
+transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Botones */
+.botonHisT {
+background-color: #d3b2db; /* Botón rosa */
+color: white;
+padding: 10px 15px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+font-size: 1rem;
+transition: background-color 0.3s, transform 0.3s;
+margin: 5px 0;
+}
+
+.botonHisT:hover {
+background-color: #635562; /* Cambio de color al hacer hover */
+}
+
+/* Animaciones de entrada */
+@keyframes fadeIn {
+0% {
+  opacity: 0;
+  transform: translateY(20px);
+}
+100% {
+  opacity: 1;
+  transform: translateY(0);
+}
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+.testimonios {
+  flex-direction: column;
+  width: 100%;
+}
+
+.data-column, .edit-column {
+  width: 100%;
+}
+
+.editInp {
+  font-size: 14px;
+}
+
+.botonHisT {
+  font-size: 14px;
+}
+}
