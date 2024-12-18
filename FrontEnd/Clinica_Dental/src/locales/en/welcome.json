@@ -30,7 +30,7 @@
     
     "footer_TT1": "Taking care of your smile, always.",
     "texto_1": "Last update: 13/11/2024",
-    "footerTT2": "Follow us on social media for updates on any event...",
+    "footerTT2": "Follow us on social media for updates ",
     "footerTT3": "Book your appointment: ",
     "Horario": "Opening Hours",
     "fecha1": "Monday to Friday: 9:00 AM - 6:00 PM",
@@ -219,6 +219,7 @@
     "alertaLogin": "You have logged in successfully",
     "alertaLogin1": "Thank you!!",
     "alertaLogin2": "All fields are required",
+    "alertaLogin3": "The data is incorrect",
 
     "btnO": "SKIP",
     "bienvenidoAdmin": "Welcome!!",
@@ -307,5 +308,20 @@
 
     "Busqueda": "Search available services",
 
-    "editarServicio": "Edit service"
+    "editarServicio": "Edit service",
+
+    "alertaUserAD": "Accept",
+    "alertaUserAD1": "User created",
+    "alertaUserAD2": "A new user has been successfully created",
+    "alertaUserAD3": "An error occurred while creating the user",
+
+    "alertaUserAD4": "Are you sure?",
+    "alertaUserAD5": "You won't be able to recover this user after deleting it.",
+    "alertaUserAD6": "Yes, delete",
+    "alertaUserAD7": "Cancel",
+    "alertaUserAD8": "Deleted!",
+    "alertaUserAD9": "The specialty has been deleted.",
+    "alertaUserAD0": "User Updated",
+    "alertaUserAD11": "Changes have been successfully saved.",
+    "alertaUserAD12": "There was an error updating the user."
 }

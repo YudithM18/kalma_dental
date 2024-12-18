@@ -6,12 +6,12 @@
   width: 100%;
 }
 
-.titulo-servicios{
+.titulo-servicios {
   font-size: 2rem;
   font-weight: bold;
   text-align: center;
   margin-bottom: 30px;
-  color : #333;
+  color: #333;
   margin-top: 150px;
 }
 
@@ -19,14 +19,14 @@
 .lista-servicios {
   list-style-type: none;
   padding: 0;
-  display: block;  /* Para que todos los elementos estén en una sola columna */
+  display: block;
   width: 100%;
-  max-width: 1200px;  /* El contenedor de la lista no debe exceder los 1200px de ancho */
+  max-width: 1200px;
 }
 
 /* Cada item de servicio */
 .item-servicio {
-  width: 100%;  /* El item ocupa todo el ancho disponible */
+  width: 100%;
   background-color: #D7D4D4;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -34,8 +34,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 30px; /* Espacio entre los elementos */
-  padding: 20px; /* Padding para que el contenido no esté pegado */
+  margin-bottom: 30px;
+  padding: 20px;
 }
 
 /* Contenido dentro de cada item */
@@ -44,17 +44,17 @@
   flex-direction: row;
   align-items: center;
   width: 100%;
-  transition: transform 0.3s ease;  /* Transición suave para el cambio de tamaño */
+  transition: transform 0.3s ease;
 }
 
 /* Estilo de la imagen */
 .img-servicio {
-  width: 200px;  /* Imagen más grande */
-  height: 200px; /* Imagen más grande */
+  width: 200px;
+  height: 200px;
   object-fit: cover;
-  margin-right: 20px; /* Más espacio entre la imagen y la información */
-  border-radius: 8px; /* Bordes redondeados en la imagen */
-  transition: transform 0.3s ease;  /* Transición suave para el cambio de tamaño */
+  margin-right: 20px;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
 }
 
 /* Información del servicio */
@@ -64,18 +64,18 @@
 
 /* Nombre del servicio */
 .nombre-servicio {
-  font-size: 1.3rem; /* Texto más pequeño */
+  font-size: 1.3rem;
   font-weight: bold;
   margin: 10px 0;
-  text-align: center; /* Centrar el nombre del servicio */
+  text-align: center;
 }
 
 /* Nombre del especialista */
 .especialista {
-  font-size: 1rem;  /* Texto más pequeño para el especialista */
+  font-size: 1rem;
   margin: 5px 0;
   color: #555;
-  text-align: center; /* Centrar el nombre del especialista */
+  text-align: center;
 }
 
 /* Botón horizontal */
@@ -83,13 +83,13 @@
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 10px 15px;  /* Botón más angosto */
+  padding: 10px 15px;
   margin-top: 15px;
   cursor: pointer;
   border-radius: 4px;
   text-align: center;
-  font-size: 0.9rem; /* Texto más pequeño en el botón */
-  width: auto;  /* El ancho del botón no debe ser 100% */
+  font-size: 0.9rem;
+  width: auto;
 }
 
 .boton-expandir:hover {
@@ -107,87 +107,93 @@
 /* Media Query para pantallas más pequeñas (móviles) */
 @media (max-width: 768px) {
   .contenedor-servicios {
-    padding: 20px;  /* Menos padding en pantallas pequeñas */
+    padding: 20px;
+  }
+
+  .titulo-servicios {
+    margin-top: 50px; /* Menos espacio superior en móviles */
+    font-size: 1.6rem; /* Título más pequeño */
   }
 
   .item-servicio {
-    width: 100%;  /* Aseguramos que cada servicio ocupe toda la fila */
-    margin-bottom: 20px;  /* Espacio entre los elementos */
+    margin-bottom: 20px;
+    width: 100%;
   }
 
   .contenido-servicio {
-    flex-direction: column;  /* En pantallas pequeñas, la imagen y el texto van en columna */
+    flex-direction: column;
     align-items: center;
   }
 
   .img-servicio {
-    width: 150px;  /* Imagen más grande en pantallas pequeñas */
+    width: 150px;
     height: 150px;
-    margin-right: 0;  /* El margen entre la imagen y el texto desaparece */
-    margin-bottom: 15px; /* Espacio entre la imagen y el texto */
+    margin-right: 0;
+    margin-bottom: 15px;
   }
 
   .nombre-servicio {
-    font-size: 1.1rem;  /* Texto un poco más pequeño en pantallas pequeñas */
+    font-size: 1.1rem;
   }
 
   .especialista {
-    font-size: 0.9rem;  /* Texto más pequeño en pantallas pequeñas */
+    font-size: 0.9rem;
   }
 
   .boton-expandir {
-    padding: 8px 12px;  /* Botón más pequeño */
-    font-size: 0.8rem;  /* Texto más pequeño en el botón */
+    padding: 8px 12px;
+    font-size: 0.8rem;
   }
 
   .detalle-servicio {
-    padding: 10px;  /* Menos padding para detalles en pantallas pequeñas */
+    padding: 10px;
+  }
+
+  /* Ajustar contenedor de búsqueda para móviles */
+  .search-container {
+    width: 100%; /* Usamos todo el ancho disponible */
+    height: 50px;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center; /* Centrado en pantallas pequeñas */
+  }
+
+  .resultado-busqueda {
+    font-size: 1.5rem; /* Reducir tamaño del texto */
+    margin-right: 0; /* Sin margen a la derecha */
   }
 }
 
 /* Media Query para pantallas grandes (a partir de 1200px) */
 @media (min-width: 1200px) {
   .contenedor-servicios {
-    padding: 60px;  /* Más padding en pantallas grandes */
+    padding: 60px;
   }
 
   .item-servicio {
-    width: 80%;  /* En pantallas grandes, el contenedor puede ser un poco más pequeño */
+    width: 80%;
   }
 
   .img-servicio {
-    width: 250px;  /* Imagen más grande en pantallas grandes */
+    width: 250px;
     height: 250px;
   }
 
   .nombre-servicio {
-    font-size: 1.5rem;  /* Texto más grande en pantallas grandes */
+    font-size: 1.5rem;
   }
 
   .especialista {
-    font-size: 1.2rem;  /* Texto más grande en pantallas grandes */
+    font-size: 1.2rem;
   }
 
   .boton-expandir {
-    padding: 12px 20px;  /* Botón más grande */
-    font-size: 1rem;  /* Texto más grande en el botón */
+    padding: 12px 20px;
+    font-size: 1rem;
   }
 }
 
 /* Cuando el servicio está expandido, aumentar el tamaño de la imagen */
 .item-servicio.expandido .img-servicio {
-  transform: scale(1.1);  /* Aumentamos el tamaño de la imagen al expandir */
-}
-
-
-.search-container{
-  width: 50%;
-  height: 50px;
-  margin-left: 600px;
-}
-
-.resultado-busqueda{
-  color: black;
-  font-size: xx-large;
-  margin-right: 100px;
+  transform: scale(1.1);
 }

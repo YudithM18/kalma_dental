@@ -1,86 +1,85 @@
 /* Header */
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 100px;
-    background-color: #594949;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    height: 150px;
-    animation: fadeIn 1s ease-in-out;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10%; /* Cambié el padding para ser más flexible */
+  background-color: #594949;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  height: 150px;
+  animation: fadeIn 1s ease-in-out;
+}
 
-  .btndonar {
-    position: absolute;
-    bottom: 84%;;  /* Espacio desde la parte superior del contenedor */
-    right: 6%;  /* Espacio desde el borde derecho del contenedor */
-    padding: 10px 20px;  /* Ajusta el tamaño del botón */
-    background-color: #f39c12;  /* Color de fondo (puedes cambiarlo) */
-    color: white;  /* Color del texto */
-    border: none;  /* Elimina el borde predeterminado */
-    border-radius: 5px;  /* Redondea las esquinas */
-    font-size: 16px;  /* Tamaño del texto */
-    cursor: pointer;  /* Cambia el cursor a una mano cuando pasas por encima */
-  }
-  
-  .btndonar:hover {
-    background-color: #e67e22;  /* Cambia el color al pasar el cursor */
-  }
-  
-.logoprincipal{
-    height: 6em;
-    padding: 1.5em;
-    border-radius: 100px; /* Mantiene la forma redonda */
-    border: 10px solid white; /* Reducir borde */
-    will-change: filter;
-    transition: filter 300ms;
+.btndonar {
+  position: fixed; /* Lo hace siempre visible en la pantalla */
+  bottom: 20px; /* Más espacio desde el fondo de la pantalla */
+  right: 20px; /* Ajuste para estar a la derecha */
+  padding: 10px 20px;
+  background-color: #f39c12;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 10; /* Asegura que esté sobre otros elementos */
+}
+
+.btndonar:hover {
+  background-color: #e67e22;
+}
+
+.logoprincipal {
+  height: 6em;
+  padding: 1.5em;
+  border-radius: 100px;
+  border: 10px solid white;
+  will-change: filter;
+  transition: filter 300ms;
 }
 
 .logoprincipal:hover {
-    filter: drop-shadow(0 0 2em white);
+  filter: drop-shadow(0 0 2em white);
 }
-      
+
 .logoprincipal.react:hover {
-    filter: drop-shadow(0 0 2em white);
+  filter: drop-shadow(0 0 2em white);
 }
 
 .logo-btn {
-    display: inline-block; /* Asegura que el enlace se comporte como un bloque pero se mantenga en línea */
-    background: transparent; /* Fondo transparente */
-    border: none;            /* Eliminar borde */
-    border-radius: 100px;
-    padding: 0;              /* Eliminar padding */
-    cursor: pointer;        /* Cambiar cursor para indicar que es clickeable */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones de animación */
+  display: inline-block;
+  background: transparent;
+  border: none;
+  border-radius: 100px;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Efecto hover para el logo */
 .logo-btn:hover {
-    transform: scale(1.1); /* Agrandar ligeramente el logo */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra al pasar el cursor */
+  transform: scale(1.1);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Animación para el logo */
 .logo {
-    height: 150px;
-    border-radius: 50%;
-    border: 5px solid white;
-    object-fit: cover;
-    animation: fadeIn 1s ease-in-out;
+  height: 150px;
+  border-radius: 50%;
+  border: 5px solid white;
+  object-fit: cover;
+  animation: fadeIn 1s ease-in-out;
 }
 
 /* Animación de fadeIn */
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-  
+/* Barra de búsqueda */
 .search-container {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-left: 20px;  /* Ajusta el espacio a la izquierda del campo de búsqueda */
+  margin-left: 20px;
 }
 
 .search-bar {
@@ -98,4 +97,57 @@
 .search-results li {
   padding: 5px;
   border-bottom: 1px solid #ddd;
+}
+
+/* Media Query para pantallas más pequeñas */
+@media (max-width: 768px) {
+  /* Ajustes en el header */
+  .header {
+      padding: 20px 5%; /* Menos espacio horizontal */
+      height: auto; /* Ajusta el alto si es necesario */
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .btndonar {
+      bottom: 20px;
+      right: 20px;
+      padding: 12px 24px;
+      font-size: 14px;
+  }
+
+  .logo {
+      height: 120px; /* Logo más pequeño */
+  }
+
+  .search-container {
+      width: 100%;
+      justify-content: center; /* Centra el campo de búsqueda */
+      margin-left: 0;
+      gap: 20px; /* Aumenta el espacio entre el campo de búsqueda y los resultados */
+  }
+
+  .search-bar {
+      width: 100%; /* Hace que la barra de búsqueda ocupe todo el espacio disponible */
+  }
+}
+
+/* Media Query para pantallas grandes */
+@media (min-width: 1200px) {
+  .header {
+      padding: 20px 150px; /* Más padding en pantallas grandes */
+      height: 150px;
+  }
+
+  .btndonar {
+      bottom: 20px;
+      right: 20px;
+      padding: 12px 24px;
+      font-size: 18px;
+  }
+
+  .logo {
+      height: 180px; /* Logo más grande en pantallas grandes */
+  }
 }

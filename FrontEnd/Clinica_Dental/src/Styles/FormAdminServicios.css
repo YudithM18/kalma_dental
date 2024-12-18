@@ -1,66 +1,77 @@
-.Servicios{
-    background: #594949; /* Fondo blanco para el formulario */
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    width: 100%;
-    max-width: 600px; /* Ancho máximo */
-    text-align: center;
-    animation: fadeIn 0.6s ease-in-out; /* Animación de aparición */
-    margin-top: 150px;
-    margin-left: 300px;
+/* Estilo para el contenedor principal de servicios */
+.Servicios {
+  background: #594949; /* Fondo marrón oscuro */
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 100%;
+  max-width: 600px; /* Ancho máximo */
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out; /* Animación de aparición */
+  margin: 150px auto; /* Centrado automático con margen superior */
 }
 
+/* Estilo del título principal */
 .TitleS {
-    color: white; /* Color del título */
-    margin-bottom: 20px;
-    animation: slideIn 0.5s ease-in-out; /* Animación de deslizamiento */
-    font-size: 35px;
+  color: white; /* Color del título */
+  margin-bottom: 20px;
+  animation: slideIn 0.5s ease-in-out; /* Animación de deslizamiento */
+  font-size: 35px;
 }
 
-.subTitleS{
-    color: white;
-    font-size: 20px;
-    text-align: start;
+/* Estilo para el subtítulo */
+.subTitleS {
+  color: white;
+  font-size: 20px;
+  text-align: start;
 }
 
+/* Estilo de las etiquetas (labels) de los formularios */
 label {
-    display: block;
-    margin: 15px 0 5px;
-    font-weight: bold;
-    color: #555; /* Color del texto de la etiqueta */
+  display: block;
+  margin: 15px 0 5px;
+  font-weight: bold;
+  color: #555; /* Color del texto de la etiqueta */
 }
 
-.IMGFILE{
-    background-color: #D0B4A9;
-    width: 100%; /* Ancho completo menos padding */
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid black; /* Borde gris */
-    border-radius: 5px;
-    font-size: 1rem;
-    transition: border-color 0.3s, box-shadow 0.3s; /* Añadir transición para la sombra */
+/* Estilo para los inputs de tipo archivo */
+.IMGFILE {
+  background-color: #D0B4A9;
+  width: 100%; /* Ancho completo menos padding */
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid black; /* Borde gris */
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s; /* Añadir transición para la sombra */
 }
+
+.IMGFILE:focus {
+  border-color: #8a4f44; /* Cambio de borde al tener foco */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Efecto de sombra */
+}
+
+/* Estilo de los botones */
 .btnadd {
-    background-color: #B08B82; /* Botón verde */
-    color: white; /* Texto blanco */
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
-    margin: 5px 0;
-    animation: popIn 0.5s ease; /* Animación de aparición para botones */
-    margin-left: 350px;
-
+  background-color: #B08B82; /* Fondo del botón */
+  color: white; /* Texto blanco */
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
+  margin: 5px 0;
+  animation: popIn 0.5s ease; /* Animación de aparición para botones */
+  margin-left: 350px; /* Ajuste en el botón para centrar */
 }
 
 .btnadd:hover {
-    background-color: #b987a3; /* Botón más oscuro al pasar el ratón */
-    transform: scale(1.05); /* Efecto de aumento */
+  background-color: #b987a3; /* Botón más oscuro al pasar el ratón */
+  transform: scale(1.05); /* Efecto de aumento */
 }
 
+/* Contenedor para los servicios protegidos */
 .serviciosProtegidos-conteiner {
   display: flex;
   justify-content: space-between;
@@ -68,23 +79,27 @@ label {
   width: 100%;
 }
 
+/* Contenedor de columnas con espacio entre ellas */
 .columns-container {
   display: flex;
   width: 100%;
   gap: 30px; /* Espacio entre las columnas */
 }
 
+/* Columna de datos con separación visual */
 .data-column {
-  flex: 1; /* Ocupa 50% del espacio */
+  flex: 1; /* Ocupa el 50% del espacio */
   padding-right: 20px;
   border-right: 2px solid #000000; /* Separación visual */
 }
 
+/* Columna de edición */
 .edit-column {
-  flex: 1; /* Ocupa 50% del espacio */
+  flex: 1; /* Ocupa el 50% del espacio */
   padding-left: 20px;
 }
 
+/* Lista de servicios protegidos */
 .lsta-servicios-protegidos {
   list-style-type: none;
   padding: 10px;
@@ -93,6 +108,7 @@ label {
   border-radius: 10px 10px;
 }
 
+/* Estilo de las imágenes en los servicios protegidos */
 .imagenServiciosProtegidos {
   width: 100%; /* Ajustamos el tamaño para que la imagen no ocupe demasiado espacio */
   max-width: 150px; /* Limitamos el tamaño máximo de la imagen */
@@ -101,11 +117,13 @@ label {
   margin-bottom: 10px;
 }
 
+/* Contenedor de edición del servicio */
 .edit-service-container {
   margin-bottom: 20px;
   margin-top: 150px;
 }
 
+/* Estilo de los inputs de edición */
 .editInp1,
 .editInp,
 .edit-specialist-select,
@@ -117,16 +135,27 @@ label {
   border-radius: 4px;
 }
 
+.editInp1:focus,
+.editInp:focus,
+.edit-specialist-select:focus,
+.edit-file-input:focus {
+  border-color: #8a4f44; /* Borde con foco */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra al tener foco */
+}
+
+/* Estilo para los botones de edición */
 .edit-buttons {
   display: flex;
   justify-content: space-between;
 }
 
-.inputEditServices{
+/* Estilo para la caja de texto */
+.inputEditServices {
   width: 600px;
   height: 150px;
 }
 
+/* Estilo para el botón de historial */
 .botonHis {
   padding: 10px;
   background-color: #007bff;
@@ -138,4 +167,37 @@ label {
 
 .botonHis:hover {
   background-color: #0056b3;
+}
+
+/* Estilo para el título de "Registro Existente Servicios" */
+.RegistroExistenteServicios {
+  color: #333;
+  font-size: 45px;
+  font-weight: bold;
+}
+
+/* Media Queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .Servicios {
+    margin: 100px 20px; /* Margen más pequeño en pantallas pequeñas */
+  }
+
+  .btnadd {
+    margin-left: 0; /* Centrado automático en botones */
+  }
+
+  .columns-container {
+    flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
+    gap: 20px;
+  }
+
+  .data-column, .edit-column {
+    width: 100%; /* Las columnas ocupan el 100% en pantallas pequeñas */
+    padding: 0; /* Eliminar el padding extra */
+  }
+
+  .inputEditServices {
+    width: 100%;
+    height: 120px; /* Ajustar la altura en pantallas pequeñas */
+  }
 }

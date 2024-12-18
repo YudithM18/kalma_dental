@@ -27,7 +27,7 @@
 }
 
 /* Títulos */
-.completo{
+.completo {
   font-family: 'Poppins', sans-serif;
   font-size: 35px;
   color: #00bcd4; /* Color de título vibrante */
@@ -127,4 +127,61 @@ a {
 
 a:hover {
   color: #005bb5;
+}
+
+
+/* Media Queries */
+
+/* Pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+  .payment-container {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 30px; /* Reducir padding en móviles */
+    margin-top: 20px; /* Reducir el margen superior */
+  }
+
+  .paypal-image {
+    max-width: 150px; /* Reducir el tamaño de la imagen */
+    margin-bottom: 20px;
+  }
+
+  .completo {
+    font-size: 28px; /* Reducir el tamaño del título */
+    margin-bottom: 20px; /* Reducir el margen inferior */
+  }
+
+  .paypal-buttons {
+    width: 100%; /* Botón ocupa el 100% del ancho en móvil */
+    padding: 12px 20px; /* Reducir el padding del botón */
+  }
+
+  .alert {
+    font-size: 14px; /* Reducir tamaño de fuente en alertas */
+    padding: 10px 20px; /* Reducir el padding */
+  }
+}
+
+/* Pantallas medianas (tabletas) */
+@media (max-width: 1024px) {
+  .payment-container {
+    margin-left: 150px; /* Ajustar margen izquierdo */
+    padding: 40px; /* Ajustar padding */
+  }
+
+  .paypal-image {
+    max-width: 160px; /* Ajustar tamaño de imagen */
+  }
+
+  .completo {
+    font-size: 32px; /* Ajustar tamaño del título */
+  }
+
+  .paypal-buttons {
+    padding: 13px 25px; /* Ajustar tamaño de botones */
+  }
+
+  .alert {
+    font-size: 16px; /* Ajustar tamaño de fuente en alertas */
+  }
 }

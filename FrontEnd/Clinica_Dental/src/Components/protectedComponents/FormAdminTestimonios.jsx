@@ -80,9 +80,9 @@ function FormAdminTestimonios() {
       });
 
       // Limpiar los campos
-      setFullname('');
+      setName('');
       setDate('');
-      setTestimony('');
+      setTestimonials('');
     } catch (error) {
       // Si hay un error, muestra la alerta de error
       Swal.fire({

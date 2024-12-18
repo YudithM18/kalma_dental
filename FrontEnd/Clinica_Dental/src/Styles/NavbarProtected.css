@@ -1,153 +1,202 @@
+/* Navbar */
 .navbar {
-    background-color: #CECFCA;
-    padding: 15px 0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    animation: fadeIn 1s ease-in-out;
-  }
+  background-color: #CECFCA;
+  padding: 15px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  animation: fadeIn 1s ease-in-out;
+}
 
-  .link{
-    color: black; /* Color de texto */
-    text-decoration: none; /* Elimina el subrayado por defecto */
-    padding: 10px 15px;
-    display: block;
-    transition: background-color 0.3s ease; /* Suaviza el cambio de color */
-  }
-  
-  .link:hover {
-    background-color: #C48EAB; /* Color al pasar el ratón */
-  }
-  
-  .navbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
+.link {
+  color: black; /* Color de texto */
+  text-decoration: none; /* Elimina el subrayado por defecto */
+  padding: 10px 15px;
+  display: block;
+  transition: background-color 0.3s ease; /* Suaviza el cambio de color */
+}
 
+.link:hover {
+  background-color: #C48EAB; /* Color al pasar el ratón */
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  margin: 0;
+}
+
+.navbar-item {
+  margin-left: 30px;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s, transform 0.3s, box-shadow 0.3s, filter 0.3s ease-in-out; /* Transiciones suaves */
+  position: relative;
+  display: inline-block;
+  border-radius: 7px; /* Bordes redondeados */
+}
+
+/* Efecto de elevación y brillo en los enlaces del navbar */
+.link:hover {
+  transform: translateY(-8px); /* Eleva la carta */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Sombra más prominente */
+  filter: brightness(1.2); /* Agrega un brillo al enlace */
+}
+
+/* Línea inferior (brillo) al pasar el mouse sobre el enlace */
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px; /* Grosor de la línea */
+  background: linear-gradient(90deg, #8e3879, #b4549c);
+  transition: width 0.3s ease;
+}
+
+/* La línea inferior se extiende cuando se hace hover sobre el enlace */
+.link:hover::after {
+  width: 100%; /* Llenar la línea inferior al hacer hover */
+}
+
+/* Media Query para pantallas más pequeñas */
+@media (max-width: 768px) {
   .navbar-menu {
-    list-style: none;
-    display: flex;
-    margin: 0;
-  }
-  
-  .navbar-item {
-    margin-left: 30px;
-  }
-  
-  .link {
-    color: black;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 500;
-    transition: color 0.3s, transform 0.3s, box-shadow 0.3s, filter 0.3s ease-in-out; /* Transiciones suaves */
-    position: relative;
-    display: inline-block;
-    border-radius: 7px;  /* Bordes redondeados */
-  
-  }
-  
-  /* Efecto de elevación y brillo en los enlaces del navbar */
-  .link:hover {
-    transform: translateY(-8px); /* Eleva la carta */
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Sombra más prominente */
-    filter: brightness(1.2); /* Agrega un brillo al enlace */
-  }
-  
-  /* Línea inferior (brillo) al pasar el mouse sobre el enlace */
-  .link::after {
-    content: '';
+    display: none;
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 3px; /* Grosor de la línea */
-    background: linear-gradient(90deg, #8e3879, #b4549c);
-    transition: width 0.3s ease;
+    top: 70px;
+    right: 20px;
+    background-color: #1e1e1e;
+    width: 200px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+    padding: 10px 0;
   }
-  
-  
-  /* La línea inferior se extiende cuando se hace hover sobre el enlace */
-  .link:hover::after {
-    width: 100%; /* Llenar la línea inferior al hacer hover */
-  }
-  
-  @media (max-width: 768px) {
-    .navbar-menu {
-      display: none;
-      position: absolute;
-      top: 70px;
-      right: 20px;
-      background-color: #1e1e1e;
-      width: 200px;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      flex-direction: column;
-      padding: 10px 0;
-    }
-  
-    .navbar-menu.active {
-      display: flex;
-    }
-  
-    .navbar-item {
-      margin-left: 0;
-      text-align: center;
-    }
-  
-    .navbar-toggle {
-      display: block;
-      font-size: 24px;
-      color: #fff;
-      cursor: pointer;
-    }
-  }
-  
-  /* Animaciones */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
 
-  .btn_Cierre {
-    width: 150px;
-    height: 40px;
-    background-color: #C48EAB;
-    border: none;
-    border-radius: 5px;
+  .navbar-menu.active {
+    display: flex;
+  }
+
+  .navbar-item {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .navbar-toggle {
+    display: block;
+    font-size: 24px;
+    color: #fff;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    animation: float 2s ease-in-out infinite;
-    font-size: medium;
-    color: black;
   }
-  
-  /* Animación de flotación */
-  @keyframes float {
-    0% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-    100% {
-      transform: translateY(0);
-    }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  /* Efecto al pasar el cursor */
-  .btn_Cierre:hover {
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-    transform: translateY(-5px);
+  to {
+    opacity: 1;
   }
-  
+}
+
+/* Botón */
+.btn_Cierre {
+  width: 150px;
+  height: 40px;
+  background-color: #C48EAB;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  animation: float 2s ease-in-out infinite;
+  font-size: medium;
+  color: black;
+}
+
+/* Animación de flotación */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Efecto al pasar el cursor */
+.btn_Cierre:hover {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+/* Formulario centrado */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
+}
+
+.form {
+  width: 100%;
+  max-width: 500px; /* Establece el ancho máximo del formulario */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #C48EAB;
+  border: none;
+  border-radius: 5px;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form button:hover {
+  background-color: #b4549c;
+}
+
+/* Media Query para el formulario en pantallas pequeñas */
+@media (max-width: 768px) {
+  .form {
+    width: 90%; /* Reduce el tamaño del formulario en pantallas más pequeñas */
+    padding: 15px;
+  }
+}

@@ -125,17 +125,79 @@ body.fondo-formulario {
     margin: 10px;
 }
 
-/* Ajustes de responsive */
+/* Pantallas pequeñas (móviles) */
 @media (max-width: 768px) {
-    .form-content {
-        padding: 20px;
+    .form-container {
+        width: 90%; /* El formulario se ajusta a un 90% del ancho */
+        height: auto; /* Permite que el alto sea flexible */
+        padding: 10px; /* Menos padding para pantallas pequeñas */
     }
 
-    h2 {
-        font-size: 1.5rem;
+    .form-content {
+        padding: 15px; /* Menos padding para pantallas pequeñas */
+        max-width: 100%; /* Permite que ocupe todo el espacio disponible */
+    }
+
+    .titulo-ingresar {
+        font-size: 1.5rem; /* Reduce el tamaño del título */
+    }
+
+    .input-field-monto {
+        font-size: 1rem; /* Reduce el tamaño de la fuente en los inputs */
     }
 
     .submit-btn {
-        width: 100%;
+        padding: 12px 24px; /* Ajusta el padding del botón */
+        font-size: 1rem; /* Reduce el tamaño del texto */
+    }
+
+    .back-button-donar {
+        width: 100%; /* Asegura que el botón ocupe todo el ancho */
+        margin-right: 0; /* Elimina el margen */
+        padding: 12px 0; /* Ajusta el padding del botón */
+        font-size: 1rem; /* Reduce el tamaño del texto */
+    }
+}
+
+/* Pantallas medianas (tabletas) */
+@media (max-width: 1024px) {
+    .form-container {
+        width: 80%; /* Ajusta el tamaño del formulario */
+    }
+
+    .form-content {
+        padding: 20px; /* Aumenta un poco el padding */
+    }
+
+    .titulo-ingresar {
+        font-size: 1.8rem; /* Ajusta el tamaño del título */
+    }
+
+    .submit-btn {
+        padding: 15px 30px;
+    }
+
+    .back-button-donar {
+        padding: 12px 0; /* Ajusta el tamaño del botón */
+    }
+}
+
+/* Pantallas grandes (desktops y más grandes) */
+@media (min-width: 1200px) {
+    .form-container {
+        width: 50%; /* Ajusta el tamaño del formulario para pantallas grandes */
+    }
+
+    .form-content {
+        max-width: 500px; /* Aumenta el tamaño máximo del formulario */
+    }
+
+    .submit-btn {
+        padding: 18px 36px; /* Aumenta el tamaño del botón */
+    }
+
+    .back-button-donar {
+        width: auto; /* Ajusta el tamaño del botón */
+        padding: 14px 28px; /* Ajusta el padding */
     }
 }

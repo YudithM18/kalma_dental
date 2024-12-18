@@ -197,16 +197,19 @@ function FormAdministracion() {
 
     const nuevosDatosWT = {
       imagen: specialists_url_edit || specialistOriginal.specialists_url,
-      name: full_name_edit || specialistOriginal.full_name,
-      speciality: Speciality_edit || specialistOriginal.speciality,
-      qualification: Qualification_edit || specialistOriginal.qualification,
+      nombreCompleto: full_name_edit || specialistOriginal.full_name,
+      Id_speciality: Speciality_edit || specialistOriginal.id_speciality,
+      Id_qualification: Qualification_edit || specialistOriginal.id_qualification,
     };
 
+    console.log(nuevosDatosWT);
+    
+
     try {
-      await UpdateSpecialists(id, nuevosDatosWT.imagen, nuevosDatosWT.name, nuevosDatosWT.speciality, nuevosDatosWT.qualification);
+      await UpdateSpecialists(id, nuevosDatosWT.imagen, nuevosDatosWT.nombreCompleto, nuevosDatosWT.Id_speciality, nuevosDatosWT.Id_qualification);
 
       const SpecialistsUpdated = dataSpecialists.map(especialista =>
-        especialista.id === id ? { ...especialista, ...nuevosDatos } : especialista
+        especialista.id === id ? { ...especialista, ...nuevosDatosWT } : especialista
       );
 
       setSpecialists(SpecialistsUpdated);
@@ -305,14 +308,13 @@ function FormAdministracion() {
               <input 
                 className='inputField' 
                 type="text" 
-                defaultValue={especialista.full_name} 
-                onChange={cargarFullName_edit} 
+                onChange={cargarFullName_edit}
+                placeholder='Ingresa nuevo dato' 
               />
               <select 
                 className='inputField' 
                 onChange={cargarSpeciality_edit} 
                 id="Speciality"
-                defaultValue={especialista.id_speciality || ''}
               >
                 <option value="">{t('selectE')}</option>
                 {dataSpeciality.map((speciality) => (
@@ -325,7 +327,6 @@ function FormAdministracion() {
                 className='inputField' 
                 onChange={cargarQualification_edit} 
                 id="Qualification"
-                defaultValue={especialista.id_qualification || ''}
               >
                 <option value="">{t('selectT')}</option>
                 {dataQualification.map((qualification) => (

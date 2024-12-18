@@ -8,7 +8,7 @@ import '../../i18n'
 
 
 
-const Navbar = () => {
+const NavbarProtected = () => {
 
   const { t, i18n } = useTranslation();
 
@@ -36,8 +36,8 @@ const cargaCierre = () =>{
       <div className="navbar-container">
         <button className='btn_Cierre' onClick={cargaCierre}>{t('cierreSesion')}</button>
         <ul className="navbar-menu">
-        <li className="dropdown">
-          <li className="dropbtn" onClick={toggleDropdown}>
+            <li className="navbar-item">
+            <li className="dropbtn" onClick={toggleDropdown}>
             <Link to="/GeneralAdministration"  className='link'>{t('admin1')}</Link>
           </li>
           {dropdown && (
@@ -61,4 +61,4 @@ const cargaCierre = () =>{
   );
 }
 
-export default Navbar;
+export default NavbarProtected;

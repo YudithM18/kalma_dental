@@ -1,141 +1,165 @@
 .donaciones-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    flex-direction: column;
-    animation: fadeIn 1.5s ease-out; /* Aplica la animación de aparición */
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  flex-direction: column;
+  animation: fadeIn 1.5s ease-out; /* Aplica la animación de aparición */
+}
 
-  .img-teleton{
-    height: 700px;
-    width: 1270px;
-  }
- 
+.img-teleton {
+  height: 700px;
+  width: 1270px;
+  max-width: 100%; /* Hace que la imagen sea más flexible */
+}
 
+/* Estilos del Título */
 .donacion {
-    font-family: 'Poppins', sans-serif;  /* Fuente moderna */
-    font-size: 50px;
-    font-weight: 700;
-    color: white; /* Letra blanca por defecto */
-    text-align: center;
-    margin-bottom: 20px;
-    padding: 20px;
-    position: relative;
-    display: inline-block;
-    background-color: #21234A; /* Fondo de color oscuro por defecto */
-    border-radius: 12px; /* Bordes redondeados */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    transition: all 0.3s ease; /* Transiciones suaves para color, tamaño y sombra */
-    animation: fadeIn 2s ease-out; /* Animación de entrada */
-    animation: bounceEffect 1s ease-in-out infinite; /* Animación de rebote infinita */
-  }
-  
-  /* Animación de Rebote */
-  @keyframes bounceEffect {
-      0% {
-          transform: translateY(0); /* Inicio en posición normal */
-      }
-      25% {
-          transform: translateY(-10px); /* Rebote hacia arriba */
-      }
-      50% {
-          transform: translateY(0); /* Regresa a la posición inicial */
-      }
-      75% {
-          transform: translateY(-5px); /* Rebote más pequeño */
-      }
-      100% {
-          transform: translateY(0); /* Vuelve a la posición inicial */
-      }
-  }
+  font-family: 'Poppins', sans-serif;
+  font-size: 50px;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 20px;
+  position: relative;
+  display: inline-block;
+  background-color: #21234A;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  animation: fadeIn 2s ease-out;
+  animation: bounceEffect 1s ease-in-out infinite;
+}
 
-
-
-/* Efecto Hover */
 .donacion:hover {
-    transform: translateY(-5px); /* Eleva ligeramente el texto */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Aumenta la sombra */
-    background-color: #ff9a8b; /* Fondo rosado cuando se pasa el ratón */
-    color: white; /* El texto se mantiene blanco en hover */
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  background-color: #ff9a8b;
+  color: white;
 }
 
-/* Animación FadeIn para la aparición */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Sombra sutil para el texto */
 .donacion span {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.card-content {
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+  margin-top: 30px;
+  animation: slideUp 1s ease-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-  
+.card-content-donacion h4 {
+  font-size: 20px;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 15px;
+  font-weight: 400;
+  transition: all 0.3s ease;
+}
 
-  
-  /* Card Styles */
-  .card-content {
-    background-color: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 800px;
-    padding: 20px;
-    margin-top: 30px;
-    animation: slideUp 1s ease-out;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+.card-content-donacion h4:hover {
+  color: #4e73df;
+  transform: translateY(-5px);
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+/* Animaciones */
+@keyframes bounceEffect {
+  0% {
+    transform: translateY(0);
   }
-  
-  .card-content-donacion h4 {
-    font-size: 20px;
-    line-height: 1.8;
-    color: #555;
-    margin-bottom: 15px;
-    font-weight: 400;
-    transition: all 0.3s ease;
+  25% {
+    transform: translateY(-10px);
   }
-  
-  .card-content-donacion h4:hover {
-    color: #4e73df;
+  50% {
+    transform: translateY(0);
+  }
+  75% {
     transform: translateY(-5px);
   }
-  
-  /* Hover effect for the card */
-  .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
-    
+  100% {
+    transform: translateY(0);
   }
-  
-  /* Animations */
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  @keyframes slideUp {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media Queries para pantallas pequeñas */
+@media (max-width: 768px) {
+  .img-teleton {
+    height: auto;
+    width: 100%;
+  }
+
+  .donacion {
+    font-size: 35px; /* Reduce el tamaño del texto */
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  .card-content {
+    padding: 15px;
+    margin-top: 20px;
+  }
+
+  .card-content-donacion h4 {
+    font-size: 18px;
+  }
+
+  .card {
+    margin-top: 10px;
+  }
+}
+
+/* Media Queries para tabletas */
+@media (max-width: 1024px) {
+  .img-teleton {
+    height: auto;
+    width: 100%;
+  }
+
+  .donacion {
+    font-size: 40px; /* Reduce el tamaño del texto */
+  }
+
+  .card-content {
+    padding: 18px;
+  }
+
+  .card-content-donacion h4 {
+    font-size: 19px;
+  }
+}

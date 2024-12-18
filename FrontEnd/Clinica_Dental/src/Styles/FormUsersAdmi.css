@@ -1,66 +1,76 @@
-.contenedorUsers{
-    background: #AB5684; /* Fondo blanco para el formulario */
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    width: 100%;
-    max-width: 600px; /* Ancho máximo */
-    text-align: center;
-    animation: fadeIn 0.6s ease-in-out; /* Animación de aparición */
-    margin-top: 150px;
-    margin-left: 300px;
+/* Estilo general para el contenedor principal de usuarios */
+.contenedorUsers {
+  background: #AB5684; /* Fondo rosado */
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 100%;
+  max-width: 600px; /* Ancho máximo */
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out; /* Animación de aparición */
+  margin: 150px auto; /* Centrado horizontal y margen superior */
 }
 
-.inputUsers{
-    background-color: #FFC6E5;
-    width: calc(100% - 20px); /* Ancho completo menos padding */
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid black; /* Borde gris */
-    border-radius: 5px;
-    font-size: 1rem;
-    transition: border-color 0.3s, box-shadow 0.3s; /* Añadir transición para la sombra */
+/* Estilo de los inputs */
+.inputUsers {
+  background-color: #FFC6E5;
+  width: calc(100% - 20px); /* Ancho completo menos padding */
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.inputpass{
-    background-color: #FFC6E5;
-    height: 30px;
-    border-radius: 10px;
-    border-color: #AB5684;
+/* Estilo específico para el campo de la contraseña */
+.inputpass {
+  background-color: #FFC6E5;
+  height: 30px;
+  border-radius: 10px;
+  border-color: #AB5684;
 }
 
-.btnAgregarUsuarios{
-    background-color: #FD91CB; /* Botón verde */
-    color: white; /* Texto blanco */
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
-    margin: 5px 0;
-    animation: popIn 0.5s ease; /* Animación de aparición para botones */
-    margin-left: 350px;
+/* Estilo para el botón de agregar usuarios */
+.btnAgregarUsuarios {
+  background-color: #FD91CB;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.3s;
+  margin: 5px 0;
+  animation: popIn 0.5s ease;
+  margin-left: auto; /* Centrado del botón */
+  margin-right: auto;
 }
 
-.label{
-    color: white;
-    font-size: 20px;
-    text-align: start;
+.btnAgregarUsuarios:hover {
+  background-color: #FD91CB;
+  transform: scale(1.05);
+}
+
+/* Estilo de las etiquetas */
+.label {
+  color: white;
+  font-size: 20px;
+  text-align: start;
 }
 
 /* Título de la sección */
 .historial {
-    font-size: 2em;
-    text-align: center;
-    color: #2c3e50; /* Color gris oscuro */
-    margin-top: 40px;
-    margin-bottom: 20px;
-    font-family: 'Arial', sans-serif;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-  
+  font-size: 2em;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
 /* Contenedor principal de los usuarios */
 .container {
   display: flex;
@@ -86,63 +96,76 @@
 
 /* Cada elemento de la lista de usuarios */
 .lii {
-  display: flex; /* Usamos flexbox para dividir en columnas */
-  justify-content: space-between; /* Separamos las columnas */
+  display: flex;
+  justify-content: space-between;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   background-color: #e0dedd;
   color: black;
+  transition: all 0.3s ease;
+  transform: translateY(10px);
+}
+
+.lii:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
 }
 
 /* Columna izquierda: Datos del Usuario */
 .user-info {
-  width: 40%; /* Ocupa el 40% del ancho */
+  width: 40%;
   padding: 10px;
-  background-color: #A99CA3; /* Fondo gris oscuro */
+  background-color: #A99CA3;
   color: black;
-  border-radius: 8px;
+  border-radius: 15px;
   margin-right: 20px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2), -4px -4px 10px rgba(255, 255, 255, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-.user-info p {
-  font-size: 1.2rem; /* Tamaño de fuente más grande (aproximadamente tamaño de h4) */
-  font-family: 'Arial', sans-serif; /* Tipo de fuente (puedes cambiarla a la que prefieras) */
-  font-weight: bold; /* Enfatiza el texto en negrita si lo deseas */
-  color: #333; /* Color del texto (puedes cambiarlo a cualquier color que desees) */
-  margin-bottom: 10px; /* Espacio entre los elementos de los datos */
-  margin-top: 30px
-}
-
 
 /* Columna derecha: Inputs de Edición y Botones */
 .edit-section {
-  width: 50%; /* Ocupa el 50% del ancho */
+  width: 50%;
   padding: 10px;
-  background-color: #F9F9F9; /* Fondo gris claro */
-  border-radius: 8px;
+  background-color: #F9F9F9;
+  border-radius: 15px;
   display: flex;
-  flex-direction: column; /* Alinea los inputs y botones verticalmente */
+  flex-direction: column;
   gap: 10px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2), -4px -4px 10px rgba(255, 255, 255, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Estilo de los inputs */
+.user-info:hover, .edit-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.3), -6px -6px 18px rgba(255, 255, 255, 0.3);
+}
+
+/* Estilo de los inputs en la sección de edición */
 .editInput {
   padding: 12px;
   margin-bottom: 15px;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 10px;
   font-size: 16px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1), -2px -2px 6px rgba(255, 255, 255, 0.4);
+  transition: box-shadow 0.3s ease;
 }
 
-/* Botones */
+.editInput:focus {
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.3), -2px -2px 12px rgba(255, 255, 255, 0.6);
+}
+
+/* Estilo de los botones en la sección de edición */
 .botonHisto {
   padding: 14px;
   font-size: 16px;
-  border-radius: 4px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s;
-  margin-right: 10px;  /* Espacio entre los botones */
+  transition: background-color 0.3s, box-shadow 0.3s ease;
+  margin-right: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1), -2px -2px 5px rgba(255, 255, 255, 0.4);
 }
 
 .botonHisto {
@@ -153,28 +176,50 @@
 
 .botonHisto:hover {
   background-color: #FD91CB;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3), -4px -4px 12px rgba(255, 255, 255, 0.4);
+}
+
+/* Animación de entrada */
+@keyframes slideIn {
+  0% {
+      transform: translateY(30px);
+      opacity: 0;
+  }
+  100% {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+.container, .user-info, .edit-section {
+  animation: slideIn 1s ease-out;
 }
 
 /* Estilos para pantallas pequeñas */
 @media (max-width: 768px) {
+  .contenedorUsers {
+      width: 90%; /* Aumenta el ancho del contenedor en pantallas pequeñas */
+      margin: 20px auto; /* Márgenes más pequeños */
+      padding: 20px; /* Reducir el padding */
+  }
+
+  /* Ajustes de la lista de usuarios */
   .container {
-    align-items: center;
+      font-size: 100%; /* Ajuste de tamaño de fuente */
   }
 
+  /* Ajustes en las columnas */
   .user-info, .edit-section {
-    width: 100%;
-    margin-bottom: 10px;
+      width: 100%;
+      margin-bottom: 10px;
   }
 
-  .user-info {
-    margin-right: 0;
-  }
-
+  /* Ajustes en los inputs */
   .editInput {
-    font-size: 14px;
+      font-size: 14px;
   }
 
-  .botonHis {
-    font-size: 14px;
+  .botonHisto {
+      font-size: 14px;
   }
 }

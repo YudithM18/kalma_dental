@@ -54,6 +54,16 @@ function FormLogin() {
           icon: 'error',
           confirmButtonText: 'Ok'
         });
+      }else{
+        if (!listaU.access) {
+          // Si los datos son diferentes, muestra una alerta de error
+          Swal.fire({
+            title: 'Error',
+            text:  t('alertaLogin3'),
+            icon: 'error',
+            confirmButtonText: 'Ok'
+          });
+        }
       }
     }
   };

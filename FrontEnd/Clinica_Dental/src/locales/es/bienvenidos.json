@@ -45,7 +45,7 @@
     "footer_TT1": "Cuidando tu sonrisa, siempre.",
     "texto_1": "Ultima actualización: 13/11/2024",
 
-    "footerTT2": "Síguenos en nuestras redes sociales para informarte de cuarquier acontecimiento...",
+    "footerTT2": "Síguenos en redes para novedades",
 
     "footerTT3": "Reserva tu cita: ",
 
@@ -315,6 +315,9 @@
     "alertaLogin": "Has ingresado exitosamente",
     "alertaLogin1": "Gracias!!",
     "alertaLogin2": "Todos los campos son requeridos",
+    "alertaLogin3": "Los datos son incorrectos",
+
+
 
     "btnO": "OMITIR",
     "bienvenidoAdmin": "Bienvenido!!",
@@ -410,22 +413,25 @@
     "btnActualizar" : "Actualizar",
     "btnEliminar" : "Eliminar",
 
-    "Alert_E" : "Especialistas Cargados",
-    "Alert_EText" : "Los datos de los especialistas se han cargado correctamente.",
-    
-    "Alert_ErrorE" : "Especialistas Cargados",
-
-    "Alert_EC" : "Especialidades Cargadas",
-    "Alert_EspecialidadesC" : "Especialistas Cargados",
-    "Alert_ErrorC" : "No se pudieron cargar las especialidades.",
-
-    "Alert_T" : "Titulaciones Cargadas",
-    "Alert_Ttext" : "Las titulaciones se han cargado correctamente.",
-
-    "Alert_ErrotT" : "No se pudieron cargar las titulaciones.",
-
    "Busqueda": "Buscar servicios disponibles",
 
-   "editarServicio": "Editar Servicio"
+   "editarServicio": "Editar Servicio",
+
+   "alertaUserAD": "Aceptar",
+   "alertaUserAD1": "Usuario creado",
+   "alertaUserAD2": "Se ha creado un nuevo usuario exitosamente",
+   "alertaUserAD3": "Ha Ocurrió un error al crear el usuario",
+
+   "alertaUserAD4" : "¿Estás seguro?",
+   "alertaUserAD5" : "No podrás recuperar este usuario después de eliminarlo.",
+   "alertaUserAD6" : "Sí, eliminar",
+   "alertaUserAD7" : "Cancelar",
+   "alertaUserAD8" : "Eliminado!",
+   "alertaUserAD9" : "La especialidad ha sido eliminado.",
+   
+
+   "alertaUserAD0" : "Usuario Actualizado",
+   "alertaUserAD11" : "Los cambios han sido guardados con éxito.",
+   "alertaUserAD12" : "Hubo un error al actualizar el usuario."
 
 }

@@ -1,5 +1,4 @@
-/* src/components/Navbar.css */
-
+/* Estilo base para la navbar */
 .navbar {
   background-color: #CECFCA;
   padding: 15px 0;
@@ -19,6 +18,11 @@
   padding: 0 20px;
 }
 
+.navbar-toggle{
+  color: #CECFCA;
+}
+
+/* Logo */
 .navbar-logo {
   color: rgb(44, 44, 44);
   font-size: 24px;
@@ -32,6 +36,7 @@
   margin-right: 10px;
 }
 
+/* Menú de navegación */
 .navbar-menu {
   list-style: none;
   display: flex;
@@ -47,80 +52,34 @@
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
-  transition: color 0.3s, transform 0.3s, box-shadow 0.3s, filter 0.3s ease-in-out; /* Transiciones suaves */
+  transition: color 0.3s, transform 0.3s, box-shadow 0.3s, filter 0.3s ease-in-out;
   position: relative;
   display: inline-block;
-  border-radius: 7px;  /* Bordes redondeados */
-
+  border-radius: 7px;
 }
 
-/* Efecto de elevación y brillo en los enlaces del navbar */
+/* Efecto hover sobre los enlaces */
 .navbar-link:hover {
-  color: #1a7030; /* Color llamativo */
-  transform: translateY(-8px); /* Eleva la carta */
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Sombra más prominente */
-  filter: brightness(1.3); /* Agrega un brillo al enlace */
+  color: #1a7030;
+  transform: translateY(-8px);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  filter: brightness(1.3);
 }
 
-/* Línea inferior (brillo) al pasar el mouse sobre el enlace */
 .navbar-link::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   width: 0;
-  height: 3px; /* Grosor de la línea */
-  background: linear-gradient(90deg, #388E3C, #66BB6A); /* Verde oscuro y claro */
+  height: 3px;
+  background: linear-gradient(90deg, #388E3C, #66BB6A);
   transition: width 0.3s ease;
 }
 
-
-/* La línea inferior se extiende cuando se hace hover sobre el enlace */
 .navbar-link:hover::after {
-  width: 100%; /* Llenar la línea inferior al hacer hover */
+  width: 100%;
 }
-
-@media (max-width: 768px) {
-  .navbar-menu {
-    display: none;
-    position: absolute;
-    top: 70px;
-    right: 20px;
-    background-color: #1e1e1e;
-    width: 200px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    flex-direction: column;
-    padding: 10px 0;
-  }
-
-  .navbar-menu.active {
-    display: flex;
-  }
-
-  .navbar-item {
-    margin-left: 0;
-    text-align: center;
-  }
-
-  .navbar-toggle {
-    display: block;
-    font-size: 24px;
-    color: #fff;
-    cursor: pointer;
-  }
-}
-
-/* Animaciones */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 
 /* Estilo base de los botones */
 .nav-btnEnglish, .nav-btnEspañol {
@@ -163,4 +122,89 @@
 /* Efecto activo para la versión en español */
 .nav-btnEspañol:active {
   background-color: #f8c009ad; /* Azul más oscuro al presionar */
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+  /* Ocultar el menú en pantallas pequeñas por defecto */
+  .navbar-menu {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background-color: #1e1e1e;
+    width: 200px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+    padding: 10px 0;
+  }
+
+  /* Mostrar el menú cuando tiene la clase active */
+  .navbar-menu.active {
+    display: flex;
+  }
+
+  /* Estilo de los elementos del menú */
+  .navbar-item {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  /* Estilo del ícono de hamburguesa */
+  .navbar-toggle {
+    display: block;
+    font-size: 22px;
+    color: #242222;
+    cursor: pointer;
+  }
+
+  /* Estilos para los botones de idioma */
+  .nav-btnEnglish, .nav-btnEspañol {
+    background-color: #be8484;
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 10px;
+  }
+
+  .nav-btnEnglish:hover, .nav-btnEspañol:hover {
+    background-color: #f0adad;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-btnEnglish:active, .nav-btnEspañol:active {
+    transform: scale(1);
+    box-shadow: none;
+    background-color: #ffd1d1;
+  }
+
+  /* Estilo para el botón en español */
+  .nav-btnEspañol {
+    background-color: #f8c009ad;
+  }
+
+  .nav-btnEspañol:hover {
+    background-color: #ffd446ad;
+  }
+
+  .nav-btnEspañol:active {
+    background-color: #f8c009ad;
+  }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

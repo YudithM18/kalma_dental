@@ -240,8 +240,6 @@ console.log(recommendations_url_edit);
 
 
 
-
-
 //////////////VIDEO
 function cargaVideo(event) {
   setVideo(event.target.files[0]);

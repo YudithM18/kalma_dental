@@ -1,98 +1,99 @@
-.Testimonios{
-    background: #7D566B; /* Fondo blanco para el formulario */
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    width: 100%;
-    max-width: 600px; /* Ancho máximo */
-    text-align: center;
-    animation: fadeIn 0.6s ease-in-out; /* Animación de aparición */
-    margin-top: 150px;
-    margin-left: 300px;
+/* Estilo para el contenedor principal del formulario */
+.Testimonios {
+  background: #7D566B; /* Fondo color pastel */
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 100%;
+  max-width: 600px; /* Limitar el tamaño máximo del formulario */
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out;
+  margin: 150px auto; /* Centrado vertical con margen superior y auto para centrado horizontal */
 }
 
+/* Título */
 .Title {
-    color: white; /* Color del título */
-    margin-bottom: 20px;
-    animation: slideIn 0.5s ease-in-out; /* Animación de deslizamiento */
-    font-size: 35px;
+  color: white; 
+  margin-bottom: 20px;
+  animation: slideIn 0.5s ease-in-out;
+  font-size: 35px;
 }
 
-.subTitle{
-    color: white;
-    font-size: 20px;
-    text-align: start;
+/* Subtítulo */
+.subTitle {
+  color: white;
+  font-size: 20px;
+  text-align: start;
 }
 
 label {
-    display: block;
-    margin: 15px 0 5px;
-    font-weight: bold;
-    color: #555; /* Color del texto de la etiqueta */
+  display: block;
+  margin: 15px 0 5px;
+  font-weight: bold;
+  color: #555;
 }
 
+/* Estilo para los inputs de texto y fecha */
 input[type="text"], input[type="date"] {
-    width: calc(100% - 20px); /* Ancho completo menos padding */
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid black; /* Borde gris */
-    border-radius: 5px;
-    font-size: 1rem;
-    transition: border-color 0.3s, box-shadow 0.3s; /* Añadir transición para la sombra */
+  width: calc(100% - 20px); /* Ancho completo menos padding */
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
-.btnagregar {
-    background-color: #ffc4e4c2; /* Botón verde */
-    color: white; /* Texto blanco */
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
-    margin: 5px 0;
-    animation: popIn 0.5s ease; /* Animación de aparición para botones */
-    margin-left: 350px;
 
+/* Efecto al hacer foco en los inputs */
+input[type="text"]:focus, input[type="date"]:focus {
+  border-color: #8a4f44;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Estilo para el botón de agregar */
+.btnagregar {
+  background-color: #ffc4e4c2;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.3s;
+  margin: 5px 0;
+  animation: popIn 0.5s ease;
 }
 
 .btnagregar:hover {
-    background-color: #E4C5D6; /* Botón más oscuro al pasar el ratón */
-    transform: scale(1.05); /* Efecto de aumento */
+  background-color: #E4C5D6;
+  transform: scale(1.05);
 }
 
-
-
-
-/* Estilo para el título de la sección */
-.historialT {
-  font-size: 2em;
-  text-align: center;
-  color: #2c3e50; /* Color gris oscuro */
-  margin-top: 40px;
-  margin-bottom: 20px;
-  font-family: 'Arial', sans-serif;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-/* Estilo de cada testimonio */
+/* Estilo para las tarjetas de testimonios */
 .testimonios {
   list-style-type: none;
-  padding: 15px; /* Reducir padding para hacerlo más angosto */
-  margin: 10px 0;
-  border-radius: 10px; /* Bordes redondeados */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
   background-color: #e0dedd;
   color: black;
   display: flex;
-  justify-content: space-between; /* Separa el contenido en dos partes */
-  gap: 15px; /* Reducir gap entre columnas */
-  width: 60%; /* Ancho de la card reducido al 60% del contenedor principal */
-  text-align: left; /* Alinea el texto a la izquierda */
-  animation: fadeIn 0.6s ease-in-out; /* Animación de aparición */
-  margin: 10px auto; /* Centrar las cards */
+  justify-content: space-between;
+  gap: 20px;
+  width: 80%;
+  text-align: left;
+  animation: fadeIn 0.6s ease-in-out;
+  margin: 20px auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Contenedor principal de los testimonios */
+.testimonios:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Contenedor para los testimonios */
 .mapTestimonios {
   display: flex;
   flex-direction: column;
@@ -103,81 +104,92 @@ input[type="text"], input[type="date"] {
   color: black;
   font-weight: bold;
   animation: fadeIn 1s ease-in-out;
-  width: 70%; /* Ajusta el ancho del contenedor */
+  width: 85%;
+  margin: 30px auto;
 }
 
-/* Columna de datos (nombre, fecha, testimonio) */
-.data-column {
-width: 45%; /* 45% del ancho */
-display: flex;
-flex-direction: column;
-gap: 10px;
-}
-
-/* Estilo para los inputs de edición dentro de los testimonios */
-.edit-column {
-width: 45%; /* 45% del ancho */
-display: flex;
-flex-direction: column;
-gap: 10px;
+/* Columnas de los testimonios */
+.data-column, .edit-column {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0 20px;
 }
 
 .editInp {
-background-color: #cec1c8;
-width: 100%;
-padding: 10px;
-margin-bottom: 15px;
-border: 1px solid black;
-border-radius: 5px;
-font-size: 1rem;
-transition: border-color 0.3s, box-shadow 0.3s;
+  background-color: #cec1c8;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-/* Botones */
+/* Botón para la historia */
 .botonHisT {
-background-color: #d3b2db; /* Botón rosa */
-color: white;
-padding: 10px 15px;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-font-size: 1rem;
-transition: background-color 0.3s, transform 0.3s;
-margin: 5px 0;
+  background-color: #d3b2db;
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s, transform 0.3s;
+  margin: 10px 0;
 }
 
 .botonHisT:hover {
-background-color: #635562; /* Cambio de color al hacer hover */
+  background-color: #635562;
 }
 
-/* Animaciones de entrada */
+/* Animaciones */
 @keyframes fadeIn {
-0% {
-  opacity: 0;
-  transform: translateY(20px);
-}
-100% {
-  opacity: 1;
-  transform: translateY(0);
-}
+  0% {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
 }
 
-/* Estilos para pantallas pequeñas */
+@keyframes slideIn {
+  0% {
+      opacity: 0;
+      transform: translateX(-20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+/* Medios para pantallas pequeñas */
 @media (max-width: 768px) {
-.testimonios {
-  flex-direction: column;
-  width: 100%;
-}
+  .Testimonios {
+      margin: 150px 20px; /* Márgenes pequeños en pantallas pequeñas */
+  }
 
-.data-column, .edit-column {
-  width: 100%;
-}
+  .testimonios {
+      flex-direction: column;
+      width: 95%; /* Ancho mayor en pantallas pequeñas */
+      gap: 20px;
+  }
 
-.editInp {
-  font-size: 14px;
-}
+  .data-column, .edit-column {
+      width: 100%; /* Las columnas ocupan el 100% del ancho */
+      padding: 0;
+  }
 
-.botonHisT {
-  font-size: 14px;
-}
+  .editInp {
+      font-size: 14px;
+  }
+
+  .botonHisT {
+      font-size: 14px;
+  }
 }
